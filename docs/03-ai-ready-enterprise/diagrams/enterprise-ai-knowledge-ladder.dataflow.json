@@ -1,0 +1,254 @@
+{
+  "schema_version": 1,
+  "diagram_type": "dataflow",
+  "meta": {
+    "title": "Bậc thang tri thức: từ nguồn thô đến AI-ready",
+    "viewBox": [
+      1080,
+      780
+    ],
+    "animation": "trace",
+    "quality_profile": "showcase",
+    "views": [
+      {
+        "id": "capture",
+        "label": "Thu thập và lưu nguyên bản",
+        "focus": [
+          "systems",
+          "people",
+          "connector",
+          "raw",
+          "ledger"
+        ],
+        "note": "Nguồn thường khó lấy lại: phiên đăng nhập hết hạn, API giới hạn, người trả lời một lần. Lưu nguyên bản trước rồi mới xử lý."
+      },
+      {
+        "id": "structure",
+        "label": "Cấu trúc hóa — AI-friendly",
+        "focus": [
+          "raw",
+          "parser",
+          "typed"
+        ],
+        "note": "Bộ parse là hàm thuần, chạy offline trên kho nguyên bản. Sai parse chỉ tốn một lần chạy lại, không tốn một lần lấy lại dữ liệu."
+      },
+      {
+        "id": "curate",
+        "label": "Dẫn xuất và chắt lọc — AI-ready",
+        "focus": [
+          "typed",
+          "derived",
+          "knowledge"
+        ],
+        "note": "Con số agent trích dẫn được tính lại từ dữ liệu đã lưu theo công thức có nguồn gốc. Bộ tri thức chỉ bảng nào trả lời câu hỏi nào."
+      }
+    ]
+  },
+  "stages": [
+    {
+      "label": "Nguồn"
+    },
+    {
+      "label": "Thu thập"
+    },
+    {
+      "label": "Nguyên bản"
+    },
+    {
+      "label": "Cấu trúc hóa"
+    },
+    {
+      "label": "Tri thức"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "systems",
+      "type": "external",
+      "label": "Hệ thống & API",
+      "sublabel": "ERP · SaaS · thiết bị",
+      "stage": 0,
+      "row": 1,
+      "tag": "khó lấy lại"
+    },
+    {
+      "id": "people",
+      "type": "external",
+      "label": "Con người",
+      "sublabel": "chat · form · file",
+      "stage": 0,
+      "row": 3,
+      "tag": "nói một lần"
+    },
+    {
+      "id": "connector",
+      "type": "backend",
+      "label": "Connector",
+      "sublabel": "1 lần / nguồn / ngày",
+      "stage": 1,
+      "row": 2,
+      "tag": "idempotent"
+    },
+    {
+      "id": "raw",
+      "type": "database",
+      "label": "Kho nguyên bản",
+      "sublabel": "payload verbatim",
+      "stage": 2,
+      "row": 1,
+      "tag": "bền vững"
+    },
+    {
+      "id": "ledger",
+      "type": "database",
+      "label": "Ledger",
+      "sublabel": "nguồn + ngày",
+      "stage": 2,
+      "row": 3,
+      "tag": "điểm resume"
+    },
+    {
+      "id": "parser",
+      "type": "backend",
+      "label": "Bộ parse",
+      "sublabel": "hàm thuần",
+      "stage": 3,
+      "row": 1,
+      "tag": "offline"
+    },
+    {
+      "id": "typed",
+      "type": "database",
+      "label": "Bảng có kiểu",
+      "sublabel": "schema có tài liệu",
+      "stage": 3,
+      "row": 3,
+      "tag": "AI-friendly"
+    },
+    {
+      "id": "derived",
+      "type": "backend",
+      "label": "Lớp dẫn xuất",
+      "sublabel": "công thức có nguồn",
+      "stage": 4,
+      "row": 1,
+      "tag": "tính lại được"
+    },
+    {
+      "id": "knowledge",
+      "type": "security",
+      "label": "Bộ tri thức",
+      "sublabel": "brief · data map",
+      "stage": 4,
+      "row": 3,
+      "tag": "AI-ready"
+    }
+  ],
+  "flows": [
+    {
+      "id": "pull",
+      "from": "systems",
+      "to": "connector",
+      "label": "lấy một lần",
+      "classification": "network",
+      "variant": "emphasis"
+    },
+    {
+      "id": "stated",
+      "from": "people",
+      "to": "connector",
+      "label": "ghi qua tool",
+      "classification": "primary data",
+      "variant": "security"
+    },
+    {
+      "id": "archive",
+      "from": "connector",
+      "to": "raw",
+      "label": "ghi trước khi parse",
+      "classification": "durable",
+      "variant": "emphasis"
+    },
+    {
+      "id": "read-raw",
+      "from": "raw",
+      "to": "parser",
+      "label": "đọc kho",
+      "classification": "no network",
+      "variant": "emphasis",
+      "route": "straight",
+      "labelDy": -26
+    },
+    {
+      "id": "upsert",
+      "from": "parser",
+      "to": "typed",
+      "label": "upsert",
+      "classification": "idempotent",
+      "variant": "default",
+      "labelDy": 24
+    },
+    {
+      "id": "mark",
+      "from": "parser",
+      "to": "ledger",
+      "label": "đánh dấu xong",
+      "classification": "sau khi thành công",
+      "variant": "dashed"
+    },
+    {
+      "id": "resume",
+      "from": "ledger",
+      "to": "connector",
+      "label": "bỏ qua ngày đã lấy",
+      "classification": "resume",
+      "variant": "dashed"
+    },
+    {
+      "id": "compute",
+      "from": "typed",
+      "to": "derived",
+      "label": "tính tiến về trước",
+      "classification": "recurrence",
+      "variant": "default"
+    },
+    {
+      "id": "curate",
+      "from": "derived",
+      "to": "knowledge",
+      "label": "chắt lọc · gắn nhãn",
+      "classification": "MEASURED / LITERATURE / CONVENTION",
+      "variant": "emphasis",
+      "labelDy": 24
+    }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "AI-friendly: máy đọc được",
+      "items": [
+        "Định danh gốc giữ nguyên, không dịch — tên cột khớp tên trường của hệ thống nguồn",
+        "Schema có tài liệu: đơn vị, giá trị đặc biệt, khóa chính, câu truy vấn mẫu",
+        "Mọi bảng cấu trúc hóa dựng lại được từ kho nguyên bản, không cần mạng"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "AI-ready: agent dùng được ngay",
+      "items": [
+        "Một tài liệu ngắn trả lời: câu hỏi nào đọc bảng nào, và dữ liệu KHÔNG nói được điều gì",
+        "Ngưỡng và quy tắc quyết định có nhãn nguồn gốc: đo được, từ tài liệu, hay quy ước",
+        "Ngữ cảnh người dùng nói ra được ghi thành dữ liệu chính, không nằm trong trí nhớ phiên"
+      ]
+    },
+    {
+      "dot": "orange",
+      "title": "Điều không làm",
+      "items": [
+        "Không sao chép chỉ số do hệ thống nguồn tính sẵn làm nguồn — lưu để đối chiếu",
+        "Không sửa hay xóa dữ liệu chính; sai thì ghi bổ sung hoặc đóng lại",
+        "Không để agent tự suy tên cột — truy vấn mẫu nằm trong bộ tri thức"
+      ]
+    }
+  ]
+}

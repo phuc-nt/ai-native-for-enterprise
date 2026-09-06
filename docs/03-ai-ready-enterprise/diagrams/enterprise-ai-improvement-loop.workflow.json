@@ -1,0 +1,255 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Vòng cải tiến agent từ transcript",
+    "quality_profile": "showcase",
+    "views": [
+      {
+        "id": "observe",
+        "label": "Quan sát",
+        "focus": [
+          "run",
+          "transcript",
+          "review"
+        ],
+        "note": "Phiên chạy thật — cron hay chat — để lại transcript. Người bảo trì đọc transcript, không đọc lời kể."
+      },
+      {
+        "id": "decide",
+        "label": "Phân loại và sửa",
+        "focus": [
+          "review",
+          "classify",
+          "fix",
+          "noise"
+        ],
+        "note": "Mỗi sai lệch rơi vào một trong ba chỗ: dữ liệu, chỉ dẫn, hay tool. Trượt suy luận đơn lẻ thì ghi nhận, không thành luật."
+      },
+      {
+        "id": "verify",
+        "label": "Nạp lại và xác minh",
+        "focus": [
+          "fix",
+          "reindex",
+          "verify",
+          "run"
+        ],
+        "note": "Sửa trong git, nạp lại chỉ mục bộ nhớ của harness, rồi chờ phiên chạy thật kế tiếp chứng minh."
+      }
+    ]
+  },
+  "lanes": [
+    {
+      "id": "prod",
+      "label": "Vận hành thật"
+    },
+    {
+      "id": "maintainer",
+      "label": "Người bảo trì"
+    },
+    {
+      "id": "repo",
+      "label": "Kho tri thức & tool (git)"
+    },
+    {
+      "id": "skip",
+      "label": "Không sửa hệ thống",
+      "variant": "exception"
+    }
+  ],
+  "phases": [
+    {
+      "id": "p-observe",
+      "label": "Quan sát",
+      "fromCol": 0,
+      "toCol": 2
+    },
+    {
+      "id": "p-fix",
+      "label": "Sửa tại nguồn",
+      "fromCol": 3,
+      "toCol": 4,
+      "variant": "emphasis"
+    },
+    {
+      "id": "p-verify",
+      "label": "Xác minh",
+      "fromCol": 5,
+      "toCol": 5,
+      "variant": "dashed"
+    }
+  ],
+  "mainPath": [
+    "run",
+    "transcript",
+    "review",
+    "classify",
+    "fix",
+    "reindex",
+    "verify"
+  ],
+  "nodes": [
+    {
+      "id": "run",
+      "lane": "prod",
+      "col": 0,
+      "type": "frontend",
+      "label": "Phiên chạy thật",
+      "sublabel": "cron · chat",
+      "width": 132
+    },
+    {
+      "id": "transcript",
+      "lane": "prod",
+      "col": 1,
+      "type": "database",
+      "label": "Transcript",
+      "sublabel": "tool call · kết quả",
+      "width": 132
+    },
+    {
+      "id": "verify",
+      "lane": "prod",
+      "col": 5,
+      "type": "security",
+      "label": "Xác minh",
+      "sublabel": "phiên thật kế tiếp",
+      "tag": "đóng khi đạt",
+      "width": 132
+    },
+    {
+      "id": "review",
+      "lane": "maintainer",
+      "col": 2,
+      "type": "backend",
+      "label": "Rà soát",
+      "sublabel": "đọc transcript",
+      "width": 132
+    },
+    {
+      "id": "classify",
+      "lane": "maintainer",
+      "col": 3,
+      "type": "backend",
+      "label": "Phân loại lệch",
+      "sublabel": "dữ liệu · chỉ dẫn · tool",
+      "tag": "một nguyên nhân",
+      "width": 148
+    },
+    {
+      "id": "fix",
+      "lane": "repo",
+      "col": 4,
+      "type": "security",
+      "label": "Sửa tại nguồn",
+      "sublabel": "brief · schema · tool",
+      "tag": "commit",
+      "width": 132
+    },
+    {
+      "id": "reindex",
+      "lane": "repo",
+      "col": 5,
+      "type": "backend",
+      "label": "Nạp lại chỉ mục",
+      "sublabel": "memory index",
+      "width": 132
+    },
+    {
+      "id": "noise",
+      "lane": "skip",
+      "col": 4,
+      "type": "messagebus",
+      "label": "Ghi nhận, bỏ qua",
+      "sublabel": "trượt suy luận đơn lẻ",
+      "width": 148
+    }
+  ],
+  "edges": [
+    {
+      "id": "run-transcript",
+      "from": "run",
+      "to": "transcript",
+      "variant": "default"
+    },
+    {
+      "id": "transcript-review",
+      "from": "transcript",
+      "to": "review",
+      "label": "định kỳ",
+      "variant": "emphasis"
+    },
+    {
+      "id": "review-classify",
+      "from": "review",
+      "to": "classify",
+      "variant": "default"
+    },
+    {
+      "id": "classify-fix",
+      "from": "classify",
+      "to": "fix",
+      "label": "lỗi hệ thống",
+      "variant": "emphasis"
+    },
+    {
+      "id": "classify-noise",
+      "from": "classify",
+      "to": "noise",
+      "label": "không đáng làm luật",
+      "variant": "dashed",
+      "role": "branch"
+    },
+    {
+      "id": "fix-reindex",
+      "from": "fix",
+      "to": "reindex",
+      "variant": "default"
+    },
+    {
+      "id": "reindex-verify",
+      "from": "reindex",
+      "to": "verify",
+      "label": "chờ phiên thật",
+      "variant": "security"
+    },
+    {
+      "id": "verify-run",
+      "from": "verify",
+      "to": "run",
+      "label": "vòng mới",
+      "variant": "dashed",
+      "role": "return",
+      "fromSide": "top",
+      "toSide": "top",
+      "route": "up-channel"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "Transcript là bằng chứng",
+      "items": [
+        "Harness ghi lại từng tool call và kết quả — không cần dựng hệ thống log riêng",
+        "Rà soát theo lịch, không chờ người dùng phàn nàn"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Sửa ở nguồn, không nhắc trong chat",
+      "items": [
+        "Nhắc trong phiên chỉ sống đến hết phiên; sửa trong brief sống mãi",
+        "Một sai lệch, một nguyên nhân, một chỗ sửa: dữ liệu, chỉ dẫn hay tool"
+      ]
+    },
+    {
+      "dot": "cyan",
+      "title": "Chỉ đóng khi production chứng minh",
+      "items": [
+        "Sau khi sửa phải nạp lại chỉ mục bộ nhớ của harness",
+        "Phiên chạy thật kế tiếp là bài kiểm tra chấp nhận"
+      ]
+    }
+  ]
+}

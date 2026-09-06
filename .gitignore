@@ -1,0 +1,5 @@
+# Whitelist: only publish docs/ — everything else (agent kit .claude/,
+# plans/ intermediate outputs, workspace instruction files) stays local.
+/*
+!/docs/
+!/.gitignore

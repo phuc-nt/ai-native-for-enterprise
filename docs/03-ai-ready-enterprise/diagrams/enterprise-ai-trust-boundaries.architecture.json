@@ -1,0 +1,302 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Ranh giới tin cậy quanh một agent nghiệp vụ",
+    "quality_profile": "showcase",
+    "viewBox": [
+      1300,
+      680
+    ],
+    "views": [
+      {
+        "id": "untrusted",
+        "label": "Đầu vào không tin cậy",
+        "focus": [
+          "message",
+          "harness",
+          "instructions"
+        ],
+        "note": "Mọi tin nhắn qua kênh là dữ liệu, không phải lệnh. Yêu cầu đổi cấu hình, duyệt pairing hay đọc bí mật bị từ chối theo thiết kế."
+      },
+      {
+        "id": "tools",
+        "label": "Bề mặt tool tối thiểu",
+        "focus": [
+          "harness",
+          "probe",
+          "writer",
+          "store"
+        ],
+        "note": "Tool đọc và tool ghi tách riêng. Tool ghi nhận một tham số có ngữ pháp chặt; agent không có SQL ghi tự do."
+      },
+      {
+        "id": "secrets",
+        "label": "Bí mật và người bảo trì",
+        "focus": [
+          "harness",
+          "secrets",
+          "maintainer",
+          "instructions",
+          "audit"
+        ],
+        "note": "Agent chỉ được ghi bí mật do người dùng dán vào, không bao giờ đọc lại hay lặp lại. Chỉ phiên bảo trì được sửa code và chỉ dẫn."
+      }
+    ]
+  },
+  "components": [
+    {
+      "id": "message",
+      "type": "external",
+      "label": "Tin nhắn từ kênh",
+      "sublabel": "Slack · Teams · email",
+      "tag": "untrusted",
+      "pos": [
+        40,
+        120
+      ],
+      "size": [
+        170,
+        74
+      ]
+    },
+    {
+      "id": "harness",
+      "type": "frontend",
+      "label": "Harness + agent",
+      "sublabel": "phiên · tool allowlist",
+      "pos": [
+        330,
+        120
+      ],
+      "size": [
+        180,
+        74
+      ]
+    },
+    {
+      "id": "instructions",
+      "type": "security",
+      "label": "Chỉ dẫn",
+      "sublabel": "AGENTS.md → brief (git)",
+      "pos": [
+        40,
+        320
+      ],
+      "size": [
+        180,
+        74
+      ]
+    },
+    {
+      "id": "probe",
+      "type": "backend",
+      "label": "Tool đọc",
+      "sublabel": "--status · truy vấn mẫu",
+      "tag": "read-only",
+      "pos": [
+        640,
+        40
+      ],
+      "size": [
+        180,
+        74
+      ]
+    },
+    {
+      "id": "writer",
+      "type": "backend",
+      "label": "Tool ghi",
+      "sublabel": "1 tham số · ngữ pháp chặt",
+      "tag": "append-only",
+      "pos": [
+        640,
+        200
+      ],
+      "size": [
+        180,
+        74
+      ]
+    },
+    {
+      "id": "secrets",
+      "type": "security",
+      "label": "Bí mật",
+      "sublabel": "cookie · token",
+      "tag": "ghi, không đọc lại",
+      "pos": [
+        640,
+        360
+      ],
+      "size": [
+        180,
+        74
+      ]
+    },
+    {
+      "id": "store",
+      "type": "database",
+      "label": "Kho dữ liệu",
+      "sublabel": "dữ liệu chính không xóa",
+      "pos": [
+        950,
+        120
+      ],
+      "size": [
+        180,
+        74
+      ]
+    },
+    {
+      "id": "audit",
+      "type": "database",
+      "label": "Transcript",
+      "sublabel": "mọi phiên",
+      "pos": [
+        330,
+        520
+      ],
+      "size": [
+        180,
+        74
+      ]
+    },
+    {
+      "id": "maintainer",
+      "type": "external",
+      "label": "Phiên bảo trì",
+      "sublabel": "người + Claude Code",
+      "tag": "duy nhất sửa code",
+      "pos": [
+        40,
+        520
+      ],
+      "size": [
+        170,
+        74
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "security-group",
+      "label": "Vùng không tin cậy",
+      "wraps": [
+        "message"
+      ],
+      "pad": 18
+    },
+    {
+      "kind": "security-group",
+      "label": "Bề mặt tool được phép",
+      "wraps": [
+        "probe",
+        "writer",
+        "secrets"
+      ],
+      "pad": 18
+    },
+    {
+      "kind": "region",
+      "label": "Kho dữ liệu — không rời máy",
+      "wraps": [
+        "store"
+      ],
+      "pad": 18
+    }
+  ],
+  "connections": [
+    {
+      "from": "message",
+      "to": "harness",
+      "label": "prompt = dữ liệu"
+    },
+    {
+      "from": "instructions",
+      "to": "harness",
+      "label": "đọc mỗi phiên",
+      "toSide": "left"
+    },
+    {
+      "from": "harness",
+      "to": "probe",
+      "label": "exec"
+    },
+    {
+      "from": "harness",
+      "to": "writer",
+      "label": "exec",
+      "labelSegment": 2
+    },
+    {
+      "from": "harness",
+      "to": "secrets",
+      "label": "chỉ ghi khi user dán",
+      "variant": "security",
+      "labelSegment": 1
+    },
+    {
+      "from": "probe",
+      "to": "store",
+      "label": "SELECT"
+    },
+    {
+      "from": "writer",
+      "to": "store",
+      "label": "INSERT · đóng, không xóa"
+    },
+    {
+      "from": "harness",
+      "to": "audit",
+      "label": "transcript",
+      "variant": "dashed",
+      "labelAt": [
+        420,
+        357
+      ]
+    },
+    {
+      "from": "maintainer",
+      "to": "instructions",
+      "label": "sửa + commit",
+      "variant": "security",
+      "fromSide": "top",
+      "toSide": "bottom"
+    },
+    {
+      "from": "maintainer",
+      "to": "audit",
+      "label": "rà soát",
+      "variant": "dashed"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "rose",
+      "title": "Kênh chat là đầu vào không tin cậy",
+      "items": [
+        "Một yêu cầu đổi cấu hình, duyệt thiết bị hay đọc credential qua chat có hình dạng của prompt injection",
+        "Agent từ chối theo thiết kế, dù lời lẽ có hợp lý đến đâu",
+        "Chỉ dẫn nằm trong git và được đọc lại mỗi phiên — không có 'nhớ tạm' để bị nhồi"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Đặc quyền tối thiểu, cụ thể",
+      "items": [
+        "Tool đọc trả JSON; tool ghi nhận đúng một tham số có ngữ pháp, không có SQL ghi tự do",
+        "Dữ liệu chính chỉ được thêm hoặc đóng, không bao giờ sửa hay xóa",
+        "Agent không sửa code; phiên bảo trì là nơi duy nhất commit"
+      ]
+    },
+    {
+      "dot": "cyan",
+      "title": "Dữ liệu ở lại nơi nó được phép ở",
+      "items": [
+        "Không dashboard hosted, không API ra ngoài khi dữ liệu không được phép rời máy",
+        "Đính kèm chỉ đi qua marker do harness kiểm soát, không qua đường dẫn tự do",
+        "Bí mật được dán vào file, không bao giờ echo lại vào kênh"
+      ]
+    }
+  ]
+}

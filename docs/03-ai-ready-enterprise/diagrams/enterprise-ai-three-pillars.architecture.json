@@ -1,0 +1,397 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Ba trụ cột triển khai AI trong doanh nghiệp",
+    "quality_profile": "showcase",
+    "viewBox": [
+      1340,
+      840
+    ],
+    "views": [
+      {
+        "id": "pillar-data",
+        "label": "Trụ cột 2 — dữ liệu AI-ready",
+        "focus": [
+          "systems",
+          "documents",
+          "ingest",
+          "raw",
+          "store",
+          "knowledge"
+        ],
+        "note": "Lưu nguyên bản trước, cấu trúc hóa sau, chắt lọc cuối. Mỗi tầng dựng lại được từ tầng dưới, nên sai ở trên chỉ tốn một lần tính lại."
+      },
+      {
+        "id": "pillar-interface",
+        "label": "Trụ cột 3 — kết nối cho agent",
+        "focus": [
+          "store",
+          "knowledge",
+          "cli",
+          "mcp",
+          "harness"
+        ],
+        "note": "Agent không mò vào kho. Nó gọi một lệnh trả JSON kèm ngữ cảnh hoặc một MCP/API có kiểm soát, và đọc bộ tri thức trước khi trả lời."
+      },
+      {
+        "id": "pillar-harness",
+        "label": "Trụ cột 1 — harness sẵn có",
+        "focus": [
+          "harness",
+          "channel",
+          "scheduler",
+          "audit",
+          "user"
+        ],
+        "note": "Không tự viết vòng lặp agent. Harness lo phiên, kênh, lịch chạy và transcript; ta chỉ cung cấp chỉ dẫn, tool và dữ liệu."
+      }
+    ]
+  },
+  "components": [
+    {
+      "id": "systems",
+      "type": "external",
+      "label": "Hệ thống nghiệp vụ",
+      "sublabel": "Jira · Confluence · DB khách",
+      "pos": [
+        40,
+        140
+      ],
+      "size": [
+        160,
+        70
+      ]
+    },
+    {
+      "id": "documents",
+      "type": "external",
+      "label": "Tài liệu & tri thức ngầm",
+      "sublabel": "Slack · spec · meeting note",
+      "pos": [
+        40,
+        320
+      ],
+      "size": [
+        160,
+        70
+      ]
+    },
+    {
+      "id": "ingest",
+      "type": "backend",
+      "label": "Connector / ingest",
+      "sublabel": "fetch · ledger · idempotent",
+      "pos": [
+        310,
+        140
+      ],
+      "size": [
+        170,
+        70
+      ]
+    },
+    {
+      "id": "raw",
+      "type": "database",
+      "label": "Kho nguyên bản (raw)",
+      "sublabel": "verbatim · re-parse được",
+      "pos": [
+        310,
+        320
+      ],
+      "size": [
+        170,
+        70
+      ]
+    },
+    {
+      "id": "store",
+      "type": "database",
+      "label": "Kho AI-ready",
+      "sublabel": "bảng có kiểu · lớp dẫn xuất",
+      "pos": [
+        310,
+        500
+      ],
+      "size": [
+        170,
+        70
+      ]
+    },
+    {
+      "id": "knowledge",
+      "type": "security",
+      "label": "Bộ tri thức curated",
+      "sublabel": "brief · versioned · có nguồn",
+      "pos": [
+        310,
+        680
+      ],
+      "size": [
+        170,
+        70
+      ]
+    },
+    {
+      "id": "mcp",
+      "type": "backend",
+      "label": "MCP / API",
+      "sublabel": "truy vấn có kiểm soát",
+      "pos": [
+        610,
+        320
+      ],
+      "size": [
+        170,
+        70
+      ]
+    },
+    {
+      "id": "cli",
+      "type": "backend",
+      "label": "CLI một lệnh",
+      "sublabel": "JSON kèm ngữ cảnh",
+      "pos": [
+        610,
+        500
+      ],
+      "size": [
+        170,
+        70
+      ]
+    },
+    {
+      "id": "channel",
+      "type": "messagebus",
+      "label": "Kênh",
+      "sublabel": "Slack · Teams · terminal",
+      "pos": [
+        890,
+        140
+      ],
+      "size": [
+        200,
+        70
+      ]
+    },
+    {
+      "id": "harness",
+      "type": "frontend",
+      "label": "Harness + agent",
+      "sublabel": "Claude Code · OpenClaw · OpenCode",
+      "pos": [
+        890,
+        320
+      ],
+      "size": [
+        200,
+        70
+      ]
+    },
+    {
+      "id": "scheduler",
+      "type": "messagebus",
+      "label": "Lịch chạy",
+      "sublabel": "cron · cách ly",
+      "pos": [
+        1150,
+        320
+      ],
+      "size": [
+        150,
+        70
+      ]
+    },
+    {
+      "id": "audit",
+      "type": "database",
+      "label": "Transcript / audit",
+      "sublabel": "phiên · tool call",
+      "pos": [
+        1150,
+        500
+      ],
+      "size": [
+        150,
+        70
+      ]
+    },
+    {
+      "id": "user",
+      "type": "external",
+      "label": "Người dùng",
+      "sublabel": "nhân viên · quản lý",
+      "pos": [
+        1150,
+        140
+      ],
+      "size": [
+        150,
+        70
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "Trụ cột 2 — biến dữ liệu thành AI-friendly, AI-ready",
+      "wraps": [
+        "ingest",
+        "raw",
+        "store",
+        "knowledge"
+      ],
+      "pad": 18
+    },
+    {
+      "kind": "region",
+      "label": "Trụ cột 3 — kết nối",
+      "wraps": [
+        "mcp",
+        "cli"
+      ],
+      "pad": 18
+    },
+    {
+      "kind": "region",
+      "label": "Trụ cột 1 — harness sẵn có",
+      "wraps": [
+        "channel",
+        "harness",
+        "scheduler",
+        "audit"
+      ],
+      "pad": 18
+    }
+  ],
+  "connections": [
+    {
+      "from": "systems",
+      "to": "ingest",
+      "label": "API / export"
+    },
+    {
+      "from": "documents",
+      "to": "ingest",
+      "label": "crawl",
+      "toSide": "left"
+    },
+    {
+      "from": "ingest",
+      "to": "raw",
+      "label": "lưu nguyên bản trước",
+      "labelDy": 24
+    },
+    {
+      "from": "raw",
+      "to": "store",
+      "label": "parse · tính toán",
+      "labelDy": 24
+    },
+    {
+      "from": "store",
+      "to": "knowledge",
+      "label": "chắt lọc · gắn nhãn nguồn",
+      "labelDy": 24
+    },
+    {
+      "from": "store",
+      "to": "cli",
+      "label": "truy vấn mẫu",
+      "labelDy": 20
+    },
+    {
+      "from": "store",
+      "to": "mcp",
+      "label": "read-only",
+      "labelDy": -20
+    },
+    {
+      "from": "mcp",
+      "to": "harness",
+      "label": "tool call"
+    },
+    {
+      "from": "cli",
+      "to": "harness",
+      "label": "exec · JSON"
+    },
+    {
+      "from": "knowledge",
+      "to": "harness",
+      "label": "đọc trước mỗi phiên",
+      "fromSide": "right",
+      "toSide": "bottom"
+    },
+    {
+      "from": "harness",
+      "to": "channel",
+      "label": "trả lời"
+    },
+    {
+      "from": "channel",
+      "to": "user",
+      "label": "hỏi / đáp"
+    },
+    {
+      "from": "scheduler",
+      "to": "harness",
+      "label": "kích hoạt"
+    },
+    {
+      "from": "harness",
+      "to": "audit",
+      "label": "ghi transcript",
+      "fromSide": "right",
+      "toSide": "top"
+    },
+    {
+      "from": "audit",
+      "to": "knowledge",
+      "label": "vòng cải tiến",
+      "variant": "dashed",
+      "fromSide": "bottom",
+      "toSide": "bottom",
+      "via": [
+        [
+          1225,
+          800
+        ],
+        [
+          395,
+          800
+        ]
+      ]
+    }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "Thứ tự đầu tư",
+      "items": [
+        "Dữ liệu trước, giao diện sau, harness cuối — harness là phần rẻ nhất vì đã có sẵn",
+        "Mỗi nguồn tri thức đi qua đủ ba tầng: nguyên bản, cấu trúc hóa, chắt lọc",
+        "Bộ tri thức curated nằm trong git và là nơi duy nhất sửa cách agent suy luận"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Agent không chạm vào kho",
+      "items": [
+        "Một lệnh trả JSON đã kèm ngữ cảnh — agent không phải truy vấn thêm",
+        "Truy vấn mẫu được viết sẵn trong bộ tri thức, agent sao chép chứ không đoán tên cột",
+        "Ghi dữ liệu chỉ qua tool có ngữ pháp chặt, không bao giờ qua SQL tự do"
+      ]
+    },
+    {
+      "dot": "orange",
+      "title": "Vòng cải tiến từ transcript",
+      "items": [
+        "Harness ghi lại mọi phiên; người bảo trì rà soát định kỳ",
+        "Sai lệch được sửa ở bộ tri thức hoặc tool, không sửa bằng cách nhắc lại trong chat",
+        "Mỗi sửa đổi được xác minh trên một phiên chạy thật trước khi đóng"
+      ]
+    }
+  ]
+}

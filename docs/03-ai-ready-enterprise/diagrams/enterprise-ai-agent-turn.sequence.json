@@ -1,0 +1,273 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "Một lượt hỏi–đáp qua harness và giao diện dữ liệu",
+    "viewBox": [
+      880,
+      800
+    ],
+    "animation": "trace",
+    "quality_profile": "showcase",
+    "views": [
+      {
+        "id": "route",
+        "label": "Định tuyến",
+        "focus": [
+          "user",
+          "harness",
+          "agent"
+        ],
+        "note": "Harness nhận tin từ kênh, gắn phiên và giao cho agent. Ta không viết phần này."
+      },
+      {
+        "id": "ground",
+        "label": "Tiếp đất bằng dữ liệu",
+        "focus": [
+          "agent",
+          "knowledge",
+          "tool",
+          "store"
+        ],
+        "note": "Đọc bộ tri thức trước, chạy một lệnh duy nhất, chỉ truy vấn thêm theo mẫu có sẵn."
+      },
+      {
+        "id": "answer",
+        "label": "Trả lời và lưu vết",
+        "focus": [
+          "agent",
+          "harness",
+          "audit",
+          "user"
+        ],
+        "note": "Câu trả lời nêu rõ số liệu tính đến ngày nào. Transcript được ghi lại để rà soát."
+      }
+    ]
+  },
+  "participants": [
+    {
+      "id": "user",
+      "type": "external",
+      "label": "Người dùng",
+      "sublabel": "kênh chat"
+    },
+    {
+      "id": "harness",
+      "type": "messagebus",
+      "label": "Harness",
+      "sublabel": "gateway · phiên"
+    },
+    {
+      "id": "agent",
+      "type": "frontend",
+      "label": "Agent",
+      "sublabel": "chỉ dẫn mỏng"
+    },
+    {
+      "id": "knowledge",
+      "type": "security",
+      "label": "Bộ tri thức",
+      "sublabel": "brief · versioned"
+    },
+    {
+      "id": "tool",
+      "type": "backend",
+      "label": "CLI / MCP",
+      "sublabel": "một lệnh"
+    },
+    {
+      "id": "store",
+      "type": "database",
+      "label": "Kho dữ liệu",
+      "sublabel": "AI-ready"
+    },
+    {
+      "id": "audit",
+      "type": "database",
+      "label": "Transcript",
+      "sublabel": "audit"
+    }
+  ],
+  "segments": [
+    {
+      "from": 150,
+      "to": 285,
+      "label": "Định tuyến"
+    },
+    {
+      "from": 305,
+      "to": 585,
+      "label": "Tiếp đất"
+    },
+    {
+      "from": 600,
+      "to": 717,
+      "label": "Trả lời"
+    }
+  ],
+  "messages": [
+    {
+      "id": "ask",
+      "from": "user",
+      "to": "harness",
+      "y": 185,
+      "label": "câu hỏi nghiệp vụ",
+      "variant": "default"
+    },
+    {
+      "id": "route",
+      "from": "harness",
+      "to": "agent",
+      "y": 232,
+      "label": "binding → agent, phiên",
+      "variant": "emphasis"
+    },
+    {
+      "id": "read-brief",
+      "from": "agent",
+      "to": "knowledge",
+      "y": 325,
+      "label": "đọc brief trước tiên",
+      "variant": "security"
+    },
+    {
+      "id": "brief-back",
+      "from": "knowledge",
+      "to": "agent",
+      "y": 365,
+      "label": "data map · ngưỡng · guardrail",
+      "variant": "return"
+    },
+    {
+      "id": "run-tool",
+      "from": "agent",
+      "to": "tool",
+      "y": 410,
+      "label": "sync --json",
+      "variant": "emphasis"
+    },
+    {
+      "id": "tool-store",
+      "from": "tool",
+      "to": "store",
+      "y": 450,
+      "label": "ingest · tính lại",
+      "variant": "default"
+    },
+    {
+      "id": "tool-back",
+      "from": "tool",
+      "to": "agent",
+      "y": 492,
+      "label": "ok · as-of · ngữ cảnh mở",
+      "variant": "return"
+    },
+    {
+      "id": "query",
+      "from": "agent",
+      "to": "store",
+      "y": 534,
+      "label": "truy vấn theo mẫu trong brief",
+      "variant": "default"
+    },
+    {
+      "id": "rows",
+      "from": "store",
+      "to": "agent",
+      "y": 572,
+      "label": "các dòng số liệu",
+      "variant": "return"
+    },
+    {
+      "id": "reply",
+      "from": "agent",
+      "to": "harness",
+      "y": 632,
+      "label": "kết luận + bằng chứng + as-of",
+      "variant": "emphasis"
+    },
+    {
+      "id": "log",
+      "from": "harness",
+      "to": "audit",
+      "y": 672,
+      "label": "ghi transcript",
+      "variant": "dashed"
+    },
+    {
+      "id": "deliver",
+      "from": "harness",
+      "to": "user",
+      "y": 710,
+      "label": "gửi về kênh",
+      "variant": "return"
+    }
+  ],
+  "activations": [
+    {
+      "participant": "harness",
+      "from": 180,
+      "to": 716,
+      "type": "messagebus"
+    },
+    {
+      "participant": "agent",
+      "from": 228,
+      "to": 638,
+      "type": "frontend"
+    },
+    {
+      "participant": "knowledge",
+      "from": 320,
+      "to": 370,
+      "type": "security"
+    },
+    {
+      "participant": "tool",
+      "from": 405,
+      "to": 498,
+      "type": "backend"
+    },
+    {
+      "participant": "store",
+      "from": 445,
+      "to": 578,
+      "type": "database"
+    },
+    {
+      "participant": "audit",
+      "from": 667,
+      "to": 690,
+      "type": "database"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "Tiếp đất trước, trả lời sau",
+      "items": [
+        "Bộ tri thức được đọc ở đầu mỗi phiên — agent không trả lời từ trí nhớ",
+        "Một lệnh duy nhất lo lấy dữ liệu, tính toán và báo lại điều gì đã xảy ra",
+        "Truy vấn thêm chỉ dùng câu mẫu có sẵn, không đoán tên cột"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Độ tươi được báo, không được giả định",
+      "items": [
+        "Nguồn hết phiên đăng nhập vẫn trả lời được từ kho, kèm mốc as-of",
+        "Chỉ có lớp dẫn xuất hỏng mới là lỗi thật; khi đó agent báo lỗi thay vì tư vấn",
+        "Câu trả lời luôn nói rõ số liệu mô tả ngày nào"
+      ]
+    },
+    {
+      "dot": "orange",
+      "title": "Harness lo phần khung",
+      "items": [
+        "Phiên, kênh, đính kèm, lịch chạy và transcript là của harness",
+        "Ta chỉ cung cấp chỉ dẫn mỏng, bộ tri thức và tool",
+        "Transcript là đầu vào cho vòng cải tiến, không phải phụ phẩm"
+      ]
+    }
+  ]
+}
