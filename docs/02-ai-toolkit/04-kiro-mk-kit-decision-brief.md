@@ -86,6 +86,8 @@ Kit gốc viết cho Claude Code. Một adapter duy nhất dịch payload của 
 | Credit trung bình mỗi tác vụ | Metadata lượt chạy của Kiro | Trong khoảng 0,1 đến 1,0 |
 | Thời gian kỹ sư mới làm được tác vụ đầu tiên đúng quy trình | Quan sát | Dưới 1 giờ |
 
+Hai chỉ số đầu đọc được từ skill đo lường của kit thay vì đếm tay, xem [MK Observe, mục 5](06-mk-observe-agent-metrics.md#5-dùng-cho-pilot-kiro); chỉ số credit vẫn phải đọc từ Kiro.
+
 Nếu dừng: xoá `.kiro/` và `.claude/`, repo không còn dấu vết gì.
 
 ---

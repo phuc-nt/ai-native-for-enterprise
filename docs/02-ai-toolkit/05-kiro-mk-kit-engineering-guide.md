@@ -179,6 +179,8 @@ Trước mỗi lần dựng, kiểm tra hai điều: `kiro-cli --version` vẫn 
 | Credit mỗi lượt | metadata lượt chạy trong DB của Kiro (`~/Library/Application Support/kiro-cli/data.sqlite3`, bảng `conversations_v2`) hoặc `/usage` trong phiên |
 | Hook có ổn định không | không có dòng lỗi trong `hook-log.jsonl`; 45 hook liên tiếp đã chạy không lỗi khi kiểm chứng |
 
+Ba dòng đầu và dòng cuối có bản tự động: skill `observe` (kit v2.9.1 trở lên) đọc DB của Kiro và `hook-log.jsonl`, chấm điểm từng run và hiện tab sức khoẻ hook; riêng credit của Kiro vẫn `n/a`. Xem [MK Observe](06-mk-observe-agent-metrics.md).
+
 ## Câu hỏi mở
 
 1. `includeMcpJson` trong agent JSON v2 có đủ để agent `mk` thấy ba MCP server không, hay phải khai `mcpServers` trực tiếp? Cần một lần thử.

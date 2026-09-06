@@ -1,7 +1,7 @@
 # MK Kit Introduction
 
 > Tài liệu cho team dùng workspace mẫu. Cập nhật: 2026-09-06, dựa trên hiện trạng cài đặt thực tế.
-> Đọc sau [AI Toolkit for Offshore Teams](01-ai-toolkit-offshore-team.md): tài liệu đó nói bộ công cụ dùng để làm gì, tài liệu này nói bộ MK bên trong hoạt động ra sao. Muốn chạy MK trên Kiro hoặc OpenCode, xem [Agent Kit Portability](03-agent-kit-multi-harness-kiro-opencode.md); dự án dùng Kiro đọc thẳng [Kiro + MK Kit: Engineering Guide](05-kiro-mk-kit-engineering-guide.md), ở đó slash command là `/mk-*` thay vì `/mk:*`.
+> Đọc sau [AI Toolkit for Offshore Teams](01-ai-toolkit-offshore-team.md): tài liệu đó nói bộ công cụ dùng để làm gì, tài liệu này nói bộ MK bên trong hoạt động ra sao. Muốn chạy MK trên Kiro hoặc OpenCode, xem [Agent Kit Portability](03-agent-kit-multi-harness-kiro-opencode.md); dự án dùng Kiro đọc thẳng [Kiro + MK Kit: Engineering Guide](05-kiro-mk-kit-engineering-guide.md), ở đó slash command là `/mk-*` thay vì `/mk:*`. Muốn đo agent làm việc thế nào trên cả ba harness, xem [MK Observe](06-mk-observe-agent-metrics.md).
 
 ## Bộ MK là gì
 
