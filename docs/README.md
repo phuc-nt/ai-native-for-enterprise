@@ -27,7 +27,8 @@ Nhóm 1 là *bằng chứng*, nhóm 2 là *công cụ đã có*, nhóm 3 là *c�
 | 03 | [Agent Kit Portability: Claude Code, Kiro, OpenCode](02-ai-toolkit/03-agent-kit-multi-harness-kiro-opencode.md) | Cách chạy bộ MK trên Kiro và OpenCode; kiến trúc một nguồn nhiều đích; phần Kiro đã kiểm chứng trên CLI 2.21 engine v2 |
 | 04 | [Kiro + MK Kit for the Dev Team: Decision Brief](02-ai-toolkit/04-kiro-mk-kit-decision-brief.md) | Cho lãnh đạo và tech lead khi khách hàng yêu cầu Kiro: Kiro trần hay Kiro + MK, 5 lý do, rủi ro, pilot 2 tuần với 4 chỉ số |
 | 05 | [Kiro + MK Kit: Engineering Guide](02-ai-toolkit/05-kiro-mk-kit-engineering-guide.md) | Cài, dùng, bảo trì MK trên Kiro: kiến trúc, 10 lệnh, hook qua adapter, biến môi trường, việc còn lại trước pilot, giới hạn |
-| 06 | [MK Observe: Agent Activity Metrics Across Harnesses](02-ai-toolkit/06-mk-observe-agent-metrics.md) | Đo agent làm việc thế nào trên Claude Code, OpenCode, Kiro từ log sẵn có: bốn chiều điểm, sức khoẻ hook, store bền, daemon; nguồn số cho bốn chỉ số pilot Kiro |
+| 06 | [MK Observe: Agent Activity Metrics Across Harnesses](02-ai-toolkit/06-mk-observe-agent-metrics.md) | Đo agent làm việc thế nào trên Claude Code, OpenCode, Kiro từ log sẵn có: bốn chiều điểm, token theo model, mức dùng kit, insights, sức khoẻ hook, store bền, daemon; nguồn số cho bốn chỉ số pilot Kiro |
+| 07 | [MK Observe 1.3: Token Usage, Kit Adoption and Insights](02-ai-toolkit/07-mk-observe-1-3-token-adoption-insights.md) | Thay đổi so với bản 1.2: token theo model thay cho chi phí, đo mức dùng kit, tab Insights, cách nâng cấp, nhịp đọc hằng tuần cho quản lý |
 
 ## Nhóm 3: AI-Ready Enterprise
 
@@ -38,7 +39,7 @@ Bộ concept ba trụ cột (harness sẵn có, dữ liệu AI-ready, giao diệ
 | Bạn là | Đọc |
 |---|---|
 | Lãnh đạo, người duyệt ngân sách | Nhóm 3 `leadership/`, rồi nhóm 1 mục 1 và 10; nếu khách hàng yêu cầu Kiro, thêm nhóm 2 tài liệu 04 |
-| Tech lead, PM kỹ thuật | Nhóm 2 tài liệu 01 và 04, nhóm 3 `leadership/` rồi `engineering/` 01, 09, 03, 04; người sở hữu kit đọc thêm nhóm 2 tài liệu 06 |
+| Tech lead, PM kỹ thuật | Nhóm 2 tài liệu 01 và 04, nhóm 3 `leadership/` rồi `engineering/` 01, 09, 03, 04; người sở hữu kit đọc thêm nhóm 2 tài liệu 06 và 07 |
 | Kỹ sư sắp dùng bộ kit | Nhóm 2 theo thứ tự 01, 02, 03; dự án dùng Kiro đọc thêm 05; muốn xem số liệu phiên của mình đọc 06 |
 | Kỹ sư dữ liệu, người vận hành agent | Nhóm 3 `engineering/` và `engineering/sources/` |
 
