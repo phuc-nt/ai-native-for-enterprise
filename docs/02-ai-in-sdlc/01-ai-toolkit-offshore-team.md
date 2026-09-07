@@ -176,4 +176,4 @@ Lộ trình đưa bộ công cụ vào dự án — theo đúng thứ tự của
 - 10 workflow skill (6 dev + 4 PM/PO/BrSE): hoạt động; workflow sprint-report đã chạy E2E xuyên 3 hệ thống thật.
 - Bộ MK + cấu trúc folder: đang dùng hằng ngày trong chính các repo của tôi — chính tài liệu này và toàn bộ đợt refactor 3 MCP server vừa rồi được thực hiện bằng đúng quy trình đó (plan trong `plans/`, phase có acceptance criteria, report sau mỗi phase).
 - Mindset đã công bố công khai: [Context Engineering: từ Vibe Coder đến AI Orchestrator](https://phucnt.substack.com/p/context-engineering-tu-vibe-coder) — dùng làm tài liệu mở đầu cho guild/training.
-- Bước tiếp theo của bộ công cụ này — tổ chức dữ liệu Jira/Confluence/Slack/spec/DB thành AI-ready và vận hành agent chạy nền có kiểm soát — trình bày ở [Triển khai AI trong doanh nghiệp](../03-ai-ready-enterprise/README.md).
+- Bước tiếp theo của bộ công cụ này — tổ chức dữ liệu Jira/Confluence/Slack/spec/DB thành AI-ready và vận hành agent chạy nền có kiểm soát — trình bày ở [Triển khai AI trong doanh nghiệp](../01-ai-ready-enterprise/README.md).

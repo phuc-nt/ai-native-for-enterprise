@@ -3,7 +3,7 @@
 *Khung tám mục theo [09](../09-data-source-playbook.md). Đây là nguồn đã
 "AI-ready" hằng ngày bằng bộ MK; ghi lại để thấy cùng một khung áp cho
 codebase. Chi tiết cách tổ chức ở
-[bộ công cụ, mục 3](../../../02-ai-toolkit/01-ai-toolkit-offshore-team.md#3-tổ-chức-project-folder--00_context--chuẩn-mk).*
+[bộ công cụ, mục 3](../../../02-ai-in-sdlc/01-ai-toolkit-offshore-team.md#3-tổ-chức-project-folder--00_context--chuẩn-mk).*
 
 ## 1. Khó ở đâu
 

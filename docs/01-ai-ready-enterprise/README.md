@@ -15,12 +15,12 @@ trong ba trụ cột:
 Ba động từ: **mua** harness, **xây** dữ liệu, **nối** bằng giao diện hẹp. Thứ
 tự đầu tư ngược với thứ tự kể chuyện: **dữ liệu → giao diện → harness**.
 
-Tài liệu này nối tiếp hai tài liệu đã có trong repo: [Bộ công cụ AI cho team
-offshore](../02-ai-toolkit/01-ai-toolkit-offshore-team.md) (Claude Code + MK + 3 MCP server) và
-[Hồ sơ kinh nghiệm AI Engineering](../01-portfolio/ai-experience-portfolio.md). Những gì ở
-đó là *công cụ đã có*; bộ này là *cách tổ chức dữ liệu và vận hành* để công cụ
-đó chạy tin cậy trong doanh nghiệp. Thứ tự đọc toàn bộ `docs/` ở
-[docs/README.md](../README.md).
+Bộ này là nền chung cho cả hai mục tiêu trong [docs/README.md](../README.md):
+với team dev (nhóm 02) nó là cách tổ chức tri thức dự án để [bộ công cụ đã
+có](../02-ai-in-sdlc/01-ai-toolkit-offshore-team.md) chạy tin cậy; với tính năng AI cho khách
+(nhóm 03) nó là khung kiến trúc, bảo mật và nghiệm thu của một agent chạy trên
+dữ liệu thật. Bằng chứng năng lực ở [Hồ sơ kinh nghiệm AI
+Engineering](../00-foundations/ai-experience-portfolio.md).
 
 ## Đọc gì, theo vai trò
 

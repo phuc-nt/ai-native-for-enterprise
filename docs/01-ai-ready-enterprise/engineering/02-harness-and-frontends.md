@@ -30,8 +30,8 @@ chọn, cấu hình, nâng cấp.
 |---|---|---|---|
 | **Claude Code** | Làm việc trong repo, skill, subagent, plan/review, MCP client | Phiên **tương tác của kỹ sư và PM** (bộ MK, 10 workflow skill); phiên **bảo trì** agent: sửa dữ liệu, tool, brief; rà soát transcript | Hằng ngày với MK; trong ví dụ coach là skill đọc cùng brief |
 | **OpenClaw** | Gateway đa kênh, cron, agent chạy nền 24/7, bộ nhớ, transcript SQLite | Agent **đối diện người dùng** qua chat, không người trông | Coach trên Telegram: chat + cron sáng + cron đêm; dự án: trợ lý PM trên Slack |
-| **OpenCode** | Mã nguồn mở, nhiều model, terminal-first, tự host | Thay thế/đối chiếu Claude Code khi dự án không dùng Anthropic hoặc cần tự host | Chưa dùng trong ví dụ; đã kiểm chứng nạp nguyên bộ skill MK từ `.claude/skills` — xem [Agent Kit Portability](../../02-ai-toolkit/03-agent-kit-multi-harness-kiro-opencode.md) |
-| **Kiro** | IDE + CLI của AWS, spec-driven, Powers, xác thực IAM Identity Center | Khi khách hàng chuẩn hoá trên AWS và yêu cầu Kiro | Dự án sắp tới; bộ MK đã có bản Kiro chạy được trên CLI 2.21 (engine v2), xem [Kiro + MK Kit](../../02-ai-toolkit/04-kiro-mk-kit-guide.md) |
+| **OpenCode** | Mã nguồn mở, nhiều model, terminal-first, tự host | Thay thế/đối chiếu Claude Code khi dự án không dùng Anthropic hoặc cần tự host | Chưa dùng trong ví dụ; đã kiểm chứng nạp nguyên bộ skill MK từ `.claude/skills` — xem [Agent Kit Portability](../../02-ai-in-sdlc/03-agent-kit-multi-harness-kiro-opencode.md) |
+| **Kiro** | IDE + CLI của AWS, spec-driven, Powers, xác thực IAM Identity Center | Khi khách hàng chuẩn hoá trên AWS và yêu cầu Kiro | Dự án sắp tới; bộ MK đã có bản Kiro chạy được trên CLI 2.21 (engine v2), xem [Kiro + MK Kit](../../02-ai-in-sdlc/04-kiro-mk-kit-guide.md) |
 
 Điểm quan trọng: **hai mặt tiền, một bộ não**. Trong ví dụ, OpenClaw agent và
 Claude Code skill đều đọc cùng `coach-brief.md`, gọi cùng `sync --json`, ghi

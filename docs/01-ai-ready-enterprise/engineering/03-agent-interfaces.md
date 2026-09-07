@@ -38,7 +38,7 @@ Ba MCP server Jira/Confluence/Slack là ví dụ đã có của bước thứ ha
 đồng của chúng đã theo đúng nguyên tắc dưới đây: envelope thống nhất
 `{ok, data, meta}` / `{ok:false, error:{code, message, hint}}`, `hint` để agent
 tự phục hồi, zod validate ở biên, tham số đồng nhất giữa các server. Xem
-[bộ công cụ](../../02-ai-toolkit/01-ai-toolkit-offshore-team.md#4-topology).
+[bộ công cụ](../../02-ai-in-sdlc/01-ai-toolkit-offshore-team.md#4-topology).
 
 ## Hợp đồng của lệnh sync
 

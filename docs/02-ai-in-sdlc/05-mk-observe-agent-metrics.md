@@ -230,7 +230,7 @@ Bốn chỉ số pilot trong [Kiro + MK Kit, mục 4](04-kiro-mk-kit-guide.md#4-
 
 Ngoài bốn chỉ số trên, ba con số đáng đưa vào báo cáo cuối pilot: tỷ lệ run có chủ động dùng kit, Autonomy theo harness (Kiro + MK có phải hỏi người nhiều hơn Claude Code + MK không) và hook không crash lần nào trong suốt hai tuần.
 
-Bộ chỉ số này đo **agent phát triển phần mềm** trên máy kỹ sư. Chỉ số vận hành cho **agent nghiệp vụ** chạy trên dữ liệu doanh nghiệp là chuyện khác, xem [Operations and Improvement Loop](../03-ai-ready-enterprise/engineering/06-operations-and-improvement-loop.md).
+Bộ chỉ số này đo **agent phát triển phần mềm** trên máy kỹ sư. Chỉ số vận hành cho **agent nghiệp vụ** chạy trên dữ liệu doanh nghiệp là chuyện khác, xem [Operations and Improvement Loop](../01-ai-ready-enterprise/engineering/06-operations-and-improvement-loop.md).
 
 ---
 

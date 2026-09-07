@@ -78,9 +78,9 @@ cho câu hỏi cần nhiều nguồn, công thức riêng và kiểm soát dữ 
 
 | Bằng chứng | Chứng minh gì | Trạng thái | Xem |
 |---|---|---|---|
-| 3 MCP server nối agent vào Jira, Confluence, Slack với cùng một hợp đồng JSON; 10 workflow skill cho dev và PM/PO/BrSE; đã chạy end-to-end trên hệ thống thật | Trụ cột 1 và 3 trên đúng các hệ thống của dự án | Đã publish | [Bộ công cụ AI cho team offshore](../../02-ai-toolkit/01-ai-toolkit-offshore-team.md) |
-| Hỏi đáp DB có governance (chỉ đọc, semantic layer, truy vấn đã xác minh) | Trụ cột 2 cho nguồn DB, dạng sản phẩm | Sản phẩm chạy | [Hồ sơ kinh nghiệm](../../01-portfolio/ai-experience-portfolio.md#3-my-db-mate--chat-với-database-bi-tự-host) |
-| `00_context/` để AI đọc project folder trước khi đọc prompt | Trụ cột 2 cho codebase; cùng nguyên lý với bộ tri thức | Đang dùng hằng ngày | [Bộ công cụ AI](../../02-ai-toolkit/01-ai-toolkit-offshore-team.md#3-tổ-chức-project-folder--00_context--chuẩn-mk) |
+| 3 MCP server nối agent vào Jira, Confluence, Slack với cùng một hợp đồng JSON; 10 workflow skill cho dev và PM/PO/BrSE; đã chạy end-to-end trên hệ thống thật | Trụ cột 1 và 3 trên đúng các hệ thống của dự án | Đã publish | [Bộ công cụ AI cho team offshore](../../02-ai-in-sdlc/01-ai-toolkit-offshore-team.md) |
+| Hỏi đáp DB có governance (chỉ đọc, semantic layer, truy vấn đã xác minh) | Trụ cột 2 cho nguồn DB, dạng sản phẩm | Sản phẩm chạy | [Hồ sơ kinh nghiệm](../../00-foundations/ai-experience-portfolio.md#3-my-db-mate--chat-với-database-bi-tự-host) |
+| `00_context/` để AI đọc project folder trước khi đọc prompt | Trụ cột 2 cho codebase; cùng nguyên lý với bộ tri thức | Đang dùng hằng ngày | [Bộ công cụ AI](../../02-ai-in-sdlc/01-ai-toolkit-offshore-team.md#3-tổ-chức-project-folder--00_context--chuẩn-mk) |
 | Một agent chạy nền 24/7 không người trông theo đủ ba trụ cột: bốn lớp dữ liệu, một lệnh trả JSON, hai harness dùng chung một bộ tri thức, hai cron, transcript rà soát hằng tuần; khoảng một tháng vận hành, 7 sự cố kỹ thuật, **0 sự cố cần đổi model** | Vòng vận hành và cải tiến hoạt động thật; concept không chỉ trên giấy | Đang chạy | [Case study](../engineering/08-case-study-health-coach.md) |
 
 Điều **chưa** có, và là điều pilot phải chứng minh: cả ba trụ cột trên dữ

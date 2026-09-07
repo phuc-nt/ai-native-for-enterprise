@@ -1,49 +1,55 @@
 # AI Workspace Docs for Offshore Teams
 
-Tài liệu tôi chuẩn bị cho việc đưa AI agent vào một dự án offshore, dùng được cho bất kỳ đơn vị tương tự: năng lực đã có, bộ công cụ đang chạy, và concept triển khai ở quy mô doanh nghiệp. Tên file và tiêu đề bằng tiếng Anh, nội dung tiếng Việt.
+Tài liệu tôi chuẩn bị cho hai mục tiêu công việc, dùng được cho bất kỳ đơn vị tương tự. Tên file và tiêu đề bằng tiếng Anh, nội dung tiếng Việt.
 
-## Thứ tự đọc
-
-| # | Nhóm | Trả lời câu hỏi | Bắt đầu từ |
-|---|---|---|---|
-| 1 | [`01-portfolio/`](01-portfolio/) | Tôi đã xây và vận hành những gì, chứng minh được năng lực nào | [AI Engineering Experience Portfolio](01-portfolio/ai-experience-portfolio.md) |
-| 2 | [`02-ai-toolkit/`](02-ai-toolkit/) | Bộ công cụ nào dùng được ngay cho team, hoạt động ra sao, chạy trên harness nào | [AI Toolkit for Offshore Teams](02-ai-toolkit/01-ai-toolkit-offshore-team.md) |
-| 3 | [`03-ai-ready-enterprise/`](03-ai-ready-enterprise/) | Muốn agent chạy tin cậy trong doanh nghiệp thì tổ chức dữ liệu, giao diện và vận hành thế nào | [README của bộ concept](03-ai-ready-enterprise/README.md) |
-
-Nhóm 1 là *bằng chứng*, nhóm 2 là *công cụ đã có*, nhóm 3 là *cách tổ chức để công cụ đó chạy được ở quy mô công ty*. Mỗi nhóm đọc độc lập được; chỗ nào cần chi tiết thì link sang nhau, không kể lại.
-
-## Nhóm 1: Portfolio
-
-| Tài liệu | Nội dung |
-|---|---|
-| [AI Engineering Experience Portfolio](01-portfolio/ai-experience-portfolio.md) | 8 sản phẩm chạy thật (MCP servers, my-db-mate, my-crew, my-notebook, my-dandori, my-kioku, scan-to-ebook) đối chiếu với nhiệm vụ AI Engineer điển hình |
-
-## Nhóm 2: AI Toolkit
-
-| # | Tài liệu | Nội dung |
+| Mục tiêu | Là gì | Ưu tiên |
 |---|---|---|
-| 01 | [AI Toolkit for Offshore Teams](02-ai-toolkit/01-ai-toolkit-offshore-team.md) | Mindset Context Engineering, cấu trúc project folder, Claude Code + MK + 3 MCP server, 10 workflow skill cho dev và PM/PO/BrSE, lộ trình nhân bản |
-| 02 | [MK Kit Introduction](02-ai-toolkit/02-mk-kit-introduction.md) | Bên trong bộ MK: agents, skills, hooks, rules; vòng đời một session; lệnh hay dùng; lưu ý nâng cấp |
-| 03 | [Agent Kit Portability: Claude Code, Kiro, OpenCode](02-ai-toolkit/03-agent-kit-multi-harness-kiro-opencode.md) | Cách chạy bộ MK trên Kiro và OpenCode; kiến trúc một nguồn nhiều đích; phần Kiro đã kiểm chứng trên CLI 2.21 engine v2 |
-| 04 | [Kiro + MK Kit: Decision and Engineering Guide](02-ai-toolkit/04-kiro-mk-kit-guide.md) | Khi khách hàng yêu cầu Kiro. Phần A cho lãnh đạo và tech lead: Kiro trần hay Kiro + MK, 5 lý do, pilot 2 tuần với 4 chỉ số. Phần B cho kỹ sư: cài, 10 lệnh, hook qua adapter, cấu hình, việc còn lại trước pilot, rủi ro và giới hạn |
-| 05 | [MK Observe: Agent Activity Metrics Across Harnesses](02-ai-toolkit/05-mk-observe-agent-metrics.md) | Đo agent làm việc thế nào trên Claude Code, OpenCode, Kiro từ log sẵn có: bốn chiều điểm, token theo model, mức dùng kit, insights, sức khoẻ hook, store bền, daemon; nhịp đọc hằng tuần; nguồn số cho bốn chỉ số pilot Kiro |
+| **Mục tiêu 1** | Giúp team dev của các dự án dùng AI hiệu quả trong mọi công đoạn SDLC | Hiện tại |
+| **Mục tiêu 2** | Đề xuất, tư vấn, thiết kế tính năng AI cho sản phẩm và hệ thống của khách hàng | Chuẩn bị nền tảng song song |
 
-## Nhóm 3: AI-Ready Enterprise
+## Bốn nhóm tài liệu
 
-Bộ concept ba trụ cột (harness sẵn có, dữ liệu AI-ready, giao diện cho agent), chia hai nhánh: `leadership/` cho người ra quyết định, `engineering/` cho người làm, kèm playbook từng nguồn dữ liệu và diagram. Thứ tự đọc theo vai trò nằm trong [README của bộ](03-ai-ready-enterprise/README.md).
+| # | Nhóm | Phục vụ | Trả lời câu hỏi | Trạng thái |
+|---|---|---|---|---|
+| 00 | [`00-foundations/`](00-foundations/) | Cả hai | Tôi đã xây gì, tin vào nguyên tắc nào, mindset nào đứng sau mọi thứ còn lại | Portfolio xong; 2 tài liệu giữ chỗ |
+| 01 | [`01-ai-ready-enterprise/`](01-ai-ready-enterprise/) | Cả hai | Muốn agent chạy tin cậy trên dữ liệu và hệ thống thật thì tổ chức dữ liệu, giao diện, harness, vận hành thế nào | Xong |
+| 02 | [`02-ai-in-sdlc/`](02-ai-in-sdlc/) | Mục tiêu 1 | Bộ công cụ nào dùng được ngay cho team dev, hoạt động ra sao, chạy trên harness nào, đo thế nào | 5 tài liệu xong; 2 giữ chỗ |
+| 03 | [`03-ai-features-for-clients/`](03-ai-features-for-clients/) | Mục tiêu 2 | Từ vấn đề của khách đi tới proposal, mẫu giải pháp, đánh giá chất lượng, chi phí | Toàn bộ giữ chỗ |
+
+Hai nhóm đầu là *nền chung*, hai nhóm sau là *cách làm cho từng mục tiêu*. Mỗi nhóm đọc độc lập được; chỗ nào cần chi tiết thì link sang nhau, không kể lại. Tài liệu giữ chỗ có dòng đầu ghi **Chưa viết** kèm vai trò dự kiến.
+
+## Đọc theo mục tiêu
+
+**Mục tiêu 1, team dev dùng AI trong SDLC**
+
+1. [AI Toolkit for Offshore Teams](02-ai-in-sdlc/01-ai-toolkit-offshore-team.md): bức tranh tổng thể, mindset, bộ công cụ, use case theo vai trò.
+2. [MK Kit Introduction](02-ai-in-sdlc/02-mk-kit-introduction.md): bộ quy trình bên trong hoạt động ra sao.
+3. Tuỳ harness của dự án: [Agent Kit Portability](02-ai-in-sdlc/03-agent-kit-multi-harness-kiro-opencode.md), và [Kiro + MK Kit](02-ai-in-sdlc/04-kiro-mk-kit-guide.md) khi khách yêu cầu Kiro.
+4. [MK Observe](02-ai-in-sdlc/05-mk-observe-agent-metrics.md): đo agent và mức dùng kit bằng số.
+5. Khi mở rộng sang tri thức dự án (Jira, Confluence, Slack, spec, biên bản họp): nhóm 01, bắt đầu từ [playbook từng nguồn](01-ai-ready-enterprise/engineering/09-data-source-playbook.md).
+
+**Mục tiêu 2, tính năng AI cho khách hàng**
+
+1. [Engineering Principles for AI Systems](00-foundations/engineering-principles-for-ai-systems.md) *(giữ chỗ)* và [Portfolio](00-foundations/ai-experience-portfolio.md) mục 9 và 10: nguyên tắc và bằng chứng mang vào proposal.
+2. Nhóm 01 theo thứ tự [leadership](01-ai-ready-enterprise/leadership/) rồi [engineering](01-ai-ready-enterprise/engineering/) 01, 03, 04, 05, 06, 07: khung kiến trúc và nghiệm thu cho một tính năng AI chạy trên dữ liệu thật; [case study](01-ai-ready-enterprise/engineering/08-case-study-health-coach.md) là một agent nghiệp vụ hoàn chỉnh.
+3. Nhóm 03 khi đã viết: [quy trình tư vấn](03-ai-features-for-clients/01-consulting-process-from-problem-to-proposal.md), [catalogue mẫu giải pháp](03-ai-features-for-clients/02-solution-pattern-catalogue.md), [đánh giá tính năng LLM](03-ai-features-for-clients/03-llm-feature-evaluation.md), [mô hình chi phí](03-ai-features-for-clients/04-cost-model-and-model-selection.md), [mẫu proposal](03-ai-features-for-clients/05-proposal-template.md).
+
+**Dùng chung cho cả hai:** [Context Engineering Mindset](00-foundations/context-engineering-mindset.md) *(giữ chỗ, hiện nằm ở tài liệu 01 của nhóm 02, mục 2)*; ba trụ cột và thứ tự đầu tư dữ liệu → giao diện → harness trong [proposal ba trụ cột](01-ai-ready-enterprise/leadership/01-three-pillars-proposal.md); ba MCP server vừa là công cụ cho team vừa là mẫu giao diện hẹp cho agent.
 
 ## Đọc theo vai trò
 
 | Bạn là | Đọc |
 |---|---|
-| Lãnh đạo, người duyệt ngân sách | Nhóm 3 `leadership/`, rồi nhóm 1 mục 1 và 10; nếu khách hàng yêu cầu Kiro, thêm nhóm 2 tài liệu 04 phần A |
-| Tech lead, PM kỹ thuật | Nhóm 2 tài liệu 01 và 04, nhóm 3 `leadership/` rồi `engineering/` 01, 09, 03, 04; người sở hữu kit đọc thêm nhóm 2 tài liệu 05 |
-| Kỹ sư sắp dùng bộ kit | Nhóm 2 theo thứ tự 01, 02, 03; dự án dùng Kiro đọc thêm 04 phần B; muốn xem số liệu phiên của mình đọc 05 |
-| Kỹ sư dữ liệu, người vận hành agent | Nhóm 3 `engineering/` và `engineering/sources/` |
+| Lãnh đạo, người duyệt ngân sách | Nhóm 01 `leadership/`, rồi Portfolio mục 1 và 10; nếu khách hàng yêu cầu Kiro, thêm [Kiro + MK Kit](02-ai-in-sdlc/04-kiro-mk-kit-guide.md) phần A |
+| Tech lead, PM kỹ thuật | Nhóm 02 tài liệu 01 và 04, nhóm 01 `leadership/` rồi `engineering/` 01, 09, 03, 04; người sở hữu kit đọc thêm nhóm 02 tài liệu 05 |
+| Kỹ sư sắp dùng bộ kit | Nhóm 02 theo thứ tự 01, 02, 03; dự án dùng Kiro đọc thêm 04 phần B; muốn xem số liệu phiên của mình đọc 05 |
+| Kỹ sư dữ liệu, người vận hành agent | Nhóm 01 `engineering/` và `engineering/sources/` |
+| Người chuẩn bị proposal tính năng AI cho khách | Lộ trình mục tiêu 2 ở trên |
 
 ## Quy ước
 
 - Tên file và tiêu đề H1 tiếng Anh, nội dung tiếng Việt, tiền tố số cho thứ tự đọc.
 - Mỗi thông tin sống ở một chỗ, tài liệu khác link tới thay vì lặp lại.
-- Diagram trong nhóm 3 sinh từ spec JSON bằng archify; sửa spec rồi render lại, không sửa tay HTML/SVG.
+- Tài liệu giữ chỗ mở đầu bằng khối trích dẫn **Chưa viết**, ghi mục tiêu phục vụ, người đọc, câu hỏi sẽ trả lời và nguồn có sẵn để rút; khi viết xong thì bỏ khối đó.
+- Diagram trong nhóm 01 sinh từ spec JSON bằng archify; sửa spec rồi render lại, không sửa tay HTML/SVG.
 - Case study không chứa giá trị đo, tình trạng sức khỏe, tên, địa điểm hay định danh kênh.

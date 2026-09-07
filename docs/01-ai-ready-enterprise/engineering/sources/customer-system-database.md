@@ -1,7 +1,7 @@
 # Source: Customer System Database
 
 *Khung tám mục theo [09](../09-data-source-playbook.md). Ưu tiên pilot: 4.
-Đi bằng my-db-mate (xem [hồ sơ kinh nghiệm](../../../01-portfolio/ai-experience-portfolio.md#3-my-db-mate--chat-với-database-bi-tự-host)), không tự dựng.*
+Đi bằng my-db-mate (xem [hồ sơ kinh nghiệm](../../../00-foundations/ai-experience-portfolio.md#3-my-db-mate--chat-với-database-bi-tự-host)), không tự dựng.*
 
 ## 1. Khó ở đâu
 

@@ -19,7 +19,7 @@ Trong bối cảnh dự án offshore, nguồn điển hình là Jira (issue, spr
 Confluence (spec, report, meeting note), Slack (trao đổi với khách JP), Git
 (PR, CI), DB của hệ thống khách, tài liệu Nhật dạng Excel/Word, biên bản họp
 và transcript, và ngữ cảnh chỉ PM/BrSE biết. Ba MCP server trong
-[bộ công cụ](../../02-ai-toolkit/01-ai-toolkit-offshore-team.md) là *connector* tới ba nguồn
+[bộ công cụ](../../02-ai-in-sdlc/01-ai-toolkit-offshore-team.md) là *connector* tới ba nguồn
 đầu; bậc thang dưới đây là cách biến những gì connector lấy về thành thứ agent
 dùng được lặp lại, không phụ thuộc phiên. Việc cụ thể cho **từng nguồn** ở
 [09 — playbook theo nguồn](09-data-source-playbook.md).

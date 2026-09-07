@@ -25,7 +25,7 @@ Ba MCP server TypeScript tự viết, nối AI agent vào bộ ba công cụ ph�
 - **Slack qua browser token** (xoxc/xoxd) — giải pháp cho workspace doanh nghiệp không cho cài app: không cần admin duyệt, agent nhìn đúng phạm vi user thật.
 - Đã kiểm chứng E2E: một workflow chạy xuyên 3 server thật (Jira → Confluence → Slack song ngữ JP/EN) rồi tự dọn artifact.
 
-**Liên hệ thực tế dự án:** đây chính là hạ tầng cho auto-reporting, test case generation, code review khép vòng vào Jira/Confluence/Slack — đã có sẵn, không phải xây từ đầu. Chi tiết thiết kế (validation, error classification) và 10 workflow skill dùng chúng: [AI Toolkit for Offshore Teams, mục 4 và 6](../02-ai-toolkit/01-ai-toolkit-offshore-team.md#4-topology).
+**Liên hệ thực tế dự án:** đây chính là hạ tầng cho auto-reporting, test case generation, code review khép vòng vào Jira/Confluence/Slack — đã có sẵn, không phải xây từ đầu. Chi tiết thiết kế (validation, error classification) và 10 workflow skill dùng chúng: [AI Toolkit for Offshore Teams, mục 4 và 6](../02-ai-in-sdlc/01-ai-toolkit-offshore-team.md#4-topology).
 
 ## 3. my-db-mate — Chat với database, BI tự host
 
@@ -135,7 +135,7 @@ Bốn nguyên tắc lặp lại có chủ đích trên cả 8 sản phẩm — c
 |---|---|
 | Nghiên cứu GenAI cho gen Code, UT, Design, Test Case | Bộ MK (skill test/review/plan), skill sinh test case từ AC → Confluence; dandori đo chất lượng code do agent sinh (attribution, revert rate) |
 | Đánh giá solution, viết Proposal (RAG, LLM, Agent) | 8 sản phẩm phủ đủ phổ: RAG có citation (my-notebook), semantic layer + agent (db-mate), multi-agent (my-crew), governance (dandori) — mỗi cái là một proposal đã được chứng minh bằng code chạy |
-| Pair cùng team offshore tối ưu AI trong dự án | Bộ công cụ nhân bản được ([AI Toolkit for Offshore Teams](../02-ai-toolkit/01-ai-toolkit-offshore-team.md)); dandori knowledge flywheel biến practice tốt thành skill phân phối có kiểm soát |
+| Pair cùng team offshore tối ưu AI trong dự án | Bộ công cụ nhân bản được ([AI Toolkit for Offshore Teams](../02-ai-in-sdlc/01-ai-toolkit-offshore-team.md)); dandori knowledge flywheel biến practice tốt thành skill phân phối có kiểm soát |
 | PoC thực tế → guild, training | scan-to-ebook & 3 MCP là PoC đã thành sản phẩm; skill/SKILL.md chính là guild dạng sống; console song ngữ cho stakeholder không kỹ thuật |
 
 **Ghi chú trung thực về độ chín:** my-crew, my-db-mate, my-dandori có CI + test dày (lần lượt ~300 pytest / 58 Vitest / ~160 Go test); my-kioku có release semver + 45 test nhưng chưa có CI; scan-to-ebook thử lửa nhiều nhất (hàng chục nghìn trang) nhưng chưa publish PyPI; my-notebook đang ở giai đoạn sớm nhất (0.1.0, chưa CI).
