@@ -16,21 +16,13 @@ Bộ công cụ này không bắt đầu từ tool, mà bắt đầu từ **mộ
 
 ## 2. Mindset: Context Engineering — từ Vibe Coder đến AI Orchestrator
 
-Nền tư duy của toàn bộ bộ công cụ nằm trong bài viết của tôi: **[Context Engineering: từ Vibe Coder đến AI Orchestrator](https://phucnt.substack.com/p/context-engineering-tu-vibe-coder)**. Tóm tắt cho người chưa đọc:
+Nền tư duy của toàn bộ bộ công cụ nằm ở [Context Engineering Mindset](../00-foundations/context-engineering-mindset.md), viết lại từ bài đã đăng công khai [Context Engineering: từ Vibe Coder đến AI Orchestrator](https://phucnt.substack.com/p/context-engineering-tu-vibe-coder). Ý chính để đọc tiếp tài liệu này:
 
-**Context Engineering** là phương pháp có hệ thống để xây dựng một môi trường nơi AI luôn nhận được **đúng thông tin, vào đúng thời điểm** — thay vì mỗi phiên phải "nhắc bài" cho AI từ đầu. Đây là khác biệt giữa "thả trôi với AI" và "điều phối AI":
+- **Vibe coder** prompt rồi hy vọng; **AI orchestrator** xây ngữ cảnh trước rồi mới giao việc. Cùng một dự án MCP server, cách một tốn 5 ngày cho 4/11 tool, cách hai tốn 3 ngày cho 11/11.
+- Ngữ cảnh có bốn thành phần: tri thức dài hạn, luật hành xử, trạng thái hiện tại, công cụ và giao diện. Mỗi thành phần sống ở một chỗ, và **agent đọc ngữ cảnh trước khi đọc prompt**.
+- Khung gốc có hai bước: xây trí nhớ dài hạn (`00_context/`) và đặt luật (`CLAUDE.md`). Bước 3 là nói với agent: *"Bạn biết phải làm gì rồi đấy."*
 
-- **Vibe Coder**: prompt rồi hy vọng. Bài học thật của tôi: lao vào xây MCP server Confluence kiểu "tới đâu hay tới đó" — 5 ngày, 4/11 tools, codebase đầy nợ kỹ thuật, mỗi ngày mất vài tiếng nhắc lại bối cảnh.
-- **AI Orchestrator**: dành 2 giờ đầu xây "bộ não" cho AI (hệ thống tài liệu + bộ rules) trước khi viết dòng code nào. Kết quả cùng dự án đó: 3 ngày, 11/11 tools chất lượng production, publish npm.
-
-Phép màu tên là **quy trình** — thứ Vibe Coder thường bỏ quên. Framework trong blog gồm 2 bước:
-
-1. **Xây AI's Long-term Memory** — hệ tài liệu làm trí nhớ dài hạn cho AI (requirements, kiến trúc, tham chiếu dự án). Không tự viết hết: dùng chính AI để brainstorm requirements và sinh tài liệu kỹ thuật.
-2. **Thiết lập AI's Rules** — file rule gốc (`CLAUDE.md`) định nghĩa Startup Workflow (vào phiên đọc gì trước), Task Lifecycle (một task đi từ đâu đến đâu), Quality Gates (điều kiện được coi là "xong": build pass, test pass, không regression, không lộ token), Documentation Rules (tài liệu nào ai được sửa, cập nhật khi nào). AI hành xử như kỹ sư có kỷ luật thay vì thực tập sinh ngơ ngác.
-
-Bước 3? Không có bước 3 — chỉ cần nói với agent: *"Bạn biết phải làm gì rồi đấy."*
-
-Mọi thứ từ mục 3 trở đi là **phiên bản công nghiệp hóa** của đúng framework này, để nhân bản cho cả team thay vì một cá nhân.
+Mọi thứ từ mục 3 trở đi là **phiên bản công nghiệp hóa** của đúng khung này, để nhân bản cho cả team thay vì một cá nhân.
 
 ## 3. Tổ chức project folder — 00_context + chuẩn MK
 
