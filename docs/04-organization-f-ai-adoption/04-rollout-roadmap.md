@@ -1,6 +1,6 @@
 # Rollout Roadmap
 
-Cập nhật 2026-09-09. Đọc trước [Work Items and PIC](03-work-items-and-pic.md); mã việc A1, D2... lấy từ đó. Lịch cho hai team đến mốc cứng **2026-10-31**: cả hai team hoàn thành bước triển khai kiến thức cho bốn use case dev.
+Cập nhật 2026-09-09. Đọc trước [Artifacts, Work Items and PIC](03-work-items-and-pic.md); mã việc A1, D2 và mã artifact M0, T2 lấy từ đó. Lịch cho hai team đến mốc cứng **2026-10-31**: cả hai team hoàn thành bước triển khai kiến thức cho bốn use case dev.
 
 ## 1. Giả định
 
@@ -14,13 +14,13 @@ Cập nhật 2026-09-09. Đọc trước [Work Items and PIC](03-work-items-and-
 | Tuần | Team A | Team B | Chung |
 |---|---|---|---|
 | 09–12/09 | Chốt PL, champion (C1) | Chốt PL, champion (C1) | Duyệt phạm vi (A1); spec CLI (B1) |
-| 15–19/09 | Khảo sát (C2–C5) | Khảo sát (C2–C5) | CLI v1 (B1); bản Kiro đầy đủ (B2); gói Rovo, Kiro (A2, A3) |
-| 22–26/09 | Khu vực team A, chạy thử bốn việc (D1, D2) | | Định hướng lõi và khu vực team (B3); cho phép artifact (A4) |
-| 29/09–03/10 | Bốn module hands-on A (E2) | Khu vực team B, chạy thử (D3, D4) | Skill test case qua CLI (B4); buổi mở đầu (E1); governance guide (E3); output có AI và Slack (A5, A6) |
-| 06–10/10 | **Triển khai** (F1–F3) | Bốn module hands-on B (E2) | Bảng theo dõi (B5); bảng ý tưởng role khác (E4) |
+| 15–19/09 | Khảo sát, nộp T2 T3 T4 (C2–C5) | Khảo sát, nộp T2 T3 T4 (C2–C5) | CLI v1 (B1); bản Kiro đầy đủ (B2); gói Rovo, Kiro (A2, A3) |
+| 22–26/09 | Khu vực team A, chạy thử bốn việc (D1, D2) | | Khung cây material (E1); định hướng lõi và khu vực team (B3); cho phép artifact (A4) |
+| 29/09–03/10 | Bốn module A (E4); **bàn giao material A** (E8) | Khu vực team B, chạy thử (D3, D4) | Skill test case qua CLI (B4); M1, M2, M3, M7, M8, M9 (E2, E3, E6, E7); A5, A6 |
+| 06–10/10 | **Triển khai** (F1–F3) | Bốn module B (E4); **bàn giao material B** (E8) | Đo bật trên máy (B5); bảng ý tưởng role khác (E5) |
 | 13–17/10 | Áp dụng (F4, F5) | **Triển khai** (F1–F3) | Theo dõi hằng tuần bắt đầu (G1) |
-| 20–24/10 | Áp dụng | Áp dụng (F4, F5) | Dạy bù (F6); năm prompt template (E5) |
-| 27–31/10 | Áp dụng, v0.2 (D5) | Áp dụng | **Chốt mốc**: báo cáo triển khai (G2); dàn ý playbook (E6) |
+| 20–24/10 | Áp dụng | Áp dụng (F4, F5) | Dạy bù (F6); năm prompt template M5 (E9) |
+| 27–31/10 | Áp dụng, T5 v0.2 (D5) | Áp dụng | **Chốt mốc**: báo cáo triển khai R1 (G2); dàn ý playbook (E10) |
 | 11/2026 | Áp dụng đủ bốn tuần, theo dõi | Như A | Chuyển thêm skill sang CLI theo nhu cầu; sửa kit theo định hướng B3 nếu đã duyệt |
 | 12/2026 | Đánh giá (G3) | Đánh giá (G3) | Use case chuẩn hoá, đóng góp ngược lõi (G4); playbook v1 (G5) |
 
@@ -28,8 +28,8 @@ Cập nhật 2026-09-09. Đọc trước [Work Items and PIC](03-work-items-and-
 
 | Ngày | Hỏi | Nếu không đạt |
 |---|---|---|
-| 19/09 | Hai hồ sơ team được PL ký, đủ artifact? | Lùi cả lịch một tuần, mất tuần dạy bù |
-| 03/10 | Module A chạy trơn trên máy champion, kit B v0.1 có? | Dồn triển khai B sang tuần 20–24/10 |
+| 19/09 | Hai hồ sơ team được PL ký; T2, T3, T4 đủ? | Lùi cả lịch một tuần, mất tuần dạy bù |
+| 03/10 | Champion A xác nhận đã nhận cây material, mọi link mở được, bài chạy được; khu vực team B v0.1 có? | Dồn triển khai B sang tuần 20–24/10 |
 | 17/10 | PL B ký danh sách bốn điều kiện, A có output AI đầu tiên được duyệt? | Dùng tuần 20–31/10 để dạy bù, không thêm use case |
 
 ## 4. Đường lùi
@@ -45,16 +45,17 @@ Cập nhật 2026-09-09. Đọc trước [Work Items and PIC](03-work-items-and-
 | Cần | Từ ai | Khi nào |
 |---|---|---|
 | Tên champion, pha hiện tại, tuần bàn giao của mỗi team | PL | 12/09 |
-| Hai buổi khảo sát, mỗi team hai giờ | PL và champion | 15–19/09 |
+| Hai buổi khảo sát, mỗi team hai giờ; nộp artifact mẫu, rule, số nền (T2, T3, T4) | PL và champion | 15–19/09 |
 | Nửa ngày cho toàn team trong tuần triển khai | PL | 06–10/10 và 13–17/10 |
 | Task thật cho từng role trong bốn tuần áp dụng | PL | Từ 13/10 |
 | Quyết định A1 đến A6 | Phía khách, lãnh đạo | Trước 03/10 |
 
 ## 6. Sau 31/10 sẽ có
 
-- Hai team dùng được Kiro + khu vực team của mình trên bốn việc thật, có bảng theo dõi hằng tuần.
-- Khu vực team của hai team có phiên bản; định hướng lõi và khu vực team của MK sẵn sàng để duyệt sửa kit.
-- Bốn module hands-on, năm prompt template, governance guide, bảng ý tưởng role khác, báo cáo triển khai một trang.
+- Mỗi team một cây material trên Confluence, M0 đến M9, đã bàn giao và champion giữ.
+- Hai team dùng được Kiro + khu vực team T5 của mình trên bốn việc thật, có bảng theo dõi M8 hằng tuần.
+- Định hướng lõi và khu vực team của MK (K3) sẵn sàng để duyệt sửa kit.
+- Báo cáo triển khai R1; dàn ý playbook R4.
 - Tháng 12: báo cáo đánh giá, use case chuẩn hoá, playbook v1 cho team tiếp theo.
 
 **Câu hỏi mở**

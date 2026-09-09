@@ -27,16 +27,20 @@ Mô hình đích của bốn việc lõi là một chuỗi: **thiết kế → c
 | Định hình lõi và khu vực team của MK | Sửa kit theo hướng đó: làm sau khi duyệt |
 | Governance tối thiểu: dữ liệu vào và không vào AI, tool được phép, người duyệt output gửi khách | Policy toàn đơn vị: do phía khách và lãnh đạo ban hành, DevOps chỉ đề xuất |
 
-## 3. Deliverable của task ứng với thứ sẽ làm ra
+## 3. Deliverable của task ứng với artifact sẽ làm ra
 
-| Deliverable task đòi | Sẽ làm ra | Rút từ đâu |
+Sản phẩm bàn giao cho team dự án là **bộ material trên Confluence**: một cây trang cho mỗi team, trang gốc gắn link tới mọi thứ. Mã artifact theo [03, mục 1](03-work-items-and-pic.md#1-artifact).
+
+| Deliverable task đòi | Artifact | Rút từ đâu |
 |---|---|---|
-| Role mapping, work mapping, tool mapping | Bảng role dev chi tiết theo bốn việc; role khác một dòng mỗi role | [02](02-four-core-use-cases.md) |
-| Use case mapping | Bốn use case lõi có đầu vào, đầu ra, tool, cách đo; bảng ý tưởng role khác | [02](02-four-core-use-cases.md) |
-| Prompt template, ít nhất năm | Bốn template từ bốn use case dev, một cho Rovo (tóm tắt họp hoặc báo cáo tuần) | Hands-on đã chạy |
-| Governance guide | Trang trả lời bốn câu: dữ liệu vào, dữ liệu không vào, tool được phép, quy tắc bảo mật | Việc ở [03](03-work-items-and-pic.md), luồng A và E |
-| Hands-on theo role | Bốn bài trên artifact thật: dev lead sinh thiết kế, dev sinh code và unit test, tester sinh test case | Khảo sát team |
-| Playbook | Gộp: quy trình bốn việc, checklist, prompt template, governance, kit của team | Cuối đợt |
+| Role mapping, work mapping, tool mapping | Bốn việc dev trong [02](02-four-core-use-cases.md); role khác ở M6 | Hồ sơ team T1 |
+| Use case mapping | Bốn use case lõi trong [02](02-four-core-use-cases.md); trang use case chuẩn R3 sau đánh giá | Chạy thử D2, D4 |
+| Prompt template, ít nhất năm | M5: bốn từ bốn việc dev, một cho Rovo | Hands-on đã chạy và output đã duyệt T8 |
+| Governance guide | M2 | Quyết định A4, A5, A6 |
+| Hands-on theo role | M4: bốn module trên artifact thật, dev lead sinh thiết kế, tester sinh test case, dev sinh code và unit test | Kho artifact T2 của từng team |
+| Playbook | R4, gộp quy trình bốn việc, checklist M7, M5, M2, cách dựng khu vực team T5 | Cuối đợt |
+
+Ngoài deliverable task đòi, bộ material còn có trang gốc M0, buổi mở đầu M1, hướng dẫn cài đặt M3, bảng theo dõi M8 và nơi hỏi M9. Không có chúng thì team nhận được tài liệu nhưng không dùng được.
 
 ## 4. Cách đưa vào một team
 
@@ -44,13 +48,13 @@ Bảy bước, mỗi bước có đầu ra và điều kiện xong. Chi tiết v
 
 | Bước | Ra gì | Xong khi |
 |---|---|---|
-| 1. Khảo sát team | Hồ sơ team một trang; artifact mẫu của bốn việc; số nền | PL xác nhận |
-| 2. Tuỳ biến kit theo team | Khu vực team v0.1: ngữ cảnh, rule, template, cấu hình | Bốn việc chạy trên task thật, champion ký |
-| 3. Soạn module theo role | Module 90 phút mỗi việc: 15 phút quy tắc, 60 phút làm trên artifact thật, 15 phút xem lại | Champion chạy thử trơn |
-| 4. Triển khai kiến thức | Từng người đạt bốn điều kiện ở dưới | 100% hoặc PL ký ngoại lệ |
-| 5. Áp dụng có hỗ trợ | Output thật có AI tham gia; khu vực team v0.2 | Mỗi việc có một output thật được duyệt |
-| 6. Theo dõi | Bảng một trang: mức dùng, output được duyệt, công sức, chất lượng | Cập nhật mỗi tuần |
-| 7. Đánh giá | Với từng use case: chuẩn hoá, sửa, hay dừng | Có quyết định thành văn |
+| 1. Khảo sát team | Hồ sơ team T1; kho artifact T2; rule T3; số nền T4 | PL xác nhận |
+| 2. Tuỳ biến kit theo team | Khu vực team T5 v0.1: ngữ cảnh, rule, template, cấu hình | Bốn việc chạy trên task thật, champion ký |
+| 3. Soạn và bàn giao material | Cây Confluence M0 đến M9; module 90 phút mỗi việc: 15 phút quy tắc, 60 phút làm trên artifact thật, 15 phút xem lại | Champion đi hết cây trên máy mình, mọi link mở được, bài chạy được |
+| 4. Triển khai kiến thức | Từng người đạt bốn điều kiện ở dưới, ký vào M7 | 100% hoặc PL ký ngoại lệ |
+| 5. Áp dụng có hỗ trợ | Task thật T6; output thật T8; khu vực team v0.2 | Mỗi việc có một output thật được duyệt |
+| 6. Theo dõi | Bảng M8: mức dùng, output được duyệt, công sức, chất lượng | Cập nhật mỗi tuần |
+| 7. Đánh giá | R2: với từng use case chuẩn hoá, sửa, hay dừng; R3, R4 | Có quyết định thành văn |
 
 **Một người "đã triển khai"** khi: tool chạy trên máy của họ; hoàn thành một hands-on của đúng việc mình; nói được ba quy tắc governance; biết nơi hỏi. Đếm người dùng được, không đếm buổi đã dạy.
 
