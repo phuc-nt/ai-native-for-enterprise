@@ -1,8 +1,8 @@
 # Role, Task and Tool Mapping: Rovo, Kiro + MK
 
-Dành cho người được giao chuẩn hoá cách dùng AI cho một đơn vị nhiều dự án theo mô hình resource center (khách Nhật, đội offshore Việt Nam), nơi PM, PL, PMO, BrSE, BA, developer, tester, QA, architect và comtor dùng chung Jira, Confluence và Slack. Cập nhật 2026-09-09.
+Dành cho người được giao chuẩn hoá cách dùng AI cho một đơn vị nhiều dự án theo mô hình resource center (khách Nhật, đội offshore Việt Nam), nơi PM, PL, PMO, BrSE, BA, developer, tester, QA, architect và comtor dùng chung Jira, Confluence và Slack. Cập nhật 2026-09-09, chiều: bổ sung hiện trạng công cụ của đơn vị.
 
-Đọc trước [AI Toolkit for Offshore Teams](01-ai-toolkit-offshore-team.md) để biết bộ MK và 10 workflow skill; [Kiro + MK Kit](04-kiro-mk-kit-guide.md) để biết bản Kiro của kit. Tiền đề của tài liệu này: đơn vị đã chọn **Rovo** (gắn Jira/Confluence) và **Kiro** (cho DevOps); Kiro chạy **với bộ MK** và **có kết nối Jira, Confluence, Slack** qua MCP (cách nối ở mục 6). Facts về Rovo và Kiro lấy từ tài liệu công khai đến 2026-09; chỗ nào chưa tự chạy thử ghi **[chưa kiểm chứng]**.
+Đọc trước [AI Toolkit for Offshore Teams](01-ai-toolkit-offshore-team.md) để biết bộ MK và 10 workflow skill; [Kiro + MK Kit](04-kiro-mk-kit-guide.md) để biết bản Kiro của kit. Tiền đề của tài liệu này, theo hiện trạng đơn vị: Jira và Confluence là **Cloud**; đã chọn **Rovo** cho Jira/Confluence và **Kiro** (gói Pro hoặc Pro+ theo nhu cầu) cho việc trong repo, **không dùng Rovo Dev**; Kiro chạy **với bộ MK**; Kiro **chưa được bật MCP** (đơn vị đang hoàn thiện cơ chế quản lý), nên Kiro nói chuyện với Jira và Confluence qua **CLI tự dựng**, chạy tại máy từng người với personal API token; Slack chưa rõ đường nối. Chi tiết và lộ trình chuyển sang MCP ở mục 6. Facts về Rovo và Kiro lấy từ tài liệu công khai đến 2026-09; chỗ nào chưa tự chạy thử ghi **[chưa kiểm chứng]**.
 
 ---
 
@@ -14,12 +14,12 @@ Chia tool theo **nơi công việc sống**, không theo chức danh:
 |---|---|---|
 | Trong Jira, Confluence, Slack; không đụng repo | **Rovo** (Search, Chat, Agents, AI trong Jira/Confluence) | Tóm tắt yêu cầu, viết user story, tóm tắt họp, tìm tri thức, hỏi trạng thái sprint |
 | Trong repo: code, test, CI, tài liệu kỹ thuật | **Kiro + MK** (skill lõi của kit) | Plan, cook, test, review, fix, security, docs |
-| Xuyên hai thế giới: từ ticket hoặc thread ra code, từ code ra ticket hoặc báo cáo | **MK workflow skill trên Kiro, qua MCP** | Story → test case lên Confluence; finding review → Jira bug; sprint → báo cáo song ngữ lên Slack |
+| Xuyên hai thế giới: từ ticket hoặc thread ra code, từ code ra ticket hoặc báo cáo | **MK workflow skill trên Kiro, gọi CLI Jira/Confluence** (MCP khi được bật) | Story → test case lên Confluence; finding review → Jira bug; sprint → báo cáo song ngữ lên Slack |
 
 Ba hệ quả:
 
 - **Role không đụng repo** (PM, PMO, comtor, phần lớn BA) dùng Rovo là chính; không cần cài Kiro.
-- **Role đụng repo** (developer, tester, architect, một phần QA) dùng Kiro + MK là chính; dùng Rovo để đọc ngữ cảnh Jira/Confluence khi Kiro chưa nối MCP.
+- **Role đụng repo** (developer, tester, architect, một phần QA) dùng Kiro + MK là chính; dùng Rovo để đọc ngữ cảnh Jira/Confluence khi cần hỏi đáp tự do ngoài những gì CLI trả về.
 - **PL và BrSE** đứng giữa: Rovo cho giao tiếp và tri thức, MK workflow skill cho việc lặp lại mỗi ngày hoặc mỗi sprint (standup, sprint report, status update).
 
 Một use case chỉ có **một tool chính**. Khi cả hai làm được, chọn tool ở nơi đầu ra sẽ được dùng: đầu ra là trang Confluence hoặc ticket thì Rovo; đầu ra là file trong repo thì Kiro.
@@ -30,22 +30,22 @@ Một use case chỉ có **một tool chính**. Khi cả hai làm được, ch�
 |---|---|---|---|
 | Là gì | AI của Atlassian trong Jira, Confluence, JSM, Slack, Teams: Search, Chat, Agents dựng bằng Rovo Studio, Rovo Dev cho code | IDE và CLI của AWS cho agent viết code: spec, steering, hook, MCP | Bộ quy trình của đơn vị cài lên Kiro: 29 skill lõi, 10 workflow skill Jira/Confluence/Slack, rule, hook chặn, subagent |
 | Mạnh ở | Ngữ cảnh toàn bộ Jira/Confluence có sẵn, không cài gì; agent chạy từ automation rule hoặc transition | Làm việc trong repo với quy trình spec → task; hook và steering ép kỷ luật | Cùng quy trình cho mọi người; quality gate; nối tracker và chat vào vòng dev |
-| Yếu ở | Không biết repo (trừ Rovo Dev, gói riêng); tiếng Nhật chưa có tài liệu chính thức; tiêu credit theo lượt | Không biết Jira/Confluence nếu chưa nối MCP; slash chỉ ở chế độ tương tác | Phụ thuộc MCP và credential máy; 10 workflow skill chưa dựng wrapper Kiro |
+| Yếu ở | Không biết repo (Rovo Dev nằm ngoài phạm vi); tiếng Nhật chưa có tài liệu chính thức; tiêu credit theo lượt | MCP chưa được bật trong đơn vị; đọc Jira/Confluence qua CLI tự dựng; slash chỉ ở chế độ tương tác | 10 workflow skill viết cho MCP, phải chuyển sang gọi CLI; credential nằm ở máy từng người |
 | Ai dùng | Mọi role có tài khoản Atlassian | Role có repo | Role có repo, cộng PL và BrSE cho workflow báo cáo |
-| Cấp phép | Có trong gói Jira/Confluence Cloud, tính bằng credit theo tháng: Standard 25, Premium 70, Enterprise 150 credit mỗi người; Chat và Agent khoảng 10 credit một lượt; Rovo Dev là gói riêng | Theo seat: Free 50 credit, Pro 1.000, Pro+ 2.000, các bậc cao hơn; Team cùng giá theo seat; Enterprise qua AWS | Kèm kit, không phí riêng |
+| Cấp phép | Có trong gói Jira/Confluence Cloud, tính bằng credit theo tháng: Standard 25, Premium 70, Enterprise 150 credit mỗi người; Chat và Agent khoảng 10 credit một lượt. Gói của đơn vị chưa xác nhận, **giả định dùng thoải mái** | Pro (1.000 credit) hoặc Pro+ (2.000 credit) theo nhu cầu từng người | Kèm kit, không phí riêng |
 
 Ba điểm về Rovo cần nói với người quyết định trước khi hứa với team:
 
-1. **Data Center.** Rovo chạy trên Atlassian Cloud. Jira DC 11.3+ và Confluence DC 10.2+ nối được qua Rovo connector, nghĩa là dữ liệu DC được đồng bộ lên cloud để AI đọc. Nếu dự án dùng DC và khách không cho dữ liệu rời DC, Rovo không dùng được cho dự án đó.
-2. **Credit.** Với gói Standard, 25 credit một tháng chỉ đủ vài lượt chat; dùng nghiêm túc cần Premium trở lên hoặc Rovo standalone (beta, tính theo người). Đến 2026-05 Atlassian chưa tính tiền vượt hạn mức, cơ chế đang xem xét lại.
+1. **Cloud.** Đơn vị dùng Jira và Confluence Cloud nên Rovo dùng được đầy đủ, không vướng câu chuyện Data Center. Rovo đọc theo quyền của từng người dùng.
+2. **Credit.** Giả định hiện tại là dùng thoải mái, nhưng Rovo vẫn tính credit theo gói và mỗi lượt Chat hoặc Agent tiêu khoảng 10 credit. Việc đầu tiên khi pilot: xác nhận gói và bật theo dõi usage trong Atlassian admin để biết giả định có đúng không trước khi kéo cả đơn vị vào.
 3. **Tiếng Nhật.** Không có tài liệu chính thức về chất lượng agent tiếng Nhật; cộng đồng còn đang xin i18n cho agent. Pilot với BrSE và comtor phải đo trước khi chuẩn hoá.
 
 ## 3. Nguyên tắc chọn tool
 
 1. **Đầu ra ở đâu, tool ở đó.** Trang Confluence và ticket Jira: Rovo. File trong repo: Kiro + MK. Cả hai: MK workflow skill.
 2. **Việc lặp lại theo lịch thì thành skill, không thành prompt.** Standup, sprint report, status update, test case từ story: đã có skill, chạy một lệnh, số liệu chỉ lấy từ Jira đã đọc. Prompt template dùng cho việc không lặp.
-3. **Không nối chéo khi chưa cần.** Rovo Dev và Kiro cùng là agent viết code; đơn vị đã chọn Kiro, không cấp Rovo Dev song song trong pilot để tránh hai chuẩn và hai hoá đơn.
-4. **Dữ liệu khách chỉ đi qua đường đã duyệt.** Rovo đọc Jira/Confluence theo đúng quyền của người dùng, không huấn luyện model bằng dữ liệu khách, pin được data residency về region Nhật. Kiro đọc repo trên máy dev và các MCP server đã khai; hook `scout-block` của MK chặn `.env` và đường dẫn cấm trước mỗi tool call.
+3. **Một agent code duy nhất.** Đơn vị đã quyết Kiro only, không dùng Rovo Dev. Mọi việc trong repo, kể cả review và sinh test, đi qua Kiro + MK để có một chuẩn, một bộ log và một chỗ đo.
+4. **Dữ liệu khách chỉ đi qua đường đã duyệt.** Rovo đọc Jira/Confluence theo đúng quyền của người dùng, không huấn luyện model bằng dữ liệu khách, pin được data residency về region Nhật. Kiro đọc repo trên máy dev và gọi Jira, Confluence qua CLI với personal API token của chính người đó; hook `scout-block` của MK chặn `.env` và đường dẫn cấm trước mỗi tool call.
 5. **Đo bằng số trước khi mở rộng.** Rovo: admin usage của Atlassian. Kiro + MK: [MK Observe](05-mk-observe-agent-metrics.md) cho tỷ lệ chấp nhận, thành công, tự chủ, tin cậy và mức dùng kit.
 
 ## 4. Mapping theo role
@@ -108,7 +108,7 @@ Mỗi bảng: task đặc thù của role, phần AI làm được, tool chính,
 
 | Task đặc thù | AI làm được | Tool | Cụ thể |
 |---|---|---|---|
-| Hiểu ticket và ngữ cảnh trước khi code | Đọc story, comment, trang liên quan | Kiro + MCP | Kiro đọc Jira qua MCP; trước khi có MCP: Rovo Chat |
+| Hiểu ticket và ngữ cảnh trước khi code | Đọc story, comment, trang liên quan | Kiro + CLI | Kiro gọi CLI Jira/Confluence đọc ticket và trang liên quan; hỏi đáp tự do thì Rovo Chat |
 | Thiết kế chi tiết từ yêu cầu | Plan, design có phase | MK | `/mk-plan`; đầu ra là design doc trong `plans/` hoặc spec Kiro |
 | Viết code theo plan | Từng phase, quality gate | MK | `/mk-cook` |
 | Unit test | Sinh và chạy test, coverage | MK | `/mk-test`; quality gate của `cook` không đóng task khi test fail |
@@ -175,37 +175,63 @@ Chất lượng tiếng Nhật của Rovo chưa có tài liệu chính thức. C
 
 ## 6. Tiền đề kỹ thuật: Kiro + MK nối Jira, Confluence, Slack
 
-Kiro nạp MCP server từ ba chỗ: `.kiro/settings/mcp.json` của workspace, `~/.kiro/settings/mcp.json` của người dùng, hoặc khai `mcpServers` ngay trong JSON của agent; agent tuỳ chỉnh chỉ thấy hai file kia khi có `includeMcpJson: true`. Hỗ trợ server stdio chạy tại máy và server remote qua HTTP. Tool MCP đi qua cùng cơ chế duyệt như tool có sẵn; ở headless dùng `--require-mcp-startup` để phiên dừng ngay khi server không lên thay vì treo, và `--trust-tools` để duyệt trước tập tool nhỏ nhất. Kiro Powers hiện chưa có gói Atlassian hay Slack dựng sẵn, nên phải tự khai.
+### 6.1 Hiện trạng
 
-Bản Kiro của bộ MK **chưa nối MCP**; phần này là việc phải làm trước pilot, ước 1 đến 2 ngày theo [Kiro + MK Kit, mục 11](04-kiro-mk-kit-guide.md#11-việc-còn-lại-trước-pilot-với-bộ-toolkit-đầy-đủ). Có ba đường cho Jira và Confluence, hai đường cho Slack:
+| Hạng mục | Hiện trạng | Hệ quả |
+|---|---|---|
+| Jira, Confluence | Cloud | Mọi đường nối (CLI, MCP chính thức, MCP của kit) đều khả dụng về kỹ thuật |
+| Kiro | Pro hoặc Pro+; **MCP chưa được bật**, đơn vị đang hoàn thiện cơ chế quản lý | Không dùng được MCP server nào trong Kiro lúc này; nối ra ngoài chỉ bằng lệnh shell |
+| Đường nối đang có | **CLI tự dựng** cho Jira và Confluence, chạy tại máy từng người, personal API token | Kiro gọi CLI như một lệnh shell; skill MK gọi CLI thay vì tool MCP |
+| Slack | Chưa rõ admin cho gì | Dự phòng: CLI tự dựng, chứng thực bằng cookie trình duyệt của chính người dùng |
+| Rovo Dev | Không dùng | Kiro là agent code duy nhất |
 
-| Đường | Là gì | Ưu | Nhược | Dùng khi |
-|---|---|---|---|---|
-| **A. Atlassian Rovo MCP Server** | Server remote chính thức của Atlassian tại `mcp.atlassian.com`, OAuth 2.1 hoặc API token, quyền theo người dùng, admin allowlist domain và IP, audit log | Không phải chạy gì thêm; governance nằm ở Atlassian admin; cùng dữ liệu Rovo đọc | **Chỉ Cloud**; tên và hình dạng tool khác với bộ MCP mà 10 workflow skill được viết, phải sửa skill; endpoint SSE cũ ngừng sau 2026-06 | Đơn vị dùng Cloud và admin cho bật MCP |
-| **B. MCP server của bộ kit** | Ba server đi kèm kit: Jira 47 tool, Confluence 11 tool, Slack 13 tool; mọi tool trả cùng envelope `{ok, data, meta}`; 10 skill đã chạy end-to-end trên bộ này | Skill chạy được ngay; kiểm soát hoàn toàn tool nào lộ ra; đã kiểm chứng | Chạy tại máy từng người, credential qua biến môi trường; đơn vị tự bảo trì | Pilot, hoặc khi admin chưa mở đường A |
-| **C. Data Center** | Server chính thức không hỗ trợ DC; có server cộng đồng tự host **[chưa kiểm chứng]**, hoặc chuyển server của kit sang API DC | Dùng được khi dữ liệu không rời DC | Tự host, tự bảo trì, tự chịu trách nhiệm bảo mật | Dự án DC và khách cấm đồng bộ lên cloud |
-| **D. Slack MCP Server chính thức** | Server remote của Slack, GA 2026-02, cần workspace admin duyệt, quyền theo người dùng | Chính thống, có audit phía Slack | Phụ thuộc admin duyệt; skill cần map lại tool | Admin Slack đồng ý |
-| **E. Slack server của kit** | Dùng phiên đăng nhập của chính người dùng, không cần cài app | Không cần admin cài app; skill đã chạy | Phải có chấp thuận chính sách của admin vì đi bằng phiên người dùng; không có audit tập trung | Pilot, khi D chưa được duyệt |
+### 6.2 Cách skill MK dùng CLI thay MCP
 
-Đề xuất: **pilot bằng B và E** vì 10 skill đã chạy trên đó, đo được ngay; song song xin admin mở **A và D**, rồi chuyển skill sang tool của server chính thức khi được duyệt. Dự án DC đi đường C hoặc chấp nhận không có tích hợp ở pilot đầu.
+10 workflow skill của kit được viết cho ba MCP server của kit, mọi tool trả cùng một envelope `{ok, data, meta}` hoặc `{ok: false, error: {code, message, hint}}`. Cách chuyển ít tốn nhất là **để CLI in ra đúng envelope đó** dưới dạng JSON, mỗi lệnh CLI tương ứng một tool: ví dụ `jira issue get KEY-1`, `jira search --jql "..."`, `confluence page create --space X --title Y --body-file z.md`. Khi đó phần logic của skill giữ nguyên, chỉ đổi dòng "gọi tool" thành "chạy lệnh và đọc JSON". Lợi thêm: CLI test được ngoài Kiro, và khi MCP được bật thì cùng CLI có thể bọc thành MCP server stdio mà không sửa skill lần nữa.
 
-Việc cụ thể, theo thứ tự:
+Quy tắc cho CLI:
+
+- Token cá nhân đọc từ biến môi trường hoặc keychain của máy, không có trong repo, không in ra log. Hook `scout-block` của kit chặn `.env` vẫn giữ.
+- CLI chỉ đọc mặc định; lệnh ghi (tạo issue, tạo trang, chuyển trạng thái) có cờ `--yes` và in ra bản xem trước khi không có cờ. Skill báo cáo dùng bản xem trước để người duyệt trước khi ghi.
+- Mọi lệnh ghi nhận `--dry-run`, để hands-on trong đào tạo chạy trên project thật mà không tạo rác.
+- Log lệnh đã chạy vào file cục bộ, để MK Observe và người audit đọc lại được.
+
+### 6.3 Slack
+
+Chưa có quyết định của admin. Hai khả năng:
+
+| Đường | Là gì | Điều kiện | Lưu ý |
+|---|---|---|---|
+| Slack MCP Server chính thức | Server remote của Slack, GA 2026-02, quyền theo người dùng | Admin Slack duyệt **và** Kiro được bật MCP | Đường đúng về lâu dài; hiện chưa đi được vì cả hai điều kiện đều chưa có |
+| CLI tự dựng, chứng thực bằng cookie trình duyệt | Dùng phiên đăng nhập của chính người dùng, không cài app | Admin đồng ý về chính sách | Cùng cách với server Slack của kit, đã chạy end-to-end; không có audit tập trung, cookie phải được bảo vệ như mật khẩu; chỉ dùng cho pilot và cho lệnh đọc cộng gửi tin vào kênh của team |
+
+Nếu admin không đồng ý cả hai, các skill báo cáo vẫn chạy được: bỏ bước gửi Slack, người dùng dán link Confluence vào kênh bằng tay. Đây là cấu hình mặc định an toàn cho pilot.
+
+### 6.4 Khi Kiro được bật MCP
+
+Khi cơ chế quản lý MCP của đơn vị xong, thứ tự chuyển:
+
+1. **Atlassian Rovo MCP Server** chính thức tại `mcp.atlassian.com`: OAuth 2.1, quyền theo người dùng, admin allowlist, audit log; không phải chạy gì thêm. Tên tool khác với CLI nên cần bảng map; nếu CLI đã in đúng envelope thì bọc CLI thành MCP server stdio là bước trung gian không tốn công.
+2. **Slack MCP Server** chính thức, nếu admin duyệt.
+3. Cấu hình ở `.kiro/settings/mcp.json`, agent `mk` cần `includeMcpJson: true` **[chưa kiểm chứng]**; headless chạy với `--require-mcp-startup` để phiên dừng ngay khi server không lên.
+
+### 6.5 Việc cụ thể trước pilot
 
 1. Dựng lại bản Kiro từ bản cài đầy đủ của kit để có wrapper cho 10 workflow skill.
-2. Viết `.kiro/settings/mcp.json` với ba server của kit, `autoApprove` cho tool chỉ đọc; credential qua biến môi trường máy, không qua file trong repo.
-3. Thêm `includeMcpJson: true` vào agent `mk` **[chưa kiểm chứng]**, chạy `kiro-cli chat --no-interactive --require-mcp-startup` với một skill chỉ đọc, ví dụ `daily-standup-report` ở chế độ xem trước, để xác nhận tool lên.
-4. Chạy `sprint-report-to-confluence-slack` trên project thử, đúng kịch bản đã kiểm chứng trên Claude Code, rồi dọn artifact.
-5. Ghi lại tool nào từng skill cần, làm bảng map sang tool của Atlassian và Slack MCP Server chính thức cho bước chuyển sau.
+2. Chuẩn hoá đầu ra CLI Jira/Confluence theo envelope của kit; bổ sung `--dry-run` và bản xem trước cho lệnh ghi.
+3. Sửa 10 skill: đổi lời gọi tool sang lệnh CLI, giữ nguyên logic và kỷ luật số liệu. Bắt đầu từ ba skill dùng nhiều nhất: `jira-story-test-case-generation`, `sprint-report-to-confluence-slack` (bỏ bước Slack nếu chưa có), `daily-standup-report`.
+4. Chạy thử trên project thật với `--dry-run`, rồi chạy thật một lần và dọn artifact.
+5. Ghi bảng map lệnh CLI ↔ tool MCP chính thức để chuyển sau.
 
-Một tính năng sẵn có của Kiro đáng dùng ngay cả trước khi nối MCP: hook **Sync AIDLC Tasks to Jira** đẩy task từ spec lên Jira, gắn nhãn `aidlc-synced`, chạy lại thì hỏi bỏ qua hay cập nhật từng issue. Một chiều spec → Jira; không có chiều ngược.
+Một tính năng sẵn có của Kiro đáng dùng ngay: hook **Sync AIDLC Tasks to Jira** đẩy task từ spec lên Jira, gắn nhãn `aidlc-synced`, chạy lại thì hỏi bỏ qua hay cập nhật từng issue. Một chiều spec → Jira; không có chiều ngược. Cần xác nhận hook này hoạt động khi MCP tắt **[chưa kiểm chứng]**.
 
 ## 7. Governance tối thiểu để bắt đầu
 
 | Câu hỏi | Trả lời cho pilot |
 |---|---|
 | Dữ liệu nào được đưa vào AI | Dữ liệu đã nằm trong Jira, Confluence, Slack và repo của dự án, qua tool đã duyệt. Rovo đọc theo quyền người dùng. Kiro đọc repo và MCP đã khai |
-| Dữ liệu nào không | Credential, dữ liệu cá nhân của người dùng cuối, dữ liệu khách nằm ngoài hệ thống dự án, dữ liệu DC khi khách không cho rời DC |
-| Tool nào được phép | Rovo trong gói Atlassian của đơn vị; Kiro theo gói dự án; MCP server trong danh sách của kit. Không cài thêm MCP hoặc extension ngoài danh sách |
+| Dữ liệu nào không | Credential và personal API token, cookie phiên, dữ liệu cá nhân của người dùng cuối, dữ liệu khách nằm ngoài hệ thống dự án |
+| Tool nào được phép | Rovo trong gói Atlassian của đơn vị; Kiro Pro hoặc Pro+; CLI Jira/Confluence do đơn vị dựng. Không bật MCP trong Kiro cho tới khi có cơ chế quản lý; không cài extension ngoài danh sách |
 | Model chạy ở đâu | Rovo: Atlassian Cloud, model Anthropic hoặc OpenAI do Atlassian vận hành, không huấn luyện bằng dữ liệu khách, data residency pin được. Kiro: model Claude và Nova trên Bedrock, router `auto` mặc định, code và prompt không dùng huấn luyện; gói Free chạy ở US East, gói Enterprise chọn region, SSO qua IAM Identity Center |
 | Ai chịu trách nhiệm đầu ra | Người chạy tool. AI sinh bản nháp; story, test case, báo cáo phải có người duyệt trước khi gửi khách |
 | Log để audit | Rovo audit log của Atlassian admin; Kiro + MK: log phiên và hook của kit, đọc bằng MK Observe |
@@ -214,18 +240,17 @@ Chi tiết cho hệ thống chạy trên dữ liệu khách ở [Technical Secur
 
 ## 8. Đề xuất triển khai
 
-1. **Tuần 1 đến 2.** Bật Rovo cho PM, PMO, BA, BrSE, comtor trên một project; đo credit tiêu mỗi người và chất lượng tiếng Nhật với comtor. Song song dựng wrapper Kiro cho 10 workflow skill và nối MCP theo mục 6.
+1. **Tuần 1 đến 2.** Bật Rovo cho PM, PMO, BA, BrSE, comtor trên một project; xác nhận gói, bật theo dõi usage, đo chất lượng tiếng Nhật với comtor. Song song dựng wrapper Kiro cho 10 workflow skill và chuyển skill sang CLI theo mục 6.5.
 2. **Tuần 3 đến 6.** Pilot Kiro + MK với một team dev theo [pilot đề xuất](04-kiro-mk-kit-guide.md#4-pilot-đề-xuất-và-cách-đo); tester dùng `jira-story-test-case-generation`; PL chạy `sprint-report-to-confluence-slack` thay báo cáo tay.
 3. **Tuần 7 đến 8.** Đọc MK Observe và Rovo usage; chốt danh sách use case đủ tốt để thành chuẩn; viết prompt template cho việc không lặp; viết hands-on theo bảng ở mục 4, mỗi role một bài trên chính ticket của họ.
-4. Tài liệu đào tạo theo role lấy bảng ở mục 4 làm khung; phần enablement dài hơi ở [Team Enablement and Training](07-team-enablement-and-training.md) khi viết.
+4. Tài liệu đào tạo theo role lấy bảng ở mục 4 làm khung; quy trình từ soạn tài liệu đến team áp dụng và đo ở [Team Enablement and Training](07-team-enablement-and-training.md).
 
 ---
 
 **Câu hỏi mở**
 
-- Jira và Confluence của đơn vị là Cloud hay Data Center? Quyết định Rovo dùng được cho dự án nào và MCP server nào dùng được.
-- Gói Atlassian hiện tại là Standard, Premium hay Enterprise? Quyết định credit Rovo mỗi người và có cần Rovo standalone không.
-- Kiro của dự án là gói nào, có cho MCP ra ngoài mạng nội bộ không?
-- Slack của đơn vị có cho cài app hoặc MCP server không, hay chỉ có tài khoản người dùng?
-- Rovo Dev có nằm trong phạm vi không? Tài liệu này giả định không, để tránh hai agent code song song.
+- Gói Atlassian thực tế là gì? Giả định "dùng thoải mái" phải được xác nhận bằng usage sau hai tuần pilot.
+- Admin Slack cho đường nào: MCP chính thức, CLI bằng cookie, hay không đường nào? Quyết định các skill báo cáo có bước gửi Slack hay dừng ở Confluence.
+- Khi nào cơ chế quản lý MCP của Kiro xong? Quyết định thời điểm chuyển từ CLI sang Atlassian MCP Server.
+- Hook Sync AIDLC Tasks to Jira của Kiro có chạy khi MCP tắt không?
 - Chất lượng tiếng Nhật của Rovo với BrSE và comtor: cần một tuần pilot có đo trước khi đưa vào chuẩn.

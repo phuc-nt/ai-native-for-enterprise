@@ -13,7 +13,7 @@ Tài liệu tôi chuẩn bị cho hai mục tiêu công việc, dùng được c
 |---|---|---|---|---|
 | 00 | [`00-foundations/`](00-foundations/) | Cả hai | Tôi đã xây gì, tin vào nguyên tắc nào, mindset nào đứng sau mọi thứ còn lại | Portfolio và mindset xong; 1 tài liệu giữ chỗ |
 | 01 | [`01-ai-ready-enterprise/`](01-ai-ready-enterprise/) | Cả hai | Muốn agent chạy tin cậy trên dữ liệu và hệ thống thật thì tổ chức dữ liệu, giao diện, harness, vận hành thế nào | Xong |
-| 02 | [`02-ai-in-sdlc/`](02-ai-in-sdlc/) | Mục tiêu 1 | Bộ công cụ nào dùng được ngay cho team dev, hoạt động ra sao, chạy trên harness nào, đo thế nào, role nào dùng tool nào | 6 tài liệu xong; 2 giữ chỗ |
+| 02 | [`02-ai-in-sdlc/`](02-ai-in-sdlc/) | Mục tiêu 1 | Bộ công cụ nào dùng được ngay cho team dev, hoạt động ra sao, chạy trên harness nào, đo thế nào, role nào dùng tool nào | 7 tài liệu xong; 1 giữ chỗ |
 | 03 | [`03-ai-features-for-clients/`](03-ai-features-for-clients/) | Mục tiêu 2 | Từ vấn đề của khách đi tới proposal, mẫu giải pháp, đánh giá chất lượng, chi phí | Toàn bộ giữ chỗ |
 
 Hai nhóm đầu là *nền chung*, hai nhóm sau là *cách làm cho từng mục tiêu*. Mỗi nhóm đọc độc lập được; chỗ nào cần chi tiết thì link sang nhau, không kể lại. Tài liệu giữ chỗ có dòng đầu ghi **Chưa viết** kèm vai trò dự kiến.
@@ -27,7 +27,8 @@ Hai nhóm đầu là *nền chung*, hai nhóm sau là *cách làm cho từng m�
 3. Tuỳ harness của dự án: [Agent Kit Portability](02-ai-in-sdlc/03-agent-kit-multi-harness-kiro-opencode.md), và [Kiro + MK Kit](02-ai-in-sdlc/04-kiro-mk-kit-guide.md) khi khách yêu cầu Kiro.
 4. [MK Observe](02-ai-in-sdlc/05-mk-observe-agent-metrics.md): đo agent và mức dùng kit bằng số.
 5. Khi đơn vị dùng cả Rovo lẫn Kiro: [Role, Task and Tool Mapping](02-ai-in-sdlc/08-role-task-tool-mapping-rovo-kiro-mk.md) chia việc của từng role cho Rovo, Kiro + MK và workflow skill.
-6. Khi mở rộng sang tri thức dự án (Jira, Confluence, Slack, spec, biên bản họp): nhóm 01, bắt đầu từ [playbook từng nguồn](01-ai-ready-enterprise/engineering/09-data-source-playbook.md).
+6. Khi đưa kit vào một team dự án: [Team Enablement and Training](02-ai-in-sdlc/07-team-enablement-and-training.md) đi bảy bước từ khảo sát team, tuỳ biến kit, đào tạo đến áp dụng, theo dõi và đánh giá.
+7. Khi mở rộng sang tri thức dự án (Jira, Confluence, Slack, spec, biên bản họp): nhóm 01, bắt đầu từ [playbook từng nguồn](01-ai-ready-enterprise/engineering/09-data-source-playbook.md).
 
 **Mục tiêu 2, tính năng AI cho khách hàng**
 
