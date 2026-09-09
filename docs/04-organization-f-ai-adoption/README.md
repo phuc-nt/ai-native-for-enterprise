@@ -19,7 +19,7 @@ Nhóm tài liệu này không còn là lý thuyết chung: đây là **định h
 
 | # | Tài liệu | Trả lời |
 |---|---|---|
-| 01 | [Direction and Scope](01-direction-and-scope.md) | Hướng làm, phạm vi trong và ngoài, deliverable của task ứng với thứ sẽ làm ra, cách đưa vào team |
+| 01 | [Direction and Scope](01-direction-and-scope.md) | Mục tiêu của tổ chức và bản chất task, bộ công cụ hiện có làm được gì, rồi hướng làm, phạm vi trong và ngoài, deliverable ứng với artifact, cách đưa vào team |
 | 02 | [Four Core Use Cases](02-four-core-use-cases.md) | Bốn việc của team dev được AI hoá: sinh thiết kế, sinh test case, sinh code, sinh unit test; role khác ở dạng ý tưởng |
 | 03 | [Artifacts, Work Items and PIC](03-work-items-and-pic.md) | Bộ material bàn giao trên Confluence và các artifact khác: cái nào DevOps làm, cái nào team dự án làm, cái nào phối hợp; việc làm ra chúng, mỗi việc có PIC |
 | 04 | [Rollout Roadmap](04-rollout-roadmap.md) | Hai team đi qua các việc đó theo tuần đến mốc, ba cổng quyết định, đường lùi |
@@ -28,7 +28,7 @@ Nhóm tài liệu này không còn là lý thuyết chung: đây là **định h
 
 ## Điều cần được duyệt
 
-1. Phạm vi: bốn use case của team dev là lõi; role khác chỉ nhận bảng ý tưởng trong đợt này (01, mục 2).
-2. Hướng kit: MK chia thành lõi dùng chung và khu vực của từng team; đợt này chỉ định hình, chưa sửa kit (01, mục 1).
+1. Phạm vi: bốn use case của team dev là lõi; role khác chỉ nhận bảng ý tưởng trong đợt này (01, mục 4).
+2. Hướng kit: MK chia thành lõi dùng chung và khu vực của từng team; đợt này chỉ định hình, chưa sửa kit (01, mục 3).
 3. Danh sách artifact và phân công theo ba bên ở tài liệu 03, đặc biệt team dự án phải nộp artifact mẫu và số nền trước 2026-09-19, phía khách phải quyết trước 2026-10-03.
 4. Lịch hai team lệch pha một tuần với ba cổng quyết định (04).

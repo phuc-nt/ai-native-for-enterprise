@@ -2,7 +2,36 @@
 
 Cập nhật 2026-09-09. Đọc trước [README](README.md) để biết hiện trạng.
 
-## 1. Hướng làm
+## 1. Bối cảnh: tổ chức F muốn gì và task này là gì
+
+Tổ chức F là một trung tâm nguồn lực chung giữa phía khách và phía offshore: nhiều dự án dùng chung quy trình, chuẩn chất lượng, đào tạo và cải tiến năng lực. Năm tài khoá này tổ chức đặt hai hướng song song: **tạo giá trị nhanh hơn** (ý tưởng → PoC → MVP → giá trị) và **phát triển hiệu quả hơn** (thủ công → tự động → AI). Hướng thứ hai cụ thể thành ba mục tiêu chiến lược, mỗi mục tiêu có chỉ tiêu số trong tài liệu nội bộ, không chép vào đây:
+
+| Mục tiêu | Trọng tâm liên quan tới task |
+|---|---|
+| Hiện thực hoá giá trị | Nhiều PoC hơn, PoC ra MVP nhanh hơn |
+| Tiến hoá DevOps | AI trong SDLC: tỷ lệ test case do AI sinh, tự động hoá unit test, giảm công sức thiết kế, phát triển, unit test |
+| Phát triển nhân lực | Đội ngũ AI-ready; phần lớn team phát triển có **hiểu biết chung và quy trình chuẩn** về phát triển có AI; use case được chuẩn hoá trên Confluence |
+
+**Team DevOps** là đầu mối chuyển các mục tiêu này thành việc thật. Lộ trình bốn giai đoạn của team: khảo sát và PoC; **AI hoá SDLC** với bốn hướng sinh test case, sinh đặc tả API, sinh thiết kế chi tiết, sinh mã nguồn; AI hoá testing; đánh giá và mở rộng. Song song là **chương trình đào tạo AI toàn tổ chức** ba giai đoạn: nền tảng (07 đến 09/2026), **AI trong công việc thật** (10 đến 12/2026), chia sẻ case study (01 đến 02/2027). Công cụ đã chọn: Rovo vì gắn với Jira/Confluence, Kiro cho phía phát triển.
+
+**Task này** là ticket soạn tài liệu đào tạo cho giai đoạn hai của chương trình, giao cho team DevOps. Tên ticket nói "tài liệu", bản chất là **dựng nền AI adoption**: từng role biết dùng AI trong việc của mình, cách dùng được chuẩn hoá, và đào tạo nối được với mục tiêu tiến hoá DevOps. Deliverable task đòi: role mapping, work mapping, tool mapping, use case mapping, ít nhất năm prompt template, governance guide, hands-on theo role, playbook; mục 5 ứng từng deliverable với artifact sẽ làm ra. Task phục vụ trực tiếp mục tiêu nhân lực và gián tiếp mục tiêu tiến hoá DevOps, nên đo bằng cả "người đã biết dùng" lẫn "output thật có AI".
+
+## 2. Bộ công cụ hiện có làm được gì
+
+Bộ công cụ mô tả đầy đủ ở nhóm 02: [AI Toolkit](../02-ai-in-sdlc/01-ai-toolkit-offshore-team.md), [MK Kit Introduction](../02-ai-in-sdlc/02-mk-kit-introduction.md), [Kiro MK Kit Guide](../02-ai-in-sdlc/04-kiro-mk-kit-guide.md), [MK Observe](../02-ai-in-sdlc/05-mk-observe-agent-metrics.md). Tóm tắt theo thứ tổ chức F dùng được ngay:
+
+| Thành phần | Làm được | Với tổ chức F |
+|---|---|---|
+| **Bộ MK trên Kiro** | Quy trình chuẩn cho vòng dev: brainstorm → plan → cook → test → review → ship, mỗi bước một skill có kiểm soát; rule nạp theo ngữ cảnh; hook chặn việc nguy hiểm; subagent chia việc | Bản Kiro đã dựng và chạy được; gọi bằng `/mk-*`. Skill dùng khuôn chung nhúng sẵn, **chưa có chỗ để team đặt khuôn riêng** |
+| **Workflow skill nối Jira/Confluence/Slack** | Mười quy trình xuyên hệ thống: story sang test case, finding review sang Jira, báo cáo standup, cập nhật stakeholder, họp sang action, triage bug, báo cáo sprint, thread Slack sang epic, quản lý sprint, báo cáo hiệu suất team | Logic dùng được; **đầu nối phải đổi từ MCP sang CLI** vì MCP chưa bật, Slack chưa có |
+| **Ba MCP server Jira, Confluence, Slack** | Đọc ghi hai chiều, envelope JSON thống nhất, có kiểm lỗi và cache; đã chạy thật xuyên ba hệ thống | **Chưa dùng được** cho tới khi MCP được bật; giữ làm đích để CLI in cùng envelope |
+| **MK Observe** | Đo phiên agent trên máy: skill nào chạy, bao lâu, bao nhiêu lần, để so trước sau | Dùng được ngay cho chiều "mức dùng" của bảng theo dõi |
+| **Cấu trúc project** | Thư mục ngữ cảnh, tài liệu dài hạn, plan có acceptance criteria, report sau mỗi phase | Là nền để định hình khu vực team |
+| **Tài liệu mở đầu** | Mindset context engineering, giới thiệu kit, hướng dẫn Kiro | Dùng cho buổi mở đầu và hướng dẫn cài đặt sau khi rút gọn |
+
+Điều bộ công cụ **chưa làm được** cho bốn việc dev của tổ chức F: sinh thiết kế chi tiết theo template của khách; sinh test case từ tài liệu thiết kế qua CLI; chế độ sinh unit test theo đặc tả thay vì chỉ chạy test. Khoảng cách từng việc ghi ở [Four Core Use Cases](02-four-core-use-cases.md); đây là lý do hướng làm bên dưới đặt tuỳ biến theo team trước khi dạy.
+
+## 3. Hướng làm
 
 Năm lựa chọn định hướng, mỗi lựa chọn một câu vì sao.
 
@@ -16,7 +45,7 @@ Năm lựa chọn định hướng, mỗi lựa chọn một câu vì sao.
 
 Mô hình đích của bốn việc lõi là một chuỗi: **thiết kế → code → unit test**, với **test case** rẽ nhánh từ thiết kế. Đầu ra của việc trước là đầu vào của việc sau, nên khuôn đầu ra phải khớp template của team ngay từ việc đầu.
 
-## 2. Phạm vi
+## 4. Phạm vi
 
 | Trong phạm vi | Ngoài phạm vi đợt này |
 |---|---|
@@ -27,7 +56,7 @@ Mô hình đích của bốn việc lõi là một chuỗi: **thiết kế → c
 | Định hình lõi và khu vực team của MK | Sửa kit theo hướng đó: làm sau khi duyệt |
 | Governance tối thiểu: dữ liệu vào và không vào AI, tool được phép, người duyệt output gửi khách | Policy toàn đơn vị: do phía khách và lãnh đạo ban hành, DevOps chỉ đề xuất |
 
-## 3. Deliverable của task ứng với artifact sẽ làm ra
+## 5. Deliverable của task ứng với artifact sẽ làm ra
 
 Sản phẩm bàn giao cho team dự án là **bộ material trên Confluence**: một cây trang cho mỗi team, trang gốc gắn link tới mọi thứ. Mã artifact theo [03, mục 1](03-work-items-and-pic.md#1-artifact).
 
@@ -42,7 +71,7 @@ Sản phẩm bàn giao cho team dự án là **bộ material trên Confluence**:
 
 Ngoài deliverable task đòi, bộ material còn có trang gốc M0, buổi mở đầu M1, hướng dẫn cài đặt M3, bảng theo dõi M8 và nơi hỏi M9. Không có chúng thì team nhận được tài liệu nhưng không dùng được.
 
-## 4. Cách đưa vào một team
+## 6. Cách đưa vào một team
 
 Bảy bước, mỗi bước có đầu ra và điều kiện xong. Chi tiết việc và PIC ở [03](03-work-items-and-pic.md).
 
@@ -58,14 +87,14 @@ Bảy bước, mỗi bước có đầu ra và điều kiện xong. Chi tiết v
 
 **Một người "đã triển khai"** khi: tool chạy trên máy của họ; hoàn thành một hands-on của đúng việc mình; nói được ba quy tắc governance; biết nơi hỏi. Đếm người dùng được, không đếm buổi đã dạy.
 
-## 5. Nguyên tắc governance đợt này
+## 7. Nguyên tắc governance đợt này
 
 - Dữ liệu đi đường đã duyệt: Rovo đọc theo quyền người dùng; Kiro đọc repo và gọi CLI bằng token cá nhân của chính người đó.
 - Output gửi khách phải có người duyệt; AI viết nháp, người ký.
 - Token, cookie không vào repo, không vào log; hook của MK chặn credential và đường dẫn cấm.
 - Đo từ ngày đầu: MK Observe cho Kiro, usage trong Atlassian admin cho Rovo.
 
-## 6. Đường kỹ thuật
+## 8. Đường kỹ thuật
 
 CLI Jira/Confluence in ra cùng envelope JSON mà skill MK đã quen, nên skill giữ nguyên logic, chỉ đổi lời gọi. Khi Kiro được bật MCP thì chuyển sang Atlassian MCP Server chính thức; cùng CLI bọc thành MCP server được mà không sửa skill lần nữa. Slack chưa có: skill báo cáo dừng ở Confluence, dán link tay.
 
