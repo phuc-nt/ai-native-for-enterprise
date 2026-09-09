@@ -1,34 +1,36 @@
 # Organization F: AI Adoption
 
-Nhóm tài liệu này không còn là lý thuyết chung: đây là **định hướng cho một task cụ thể** của tổ chức F, gọi là tổ chức F để ẩn tên. Task: **soạn tài liệu đào tạo AI giai đoạn 2**, do **team DevOps** chịu trách nhiệm, thực chất là đưa AI vào công việc thật của hai team dự án và chuẩn hoá cách dùng. Sản phẩm bàn giao là **một cây trang Confluence cho mỗi team**, trang gốc gắn link tới module, template, checklist và khu vực team trong repo. Bộ tài liệu trả lời ba câu: **hướng làm là gì, phạm vi tới đâu, việc phải làm gồm gì và ai làm.** Chưa đi vào chi tiết kỹ thuật, chưa chỉnh bộ MK.
+Nhóm này là **định hướng cho một task thật**, không phải lý thuyết chung. Tổ chức gọi là **tổ chức F** để ẩn tên: một trung tâm nguồn lực chung giữa phía khách và phía offshore, nhiều team dự án dùng chung quy trình và hoạt động đào tạo. Task: **soạn tài liệu đào tạo AI giai đoạn 2**, do **team DevOps** chịu trách nhiệm.
+
+Tên task nói "soạn tài liệu", nhưng làm xong tài liệu không có nghĩa là xong việc. Muốn tài liệu dùng được thì phải đồng thời định hướng cách tiến hành: dùng tool gì cho việc gì, ai cấp license, team dự án chuẩn bị gì, đo bằng gì. Bộ tài liệu này là phần định hướng đó.
+
+**Mục tiêu trước mắt**: cuối tháng 10 có đủ material để rollout cho các team dự án ở bốn việc **Design (tài liệu API), Test case, Code, Unit test**.
+
+## Năm tài liệu
+
+| # | Tài liệu | Trả lời |
+|---|---|---|
+| 01 | [Context and Direction](01-context-and-direction.md) | Tổ chức muốn gì, task thực chất là gì, năm lựa chọn định hướng, phạm vi đợt này |
+| 02 | [Roles and Tooling](02-roles-and-tooling.md) | Từng role làm việc gì, dùng tool nào, việc đặc trưng nào AI hoá được; bốn việc dev là lõi |
+| 03 | [MK Kit and Existing Guides](03-mk-kit-and-existing-guides.md) | MK là gì, vì sao dùng MK thay vì dừng ở prompt instruction, hợp nhất guide Confluence đã có vào MK thế nào |
+| 04 | [Work Sequence and Dependencies](04-work-sequence.md) | Thứ tự việc theo năm chặng: ai làm, chờ ai, cần input gì, ra output gì |
+| 05 | [Rollout Plan](05-rollout-plan.md) | Đưa material tới team dự án: gói bàn giao, điều kiện coi là đã triển khai, cách đo, đường lùi |
+
+Nền chung ở [nhóm 02](../02-ai-in-sdlc/): [AI Toolkit](../02-ai-in-sdlc/01-ai-toolkit-offshore-team.md), [MK Kit Introduction](../02-ai-in-sdlc/02-mk-kit-introduction.md), [Kiro + MK Kit](../02-ai-in-sdlc/04-kiro-mk-kit-guide.md), [MK Observe](../02-ai-in-sdlc/05-mk-observe-agent-metrics.md).
 
 ## Hiện trạng làm tiền đề
 
 | Hạng mục | Hiện trạng |
 |---|---|
-| Jira, Confluence | Cloud |
-| AI trong Jira/Confluence | Rovo; gói chưa xác nhận, giả định dùng thoải mái |
-| Agent viết code | Kiro, Pro hoặc Pro+ theo nhu cầu; **không dùng Rovo Dev**, không Copilot |
-| Bộ quy trình trên Kiro | MK; phải tuỳ biến theo từng team trước khi dùng |
-| Kiro nối Jira/Confluence | CLI tự dựng tại máy từng người, token cá nhân; **MCP chưa được bật** |
-| Slack | Chưa rõ; dự phòng CLI chứng thực bằng cookie trình duyệt |
-| Team pilot | Hai team dự án, cả hai waterfall |
-| Mốc | 2026-10-31: hai team hoàn thành bước triển khai kiến thức |
-
-## Bốn tài liệu
-
-| # | Tài liệu | Trả lời |
-|---|---|---|
-| 01 | [Direction and Scope](01-direction-and-scope.md) | Mục tiêu của tổ chức và bản chất task, bộ công cụ hiện có làm được gì, rồi hướng làm, phạm vi trong và ngoài, deliverable ứng với artifact, cách đưa vào team |
-| 02 | [Four Core Use Cases](02-four-core-use-cases.md) | Bốn việc của team dev được AI hoá: sinh thiết kế, sinh test case, sinh code, sinh unit test; role khác ở dạng ý tưởng |
-| 03 | [Artifacts, Work Items and PIC](03-work-items-and-pic.md) | Bộ material bàn giao trên Confluence và các artifact khác: cái nào DevOps làm, cái nào team dự án làm, cái nào phối hợp; việc làm ra chúng, mỗi việc có PIC |
-| 04 | [Rollout Roadmap](04-rollout-roadmap.md) | Hai team đi qua các việc đó theo tuần đến mốc, ba cổng quyết định, đường lùi |
-
-Đọc theo thứ tự. Nền chung nằm ở [nhóm 02](../02-ai-in-sdlc/): bộ MK ở [AI Toolkit](../02-ai-in-sdlc/01-ai-toolkit-offshore-team.md), bản Kiro ở [Kiro + MK Kit](../02-ai-in-sdlc/04-kiro-mk-kit-guide.md), cách đo ở [MK Observe](../02-ai-in-sdlc/05-mk-observe-agent-metrics.md).
+| Tool AI cho team dự án | **Kiro** và **Rovo**; cả phía khách và phía offshore |
+| Bộ MK | Có sẵn từ trước, không phải tài sản do tổ chức F cấp; đưa vào dùng như bộ quy trình chạy trên Kiro |
+| Jira, Confluence | Cloud; MCP chưa được bật, tạm nối bằng CLI chạy tại máy từng người với token cá nhân |
+| Guide đã có | DevOps đã soạn vài trang Confluence hướng dẫn dùng Kiro cho unit test và test case, mức **cài đặt + prompt instruction**, chưa thành bộ công cụ |
+| Mốc | Cuối tháng 10: đủ material để rollout bốn việc |
 
 ## Điều cần được duyệt
 
-1. Phạm vi: bốn use case của team dev là lõi; role khác chỉ nhận bảng ý tưởng trong đợt này (01, mục 4).
-2. Hướng kit: MK chia thành lõi dùng chung và khu vực của từng team; đợt này chỉ định hình, chưa sửa kit (01, mục 3).
-3. Danh sách artifact và phân công theo ba bên ở tài liệu 03, đặc biệt team dự án phải nộp artifact mẫu và số nền trước 2026-09-19, phía khách phải quyết trước 2026-10-03.
-4. Lịch hai team lệch pha một tuần với ba cổng quyết định (04).
+1. Phạm vi: bốn việc dev là lõi; role khác chỉ nhận bảng đề xuất tool và ý tưởng (01).
+2. Hướng công cụ: nâng guide prompt hiện có thành skill trong MK, thay vì giữ hai hệ song song (03).
+3. Phía khách cấp license Kiro và Rovo cho thành viên team dự án; team DevOps đã có sẵn để research (04, chặng 1).
+4. Team dự án cử người và nộp artifact mẫu trước khi DevOps tuỳ biến kit (04, chặng 2).
