@@ -1,6 +1,6 @@
 # Organization F: AI Adoption
 
-Nhóm tài liệu này khác ba nhóm trước: không còn là lý thuyết chung mà là **đề xuất cho một tổ chức cụ thể**, gọi là tổ chức F, với công cụ đã chọn, ràng buộc đã biết và mốc thời gian thật. Viết ở mức tổng quan để đem đi đề xuất; chi tiết từng phần bổ sung sau khi được duyệt.
+Nhóm tài liệu này không còn là lý thuyết chung: đây là **định hướng cho một task cụ thể** của tổ chức F, gọi là tổ chức F để ẩn tên. Task: **soạn tài liệu đào tạo AI giai đoạn 2**, do **team DevOps** chịu trách nhiệm, thực chất là đưa AI vào công việc thật của hai team dự án và chuẩn hoá cách dùng. Bộ tài liệu trả lời ba câu: **hướng làm là gì, phạm vi tới đâu, việc phải làm gồm gì và ai làm.** Chưa đi vào chi tiết kỹ thuật, chưa chỉnh bộ MK.
 
 ## Hiện trạng làm tiền đề
 
@@ -8,26 +8,27 @@ Nhóm tài liệu này khác ba nhóm trước: không còn là lý thuyết chu
 |---|---|
 | Jira, Confluence | Cloud |
 | AI trong Jira/Confluence | Rovo; gói chưa xác nhận, giả định dùng thoải mái |
-| Agent viết code | Kiro, gói Pro hoặc Pro+ theo nhu cầu; **không dùng Rovo Dev** |
-| Bộ quy trình trên Kiro | MK (skill, rule, hook, subagent), phải tuỳ biến theo từng team |
-| Kiro nối Jira/Confluence | CLI tự dựng, chạy tại máy từng người với token cá nhân; **MCP chưa được bật** |
+| Agent viết code | Kiro, Pro hoặc Pro+ theo nhu cầu; **không dùng Rovo Dev**, không Copilot |
+| Bộ quy trình trên Kiro | MK; phải tuỳ biến theo từng team trước khi dùng |
+| Kiro nối Jira/Confluence | CLI tự dựng tại máy từng người, token cá nhân; **MCP chưa được bật** |
 | Slack | Chưa rõ; dự phòng CLI chứng thực bằng cookie trình duyệt |
 | Team pilot | Hai team dự án, cả hai waterfall |
 | Mốc | 2026-10-31: hai team hoàn thành bước triển khai kiến thức |
 
-## Ba tài liệu
+## Bốn tài liệu
 
-| # | Tài liệu | Trả lời | Đọc khi |
-|---|---|---|---|
-| 01 | [Tool Mapping by Role](01-tool-mapping-by-role.md) | Role nào dùng Rovo, role nào dùng Kiro + MK, việc nào đi qua workflow skill | Cần quyết định cấp tool cho ai |
-| 02 | [Enablement Framework](02-enablement-framework.md) | Từ kit và tool đến team dùng được trong việc thật: bảy bước, ai làm, xong khi nào | Cần duyệt cách làm |
-| 03 | [Rollout Roadmap](03-rollout-roadmap.md) | Hai team đi qua bảy bước ra sao để kịp mốc; cần gì từ lãnh đạo và PL | Cần duyệt lịch và nguồn lực |
+| # | Tài liệu | Trả lời |
+|---|---|---|
+| 01 | [Direction and Scope](01-direction-and-scope.md) | Hướng làm, phạm vi trong và ngoài, deliverable của task ứng với thứ sẽ làm ra, cách đưa vào team |
+| 02 | [Four Core Use Cases](02-four-core-use-cases.md) | Bốn việc của team dev được AI hoá: sinh thiết kế, sinh test case, sinh code, sinh unit test; role khác ở dạng ý tưởng |
+| 03 | [Work Items and PIC](03-work-items-and-pic.md) | Việc phải làm theo luồng, mỗi việc có PIC là team DevOps, team dự án hay phía khách |
+| 04 | [Rollout Roadmap](04-rollout-roadmap.md) | Hai team đi qua các việc đó theo tuần đến mốc, ba cổng quyết định, đường lùi |
 
-Đọc theo thứ tự 01, 02, 03. Nền tảng chung nằm ở [nhóm 02](../02-ai-in-sdlc/): bộ MK ở [AI Toolkit](../02-ai-in-sdlc/01-ai-toolkit-offshore-team.md), bản Kiro ở [Kiro + MK Kit](../02-ai-in-sdlc/04-kiro-mk-kit-guide.md), cách đo ở [MK Observe](../02-ai-in-sdlc/05-mk-observe-agent-metrics.md).
+Đọc theo thứ tự. Nền chung nằm ở [nhóm 02](../02-ai-in-sdlc/): bộ MK ở [AI Toolkit](../02-ai-in-sdlc/01-ai-toolkit-offshore-team.md), bản Kiro ở [Kiro + MK Kit](../02-ai-in-sdlc/04-kiro-mk-kit-guide.md), cách đo ở [MK Observe](../02-ai-in-sdlc/05-mk-observe-agent-metrics.md).
 
 ## Điều cần được duyệt
 
-1. Chia tool theo nơi việc sống (01, mục 1) và nguyên tắc Kiro là agent code duy nhất.
-2. Khung bảy bước và định nghĩa "đã triển khai" bằng bốn điều kiện trên từng người (02, mục 3).
-3. Lịch hai team lệch pha một tuần với ba cổng quyết định (03), cùng nguồn lực: mỗi team một đến hai champion, PL một giờ mỗi tuần, thành viên nửa ngày trong tuần đào tạo.
-4. Ba việc chính sách: xác nhận gói Rovo, đường Slack, quyền dùng artifact của khách cho hands-on.
+1. Phạm vi: bốn use case của team dev là lõi; role khác chỉ nhận bảng ý tưởng trong đợt này (01, mục 2).
+2. Hướng kit: MK chia thành lõi dùng chung và khu vực của từng team; đợt này chỉ định hình, chưa sửa kit (01, mục 1).
+3. Phân công theo ba bên ở tài liệu 03, đặc biệt các việc phía khách phải quyết trước 2026-10-03.
+4. Lịch hai team lệch pha một tuần với ba cổng quyết định (04).

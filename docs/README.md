@@ -15,7 +15,7 @@ Tài liệu tôi chuẩn bị cho hai mục tiêu công việc, dùng được c
 | 01 | [`01-ai-ready-enterprise/`](01-ai-ready-enterprise/) | Cả hai | Muốn agent chạy tin cậy trên dữ liệu và hệ thống thật thì tổ chức dữ liệu, giao diện, harness, vận hành thế nào | Xong |
 | 02 | [`02-ai-in-sdlc/`](02-ai-in-sdlc/) | Mục tiêu 1 | Bộ công cụ nào dùng được ngay cho team dev, hoạt động ra sao, chạy trên harness nào, đo thế nào, role nào dùng tool nào | 6 tài liệu xong; 2 giữ chỗ |
 | 03 | [`03-ai-features-for-clients/`](03-ai-features-for-clients/) | Mục tiêu 2 | Từ vấn đề của khách đi tới proposal, mẫu giải pháp, đánh giá chất lượng, chi phí | Toàn bộ giữ chỗ |
-| 04 | [`04-organization-f-ai-adoption/`](04-organization-f-ai-adoption/) | Mục tiêu 1, một tổ chức cụ thể | Với tool đã chọn và ràng buộc đã biết: role nào dùng gì, đưa vào team theo bước nào, hai team pilot đi đến mốc ra sao | Ba bản đề xuất tổng quan xong |
+| 04 | [`04-organization-f-ai-adoption/`](04-organization-f-ai-adoption/) | Mục tiêu 1, một tổ chức cụ thể | Cho một task thật của team DevOps: hướng làm, phạm vi, bốn use case dev, việc phải làm và ai làm, lịch hai team | Bốn bản định hướng xong |
 
 Hai nhóm đầu là *nền chung*, nhóm 02 và 03 là *cách làm cho từng mục tiêu*, nhóm 04 là *áp dụng thật cho một tổ chức* với tên đã ẩn. Mỗi nhóm đọc độc lập được; chỗ nào cần chi tiết thì link sang nhau, không kể lại. Tài liệu giữ chỗ có dòng đầu ghi **Chưa viết** kèm vai trò dự kiến.
 
@@ -27,7 +27,7 @@ Hai nhóm đầu là *nền chung*, nhóm 02 và 03 là *cách làm cho từng m
 2. [MK Kit Introduction](02-ai-in-sdlc/02-mk-kit-introduction.md): bộ quy trình bên trong hoạt động ra sao.
 3. Tuỳ harness của dự án: [Agent Kit Portability](02-ai-in-sdlc/03-agent-kit-multi-harness-kiro-opencode.md), và [Kiro + MK Kit](02-ai-in-sdlc/04-kiro-mk-kit-guide.md) khi khách yêu cầu Kiro.
 4. [MK Observe](02-ai-in-sdlc/05-mk-observe-agent-metrics.md): đo agent và mức dùng kit bằng số.
-5. Khi đem đi đề xuất cho một tổ chức đã chọn Rovo và Kiro: [nhóm 04](04-organization-f-ai-adoption/README.md), ba bản tổng quan về tool theo role, khung bảy bước và lịch hai team.
+5. Khi đem đi đề xuất cho một tổ chức đã chọn Rovo và Kiro: [nhóm 04](04-organization-f-ai-adoption/README.md), hướng làm, phạm vi, bốn use case dev, việc phải làm có PIC và lịch hai team.
 6. Khi mở rộng sang tri thức dự án (Jira, Confluence, Slack, spec, biên bản họp): nhóm 01, bắt đầu từ [playbook từng nguồn](01-ai-ready-enterprise/engineering/09-data-source-playbook.md).
 
 **Mục tiêu 2, tính năng AI cho khách hàng**
