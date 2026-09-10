@@ -19,7 +19,7 @@ Không có chặng này thì mọi việc sau đều đoán mò.
 | Duyệt phạm vi: bốn việc dev là lõi, role khác chỉ đề xuất | Phía khách *(xác nhận)* | Tài liệu [01](01-context-and-direction.md), [02](02-roles-and-tooling.md) | Phạm vi chốt | — |
 | **Cấp license Kiro cho thành viên team dự án** | Phía khách | Danh sách thành viên từ team dự án | Mọi người đăng nhập được | Danh sách team |
 | **Cấp license Rovo cho thành viên team dự án** | Phía khách | Danh sách thành viên, quyết định cấp cho role nào | Mọi người dùng được Rovo trong Jira/Confluence | Danh sách team |
-| Xác nhận M365 Copilot đã cấp tới role nào, và chính sách dùng nội dung họp với khách | Phía khách *(xác nhận)* | Matrix ở [02](02-roles-and-tooling.md) mục 3 | Biết cắt phần nào của matrix; điều kiện dùng transcript họp | — |
+| Xác nhận M365 Copilot đã cấp tới role nào, và chính sách dùng nội dung họp với khách | Phía khách *(xác nhận)* | Matrix ở [02](02-roles-and-tooling.md) mục 4 | Biết cắt phần nào của matrix; điều kiện dùng transcript họp | — |
 | Chọn team pilot và cử người phụ trách mỗi team | Team dự án | Phạm vi chốt | Tên người phụ trách, pha hiện tại của dự án | Phạm vi chốt |
 | Quyết cho phép dùng artifact thật của dự án làm bài tập | Phía khách | Đề xuất điều kiện từ DevOps | Điều kiện thành văn | — |
 
