@@ -28,7 +28,7 @@ Deliverable task đòi: role mapping, work mapping, tool mapping, use case mappi
 | Lựa chọn | Vì sao |
 |---|---|
 | **Bốn việc dev là lõi**: Design (tài liệu API), Test case, Code, Unit test | Bốn việc này nằm thẳng trong mục tiêu tiến hoá DevOps. Làm được bốn việc thì prompt template, hands-on và playbook đều rút ra từ đó, không phải bịa |
-| **Chia tool theo nơi việc sống**: việc trong repo dùng Kiro; việc trong Jira/Confluence dùng Rovo | Rovo không thấy repo, Kiro không hỏi đáp tự do trên Confluence. Một việc một tool chính, tránh hai chuẩn |
+| **Chia tool theo nơi việc sống**: repo dùng Kiro, Jira/Confluence dùng Rovo, họp và mail dùng M365 Copilot | Ba vùng gần như không chồng nhau. Một việc một tool chính, tránh mỗi người một kiểu |
 | **Nâng guide hiện có thành skill trong MK**, không giữ hai hệ song song | Prompt instruction đã viết chính là ruột của skill; giữ riêng thì mỗi người dán một kiểu, sửa một chỗ không lan ra được |
 | **MK tách lõi dùng chung và khu vực của từng team** | Quy trình giống nhau, nhưng template và rule mỗi team mỗi khác. Đợt này chỉ định hình, chưa sửa kit |
 | **Dạy trên artifact thật, đo tại chốt pha** | Bài tập giả thì học xong không dùng được. Đo tại chốt pha vì team chạy waterfall, không có sprint |
@@ -49,7 +49,7 @@ Bốn việc nối thành chuỗi: thiết kế cơ bản → **sinh thiết k�
 
 - Không đưa dữ liệu định danh khách hàng, khoá, thông tin xác thực vào prompt.
 - Output có AI tham gia vẫn phải qua người duyệt như output người viết; AI không phải người ký.
-- Tool được phép: Kiro và Rovo. Tool khác phải hỏi trước.
+- Tool được phép: Kiro, Rovo, M365 Copilot. Tool khác phải hỏi trước.
 - Ghi lại việc nào đã dùng AI, để đo được và để giải thích được khi khách hỏi.
 
 **Câu hỏi mở**

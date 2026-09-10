@@ -11,7 +11,7 @@ Tên task nói "soạn tài liệu", nhưng làm xong tài liệu không có ngh
 | # | Tài liệu | Trả lời |
 |---|---|---|
 | 01 | [Context and Direction](01-context-and-direction.md) | Tổ chức muốn gì, task thực chất là gì, năm lựa chọn định hướng, phạm vi đợt này |
-| 02 | [Roles and Tooling](02-roles-and-tooling.md) | Từng role làm việc gì, dùng tool nào, việc đặc trưng nào AI hoá được; bốn việc dev là lõi |
+| 02 | [Roles and Tooling](02-roles-and-tooling.md) | Vùng và điểm mạnh yếu của ba tool; matrix role, task, tool; bốn việc dev là lõi |
 | 03 | [MK Kit and Existing Guides](03-mk-kit-and-existing-guides.md) | MK là gì, vì sao dùng MK thay vì dừng ở prompt instruction, hợp nhất guide Confluence đã có vào MK thế nào |
 | 04 | [Work Sequence and Dependencies](04-work-sequence.md) | Thứ tự việc theo năm chặng: ai làm, chờ ai, cần input gì, ra output gì |
 | 05 | [Rollout Plan](05-rollout-plan.md) | Đưa material tới team dự án: gói bàn giao, điều kiện coi là đã triển khai, cách đo, đường lùi |
@@ -22,7 +22,7 @@ Nền chung ở [nhóm 02](../02-ai-in-sdlc/): [AI Toolkit](../02-ai-in-sdlc/01-
 
 | Hạng mục | Hiện trạng |
 |---|---|
-| Tool AI cho team dự án | **Kiro** và **Rovo**; cả phía khách và phía offshore |
+| Tool AI cho team dự án | **Kiro** (repo), **Rovo** (Jira/Confluence), **M365 Copilot** (Teams, Mail, Calendar, Office) |
 | Bộ MK | Có sẵn từ trước, không phải tài sản do tổ chức F cấp; đưa vào dùng như bộ quy trình chạy trên Kiro |
 | Jira, Confluence | Cloud; MCP chưa được bật, tạm nối bằng CLI chạy tại máy từng người với token cá nhân |
 | Guide đã có | DevOps đã soạn vài trang Confluence hướng dẫn dùng Kiro cho unit test và test case, mức **cài đặt + prompt instruction**, chưa thành bộ công cụ |
@@ -32,5 +32,5 @@ Nền chung ở [nhóm 02](../02-ai-in-sdlc/): [AI Toolkit](../02-ai-in-sdlc/01-
 
 1. Phạm vi: bốn việc dev là lõi; role khác chỉ nhận bảng đề xuất tool và ý tưởng (01).
 2. Hướng công cụ: nâng guide prompt hiện có thành skill trong MK, thay vì giữ hai hệ song song (03).
-3. Phía khách cấp license Kiro và Rovo cho thành viên team dự án; team DevOps đã có sẵn để research (04, chặng 1).
+3. Phía khách cấp license Kiro và Rovo cho thành viên team dự án, và xác nhận M365 Copilot cấp tới role nào; team DevOps đã có sẵn để research (04, chặng 1).
 4. Team dự án cử người và nộp artifact mẫu trước khi DevOps tuỳ biến kit (04, chặng 2).
