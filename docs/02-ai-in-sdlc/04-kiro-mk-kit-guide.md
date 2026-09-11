@@ -264,13 +264,66 @@ Trước mỗi lần dựng, kiểm tra hai điều: `kiro-cli --version` vẫn 
 
 ---
 
+## 12b. Kiro IDE: bốn điều đã kiểm chứng
+
+Mục 6 đến 12 nói về Kiro CLI. IDE khác ở những chỗ quyết định cách đóng gói kit.
+Bốn điều dưới đây lấy từ một phiên IDE thật (bản 1.0.437, engine v2, model
+`claude-sonnet-4.5`, mode vibe) chạy một kit tài liệu SDLC, đối chiếu với
+`~/.kiro/logs/<timestamp>/kiro.log` và transcript phiên.
+
+**1. Steering nạp tự động, agent JSON thì không.** IDE không có cờ `--agent`,
+nên `.kiro/agents/*.json` và system prompt của nó không được đọc. Chỉ
+`.kiro/steering/*.md` với `inclusion: always` vào context. Hệ quả thiết kế: mọi
+luật bắt buộc phải nằm trong steering, không phải trong agent prompt. Kiểm
+chứng bằng một câu hỏi mở đầu phiên dạng "trả lời chỉ từ context đã nạp, đừng
+đọc file" — nếu model đọc lại đúng nội dung steering mà không gọi tool nào thì
+steering đã vào.
+
+**2. Skill kích hoạt được bằng ngôn ngữ tự nhiên, không cần slash.** Trên CLI,
+`/tên-skill` chỉ chạy ở chế độ tương tác. Trên IDE, một câu như "viết tài liệu
+X cho Y" đủ để model tự gọi `disclose_context` nạp `SKILL.md`. Log ghi
+`[DiscloseContext] Activating: {"name":"..."}` và payload gửi lên tăng vài chục
+nghìn ký tự ngay sau đó. Điều kiện: steering phải có một câu nói rõ rằng khi
+người dùng gọi tên một loại tài liệu kèm một chế độ, dù diễn đạt thế nào, đó là
+lời gọi skill và phải mở `SKILL.md` trước khi làm.
+
+**3. Lần nạp skill đầu tiên hỏi quyền.** IDE chặn và chờ người dùng bấm cho
+phép, rồi ghi luật vào `~/.kiro/workspace-roots/<hash-workspace>/permissions.yaml`
+theo dạng `capability: skill` / `effect: allow` / `match: [tên]`. Có thể
+pre-seed file này trước khi giao máy để nhóm không phải bấm từng skill:
+
+```yaml
+rules:
+  - capability: skill
+    effect: allow
+    match:
+      - ten-skill-1
+      - ten-skill-2
+```
+
+Chỉ mở `capability: skill`. Mở sẵn `shell` hay ghi file là bỏ chốt chặn.
+
+**4. Log IDE có hai tầng, tầng hữu ích không phải tầng dễ thấy.**
+`~/.kiro/logs/<timestamp>/kiro.log` chỉ là metadata: timestamp, model, số ký tự
+payload, danh sách file đã đính kèm. Transcript đầy đủ — nguyên văn prompt, trả
+lời, từng tool call kèm tham số — nằm ở
+`~/.kiro/sessions/<hash-workspace>/<session-id>/messages.jsonl`, cùng thư mục
+`snapshots/` giữ bản file trước mỗi lần sửa. Khi cần đánh giá một kit chạy đúng
+hay không, đọc `messages.jsonl`; `kiro.log` chỉ dùng để tìm session-id và xác
+nhận model.
+
+Điều này cũng là cách kiểm chứng kit khách quan: thứ tự tool call cho thấy model
+đọc gì trước khi viết, và có đọc file rule hay không.
+
+---
+
 ## 13. Rủi ro và giới hạn đã biết
 
 | Vấn đề | Mức / ảnh hưởng | Đối ứng |
 |---|---|---|
 | Kit chỉ chạy trên engine v2 của Kiro CLI (mặc định hiện nay). Engine v3 (early release) từ chối agent v2, bỏ qua `.kiro/hooks/*.json` | Trung bình; kit không chạy trên v3 | Script dựng thêm chế độ v3 khi Kiro đổi mặc định. Hỏi khách đang chuẩn hoá phiên bản nào |
 | Kiro headless chết khi hook chặn 1 trong 2 tool gọi song song (lỗi Bedrock "Expected toolResult blocks") | Trung bình, chỉ CI và chạy nền | Steering dặn "một tool call một lần khi chạm đường dẫn lạ"; `MK_KIRO_SOFT_BLOCK=1` trong CI đổi chặn thành cảnh báo. Phiên tương tác tự phục hồi |
-| Kiro IDE dùng file hook riêng (dạng v3), khác CLI | Hai cấu hình song song | `.kiro/hooks/mk-hooks.json` có sẵn nhưng chưa kiểm chứng trên IDE |
+| Kiro IDE dùng file hook riêng (dạng v3), khác CLI; IDE cũng không đọc agent JSON | Hai cấu hình song song | `.kiro/hooks/mk-hooks.json` có sẵn nhưng chưa kiểm chứng trên IDE. Luật bắt buộc phải đặt trong steering, xem mục 12b |
 | Bản Kiro chưa gồm 10 skill tích hợp và MCP của bộ toolkit | Trung bình; 1 đến 2 ngày trước pilot | Mục 11 |
 | `session-state` ghi vào `~/.claude/session-states/` dùng chung với Claude Code | Cùng repo mở bằng hai harness sẽ ghi đè nhau | Chấp nhận trong pilot; tách thư mục là việc của bản lite |
 | Hook thêm 50 đến 100 ms mỗi tool call, 0,1 đến 0,2 s mỗi prompt, khoảng 4 KB context mỗi lượt | Thấp | Chấp nhận; cửa sổ context của Kiro là 1M token |
@@ -284,6 +337,6 @@ Trước mỗi lần dựng, kiểm tra hai điều: `kiro-cli --version` vẫn 
 ## Câu hỏi mở
 
 1. Khách có cho phép cài hook chạy lệnh cục bộ (Node) trong repo của họ không? Toàn bộ chốt chặn dựa vào điều này.
-2. Khách dùng Kiro IDE song song CLI không? Nếu có, phải kiểm chứng `.kiro/hooks/mk-hooks.json` trên IDE và chấp nhận hai cấu hình.
+2. Khách dùng Kiro IDE song song CLI không? Nếu có, phải kiểm chứng `.kiro/hooks/mk-hooks.json` trên IDE và chấp nhận hai cấu hình. Phần steering và skill đã kiểm chứng trên IDE (mục 12b); phần hook thì chưa.
 3. Khách làm việc theo spec của Kiro hay theo `plans/` của MK? Ảnh hưởng nơi lưu kế hoạch và báo cáo.
 4. `includeMcpJson` trong agent JSON v2 có đủ để agent `mk` thấy ba MCP server không, hay phải khai `mcpServers` trực tiếp? Cần một lần thử.
