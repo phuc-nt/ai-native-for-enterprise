@@ -115,7 +115,7 @@ repo-du-an/
     ├── agents/<12 subagent>.json  planner, tester, code-reviewer… mỗi agent có hook riêng
     ├── agents/prompts/*.md        system prompt từng agent
     ├── settings/cli.json          {"chat.defaultAgent": "mk"}
-    └── hooks/mk-hooks.json        chỉ cho IDE / engine v3, chưa kiểm chứng
+    └── hooks/*.json               hook cho IDE, định dạng v2 (mục 12b)
 ```
 
 Steering `mk-kit.md` nói cơ chế kit: skill là `/mk-<name>`, subagent gọi bằng `use_subagent`, bảng tool mapping, quy ước checklist, "một tool call một lần trên đường dẫn lạ". Tổng steering luôn được nạp, khoảng 4 KB mỗi lượt. Wrapper skill giữ `name`, `description`, body trỏ về `.claude/skills/<dir>/SKILL.md` và thêm dòng `Request / arguments: $ARGUMENTS`.
@@ -264,10 +264,10 @@ Trước mỗi lần dựng, kiểm tra hai điều: `kiro-cli --version` vẫn 
 
 ---
 
-## 12b. Kiro IDE: bốn điều đã kiểm chứng
+## 12b. Kiro IDE: năm điều đã kiểm chứng
 
 Mục 6 đến 12 nói về Kiro CLI. IDE khác ở những chỗ quyết định cách đóng gói kit.
-Bốn điều dưới đây lấy từ một phiên IDE thật (bản 1.0.437, engine v2, model
+Năm điều dưới đây lấy từ một phiên IDE thật (bản 1.0.437, engine v2, model
 `claude-sonnet-4.5`, mode vibe) chạy một kit tài liệu SDLC, đối chiếu với
 `~/.kiro/logs/<timestamp>/kiro.log` và transcript phiên.
 
@@ -315,6 +315,37 @@ nhận model.
 Điều này cũng là cách kiểm chứng kit khách quan: thứ tự tool call cho thấy model
 đọc gì trước khi viết, và có đọc file rule hay không.
 
+**5. IDE có hook chặn được tool call, và đây là chỗ đặt các luật model hay
+tự bào chữa.** Hook v2 đọc từ `.kiro/hooks/*.json` — đuôi `.json`, không phải
+`.kiro.hook` (định dạng cũ, đã deprecated và bị loader bỏ qua). Mười một sự kiện
+dùng được, trong đó `preToolUse` chặn được lệnh trước khi nó chạy. Giao kèo
+giống Claude Code: payload JSON vào stdin (`tool_name`, `tool_input`), và
+**thoát với mã 2** thì tool bị chặn, stderr thành lý do trả về cho model. Mã 1
+không chặn — đây là chỗ dễ sai nhất. Hook chỉ chạy khi workspace được tin cậy;
+workspace chưa tin cậy thì log ghi `executionDisabledUntrustedWorkspace` và mọi
+hook im lặng không chạy.
+
+```json
+{
+  "version": "v1",
+  "hooks": [{
+    "name": "ten-hook",
+    "trigger": "preToolUse",
+    "matcher": "<regex khớp tên tool>",
+    "action": { "type": "command", "command": "python3 duong/dan/script.py" },
+    "timeout": 10
+  }]
+}
+```
+
+Vì sao đáng làm: có những luật model đọc hiểu nhưng vẫn vi phạm khi tự đánh giá.
+Ví dụ đã gặp: một giá trị mẫu mang đúng hình dạng khoá bí mật thật nằm trong tài
+liệu; checklist có dòng cấm, model đọc thấy giá trị đó, trích dẫn nó, kết luận
+"rõ ràng là giả", cho qua hai vòng review liên tiếp, rồi vòng sau chép nó sang
+một tài liệu mới. Cùng luật ấy viết thành mười dòng regex trong hook thì chặn
+được ngay lúc ghi. Nguyên tắc chia việc: cái gì kiểm bằng biểu thức được thì để
+hook; cái gì cần đọc hiểu ngữ cảnh mới để checklist.
+
 ---
 
 ## 13. Rủi ro và giới hạn đã biết
@@ -323,7 +354,7 @@ nhận model.
 |---|---|---|
 | Kit chỉ chạy trên engine v2 của Kiro CLI (mặc định hiện nay). Engine v3 (early release) từ chối agent v2, bỏ qua `.kiro/hooks/*.json` | Trung bình; kit không chạy trên v3 | Script dựng thêm chế độ v3 khi Kiro đổi mặc định. Hỏi khách đang chuẩn hoá phiên bản nào |
 | Kiro headless chết khi hook chặn 1 trong 2 tool gọi song song (lỗi Bedrock "Expected toolResult blocks") | Trung bình, chỉ CI và chạy nền | Steering dặn "một tool call một lần khi chạm đường dẫn lạ"; `MK_KIRO_SOFT_BLOCK=1` trong CI đổi chặn thành cảnh báo. Phiên tương tác tự phục hồi |
-| Kiro IDE dùng file hook riêng (dạng v3), khác CLI; IDE cũng không đọc agent JSON | Hai cấu hình song song | `.kiro/hooks/mk-hooks.json` có sẵn nhưng chưa kiểm chứng trên IDE. Luật bắt buộc phải đặt trong steering, xem mục 12b |
+| Kiro IDE dùng định dạng hook riêng, khác CLI; IDE cũng không đọc agent JSON | Hai cấu hình song song, phải bảo trì cả hai | Định dạng IDE đã kiểm chứng (mục 12b): `.kiro/hooks/*.json`, `preToolUse`, thoát mã 2 để chặn. Luật bắt buộc vẫn phải đặt trong steering vì agent JSON không được đọc |
 | Bản Kiro chưa gồm 10 skill tích hợp và MCP của bộ toolkit | Trung bình; 1 đến 2 ngày trước pilot | Mục 11 |
 | `session-state` ghi vào `~/.claude/session-states/` dùng chung với Claude Code | Cùng repo mở bằng hai harness sẽ ghi đè nhau | Chấp nhận trong pilot; tách thư mục là việc của bản lite |
 | Hook thêm 50 đến 100 ms mỗi tool call, 0,1 đến 0,2 s mỗi prompt, khoảng 4 KB context mỗi lượt | Thấp | Chấp nhận; cửa sổ context của Kiro là 1M token |
@@ -337,6 +368,6 @@ nhận model.
 ## Câu hỏi mở
 
 1. Khách có cho phép cài hook chạy lệnh cục bộ (Node) trong repo của họ không? Toàn bộ chốt chặn dựa vào điều này.
-2. Khách dùng Kiro IDE song song CLI không? Nếu có, phải kiểm chứng `.kiro/hooks/mk-hooks.json` trên IDE và chấp nhận hai cấu hình. Phần steering và skill đã kiểm chứng trên IDE (mục 12b); phần hook thì chưa.
+2. Khách dùng Kiro IDE song song CLI không? Nếu có, phải viết hook theo định dạng IDE và chấp nhận bảo trì hai bộ. Steering, skill và hook đều đã kiểm chứng trên IDE (mục 12b); phần còn thiếu là một lần chạy hook thật đầu-cuối trong phiên IDE, hiện mới xác minh ở mức định dạng và giao kèo.
 3. Khách làm việc theo spec của Kiro hay theo `plans/` của MK? Ảnh hưởng nơi lưu kế hoạch và báo cáo.
 4. `includeMcpJson` trong agent JSON v2 có đủ để agent `mk` thấy ba MCP server không, hay phải khai `mcpServers` trực tiếp? Cần một lần thử.
