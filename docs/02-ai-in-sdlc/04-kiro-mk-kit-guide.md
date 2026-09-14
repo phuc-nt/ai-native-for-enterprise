@@ -348,6 +348,61 @@ hook; cái gì cần đọc hiểu ngữ cảnh mới để checklist.
 
 ---
 
+## 12c. Kit tài liệu J-model (JSDLC) bản 1.0: bàn giao và tình trạng kiểm chứng
+
+Ngoài MK kit, cùng phương pháp đã dùng để dựng một kit nhỏ hơn cho dự án
+waterfall kiểu Nhật (V-model: 基本設計 → 詳細設計 → 製造 → テスト), chạy trên
+Kiro IDE bằng steering, skill và hook. Bản 1.0 quản lý bằng git ở repo riêng
+`phuc-nt/jsdlc-kit`, kèm `GUIDE.md` cho người đọc và `README.md` cho tra cứu,
+gồm: 1 steering luôn nạp (8 luật, định tuyến skill, thủ tục tối thiểu, nơi
+lưu), 8 skill (5 skill theo loại tài liệu với ba chế độ tạo / review / sửa,
+cộng review chung, vòng lặp 指摘→修正→再レビュー, và traceability), 2 hook (chặn
+ghi giá trị dạng khoá bí mật; quét cây tài liệu lúc mở phiên), 3 file luật
+(checklist 48 mục, quy tắc ID và truy vết, mã domain), 6 template và một bộ
+tài liệu mẫu.
+
+**Tiêu chí của bản ổn định.** Kit không cần xong trong một prompt; người dùng
+chat tiếp là bình thường. Kit phải bảo đảm ba điều: luật không đổi giữa các
+lượt, thứ tự bước và nơi lưu ổn định để model và harness không lạc, và mọi
+điểm chưa quyết được ghi thành câu hỏi có số thay vì bị đoán. Cơ chế nào chưa
+thấy chạy thật trong transcript thì đưa ra ngoài `.kiro/`, vào
+`docs-jsdlc/experimental/`.
+
+**Vấn đề gặp qua ba lần chạy thuộc về ai.**
+
+| Hiện tượng | Nguồn | Kit làm gì |
+|---|---|---|
+| Skill không kích hoạt từ câu tự nhiên (một lần 3/6 prompt, lần sau 0/1) | Harness + model: IDE để model tự quyết gọi `disclose_context` | Không ép được. Steering có thêm *thủ tục tối thiểu* 5 bước để lượt không mở skill vẫn đúng hình dạng và đúng chỗ |
+| Model sửa `src/` theo bản thiết kế chưa review, tự ký duyệt | Model | Luật 2 và luật 8 trong steering; lần chạy sau giữ được |
+| Chép giá trị dạng khoá bí mật từ tài liệu mẫu vào báo cáo | Model | Hook `preToolUse` từ chối ghi; model tự thay bằng placeholder rồi ghi lại. Đã thấy chặn thật |
+| Tool `fs_append` lọt cả hai hook | Kit (matcher thiếu tên tool) + harness (phải biết hết tên tool ghi) | Thêm vào matcher. Rủi ro còn lại: tool mới của Kiro |
+| Checklist yêu cầu "không tự chấm, báo n/a (hook)" nhưng model vẫn tự chấm | Kit thiết kế quá khéo | Bỏ yêu cầu đó; hàng checklist thành check thường, hook là lưới an toàn |
+| Hai câu hỏi khác nhau cùng một số Q | Kit: luật chưa nói ai cấp số | Register là nơi duy nhất cấp số |
+| Sót một số defect cài sẵn cần suy luận | Model + hàng checklist chưa đủ decidable | Cải tiến dần, không chặn bản 1.0 |
+
+**Đã kiểm chứng / chưa kiểm chứng** (đọc từ transcript phiên, không từ khung chat):
+
+| Cơ chế | Tình trạng |
+|---|---|
+| Steering nạp mỗi lượt; 8 luật giữ được dưới prompt bẫy ("review, không sửa") | Đã kiểm chứng |
+| Skill thiết kế chi tiết: tạo / review / sửa | Đã kiểm chứng |
+| Skill thiết kế cơ bản (tạo), vòng lặp refine | Kích hoạt được mỗi thứ một lần; refine từng tự trả lời câu hỏi của chính nó, đã siết luật 8 |
+| Skill API spec, test case, traceability, implement | Đã viết, chưa chạy dưới dạng skill |
+| Hook chặn khoá bí mật + model tự phục hồi | Đã kiểm chứng live |
+| Hook quét lúc mở phiên | Có chạy; model chưa đưa kết quả vào báo cáo |
+| `fs_append` trong matcher | Mới thêm, chưa thấy chặn |
+| Agent JSON trên CLI | Chưa chạy trong đợt đánh giá này |
+| Hook canh ghi `src/` khi chưa mở skill implement | Không bàn giao: phụ thuộc vào kích hoạt skill (không bảo đảm) và vào format transcript nội bộ; để ở `experimental/` |
+
+**Cách đánh giá lại khi có quota.** Giữ một tài liệu seed có defect cài sẵn kèm
+bảng defect, chạy prompt, rồi đọc `messages.jsonl`: xếp các dòng
+`ContextualHookInvoked` và `tool_call` theo thứ tự file; cặp hook luôn đứng ngay
+trước tool call nó canh, nên tool call không có cặp hook phía trước là lọt
+lưới. Trạng thái `denied` sau cặp hook là chặn; `failed` với `success:false` là
+lỗi tool, không phải chặn.
+
+---
+
 ## 13. Rủi ro và giới hạn đã biết
 
 | Vấn đề | Mức / ảnh hưởng | Đối ứng |
@@ -355,6 +410,8 @@ hook; cái gì cần đọc hiểu ngữ cảnh mới để checklist.
 | Kit chỉ chạy trên engine v2 của Kiro CLI (mặc định hiện nay). Engine v3 (early release) từ chối agent v2, bỏ qua `.kiro/hooks/*.json` | Trung bình; kit không chạy trên v3 | Script dựng thêm chế độ v3 khi Kiro đổi mặc định. Hỏi khách đang chuẩn hoá phiên bản nào |
 | Kiro headless chết khi hook chặn 1 trong 2 tool gọi song song (lỗi Bedrock "Expected toolResult blocks") | Trung bình, chỉ CI và chạy nền | Steering dặn "một tool call một lần khi chạm đường dẫn lạ"; `MK_KIRO_SOFT_BLOCK=1` trong CI đổi chặn thành cảnh báo. Phiên tương tác tự phục hồi |
 | Kiro IDE dùng định dạng hook riêng, khác CLI; IDE cũng không đọc agent JSON | Hai cấu hình song song, phải bảo trì cả hai | Định dạng IDE đã kiểm chứng (mục 12b): `.kiro/hooks/*.json`, `preToolUse`, thoát mã 2 để chặn. Luật bắt buộc vẫn phải đặt trong steering vì agent JSON không được đọc |
+| Hook IDE khớp theo tên tool; tool ghi mới (đã gặp: `fs_append`) lọt lưới cho tới khi thêm vào matcher | Trung bình; chặn khoá bí mật có lỗ | Sau mỗi lần nâng Kiro, đọc tên `tool_call` trong transcript và bổ sung matcher (mục 12c) |
+| Skill kích hoạt từ câu tự nhiên không bảo đảm; lượt không mở skill là lượt dễ phá nhất | Trung bình | Luật bắt buộc và một thủ tục tối thiểu đặt trong steering; skill là chiều sâu, không phải chốt chặn (mục 12c) |
 | Bản Kiro chưa gồm 10 skill tích hợp và MCP của bộ toolkit | Trung bình; 1 đến 2 ngày trước pilot | Mục 11 |
 | `session-state` ghi vào `~/.claude/session-states/` dùng chung với Claude Code | Cùng repo mở bằng hai harness sẽ ghi đè nhau | Chấp nhận trong pilot; tách thư mục là việc của bản lite |
 | Hook thêm 50 đến 100 ms mỗi tool call, 0,1 đến 0,2 s mỗi prompt, khoảng 4 KB context mỗi lượt | Thấp | Chấp nhận; cửa sổ context của Kiro là 1M token |
@@ -368,6 +425,6 @@ hook; cái gì cần đọc hiểu ngữ cảnh mới để checklist.
 ## Câu hỏi mở
 
 1. Khách có cho phép cài hook chạy lệnh cục bộ (Node) trong repo của họ không? Toàn bộ chốt chặn dựa vào điều này.
-2. Khách dùng Kiro IDE song song CLI không? Nếu có, phải viết hook theo định dạng IDE và chấp nhận bảo trì hai bộ. Steering, skill và hook đều đã kiểm chứng trên IDE (mục 12b); phần còn thiếu là một lần chạy hook thật đầu-cuối trong phiên IDE, hiện mới xác minh ở mức định dạng và giao kèo.
+2. Khách dùng Kiro IDE song song CLI không? Nếu có, phải viết hook theo định dạng IDE và chấp nhận bảo trì hai bộ. Steering, skill và hook đều đã kiểm chứng trên IDE (mục 12b), kể cả một lần hook chặn thật đầu-cuối và model tự phục hồi (mục 12c).
 3. Khách làm việc theo spec của Kiro hay theo `plans/` của MK? Ảnh hưởng nơi lưu kế hoạch và báo cáo.
 4. `includeMcpJson` trong agent JSON v2 có đủ để agent `mk` thấy ba MCP server không, hay phải khai `mcpServers` trực tiếp? Cần một lần thử.
