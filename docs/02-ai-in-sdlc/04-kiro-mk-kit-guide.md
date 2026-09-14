@@ -271,13 +271,20 @@ Năm điều dưới đây lấy từ một phiên IDE thật (bản 1.0.437, en
 `claude-sonnet-4.5`, mode vibe) chạy một kit tài liệu SDLC, đối chiếu với
 `~/.kiro/logs/<timestamp>/kiro.log` và transcript phiên.
 
-**1. Steering nạp tự động, agent JSON thì không.** IDE không có cờ `--agent`,
-nên `.kiro/agents/*.json` và system prompt của nó không được đọc. Chỉ
-`.kiro/steering/*.md` với `inclusion: always` vào context. Hệ quả thiết kế: mọi
-luật bắt buộc phải nằm trong steering, không phải trong agent prompt. Kiểm
-chứng bằng một câu hỏi mở đầu phiên dạng "trả lời chỉ từ context đã nạp, đừng
-đọc file" — nếu model đọc lại đúng nội dung steering mà không gọi tool nào thì
-steering đã vào.
+**1. Steering nạp tự động; agent phải được chọn tay.** Trong các phiên đã ghi,
+chỉ `.kiro/steering/*.md` với `inclusion: always` vào context; agent JSON của
+kit không được đọc. Lý do (xác định lại 14/09 từ tài liệu IDE 1.0 và app
+bundle 1.0.437, **chưa chạy lại để kiểm chứng**): IDE từ bản 1.0.0 có custom
+agent, đọc `.kiro/agents/<tên>.md|json`, nhưng chỉ khi người dùng bấm tên agent
+("Default") ở thanh dưới ô chat và chọn nó; không có cờ `--agent`, không thấy
+setting đặt agent mặc định cho workspace. Các phiên đã ghi đều chạy agent
+Default, và file JSON của kit dùng `allowedTools` kiểu CLI trong khi IDE dùng
+`permissions.rules` (issue #8040). Hệ quả thiết kế không đổi: luật bắt buộc
+nằm trong steering, vì Default là thứ chạy khi không ai bấm gì; agent chỉ thêm
+chiều sâu (`resources` nạp sẵn rules/templates, `permissions` bớt hỏi duyệt).
+Kiểm chứng steering bằng một câu hỏi mở đầu phiên dạng "trả lời chỉ từ context
+đã nạp, đừng đọc file" — nếu model đọc lại đúng nội dung steering mà không gọi
+tool nào thì steering đã vào.
 
 **2. Skill kích hoạt được bằng ngôn ngữ tự nhiên, không cần slash.** Trên CLI,
 `/tên-skill` chỉ chạy ở chế độ tương tác. Trên IDE, một câu như "viết tài liệu
@@ -409,7 +416,7 @@ lỗi tool, không phải chặn.
 |---|---|---|
 | Kit chỉ chạy trên engine v2 của Kiro CLI (mặc định hiện nay). Engine v3 (early release) từ chối agent v2, bỏ qua `.kiro/hooks/*.json` | Trung bình; kit không chạy trên v3 | Script dựng thêm chế độ v3 khi Kiro đổi mặc định. Hỏi khách đang chuẩn hoá phiên bản nào |
 | Kiro headless chết khi hook chặn 1 trong 2 tool gọi song song (lỗi Bedrock "Expected toolResult blocks") | Trung bình, chỉ CI và chạy nền | Steering dặn "một tool call một lần khi chạm đường dẫn lạ"; `MK_KIRO_SOFT_BLOCK=1` trong CI đổi chặn thành cảnh báo. Phiên tương tác tự phục hồi |
-| Kiro IDE dùng định dạng hook riêng, khác CLI; IDE cũng không đọc agent JSON | Hai cấu hình song song, phải bảo trì cả hai | Định dạng IDE đã kiểm chứng (mục 12b): `.kiro/hooks/*.json`, `preToolUse`, thoát mã 2 để chặn. Luật bắt buộc vẫn phải đặt trong steering vì agent JSON không được đọc |
+| Kiro IDE dùng định dạng hook và agent riêng, khác CLI (`permissions.rules` thay `allowedTools`); agent IDE chỉ chạy khi người dùng chọn tay trong picker | Hai cấu hình song song, phải bảo trì cả hai; phiên quên chọn agent chạy Default | Định dạng hook IDE đã kiểm chứng (mục 12b): `.kiro/hooks/*.json`, `preToolUse`, thoát mã 2 để chặn. Agent IDE dạng `.kiro/agents/<tên>.md` viết theo tài liệu, chưa kiểm chứng live. Luật bắt buộc vẫn đặt trong steering vì Default là mặc định |
 | Hook IDE khớp theo tên tool; tool ghi mới (đã gặp: `fs_append`) lọt lưới cho tới khi thêm vào matcher | Trung bình; chặn khoá bí mật có lỗ | Sau mỗi lần nâng Kiro, đọc tên `tool_call` trong transcript và bổ sung matcher (mục 12c) |
 | Skill kích hoạt từ câu tự nhiên không bảo đảm; lượt không mở skill là lượt dễ phá nhất | Trung bình | Luật bắt buộc và một thủ tục tối thiểu đặt trong steering; skill là chiều sâu, không phải chốt chặn (mục 12c) |
 | Bản Kiro chưa gồm 10 skill tích hợp và MCP của bộ toolkit | Trung bình; 1 đến 2 ngày trước pilot | Mục 11 |
