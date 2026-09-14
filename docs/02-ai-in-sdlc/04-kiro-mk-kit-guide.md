@@ -361,12 +361,30 @@ Ngoài MK kit, cùng phương pháp đã dùng để dựng một kit nhỏ hơn
 waterfall kiểu Nhật (V-model: 基本設計 → 詳細設計 → 製造 → テスト), chạy trên
 Kiro IDE bằng steering, skill và hook. Bản 1.0 quản lý bằng git ở repo riêng
 `phuc-nt/jsdlc-kit`, kèm `GUIDE.md` cho người đọc và `README.md` cho tra cứu,
-gồm: 1 steering luôn nạp (8 luật, định tuyến skill, thủ tục tối thiểu, nơi
-lưu), 8 skill (5 skill theo loại tài liệu với ba chế độ tạo / review / sửa,
-cộng review chung, vòng lặp 指摘→修正→再レビュー, và traceability), 2 hook (chặn
-ghi giá trị dạng khoá bí mật; quét cây tài liệu lúc mở phiên), 3 file luật
-(checklist 48 mục, quy tắc ID và truy vết, mã domain), 6 template và một bộ
-tài liệu mẫu.
+chia hai lớp. **Lớp lõi** (giống nhau ở mọi dự án, ghi đè khi nâng cấp): 1
+steering luôn nạp (8 luật, định tuyến skill, thủ tục tối thiểu, nơi lưu), 8
+skill (5 skill theo loại tài liệu với ba chế độ tạo / review / sửa, cộng review
+chung, vòng lặp 指摘→修正→再レビュー, và traceability), 2 hook (chặn ghi giá
+trị dạng khoá bí mật; quét cây tài liệu lúc mở phiên), 2 file luật (checklist
+48 mục, quy tắc ID và truy vết), 6 template. **Lớp dự án** (viết một lần mỗi dự
+án, nâng cấp kit không đụng tới): một steering hồ sơ dự án cũng luôn nạp, gồm 9
+bảng ngắn (ngôn ngữ, thư mục nguồn và test, lệnh build và test kèm baseline,
+quy ước tag truy vết mã→thiết kế, thư mục đầu ra, mã domain, ranh giới dữ liệu,
+người review và *bằng chứng phê duyệt*, đầu vào chuẩn), và file mã domain. Lõi
+không nêu ngôn ngữ, đường dẫn nguồn, lệnh build hay mã domain nào; ô nào trong
+hồ sơ còn để trống thì model phải nêu ở dòng đầu và ghi thành câu hỏi, tài liệu
+vẫn làm tiếp được nhưng build, chạy test và sửa mã thì không. Bộ tài liệu mẫu
+(dịch vụ đặt thiết bị) nằm ở `examples/`, không phải đầu ra mặc định.
+
+Lần tách này đến từ một review ngoài trên bản trước: lõi khi đó ghi cứng
+`src/`, `./mvnw test`, tag `@design` và mã domain của dự án mẫu, và có một
+mâu thuẫn giữa luật 2 (chỉ sửa mã sau khi thiết kế được review và người xác
+nhận mã là bên sai) với skill implement chế độ sửa ("thiết kế thắng, sửa
+mã"). Chính sách duy nhất hiện nay: mã và thiết kế lệch nhau → ghi finding +
+`Q-NNN` nêu cả hai cách đọc → người ghi vào dòng Q bên nào là chuẩn → mới sửa
+bên đó; mã chỉ được sửa theo thiết kế khi bằng chứng phê duyệt mà hồ sơ dự án
+định nghĩa (báo cáo review 0 NG, dòng phê duyệt trong 改訂履歴, tuỳ dự án) có
+trên đĩa. Câu "đã pass" của chính model không phải bằng chứng.
 
 **Tiêu chí của bản ổn định.** Kit không cần xong trong một prompt; người dùng
 chat tiếp là bình thường. Kit phải bảo đảm ba điều: luật không đổi giữa các
@@ -380,7 +398,7 @@ thấy chạy thật trong transcript thì đưa ra ngoài `.kiro/`, vào
 | Hiện tượng | Nguồn | Kit làm gì |
 |---|---|---|
 | Skill không kích hoạt từ câu tự nhiên (một lần 3/6 prompt, lần sau 0/1) | Harness + model: IDE để model tự quyết gọi `disclose_context` | Không ép được. Steering có thêm *thủ tục tối thiểu* 5 bước để lượt không mở skill vẫn đúng hình dạng và đúng chỗ |
-| Model sửa `src/` theo bản thiết kế chưa review, tự ký duyệt | Model | Luật 2 và luật 8 trong steering; lần chạy sau giữ được |
+| Model sửa mã nguồn theo bản thiết kế chưa review, tự ký duyệt | Model | Luật 2 và luật 8 trong steering; lần chạy sau giữ được. Sau review ngoài: luật 2 và skill implement thống nhất một chính sách, "phê duyệt" định nghĩa bằng bằng chứng trên đĩa trong hồ sơ dự án |
 | Chép giá trị dạng khoá bí mật từ tài liệu mẫu vào báo cáo | Model | Hook `preToolUse` từ chối ghi; model tự thay bằng placeholder rồi ghi lại. Đã thấy chặn thật |
 | Tool `fs_append` lọt cả hai hook | Kit (matcher thiếu tên tool) + harness (phải biết hết tên tool ghi) | Thêm vào matcher. Rủi ro còn lại: tool mới của Kiro |
 | Checklist yêu cầu "không tự chấm, báo n/a (hook)" nhưng model vẫn tự chấm | Kit thiết kế quá khéo | Bỏ yêu cầu đó; hàng checklist thành check thường, hook là lưới an toàn |
