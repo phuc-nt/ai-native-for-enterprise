@@ -2,6 +2,8 @@
 
 Cập nhật 2026-09-09. Đọc trước [Work Sequence](04-work-sequence.md). Đây là chặng 5: đưa material tới team dự án và biết được nó có ăn hay không.
 
+> Từ 2026-09-29, việc rollout làm theo [07 Kit Rollout and Training Plan](07-kit-rollout-and-training-plan.md) (một buổi sharing online 60 phút cho mọi thành viên, phủ mọi module đã xong, module bổ sung phát hành kèm kit version mới, có thêm team Training) và đo theo [08 Effectiveness Data Collection](08-effectiveness-data-collection.md); material làm theo [09 Training Material Design](09-training-material-design.md). Các mục dưới đây giữ làm bối cảnh; chỗ nào khác nhau thì theo 07, 08 và 09.
+
 ## 1. Gói bàn giao cho một team
 
 Một cây trang Confluence, trang gốc gắn link tới mọi thứ còn lại kể cả thứ nằm trong repo. Team nhận cây này chứ không nhận file rời. Phần dùng chung để ở trang chung của DevOps rồi nhúng vào, để sửa một chỗ là cả hai team thấy.

@@ -26,7 +26,7 @@ Engineering](../00-foundations/ai-experience-portfolio.md).
 
 | Bạn là | Đọc | Thời gian |
 |---|---|---|
-| Lãnh đạo, quản lý đơn vị, người duyệt ngân sách | [`leadership/`](leadership/) — 2 tài liệu | 20 phút |
+| Lãnh đạo, quản lý đơn vị, người duyệt ngân sách | [`leadership/`](leadership/) — 3 tài liệu | 35 phút |
 | Kỹ sư dữ liệu, kỹ sư tích hợp, người vận hành agent | [`engineering/`](engineering/) — 9 tài liệu + playbook từng nguồn | 3 giờ |
 | Cả hai (PM kỹ thuật, tech lead) | `leadership/` trước, rồi `engineering/` 01, 09, 03, 04 | 1 giờ |
 | Người làm một nguồn cụ thể (Jira, Slack, spec Nhật…) | `engineering/` 01, 09, rồi file nguồn đó trong [`engineering/sources/`](engineering/sources/) | 30 phút |
@@ -41,6 +41,7 @@ cần chi tiết, nhánh lãnh đạo link sang nhánh kỹ thuật thay vì k�
 |---|---|---|
 | 01 | [Proposal: Enterprise AI Adoption on Three Pillars](leadership/01-three-pillars-proposal.md) | Vấn đề là gì, làm gì, không làm gì, vì sao tin được, cần quyết định gì |
 | 02 | [Roadmap, Resources, Governance and Risks](leadership/02-roadmap-resources-risks.md) | Sáu giai đoạn pilot, vai trò, ai sở hữu gì, rủi ro và KPI |
+| 03 | [Proposal: Standardize and Connect Instead of Building an AI Platform](leadership/03-standardize-and-connect-instead-of-building-a-platform.md) | Ở cấp cả tổ chức: vì sao chuẩn hoá dữ liệu và quy trình, nối tới mọi harness, thay vì tự xây platform có harness riêng |
 
 ### Nhánh kỹ thuật
 

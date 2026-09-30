@@ -268,7 +268,7 @@ Trước mỗi lần dựng, kiểm tra hai điều: `kiro-cli --version` vẫn 
 
 Mục 6 đến 12 nói về Kiro CLI. IDE khác ở những chỗ quyết định cách đóng gói kit.
 Năm điều dưới đây lấy từ một phiên IDE thật (bản 1.0.437, engine v2, model
-`claude-sonnet-4.5`, mode vibe) chạy một kit tài liệu SDLC, đối chiếu với
+`claude-sonnet-4.5`, mode vibe) chạy một agent kit cho tài liệu SDLC, đối chiếu với
 `~/.kiro/logs/<timestamp>/kiro.log` và transcript phiên.
 
 **1. Steering nạp tự động; agent phải được chọn tay.** Trong các phiên đã ghi,
@@ -355,12 +355,12 @@ hook; cái gì cần đọc hiểu ngữ cảnh mới để checklist.
 
 ---
 
-## 12c. Kit tài liệu J-model (JSDLC) bản 1.0: bàn giao và tình trạng kiểm chứng
+## 12c. Agent kit cho tài liệu J-model bản 1.0: bàn giao và tình trạng kiểm chứng
 
-Ngoài MK kit, cùng phương pháp đã dùng để dựng một kit nhỏ hơn cho dự án
+Ngoài MK kit, cùng phương pháp đã dùng để dựng một agent kit nhỏ hơn cho dự án
 waterfall kiểu Nhật (V-model: 基本設計 → 詳細設計 → 製造 → テスト), chạy trên
-Kiro IDE bằng steering, skill và hook. Bản 1.0 quản lý bằng git ở repo riêng
-`phuc-nt/jsdlc-kit`, kèm `GUIDE.md` cho người đọc và `README.md` cho tra cứu,
+Kiro IDE bằng steering, skill và hook. Bản 1.0 quản lý bằng git ở repo riêng,
+kèm `GUIDE.md` cho người đọc và `README.md` cho tra cứu,
 chia hai lớp. **Lớp lõi** (giống nhau ở mọi dự án, ghi đè khi nâng cấp): 1
 steering luôn nạp (8 luật, định tuyến skill, thủ tục tối thiểu, nơi lưu), 8
 skill (5 skill theo loại tài liệu với ba chế độ tạo / review / sửa, cộng review
@@ -390,8 +390,8 @@ trên đĩa. Câu "đã pass" của chính model không phải bằng chứng.
 chat tiếp là bình thường. Kit phải bảo đảm ba điều: luật không đổi giữa các
 lượt, thứ tự bước và nơi lưu ổn định để model và harness không lạc, và mọi
 điểm chưa quyết được ghi thành câu hỏi có số thay vì bị đoán. Cơ chế nào chưa
-thấy chạy thật trong transcript thì đưa ra ngoài `.kiro/`, vào
-`docs-jsdlc/experimental/`.
+thấy chạy thật trong transcript thì đưa ra ngoài `.kiro/`, vào thư mục
+`experimental/` của kit.
 
 **Vấn đề gặp qua ba lần chạy thuộc về ai.**
 

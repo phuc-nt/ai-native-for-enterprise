@@ -51,7 +51,8 @@ dữ liệu → giao diện → harness.
   bằng một commit, không bằng huấn luyện lại.
 - **Không dựng "AI platform" nội bộ.** Không viết orchestrator, không dựng
   vector DB riêng làm kho tri thức khi chưa có bằng chứng cần (bộ nhớ có sẵn
-  của harness chỉ dùng để nạp chỉ dẫn, không thay kho dữ liệu).
+  của harness chỉ dùng để nạp chỉ dẫn, không thay kho dữ liệu). Lập luận
+  đầy đủ ở cấp cả tổ chức: [tài liệu 03](03-standardize-and-connect-instead-of-building-a-platform.md).
 - **Không cho agent 24/7 truy cập thẳng hệ thống nguồn.** Agent chạy nền đọc
   kho đã chuẩn hóa qua giao diện hẹp. Riêng phiên tương tác của kỹ sư (Claude
   Code + MCP) thì agent thừa hưởng đúng quyền của người đó, không hơn.

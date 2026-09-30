@@ -71,7 +71,7 @@ Chạy được rồi mới viết material, để tài liệu tả đúng thứ
 
 ## Chặng 5 — Rollout và theo dõi
 
-Chi tiết ở [05](05-rollout-plan.md). Tóm tắt thứ tự: team dự án dành nửa ngày cho cả team → kiểm máy từng người → kiểm bốn điều kiện và người phụ trách ký → chọn task thật để áp dụng → hỗ trợ tại chỗ và xem lại output hằng tuần → báo cáo tại mốc → đánh giá và chuẩn hoá use case.
+Chi tiết ở [05](05-rollout-plan.md); plan hiện hành ở [07](07-kit-rollout-and-training-plan.md): một buổi sharing online 60 phút cho mọi thành viên, phủ mọi module đã xong, module bổ sung phát hành kèm kit version mới, có team Training. Tóm tắt thứ tự: team dự án dành nửa ngày cho cả team → kiểm máy từng người → kiểm bốn điều kiện và người phụ trách ký → chọn task thật để áp dụng → hỗ trợ tại chỗ và xem lại output hằng tuần → báo cáo tại mốc → đánh giá và chuẩn hoá use case.
 
 ## Ai chờ ai
 
