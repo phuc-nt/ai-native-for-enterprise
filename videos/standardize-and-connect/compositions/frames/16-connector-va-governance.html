@@ -1,0 +1,472 @@
+<template>
+  <style>
+    @font-face { font-family: "Space Grotesk"; src: url("assets/fonts/SpaceGrotesk-VN.woff2") format("woff2"); font-weight: 300 700; font-style: normal; font-display: block; }
+    @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-VN.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: block; }
+    @font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/JetBrainsMono-VN.woff2") format("woff2"); font-weight: 100 800; font-style: normal; font-display: block; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      font-family: "Inter", sans-serif;
+      color: #111111;
+    }
+    .f16-bg {
+      position: absolute;
+      inset: 0;
+      background: #fdfae7;
+    }
+    .f16-stage {
+      position: absolute;
+      inset: 0;
+    }
+    .f16-layer {
+      position: absolute;
+      inset: 0;
+    }
+    .f16-svg {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: visible;
+    }
+    .f16-draw {
+      fill: none;
+      stroke: #6b6b6b;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+    }
+
+    /* ---------- slide header ---------- */
+    .f16-eyebrow {
+      position: absolute;
+      left: 96px;
+      top: 56px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 1.3;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #1e2bfa;
+      white-space: nowrap;
+    }
+    .f16-counter {
+      position: absolute;
+      right: 96px;
+      top: 50px;
+      padding: 6px 18px;
+      border-radius: 100px;
+      background: rgba(30, 43, 250, 0.08);
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 1.3;
+      letter-spacing: 0.05em;
+      color: #1e2bfa;
+      white-space: nowrap;
+    }
+
+    /* ---------- 5-step bar ---------- */
+    .f16-steps {
+      position: absolute;
+      left: 96px;
+      top: 108px;
+      width: 1728px;
+      height: 62px;
+      display: flex;
+      gap: 12px;
+    }
+    .f16-step {
+      flex: 1 1 0;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 0 22px;
+      border-radius: 12px;
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+      background-color: rgba(30, 43, 250, 0.04);
+    }
+    .f16-step-num {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 26px;
+      line-height: 1.2;
+      color: #1e2bfa;
+    }
+    .f16-step-label {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: #6b6b6b;
+      white-space: nowrap;
+    }
+
+    /* ---------- rows ---------- */
+    .f16-rownum {
+      position: absolute;
+      left: 96px;
+      width: 64px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 72px;
+      line-height: 1.1;
+      color: #1e2bfa;
+      text-align: left;
+    }
+    .f16-divider {
+      position: absolute;
+      left: 96px;
+      top: 452px;
+      width: 1728px;
+      height: 1.5px;
+      background: rgba(30, 43, 250, 0.2);
+      transform-origin: left center;
+    }
+    .f16-box {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 24px;
+      border-radius: 14px;
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+      background: rgba(30, 43, 250, 0.04);
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 28px;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: #111111;
+    }
+    .f16-box-sm {
+      font-size: 24px;
+      font-weight: 500;
+      border-radius: 10px;
+      padding: 0 16px;
+      white-space: nowrap;
+    }
+    .f16-box-focal {
+      font-size: 38px;
+      font-weight: 700;
+      background: rgba(30, 43, 250, 0.08);
+    }
+    .f16-chip {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 20px 8px 16px;
+      border-radius: 100px;
+      background: rgba(30, 43, 250, 0.08);
+      font-family: "Inter", sans-serif;
+      font-weight: 500;
+      font-size: 23px;
+      line-height: 1.3;
+      color: #111111;
+      white-space: nowrap;
+    }
+    .f16-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #1e2bfa;
+      flex: 0 0 8px;
+    }
+    .f16-mono {
+      font-family: "JetBrains Mono", monospace;
+      font-weight: 500;
+      font-size: 22px;
+    }
+
+    /* lock tag */
+    .f16-locktag {
+      position: absolute;
+      left: 1372px;
+      top: 280px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 22px;
+      border-radius: 12px;
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+      background: rgba(30, 43, 250, 0.04);
+      font-family: "Inter", sans-serif;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 1.3;
+      color: #111111;
+      white-space: nowrap;
+    }
+    .f16-lock {
+      position: relative;
+      width: 26px;
+      height: 34px;
+      flex: 0 0 26px;
+    }
+    .f16-lock-shackle {
+      position: absolute;
+      left: 4px;
+      top: 0;
+      width: 18px;
+      height: 18px;
+      border: 3.5px solid #111111;
+      border-bottom: none;
+      border-radius: 10px 10px 0 0;
+    }
+    .f16-lock-body {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 26px;
+      height: 19px;
+      border-radius: 4px;
+      background: #111111;
+    }
+    .f16-lock-hole {
+      position: absolute;
+      left: 11px;
+      top: 6px;
+      width: 4px;
+      height: 7px;
+      border-radius: 2px;
+      background: #fdfae7;
+    }
+
+    /* human gate */
+    .f16-gate {
+      position: absolute;
+      left: 1400px;
+      top: 500px;
+      width: 424px;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      border-radius: 14px;
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+      background: rgba(30, 43, 250, 0.04);
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 30px;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: #111111;
+      white-space: nowrap;
+    }
+    .f16-gate-icon {
+      width: 64px;
+      height: 48px;
+      flex: 0 0 64px;
+    }
+
+    .f16-progress {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 1280px;
+      height: 3px;
+      background: #1e2bfa;
+    }
+  </style>
+
+  <div id="root" data-composition-id="16-connector-va-governance" data-width="1920" data-height="1080" data-duration="17.2">
+    <!-- full-bleed ground -->
+    <div class="clip f16-bg" data-start="0" data-duration="17.2" data-track-index="0"></div>
+
+    <!-- content -->
+    <div class="clip f16-stage" data-start="0" data-duration="17.2" data-track-index="1">
+      <!-- slide header -->
+      <div class="f16-eyebrow">Đề xuất</div>
+      <div class="f16-counter">16 / 24</div>
+
+      <!-- 5-step bar -->
+      <div class="f16-steps">
+        <div class="f16-step" id="f16-step1"><span class="f16-step-num">1</span><span class="f16-step-label">Data</span></div>
+        <div class="f16-step" id="f16-step2"><span class="f16-step-num">2</span><span class="f16-step-label">Kit</span></div>
+        <div class="f16-step" id="f16-step3"><span class="f16-step-num" id="f16-step3-num">3</span><span class="f16-step-label" id="f16-step3-label">Connector</span></div>
+        <div class="f16-step" id="f16-step4"><span class="f16-step-num" id="f16-step4-num">4</span><span class="f16-step-label" id="f16-step4-label">Governance</span></div>
+        <div class="f16-step" id="f16-step5"><span class="f16-step-num">5</span><span class="f16-step-label">Harness</span></div>
+      </div>
+
+      <!-- ===== ROW 3 : connector ===== -->
+      <div class="f16-layer" id="f16-row3">
+        <svg class="f16-svg" viewBox="0 0 1920 1080" aria-hidden="true">
+          <!-- internal system -> connector -->
+          <path id="f16-arrow-a" class="f16-draw" pathLength="1" d="M472 310 L532 310" />
+          <polygon id="f16-head-a" points="538,310 526,302 526,318" fill="#6b6b6b" />
+          <!-- connector -> three harnesses -->
+          <path class="f16-draw f16-fan" pathLength="1" d="M922 310 C1000 310 1000 240 1076 240" />
+          <path class="f16-draw f16-fan" pathLength="1" d="M922 310 L1076 310" />
+          <path class="f16-draw f16-fan" pathLength="1" d="M922 310 C1000 310 1000 380 1076 380" />
+          <!-- bracket: harnesses -> caller's permission -->
+          <path id="f16-bracket" class="f16-draw" pathLength="1" d="M1334 216 L1344 216 L1344 404 L1334 404 M1344 310 L1366 310" />
+        </svg>
+
+        <div class="f16-rownum" id="f16-num3" style="top: 270px;">3</div>
+
+        <div class="f16-box" id="f16-internal" style="left: 180px; top: 250px; width: 290px; height: 120px;">Hệ thống nội bộ</div>
+        <div class="f16-box" id="f16-connector" style="left: 540px; top: 250px; width: 380px; height: 120px;">Connector trung lập</div>
+
+        <div class="f16-chip" id="f16-chip-cli" style="left: 540px; top: 386px;"><span class="f16-dot"></span><span class="f16-mono">CLI</span></div>
+        <div class="f16-chip" id="f16-chip-mcp" style="left: 680px; top: 386px;"><span class="f16-dot"></span><span class="f16-mono">MCP server</span></div>
+
+        <div class="f16-box f16-box-sm f16-harness" style="left: 1080px; top: 212px; width: 240px; height: 56px;">Claude Code</div>
+        <div class="f16-box f16-box-sm f16-harness" style="left: 1080px; top: 282px; width: 240px; height: 56px;">Codex</div>
+        <div class="f16-box f16-box-sm f16-harness" style="left: 1080px; top: 352px; width: 240px; height: 56px;">Cursor</div>
+
+        <div class="f16-locktag" id="f16-locktag">
+          <div class="f16-lock">
+            <div class="f16-lock-shackle" id="f16-shackle"></div>
+            <div class="f16-lock-body"><div class="f16-lock-hole"></div></div>
+          </div>
+          <span>dùng quyền của người gọi</span>
+        </div>
+      </div>
+
+      <div class="f16-divider" id="f16-divider"></div>
+
+      <!-- ===== ROW 4 : thin governance ===== -->
+      <div class="f16-layer" id="f16-row4">
+        <svg class="f16-svg" viewBox="0 0 1920 1080" aria-hidden="true">
+          <path id="f16-arrow-b" class="f16-draw" pathLength="1" d="M422 560 L490 560" />
+          <polygon id="f16-head-b" points="496,560 484,552 484,568" fill="#6b6b6b" />
+          <path id="f16-arrow-c" class="f16-draw" pathLength="1" d="M902 560 L970 560" />
+          <polygon id="f16-head-c" points="976,560 964,552 964,568" fill="#6b6b6b" />
+          <!-- separator: request path | process gate -->
+          <line id="f16-sep" x1="1360" y1="492" x2="1360" y2="812" stroke="rgba(30,43,250,0.2)" stroke-width="2" stroke-dasharray="6 10" />
+        </svg>
+
+        <div class="f16-rownum" id="f16-num4" style="top: 520px;">4</div>
+
+        <div class="f16-box" id="f16-harness" style="left: 180px; top: 500px; width: 240px; height: 120px;">Harness</div>
+        <div class="f16-box f16-box-focal" id="f16-gateway" style="left: 500px; top: 486px; width: 400px; height: 148px;">LLM gateway</div>
+        <div class="f16-box" id="f16-model" style="left: 980px; top: 500px; width: 320px; height: 120px;">Model của vendor</div>
+
+        <div class="f16-chip" id="f16-chip-cost" style="left: 500px; top: 652px;"><span class="f16-dot"></span><span>cost theo user, dự án</span></div>
+        <div class="f16-chip" id="f16-chip-log" style="left: 500px; top: 708px;"><span class="f16-dot"></span><span>log request</span></div>
+        <div class="f16-chip" id="f16-chip-policy" style="left: 500px; top: 764px;"><span class="f16-dot"></span><span>policy phát hành cùng kit</span></div>
+
+        <div class="f16-gate" id="f16-gate">
+          <svg class="f16-gate-icon" viewBox="0 0 64 48" aria-hidden="true">
+            <rect x="2" y="4" width="7" height="44" rx="2" fill="#111111" />
+            <rect x="55" y="4" width="7" height="44" rx="2" fill="#111111" />
+            <rect id="f16-gate-bar1" x="9" y="13" width="46" height="7" rx="2" fill="#111111" />
+            <rect id="f16-gate-bar2" x="9" y="29" width="46" height="7" rx="2" fill="#111111" />
+          </svg>
+          <span>Human gate</span>
+        </div>
+
+        <div class="f16-chip" id="f16-chip-pr" style="left: 1400px; top: 652px;"><span class="f16-dot"></span><span>PR review</span></div>
+        <div class="f16-chip" id="f16-chip-ci" style="left: 1400px; top: 708px;"><span class="f16-dot"></span><span>approval trong CI</span></div>
+      </div>
+
+      <!-- progress 16 / 24 -->
+      <div class="f16-progress"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const ease = "power3.out";
+      const COBALT = "#1e2bfa";
+      const CREAM = "#fdfae7";
+      const TINT = "rgba(30, 43, 250, 0.04)";
+      const MUTED = "#6b6b6b";
+
+      // item enters its slot: short slide + fade (grid-card-assemble)
+      function enter(target, at, opts) {
+        const o = opts || {};
+        tl.fromTo(
+          target,
+          { opacity: 0, y: o.y !== undefined ? o.y : 20, x: o.x || 0, scale: o.scale || 1 },
+          { opacity: 1, y: 0, x: 0, scale: 1, duration: o.d || 0.6, ease: ease, stagger: o.stagger || 0 },
+          at
+        );
+      }
+      function draw(target, at, d, stagger) {
+        tl.fromTo(
+          target,
+          { strokeDashoffset: 1 },
+          { strokeDashoffset: 0, duration: d || 0.5, ease: "power2.inOut", stagger: stagger || 0 },
+          at
+        );
+      }
+      function pop(target, at) {
+        tl.fromTo(target, { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power1.out" }, at);
+      }
+
+      // ---------- Scene 1 (0.0–6.5s): "Ba" — connector ----------
+      // step 3 turns cobalt on "Ba"
+      tl.fromTo("#f16-step3", { backgroundColor: TINT, borderColor: "rgba(30, 43, 250, 0.2)" }, { backgroundColor: COBALT, borderColor: COBALT, duration: 0.45, ease: ease }, 0);
+      tl.fromTo("#f16-step3-num", { color: COBALT }, { color: CREAM, duration: 0.45, ease: ease }, 0);
+      tl.fromTo("#f16-step3-label", { color: MUTED }, { color: CREAM, duration: 0.45, ease: ease }, 0);
+
+      enter("#f16-num3", 0.0, { y: 16, d: 0.5 });
+      enter("#f16-internal", 0.05, { x: -24, y: 0 });
+      // "connector" (0.3)
+      enter("#f16-connector", 0.3, { y: 24 });
+      draw("#f16-arrow-a", 0.5, 0.45);
+      pop("#f16-head-a", 0.9);
+      // "trung lập với harness": three wires fan out to three harnesses
+      draw(".f16-fan", 1.3, 0.5, 0.08);
+      enter(".f16-harness", 1.5, { x: 20, y: 0, d: 0.5, stagger: 0.1 });
+      // "CLI" (3.0) / "MCP server" (3.6)
+      enter("#f16-chip-cli", 3.0, { y: 16, d: 0.5 });
+      enter("#f16-chip-mcp", 3.6, { y: 16, d: 0.5 });
+      // "quyền" (4.5): bracket + lock tag, shackle snaps shut
+      draw("#f16-bracket", 4.35, 0.45);
+      enter("#f16-locktag", 4.5, { x: 20, y: 0 });
+      tl.fromTo("#f16-shackle", { y: -7 }, { y: 0, duration: 0.35, ease: "power2.in" }, 4.95);
+
+      // ---------- Scene 2 (6.5–11.5s): "Bốn" — thin governance ----------
+      tl.fromTo("#f16-row3", { opacity: 1 }, { opacity: 0.6, duration: 0.6, ease: "power2.out", immediateRender: false }, 6.5);
+      tl.fromTo("#f16-step3", { backgroundColor: COBALT, borderColor: COBALT }, { backgroundColor: TINT, borderColor: "rgba(30, 43, 250, 0.2)", duration: 0.45, ease: ease, immediateRender: false }, 6.5);
+      tl.fromTo("#f16-step3-num", { color: CREAM }, { color: COBALT, duration: 0.45, ease: ease, immediateRender: false }, 6.5);
+      tl.fromTo("#f16-step3-label", { color: CREAM }, { color: MUTED, duration: 0.45, ease: ease, immediateRender: false }, 6.5);
+      tl.fromTo("#f16-step4", { backgroundColor: TINT, borderColor: "rgba(30, 43, 250, 0.2)" }, { backgroundColor: COBALT, borderColor: COBALT, duration: 0.45, ease: ease }, 6.5);
+      tl.fromTo("#f16-step4-num", { color: COBALT }, { color: CREAM, duration: 0.45, ease: ease }, 6.5);
+      tl.fromTo("#f16-step4-label", { color: MUTED }, { color: CREAM, duration: 0.45, ease: ease }, 6.5);
+
+      tl.fromTo("#f16-divider", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power2.inOut" }, 6.5);
+      enter("#f16-num4", 6.6, { y: 16, d: 0.5 });
+      enter("#f16-harness", 7.3, { x: -24, y: 0 });
+      draw("#f16-arrow-b", 8.6, 0.45);
+      pop("#f16-head-b", 9.0);
+      // "LLM gateway" (9.1) — focal
+      enter("#f16-gateway", 9.1, { y: 24, scale: 0.96, d: 0.7 });
+      draw("#f16-arrow-c", 9.5, 0.4);
+      pop("#f16-head-c", 9.85);
+      enter("#f16-model", 9.75, { x: 20, y: 0 });
+      // "cost" (10.3) / "log" (11.0)
+      enter("#f16-chip-cost", 10.3, { y: 16, d: 0.5 });
+      enter("#f16-chip-log", 11.0, { y: 16, d: 0.5 });
+
+      // ---------- Scene 3 (11.5–16.7s): policy + human gate ----------
+      enter("#f16-chip-policy", 11.5, { y: 16, d: 0.5 });
+      // "human gate" (13.7)
+      tl.fromTo("#f16-sep", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, 13.5);
+      enter("#f16-gate", 13.7, { x: 24, y: 0 });
+      tl.fromTo(["#f16-gate-bar1", "#f16-gate-bar2"], { scaleX: 0 }, { scaleX: 1, transformOrigin: "0% 50%", duration: 0.45, ease: ease, stagger: 0.08 }, 13.95);
+      // "PR review" (15.0) / "CI" (16.2) — last reveal lands by 16.65, then still
+      enter("#f16-chip-pr", 15.0, { y: 16, d: 0.5 });
+      enter("#f16-chip-ci", 16.2, { y: 16, d: 0.45 });
+
+      tl.set({}, {}, 16.7);
+      window.__timelines["16-connector-va-governance"] = tl;
+    })();
+  </script>
+</template>

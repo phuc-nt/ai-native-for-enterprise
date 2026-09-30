@@ -1,0 +1,315 @@
+<template>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: "Space Grotesk"; src: url("assets/fonts/SpaceGrotesk-VN.woff2") format("woff2"); font-weight: 300 700; font-style: normal; font-display: block; }
+    @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-VN.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: block; }
+    @font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/JetBrainsMono-VN.woff2") format("woff2"); font-weight: 100 800; font-style: normal; font-display: block; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      font-family: "Inter", sans-serif;
+      color: #111111;
+    }
+
+    .f03-bg {
+      position: absolute;
+      inset: 0;
+      background: #fdfae7;
+    }
+
+    .f03-stage {
+      position: absolute;
+      inset: 0;
+      transform-origin: 960px 460px;
+    }
+
+    /* slide-header */
+    .f03-eyebrow {
+      position: absolute;
+      left: 96px;
+      top: 80px;
+      margin: 0;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 1.3;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #1e2bfa;
+    }
+    .f03-pill {
+      position: absolute;
+      right: 96px;
+      top: 74px;
+      padding: 8px 22px;
+      border-radius: 100px;
+      background: rgba(30, 43, 250, 0.08);
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 1.3;
+      letter-spacing: 0.05em;
+      color: #1e2bfa;
+    }
+    .f03-h2 {
+      position: absolute;
+      left: 96px;
+      top: 122px;
+      margin: 0;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 64px;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      color: #111111;
+      white-space: nowrap;
+    }
+
+    /* goal eyebrow (Scene 3) */
+    .f03-goal {
+      position: absolute;
+      left: 800px;
+      top: 258px;
+      margin: 0;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 1.3;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #1e2bfa;
+      white-space: nowrap;
+    }
+
+    /* staircase */
+    .f03-baseline {
+      position: absolute;
+      left: 96px;
+      top: 759px;
+      width: 1728px;
+      height: 2px;
+      border-radius: 1px;
+      background: rgba(30, 43, 250, 0.25);
+      transform-origin: 0 50%;
+    }
+    .f03-col {
+      position: absolute;
+      top: 0;
+      width: 320px;
+      height: 760px;
+    }
+    .f03-step {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 320px;
+      box-sizing: border-box;
+      background: rgba(30, 43, 250, 0.08);
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+      border-radius: 12px 12px 4px 4px;
+      transform-origin: 50% 100%;
+    }
+    .f03-ring {
+      position: absolute;
+      inset: -1.5px;
+      box-sizing: border-box;
+      border: 4px solid #1e2bfa;
+      border-radius: 12px 12px 4px 4px;
+    }
+    .f03-fill {
+      position: absolute;
+      inset: -1.5px;
+      background: #1e2bfa;
+      border-radius: 12px 12px 4px 4px;
+      transform-origin: 50% 100%;
+    }
+    .f03-lvl {
+      position: absolute;
+      left: 0;
+      top: 776px;
+      width: 320px;
+      margin: 0;
+      text-align: center;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 36px;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: #111111;
+    }
+    .f03-desc {
+      position: absolute;
+      left: 0;
+      width: 320px;
+      margin: 0;
+      text-align: center;
+      font-family: "Inter", sans-serif;
+      font-weight: 500;
+      font-size: 26px;
+      line-height: 1.4;
+      color: #6b6b6b;
+      white-space: nowrap;
+    }
+    .f03-desc-low { top: 824px; }
+    .f03-desc-top { top: 290px; }
+
+    /* goal flags */
+    .f03-flag {
+      position: absolute;
+      left: 22px;
+      width: 3px;
+      height: 120px;
+    }
+    .f03-pole {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 3px;
+      height: 120px;
+      border-radius: 2px;
+      background: #111111;
+      transform-origin: 50% 100%;
+    }
+    .f03-flagcard {
+      position: absolute;
+      left: 3px;
+      top: 0;
+      padding: 10px 20px;
+      border-radius: 0 10px 10px 0;
+      background: rgba(30, 43, 250, 0.04);
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+      border-left: none;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 26px;
+      line-height: 1.25;
+      color: #111111;
+      white-space: nowrap;
+    }
+
+    /* progress bar: 3 / 16 */
+    .f03-progress {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 360px;
+      height: 3px;
+      background: #1e2bfa;
+      transform-origin: 0 50%;
+    }
+  </style>
+
+  <div id="root" data-composition-id="03-thang-automation" data-width="1920" data-height="1080" data-duration="12.74">
+    <div class="clip f03-bg" data-start="0" data-duration="12.74" data-track-index="0"></div>
+
+    <div class="f03-stage" id="f03-stage">
+      <p class="f03-eyebrow" id="f03-eyebrow">BỐI CẢNH</p>
+      <div class="f03-pill" id="f03-pill">03 / 16</div>
+      <h2 class="f03-h2" id="f03-h2">Automation level: năm mức</h2>
+
+      <p class="f03-goal" id="f03-goal">MỤC TIÊU KỲ SAU</p>
+
+      <div class="f03-baseline" id="f03-baseline"></div>
+
+      <!-- L1 -->
+      <div class="f03-col" style="left: 120px;">
+        <div class="f03-step" id="f03-step1" style="height: 84px;"></div>
+        <p class="f03-lvl" id="f03-lvl1">L1</p>
+        <p class="f03-desc f03-desc-low" id="f03-desc1">hỗ trợ từng thao tác</p>
+      </div>
+
+      <!-- L2 -->
+      <div class="f03-col" style="left: 460px;">
+        <div class="f03-step" id="f03-step2" style="height: 168px;"></div>
+        <p class="f03-lvl" id="f03-lvl2">L2</p>
+      </div>
+
+      <!-- L3 : design target -->
+      <div class="f03-col" style="left: 800px;">
+        <div class="f03-step" id="f03-step3" style="height: 252px;">
+          <div class="f03-ring" id="f03-ring3"></div>
+        </div>
+        <p class="f03-lvl" id="f03-lvl3">L3</p>
+        <div class="f03-flag" style="bottom: 252px;">
+          <div class="f03-pole" id="f03-pole3"></div>
+          <div class="f03-flagcard" id="f03-flag3">Thiết kế</div>
+        </div>
+      </div>
+
+      <!-- L4 : coding + testing target (focal) -->
+      <div class="f03-col" style="left: 1140px;">
+        <div class="f03-step" id="f03-step4" style="height: 336px;">
+          <div class="f03-fill" id="f03-fill4"></div>
+        </div>
+        <p class="f03-lvl" id="f03-lvl4">L4</p>
+        <div class="f03-flag" style="bottom: 336px;">
+          <div class="f03-pole" id="f03-pole4"></div>
+          <div class="f03-flagcard" id="f03-flag4">Coding · Testing</div>
+        </div>
+      </div>
+
+      <!-- L5 -->
+      <div class="f03-col" style="left: 1480px;">
+        <div class="f03-step" id="f03-step5" style="height: 420px;"></div>
+        <p class="f03-lvl" id="f03-lvl5">L5</p>
+        <p class="f03-desc f03-desc-top" id="f03-desc5">tự vận hành</p>
+      </div>
+    </div>
+
+    <div class="f03-progress" id="f03-progress"></div>
+  </div>
+
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+
+      // Progress strip: 2/16 -> 3/16
+      tl.fromTo("#f03-progress", { scaleX: 2 / 3 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 0.2);
+
+      // Slow camera push underneath (settles before the end)
+      tl.fromTo("#f03-stage", { scale: 1 }, { scale: 1.015, duration: 11.6, ease: "sine.inOut" }, 0);
+
+      // Scene 1 (0.0–3.0s): header, h2, staircase rises
+      tl.fromTo("#f03-eyebrow", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.1);
+      tl.fromTo("#f03-pill", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.2);
+      tl.fromTo("#f03-baseline", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 0.3);
+      tl.fromTo("#f03-h2", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out" }, 1.0);
+
+      var steps = ["#f03-step1", "#f03-step2", "#f03-step3", "#f03-step4", "#f03-step5"];
+      var lvls = ["#f03-lvl1", "#f03-lvl2", "#f03-lvl3", "#f03-lvl4", "#f03-lvl5"];
+      for (var i = 0; i < 5; i++) {
+        tl.fromTo(steps[i], { scaleY: 0 }, { scaleY: 1, duration: 0.7, ease: "power3.out" }, 2.2 + i * 0.12);
+        tl.fromTo(lvls[i], { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 2.35 + i * 0.12);
+      }
+
+      // Scene 2 (3.0–7.0s): end labels
+      tl.fromTo("#f03-desc1", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 3.1);
+      tl.fromTo("#f03-desc5", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 5.2);
+
+      // Scene 3 (7.0–12.24s): goals
+      tl.fromTo("#f03-goal", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 7.0);
+
+      // L3 — cobalt outline + "Thiết kế" flag; non-target steps recede
+      tl.fromTo("#f03-ring3", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power3.out" }, 9.1);
+      tl.to(["#f03-step1", "#f03-step2", "#f03-step5"], { opacity: 0.5, duration: 0.6, ease: "power2.out" }, 9.1);
+      tl.to(["#f03-lvl1", "#f03-lvl2", "#f03-lvl5"], { color: "#6b6b6b", duration: 0.6, ease: "power2.out" }, 9.1);
+      tl.fromTo("#f03-pole3", { scaleY: 0 }, { scaleY: 1, duration: 0.45, ease: "power3.out" }, 9.2);
+      tl.fromTo("#f03-flag3", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 9.45);
+
+      // L4 — solid cobalt fill + "Coding · Testing" flag (focal)
+      tl.fromTo("#f03-fill4", { scaleY: 0 }, { scaleY: 1, duration: 0.6, ease: "power3.out" }, 11.1);
+      tl.fromTo("#f03-pole4", { scaleY: 0 }, { scaleY: 1, duration: 0.45, ease: "power3.out" }, 11.2);
+      tl.fromTo("#f03-flag4", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 11.4);
+
+      // Hold still to the end
+      tl.set({}, {}, 12.24);
+
+      window.__timelines["03-thang-automation"] = tl;
+    })();
+  </script>
+</template>

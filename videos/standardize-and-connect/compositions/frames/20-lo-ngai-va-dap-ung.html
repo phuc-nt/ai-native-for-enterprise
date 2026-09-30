@@ -1,0 +1,319 @@
+<template>
+  <div
+    id="root"
+    data-composition-id="20-lo-ngai-va-dap-ung"
+    data-start="0"
+    data-duration="13.56"
+    data-width="1920"
+    data-height="1080"
+  >
+    <style>
+      @font-face { font-family: "Space Grotesk"; src: url("assets/fonts/SpaceGrotesk-VN.woff2") format("woff2"); font-weight: 300 700; font-style: normal; font-display: block; }
+      @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-VN.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: block; }
+      @font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/JetBrainsMono-VN.woff2") format("woff2"); font-weight: 100 800; font-style: normal; font-display: block; }
+
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        font-family: "Inter", sans-serif;
+        color: #111111;
+      }
+      .f20-bg {
+        position: absolute;
+        inset: 0;
+        background: #fdfae7;
+      }
+      .f20-stage {
+        position: absolute;
+        inset: 0;
+      }
+
+      /* slide-header */
+      .f20-eyebrow {
+        position: absolute;
+        left: 96px;
+        top: 88px;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 1.3;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #1e2bfa;
+      }
+      .f20-pill {
+        position: absolute;
+        right: 96px;
+        top: 82px;
+        padding: 8px 22px;
+        border-radius: 100px;
+        background: rgba(30, 43, 250, 0.08);
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 500;
+        font-size: 22px;
+        line-height: 1.3;
+        letter-spacing: 0.05em;
+        color: #1e2bfa;
+      }
+      .f20-h2 {
+        position: absolute;
+        left: 96px;
+        top: 138px;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: 64px;
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+        color: #111111;
+        white-space: nowrap;
+      }
+
+      /* column titles */
+      .f20-colhead {
+        position: absolute;
+        top: 262px;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 600;
+        font-size: 22px;
+        line-height: 1.3;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+      #f20-colhead-left {
+        left: 96px;
+        color: #6b6b6b;
+      }
+      #f20-colhead-right {
+        left: 776px;
+        color: #1e2bfa;
+      }
+
+      /* table rows */
+      .f20-row {
+        position: absolute;
+        left: 96px;
+        width: 1728px;
+        height: 120px;
+      }
+      #f20-row-1 { top: 312px; }
+      #f20-row-2 { top: 444px; }
+      #f20-row-3 { top: 576px; }
+      #f20-row-4 { top: 708px; }
+
+      .f20-slot {
+        position: absolute;
+        top: 0;
+        height: 120px;
+        box-sizing: border-box;
+        border: 1.5px dashed rgba(30, 43, 250, 0.16);
+        border-radius: 14px;
+      }
+      .f20-slot-l { left: 0; width: 560px; }
+      .f20-slot-r { left: 680px; width: 1048px; }
+
+      .f20-concern {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 560px;
+        height: 120px;
+        box-sizing: border-box;
+        padding: 0 36px;
+        display: flex;
+        align-items: center;
+        background: #f4f2e8;
+        border: 1.5px solid rgba(30, 43, 250, 0.2);
+        border-radius: 14px;
+        font-family: "Inter", sans-serif;
+        font-weight: 500;
+        font-size: 30px;
+        line-height: 1.3;
+        color: #6b6b6b;
+        white-space: nowrap;
+      }
+
+      .f20-arrow {
+        position: absolute;
+        left: 588px;
+        top: 40px;
+        width: 64px;
+        height: 40px;
+        overflow: visible;
+      }
+
+      .f20-answer {
+        position: absolute;
+        left: 680px;
+        top: 0;
+        width: 1048px;
+        height: 120px;
+        box-sizing: border-box;
+        padding: 0 32px;
+        display: flex;
+        align-items: center;
+        background: #f4f2e8;
+        border: 1.5px solid rgba(30, 43, 250, 0.2);
+        border-radius: 14px;
+      }
+      .f20-chipcol {
+        flex: 0 0 404px;
+        display: flex;
+        align-items: center;
+      }
+      .f20-chip {
+        display: inline-block;
+        padding: 10px 22px;
+        border-radius: 100px;
+        background: rgba(30, 43, 250, 0.08);
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 600;
+        font-size: 30px;
+        line-height: 1.25;
+        letter-spacing: -0.01em;
+        color: #111111;
+        white-space: nowrap;
+      }
+      .f20-detail {
+        font-family: "Inter", sans-serif;
+        font-weight: 400;
+        font-size: 28px;
+        line-height: 1.3;
+        color: #111111;
+        white-space: nowrap;
+      }
+
+      /* progress bar — 20/24 */
+      .f20-progress {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 1600px;
+        height: 3px;
+        background: #1e2bfa;
+        transform-origin: left center;
+      }
+    </style>
+
+    <div class="f20-bg clip" data-start="0" data-duration="13.56" data-track-index="0"></div>
+
+    <div class="f20-stage clip" data-start="0" data-duration="13.56" data-track-index="1">
+      <div class="f20-eyebrow" id="f20-eyebrow">Lập luận</div>
+      <div class="f20-pill" id="f20-pill">20 / 24</div>
+      <div class="f20-h2" id="f20-h2">Lo ngại chính đáng, và cách đáp ứng</div>
+
+      <div class="f20-colhead" id="f20-colhead-left">Lo ngại</div>
+      <div class="f20-colhead" id="f20-colhead-right">Cách đáp ứng</div>
+
+      <div class="f20-row" id="f20-row-1">
+        <div class="f20-slot f20-slot-l" id="f20-slot-l1"></div>
+        <div class="f20-slot f20-slot-r" id="f20-slot-r1"></div>
+        <div class="f20-concern" id="f20-concern-1">Kết quả phụ thuộc người</div>
+        <svg class="f20-arrow" viewBox="0 0 64 40" aria-hidden="true">
+          <path id="f20-shaft-1" d="M4 20 L56 20" fill="none" stroke="#1e2bfa" stroke-width="3" stroke-linecap="round" stroke-dasharray="52" stroke-dashoffset="52" />
+          <path id="f20-head-1" d="M46 10 L57 20 L46 30" fill="none" stroke="#1e2bfa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <div class="f20-answer" id="f20-answer-1">
+          <div class="f20-chipcol"><span class="f20-chip" id="f20-chip-1">Kit</span></div>
+          <div class="f20-detail" id="f20-detail-1">kết quả đồng đều</div>
+        </div>
+      </div>
+
+      <div class="f20-row" id="f20-row-2">
+        <div class="f20-slot f20-slot-l" id="f20-slot-l2"></div>
+        <div class="f20-slot f20-slot-r" id="f20-slot-r2"></div>
+        <div class="f20-concern" id="f20-concern-2">Audit, chi phí</div>
+        <svg class="f20-arrow" viewBox="0 0 64 40" aria-hidden="true">
+          <path id="f20-shaft-2" d="M4 20 L56 20" fill="none" stroke="#1e2bfa" stroke-width="3" stroke-linecap="round" stroke-dasharray="52" stroke-dashoffset="52" />
+          <path id="f20-head-2" d="M46 10 L57 20 L46 30" fill="none" stroke="#1e2bfa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <div class="f20-answer" id="f20-answer-2">
+          <div class="f20-chipcol"><span class="f20-chip" id="f20-chip-2">LLM gateway</span></div>
+          <div class="f20-detail" id="f20-detail-2">audit, budget theo user và dự án</div>
+        </div>
+      </div>
+
+      <div class="f20-row" id="f20-row-3">
+        <div class="f20-slot f20-slot-l" id="f20-slot-l3"></div>
+        <div class="f20-slot f20-slot-r" id="f20-slot-r3"></div>
+        <div class="f20-concern" id="f20-concern-3">Dữ liệu nhạy cảm</div>
+        <svg class="f20-arrow" viewBox="0 0 64 40" aria-hidden="true">
+          <path id="f20-shaft-3" d="M4 20 L56 20" fill="none" stroke="#1e2bfa" stroke-width="3" stroke-linecap="round" stroke-dasharray="52" stroke-dashoffset="52" />
+          <path id="f20-head-3" d="M46 10 L57 20 L46 30" fill="none" stroke="#1e2bfa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <div class="f20-answer" id="f20-answer-3">
+          <div class="f20-chipcol"><span class="f20-chip" id="f20-chip-3">RBAC</span></div>
+          <div class="f20-detail" id="f20-detail-3">connector dùng quyền người gọi</div>
+        </div>
+      </div>
+
+      <div class="f20-row" id="f20-row-4">
+        <div class="f20-slot f20-slot-l" id="f20-slot-l4"></div>
+        <div class="f20-slot f20-slot-r" id="f20-slot-r4"></div>
+        <div class="f20-concern" id="f20-concern-4">Chạy tự động nguy hiểm</div>
+        <svg class="f20-arrow" viewBox="0 0 64 40" aria-hidden="true">
+          <path id="f20-shaft-4" d="M4 20 L56 20" fill="none" stroke="#1e2bfa" stroke-width="3" stroke-linecap="round" stroke-dasharray="52" stroke-dashoffset="52" />
+          <path id="f20-head-4" d="M46 10 L57 20 L46 30" fill="none" stroke="#1e2bfa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <div class="f20-answer" id="f20-answer-4">
+          <div class="f20-chipcol"><span class="f20-chip" id="f20-chip-4">Guardrail trong kit</span></div>
+          <div class="f20-detail" id="f20-detail-4">permission, hook, sandbox, deny list</div>
+        </div>
+      </div>
+
+      <div class="f20-progress" id="f20-progress"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        const tl = gsap.timeline({ paused: true });
+        const one = (s) => document.querySelector('[data-composition-id="20-lo-ngai-va-dap-ung"] ' + s);
+        const E = "power3.out";
+
+        // Scene 1 (0.0–3.3s): header; h2 on "lo ngại" (0.6); column titles + empty slots on "đáp ứng" (2.7)
+        tl.fromTo(one("#f20-eyebrow"), { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: E }, 0.05);
+        tl.fromTo(one("#f20-pill"), { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: E }, 0.12);
+        tl.fromTo(one("#f20-progress"), { scaleX: 19 / 20 }, { scaleX: 1, duration: 0.6, ease: E }, 0.12);
+        tl.fromTo(one("#f20-h2"), { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7, ease: E }, 0.6);
+
+        tl.fromTo(one("#f20-colhead-left"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: E }, 2.7);
+        tl.fromTo(one("#f20-colhead-right"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: E }, 2.8);
+        for (let i = 1; i <= 4; i++) {
+          const at = 2.8 + (i - 1) * 0.07;
+          tl.fromTo(one("#f20-slot-l" + i), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: E }, at);
+          tl.fromTo(one("#f20-slot-r" + i), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: E }, at + 0.04);
+        }
+
+        // One row assembles into its slots: concern card, arrow draws, answer card, chip, detail
+        function row(i, at) {
+          tl.fromTo(one("#f20-concern-" + i), { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.55, ease: E }, at);
+          tl.fromTo(one("#f20-shaft-" + i), { strokeDashoffset: 52 }, { strokeDashoffset: 0, duration: 0.45, ease: "power2.out" }, at + 0.2);
+          tl.fromTo(one("#f20-head-" + i), { opacity: 0, x: -8 }, { opacity: 1, x: 0, duration: 0.3, ease: E }, at + 0.5);
+          tl.fromTo(one("#f20-answer-" + i), { opacity: 0, x: 24 }, { opacity: 1, x: 0, duration: 0.6, ease: E }, at + 0.3);
+          tl.fromTo(one("#f20-chip-" + i), { opacity: 0, scale: 0.92 }, { opacity: 1, scale: 1, duration: 0.5, ease: E }, at + 0.45);
+          tl.fromTo(one("#f20-detail-" + i), { opacity: 0, x: 16 }, { opacity: 1, x: 0, duration: 0.5, ease: E }, at + 0.7);
+        }
+
+        // Scene 2 (3.3–7.9s): row 1 on "Kit" (3.3), row 2 on "Gateway" (5.4)
+        row(1, 3.3);
+        row(2, 5.4);
+
+        // Scene 3 (7.9–13.06s): row 3 on "RBAC" (7.9), row 4 on "Guardrail" (10.2)
+        row(3, 7.9);
+        row(4, 10.2);
+
+        // the frame's single cobalt moment: row-4 chip fills solid cobalt
+        tl.to(one("#f20-chip-4"), { backgroundColor: "#1e2bfa", color: "#fdfae7", duration: 0.45, ease: "power2.out" }, 10.75);
+
+        // hold still to the end
+        tl.set({}, {}, 13.06);
+
+        window.__timelines["20-lo-ngai-va-dap-ung"] = tl;
+      })();
+    </script>
+  </div>
+</template>

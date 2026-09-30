@@ -1,0 +1,440 @@
+<template id="f12-template">
+  <style>
+    @font-face { font-family: "Space Grotesk"; src: url("assets/fonts/SpaceGrotesk-VN.woff2") format("woff2"); font-weight: 300 700; font-style: normal; font-display: block; }
+    @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-VN.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: block; }
+    @font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/JetBrainsMono-VN.woff2") format("woff2"); font-weight: 100 800; font-style: normal; font-display: block; }
+
+    #root {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      font-family: "Inter", sans-serif;
+      color: #111111;
+    }
+
+    #f12-bg {
+      position: absolute;
+      inset: 0;
+      background: #fdfae7;
+    }
+
+    #f12-content {
+      position: absolute;
+      inset: 0;
+    }
+
+    /* ---------- slide-header ---------- */
+    .f12-eyebrow {
+      position: absolute;
+      left: 96px;
+      top: 58px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 1.3;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #1e2bfa;
+    }
+    .f12-pill {
+      position: absolute;
+      right: 96px;
+      top: 52px;
+      padding: 8px 22px;
+      border-radius: 100px;
+      background: rgba(30, 43, 250, 0.08);
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 1.3;
+      letter-spacing: 0.05em;
+      color: #1e2bfa;
+    }
+    .f12-h2 {
+      position: absolute;
+      left: 96px;
+      top: 100px;
+      margin: 0;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 64px;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      color: #111111;
+      white-space: nowrap;
+    }
+    .f12-sub {
+      position: absolute;
+      left: 96px;
+      top: 188px;
+      font-family: "Inter", sans-serif;
+      font-weight: 500;
+      font-size: 26px;
+      line-height: 1.4;
+      color: #6b6b6b;
+      opacity: 0;
+    }
+    .f12-progress {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 960px;
+      height: 3px;
+      background: #1e2bfa;
+      transform-origin: left center;
+    }
+
+    /* ---------- stage (camera) ---------- */
+    #f12-stage {
+      position: absolute;
+      inset: 0;
+      transform-origin: 780px 550px;
+    }
+
+    /* ghost slots (empty monolith region) */
+    .f12-ghost {
+      position: absolute;
+      left: 176px;
+      width: 600px;
+      height: 100px;
+      box-sizing: border-box;
+      border: 1.5px dashed rgba(30, 43, 250, 0.22);
+      border-radius: 12px;
+      opacity: 0;
+    }
+
+    /* monolith tiers */
+    .f12-tier {
+      position: absolute;
+      left: 176px;
+      width: 600px;
+      height: 100px;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      padding: 0 32px;
+      opacity: 0;
+    }
+    .f12-tier-bg {
+      position: absolute;
+      inset: 0;
+      box-sizing: border-box;
+      background: rgba(30, 43, 250, 0.04);
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+      border-radius: 12px;
+    }
+    .f12-tier-num {
+      position: relative;
+      width: 40px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 36px;
+      line-height: 1.2;
+      color: #1e2bfa;
+    }
+    .f12-tier-sep {
+      position: relative;
+      margin: 0 16px 0 4px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 30px;
+      line-height: 1.2;
+      color: #6b6b6b;
+    }
+    .f12-tier-label {
+      position: relative;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 30px;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: #111111;
+      white-space: nowrap;
+    }
+
+    /* fused single block (appears when gaps close) */
+    #f12-fused {
+      position: absolute;
+      left: 176px;
+      top: 300px;
+      width: 600px;
+      height: 500px;
+      box-sizing: border-box;
+      background: rgba(30, 43, 250, 0.05);
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+      border-radius: 14px;
+      opacity: 0;
+    }
+    .f12-divider {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      height: 1px;
+      background: rgba(30, 43, 250, 0.14);
+    }
+
+    /* cobalt 3px outline */
+    #f12-outline {
+      position: absolute;
+      left: 160px;
+      top: 284px;
+      width: 632px;
+      height: 532px;
+      overflow: visible;
+    }
+    #f12-outline-rect {
+      fill: none;
+      stroke: #1e2bfa;
+      stroke-width: 3;
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+    }
+
+    /* connector to motives column */
+    .f12-conn-h {
+      position: absolute;
+      left: 776px;
+      top: 549px;
+      width: 124px;
+      height: 2px;
+      background: rgba(30, 43, 250, 0.35);
+      transform-origin: left center;
+      opacity: 0;
+    }
+    .f12-conn-v {
+      position: absolute;
+      left: 899px;
+      top: 456px;
+      width: 2px;
+      height: 188px;
+      background: rgba(30, 43, 250, 0.35);
+      transform-origin: center center;
+      opacity: 0;
+    }
+
+    /* motives column */
+    .f12-mot-title {
+      position: absolute;
+      left: 920px;
+      top: 356px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 32px;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: #111111;
+      white-space: nowrap;
+      opacity: 0;
+    }
+    .f12-mot {
+      position: absolute;
+      left: 920px;
+      width: 640px;
+      height: 76px;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      padding: 0 28px;
+      background: rgba(30, 43, 250, 0.04);
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+      border-radius: 12px;
+      opacity: 0;
+    }
+    .f12-mot-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #1e2bfa;
+      margin-right: 20px;
+      flex: none;
+    }
+    .f12-mot-text {
+      font-family: "Inter", sans-serif;
+      font-weight: 500;
+      font-size: 28px;
+      line-height: 1.4;
+      color: #111111;
+      white-space: nowrap;
+    }
+
+    /* red verdict label */
+    .f12-verdict {
+      position: absolute;
+      left: 900px;
+      top: 724px;
+      display: flex;
+      align-items: center;
+      opacity: 0;
+    }
+    .f12-verdict-arrow {
+      font-family: "Inter", sans-serif;
+      font-weight: 600;
+      font-size: 34px;
+      line-height: 1.3;
+      color: #dc2626;
+      margin-right: 16px;
+    }
+    .f12-verdict-text {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 36px;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      color: #dc2626;
+      white-space: nowrap;
+    }
+  </style>
+
+  <div id="root" data-composition-id="12-platform-tap-trung" data-width="1920" data-height="1080" data-start="0" data-duration="15.26">
+    <div id="f12-bg" class="clip" data-start="0" data-duration="15.26" data-track-index="0"></div>
+
+    <div id="f12-content" class="clip" data-start="0" data-duration="15.26" data-track-index="1">
+      <!-- slide-header -->
+      <div class="f12-eyebrow" id="f12-eyebrow">BA KHÁI NIỆM</div>
+      <div class="f12-pill" id="f12-pill">12 / 24</div>
+      <h2 class="f12-h2" id="f12-h2">Platform tập trung</h2>
+      <div class="f12-sub" id="f12-sub">thường có năm phần</div>
+
+      <div id="f12-stage">
+        <!-- ghost slots: top (k=0) to bottom (k=4) -->
+        <div class="f12-ghost" id="f12-g5" style="top:268px"></div>
+        <div class="f12-ghost" id="f12-g4" style="top:384px"></div>
+        <div class="f12-ghost" id="f12-g3" style="top:500px"></div>
+        <div class="f12-ghost" id="f12-g2" style="top:616px"></div>
+        <div class="f12-ghost" id="f12-g1" style="top:732px"></div>
+
+        <!-- fused block (behind tiers) -->
+        <div id="f12-fused">
+          <div class="f12-divider" style="top:100px"></div>
+          <div class="f12-divider" style="top:200px"></div>
+          <div class="f12-divider" style="top:300px"></div>
+          <div class="f12-divider" style="top:400px"></div>
+        </div>
+
+        <!-- tiers, built bottom-up: 1 at the bottom, 5 on top -->
+        <div class="f12-tier" id="f12-t5" style="top:268px">
+          <div class="f12-tier-bg"></div>
+          <span class="f12-tier-num">5</span><span class="f12-tier-sep">·</span><span class="f12-tier-label">Chat UI</span>
+        </div>
+        <div class="f12-tier" id="f12-t4" style="top:384px">
+          <div class="f12-tier-bg"></div>
+          <span class="f12-tier-num">4</span><span class="f12-tier-sep">·</span><span class="f12-tier-label">Governance</span>
+        </div>
+        <div class="f12-tier" id="f12-t3" style="top:500px">
+          <div class="f12-tier-bg"></div>
+          <span class="f12-tier-num">3</span><span class="f12-tier-sep">·</span><span class="f12-tier-label">Integration</span>
+        </div>
+        <div class="f12-tier" id="f12-t2" style="top:616px">
+          <div class="f12-tier-bg"></div>
+          <span class="f12-tier-num">2</span><span class="f12-tier-sep">·</span><span class="f12-tier-label">Multi-agent orchestration</span>
+        </div>
+        <div class="f12-tier" id="f12-t1" style="top:732px">
+          <div class="f12-tier-bg"></div>
+          <span class="f12-tier-num">1</span><span class="f12-tier-sep">·</span><span class="f12-tier-label">Knowledge base</span>
+        </div>
+
+        <!-- cobalt outline around the fused block -->
+        <svg id="f12-outline" viewBox="0 0 632 532" width="632" height="532">
+          <rect id="f12-outline-rect" x="8" y="8" width="616" height="516" rx="20" ry="20" pathLength="1"></rect>
+        </svg>
+
+        <!-- connector -->
+        <div class="f12-conn-h" id="f12-conn-h"></div>
+        <div class="f12-conn-v" id="f12-conn-v"></div>
+
+        <!-- motives column -->
+        <div class="f12-mot-title" id="f12-mot-title">Động cơ chính đáng</div>
+        <div class="f12-mot" id="f12-m1" style="top:418px">
+          <span class="f12-mot-dot"></span><span class="f12-mot-text">Kết quả đồng đều</span>
+        </div>
+        <div class="f12-mot" id="f12-m2" style="top:512px">
+          <span class="f12-mot-dot"></span><span class="f12-mot-text">Kiểm soát</span>
+        </div>
+        <div class="f12-mot" id="f12-m3" style="top:606px">
+          <span class="f12-mot-dot"></span><span class="f12-mot-text">Tự động hoá cao hơn</span>
+        </div>
+
+        <!-- verdict -->
+        <div class="f12-verdict" id="f12-verdict">
+          <span class="f12-verdict-arrow">←</span><span class="f12-verdict-text">năm thứ khác bản chất, một khối</span>
+        </div>
+      </div>
+
+      <div class="f12-progress" id="f12-progress"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+      var IN = "power3.out";
+
+      // ---------- Scene 1 (0.0–3.1): header, h2, "năm phần" label ----------
+      tl.fromTo("#f12-eyebrow", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: IN }, 0);
+      tl.fromTo("#f12-pill", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: IN }, 0.05);
+      tl.fromTo("#f12-progress", { scaleX: 11 / 12 }, { scaleX: 1, duration: 0.6, ease: IN }, 0.1);
+      tl.fromTo("#f12-h2", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out" }, 0.2);
+
+      // empty monolith region (five ghost slots), established bottom-up
+      tl.fromTo(["#f12-g1", "#f12-g2", "#f12-g3", "#f12-g4", "#f12-g5"],
+        { opacity: 0, y: 12 },
+        { opacity: 1, y: 0, duration: 0.5, ease: IN, stagger: 0.06 }, 0.25);
+
+      // "năm phần" (2.1)
+      tl.fromTo("#f12-sub", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: IN }, 2.1);
+
+      // ---------- Scene 2 (3.1–9.2): tiers build bottom-up on cue ----------
+      var tiers = [
+        ["#f12-t1", "#f12-g1", 3.1],
+        ["#f12-t2", "#f12-g2", 4.2],
+        ["#f12-t3", "#f12-g3", 6.2],
+        ["#f12-t4", "#f12-g4", 7.3],
+        ["#f12-t5", "#f12-g5", 8.5]
+      ];
+      tiers.forEach(function (t) {
+        tl.fromTo(t[0], { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.6, ease: IN }, t[2]);
+        tl.to(t[1], { opacity: 0, duration: 0.3, ease: "power1.out" }, t[2] + 0.3);
+      });
+
+      // slow camera push-in under the build, resting before the fuse
+      tl.fromTo("#f12-stage", { scale: 1 }, { scale: 1.015, duration: 8.2, ease: "sine.inOut" }, 3.1);
+
+      // ---------- Scene 3 (9.2–11.3): motives column ----------
+      tl.fromTo("#f12-conn-h", { opacity: 0, scaleX: 0 }, { opacity: 1, scaleX: 1, duration: 0.45, ease: IN }, 9.2);
+      tl.fromTo("#f12-conn-v", { opacity: 0, scaleY: 0 }, { opacity: 1, scaleY: 1, duration: 0.45, ease: IN }, 9.35);
+      tl.fromTo("#f12-mot-title", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.55, ease: IN }, 9.2);
+      tl.fromTo(["#f12-m1", "#f12-m2", "#f12-m3"],
+        { opacity: 0, x: 24 },
+        { opacity: 1, x: 0, duration: 0.55, ease: IN, stagger: 0.3 }, 9.45);
+
+      // ---------- Scene 4 (11.3–15.26): dim, fuse, outline ----------
+      // de-emphasise the motives column (text to muted gray keeps contrast; chrome to ~45%)
+      tl.to(["#f12-mot-title", ".f12-mot-text"], { color: "#6b6b6b", duration: 0.5, ease: "power2.out" }, 11.3);
+      tl.to([".f12-mot-dot", "#f12-conn-h", "#f12-conn-v"], { opacity: 0.45, duration: 0.5, ease: "power2.out" }, 11.3);
+      tl.to(".f12-mot", { borderColor: "rgba(30,43,250,0.09)", backgroundColor: "rgba(30,43,250,0.018)", duration: 0.5, ease: "power2.out" }, 11.3);
+
+      // "gộp" (12.1): gaps close to zero around the middle tier
+      tl.to("#f12-t5", { y: 32, duration: 0.7, ease: "power3.inOut" }, 12.1);
+      tl.to("#f12-t4", { y: 16, duration: 0.7, ease: "power3.inOut" }, 12.1);
+      tl.to("#f12-t2", { y: -16, duration: 0.7, ease: "power3.inOut" }, 12.1);
+      tl.to("#f12-t1", { y: -32, duration: 0.7, ease: "power3.inOut" }, 12.1);
+      // separate tier cards dissolve into one continuous block
+      tl.to(".f12-tier-bg", { opacity: 0, duration: 0.35, ease: "power1.inOut" }, 12.55);
+      tl.fromTo("#f12-fused", { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power1.inOut" }, 12.55);
+
+      // "một khối" (14.1): cobalt 3px outer outline draws around the block
+      tl.fromTo("#f12-outline-rect", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.6, ease: "power2.inOut" }, 14.1);
+      tl.fromTo("#f12-verdict", { opacity: 0, x: 16 }, { opacity: 1, x: 0, duration: 0.55, ease: IN }, 14.25);
+
+      // hold still to the end
+      tl.set({}, {}, 15.26);
+
+      window.__timelines["12-platform-tap-trung"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,304 @@
+<template>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: "Space Grotesk"; src: url("assets/fonts/SpaceGrotesk-VN.woff2") format("woff2"); font-weight: 300 700; font-style: normal; font-display: block; }
+    @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-VN.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: block; }
+    @font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/JetBrainsMono-VN.woff2") format("woff2"); font-weight: 100 800; font-style: normal; font-display: block; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      font-family: "Inter", sans-serif;
+      color: #111111;
+    }
+
+    .f06-bg {
+      position: absolute;
+      inset: 0;
+      background: #fdfae7;
+    }
+
+    .f06-stage {
+      position: absolute;
+      inset: 0;
+      transform-origin: 960px 500px;
+    }
+
+    /* slide-header */
+    .f06-eyebrow {
+      position: absolute;
+      left: 96px;
+      top: 80px;
+      margin: 0;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 1.3;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #1e2bfa;
+      white-space: nowrap;
+    }
+    .f06-pill {
+      position: absolute;
+      right: 96px;
+      top: 74px;
+      padding: 8px 22px;
+      border-radius: 100px;
+      background: rgba(30, 43, 250, 0.08);
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 1.3;
+      letter-spacing: 0.05em;
+      color: #1e2bfa;
+      white-space: nowrap;
+    }
+    .f06-h2 {
+      position: absolute;
+      left: 96px;
+      top: 122px;
+      margin: 0;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 64px;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      color: #111111;
+      white-space: nowrap;
+    }
+
+    /* left column (42%): hero number + label */
+    .f06-num {
+      position: absolute;
+      left: 96px;
+      top: 296px;
+      margin: 0;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 300px;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: #111111;
+      white-space: nowrap;
+      transform-origin: 0% 80%;
+      opacity: 0;
+    }
+    .f06-digits {
+      display: inline-block;
+      width: 2.05ch;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+    .f06-pct {
+      display: inline-block;
+    }
+    .f06-numlabel {
+      position: absolute;
+      left: 96px;
+      top: 650px;
+      width: 680px;
+      margin: 0;
+      font-family: "Inter", sans-serif;
+      font-weight: 500;
+      font-size: 32px;
+      line-height: 1.4;
+      color: #6b6b6b;
+      opacity: 0;
+    }
+    .f06-source {
+      position: absolute;
+      left: 96px;
+      top: 812px;
+      margin: 0;
+      font-family: "Inter", sans-serif;
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 1.4;
+      color: #6b6b6b;
+      white-space: nowrap;
+      opacity: 0;
+    }
+
+    /* right column (58%): comparison card */
+    .f06-card {
+      position: absolute;
+      left: 880px;
+      top: 318px;
+      width: 944px;
+      height: 402px;
+      box-sizing: border-box;
+      background: rgba(30, 43, 250, 0.04);
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+      border-radius: 14px;
+      opacity: 0;
+    }
+    .f06-rowlabel {
+      position: absolute;
+      left: 48px;
+      margin: 0;
+      font-family: "Inter", sans-serif;
+      font-weight: 600;
+      font-size: 32px;
+      line-height: 1.4;
+      color: #111111;
+      white-space: nowrap;
+      opacity: 0;
+    }
+    .f06-track {
+      position: absolute;
+      left: 48px;
+      width: 848px;
+      height: 56px;
+      border-radius: 6px;
+      background: rgba(30, 43, 250, 0.08);
+      opacity: 0;
+    }
+    .f06-fill {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 6px;
+      transform-origin: 0% 50%;
+    }
+    .f06-fill-buy { background: #1e2bfa; }
+    .f06-fill-build { background: #9a9a9a; }
+    .f06-val {
+      position: absolute;
+      margin: 0;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 52px;
+      line-height: 1.1;
+      color: #1e2bfa;
+      white-space: nowrap;
+      opacity: 0;
+    }
+    .f06-third {
+      position: absolute;
+      margin: 0;
+      font-family: "Inter", sans-serif;
+      font-weight: 600;
+      font-size: 36px;
+      line-height: 1.4;
+      color: #6b6b6b;
+      white-space: nowrap;
+      opacity: 0;
+    }
+    .f06-frac {
+      display: inline-block;
+      margin: 0 0.12em 0 0.06em;
+    }
+    .f06-fn {
+      font-size: 0.62em;
+      vertical-align: 0.45em;
+    }
+    .f06-fs {
+      margin: 0 0.02em;
+    }
+    .f06-fd {
+      font-size: 0.62em;
+      vertical-align: -0.02em;
+    }
+
+    /* progress bar: 6 / 24 */
+    .f06-progress {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 480px;
+      height: 3px;
+      background: #1e2bfa;
+      transform-origin: 0 50%;
+    }
+  </style>
+
+  <div id="root" data-composition-id="06-tin-hieu-mit" data-width="1920" data-height="1080" data-duration="19.3">
+    <div class="clip f06-bg" data-start="0" data-duration="19.3" data-track-index="0"></div>
+
+    <div class="f06-stage" id="f06-stage">
+      <p class="f06-eyebrow" id="f06-eyebrow">BỐI CẢNH 2025–2026</p>
+      <div class="f06-pill" id="f06-pill">06 / 24</div>
+      <h2 class="f06-h2" id="f06-h2">Doanh nghiệp vẫn khó ra kết quả</h2>
+
+      <!-- hero number -->
+      <p class="f06-num" id="f06-num"><span class="f06-digits" id="f06-digits">0</span><span class="f06-pct">%</span></p>
+      <p class="f06-numlabel" id="f06-numlabel">tổ chức chưa thấy lợi nhuận đo được từ generative AI</p>
+      <p class="f06-source" id="f06-source">MIT NANDA · The GenAI Divide · 2025 · báo cáo sơ bộ</p>
+
+      <!-- comparison bars -->
+      <div class="f06-card" id="f06-card">
+        <p class="f06-rowlabel" id="f06-lbl-buy" style="top: 48px;">Mua hoặc hợp tác</p>
+        <div class="f06-track" id="f06-track-buy" style="top: 109px;">
+          <div class="f06-fill f06-fill-buy" id="f06-fill-buy"></div>
+        </div>
+        <p class="f06-val" id="f06-val-buy" style="left: 636px; top: 107px;">~67%</p>
+
+        <p class="f06-rowlabel" id="f06-lbl-build" style="top: 237px;">Tự xây nội bộ</p>
+        <div class="f06-track" id="f06-track-build" style="top: 298px;">
+          <div class="f06-fill f06-fill-build" id="f06-fill-build"></div>
+        </div>
+        <p class="f06-third" id="f06-val-build" style="left: 258px; top: 301px;">≈ <span class="f06-frac"><span class="f06-fn">1</span><span class="f06-fs">/</span><span class="f06-fd">3</span></span> mức đó</p>
+      </div>
+    </div>
+
+    <div class="f06-progress" id="f06-progress"></div>
+  </div>
+
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+
+      var BUY = 0.67;
+      var BUILD = BUY / 3;
+
+      // Progress strip: 5/24 -> 6/24
+      tl.fromTo("#f06-progress", { scaleX: 5 / 6 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 0.2);
+
+      // Slow camera push underneath; settles well before the end
+      tl.fromTo("#f06-stage", { scale: 1 }, { scale: 1.015, duration: 13.2, ease: "sine.inOut" }, 4.0);
+
+      // Scene 1 (0.0–4.0s): header, h2 on "doanh nghiệp", source on "Báo cáo"
+      tl.fromTo("#f06-eyebrow", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.05);
+      tl.fromTo("#f06-pill", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.15);
+      tl.fromTo("#f06-h2", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out" }, 0.4);
+      tl.fromTo("#f06-source", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 2.8);
+
+      // Scene 2 (4.0–11.6s): 0% -> 95% count-up with scale growth, lands at 7.8
+      tl.fromTo("#f06-num", { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power2.out" }, 6.5);
+      tl.fromTo("#f06-num", { scale: 0.55 }, { scale: 1, duration: 1.3, ease: "power3.out" }, 6.5);
+      tl.fromTo(
+        "#f06-digits",
+        { innerText: 0 },
+        { innerText: 95, snap: { innerText: 1 }, duration: 1.3, ease: "power3.out" },
+        6.5
+      );
+      tl.fromTo("#f06-numlabel", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 8.6);
+
+      // Scene 3 (11.6–15.4s): "Mua hoặc hợp tác" cobalt bar grows to 67%
+      tl.to("#f06-num", { opacity: 0.6, duration: 0.6, ease: "power2.out" }, 11.6);
+      tl.fromTo("#f06-card", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 11.6);
+      tl.fromTo("#f06-lbl-buy", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 11.7);
+      tl.fromTo("#f06-track-buy", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 11.8);
+      tl.fromTo("#f06-fill-buy", { scaleX: 0 }, { scaleX: BUY, duration: 1.6, ease: "power3.out" }, 11.9);
+      tl.fromTo("#f06-val-buy", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 14.8);
+
+      // Scene 4 (15.4–18.7s): "Tự xây nội bộ" gray bar grows to exactly 1/3 of the bar above
+      tl.fromTo("#f06-lbl-build", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 15.4);
+      tl.fromTo("#f06-track-build", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 15.45);
+      tl.fromTo("#f06-fill-build", { scaleX: 0 }, { scaleX: BUILD, duration: 0.9, ease: "power3.out" }, 15.55);
+      tl.fromTo("#f06-val-build", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 16.6);
+
+      // Hold still to the end
+      tl.set({}, {}, 18.7);
+
+      window.__timelines["06-tin-hieu-mit"] = tl;
+    })();
+  </script>
+</template>

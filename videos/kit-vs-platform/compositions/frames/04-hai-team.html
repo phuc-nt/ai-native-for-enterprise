@@ -1,0 +1,277 @@
+<template>
+  <style>
+    @font-face { font-family: "Space Grotesk"; src: url("assets/fonts/SpaceGrotesk-VN.woff2") format("woff2"); font-weight: 300 700; font-style: normal; font-display: block; }
+    @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-VN.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: block; }
+    @font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/JetBrainsMono-VN.woff2") format("woff2"); font-weight: 100 800; font-style: normal; font-display: block; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      font-family: "Inter", sans-serif;
+      color: #111111;
+    }
+
+    /* full-bleed ground + progress bar (background layer) */
+    .f04-bg {
+      position: absolute;
+      inset: 0;
+      background: #fdfae7;
+    }
+    .f04-progress {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 480px; /* 4 / 16 of 1920 */
+      height: 3px;
+      background: #1e2bfa;
+    }
+
+    .f04-stage {
+      position: absolute;
+      inset: 0;
+    }
+
+    /* slide-header */
+    .f04-eyebrow {
+      position: absolute;
+      left: 96px;
+      top: 92px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 1.3;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #1e2bfa;
+    }
+    .f04-count {
+      position: absolute;
+      right: 96px;
+      top: 86px;
+      padding: 8px 20px;
+      border-radius: 100px;
+      background: rgba(30, 43, 250, 0.08);
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 1.3;
+      letter-spacing: 0.05em;
+      color: #1e2bfa;
+    }
+    .f04-h2 {
+      position: absolute;
+      left: 96px;
+      top: 140px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 66px;
+      line-height: 1.16;
+      letter-spacing: -0.02em;
+      color: #111111;
+      white-space: nowrap;
+    }
+
+    /* the two equal team cards */
+    .f04-card {
+      position: absolute;
+      top: 292px;
+      width: 808px;
+      height: 556px;
+      padding: 52px 56px 52px;
+      display: flex;
+      flex-direction: column;
+      background: rgba(30, 43, 250, 0.04);
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+      border-radius: 14px;
+    }
+    .f04-card-left { left: 96px; }
+    .f04-card-right { left: 1016px; }
+
+    .f04-badge {
+      position: absolute;
+      top: 50px;
+      width: 66px;
+      height: 66px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #fdfae7;
+      background-image: linear-gradient(rgba(30, 43, 250, 0.08), rgba(30, 43, 250, 0.08));
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 30px;
+      line-height: 1.2;
+      color: #1e2bfa;
+    }
+    .f04-badge-left { right: -34px; }
+    .f04-badge-right { left: -34px; }
+
+    .f04-card-title {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 64px;
+      line-height: 1.14;
+      letter-spacing: -0.02em;
+      color: #111111;
+      white-space: nowrap;
+    }
+    .f04-card-right .f04-card-title { padding-left: 24px; }
+
+    /* left: one single slab = centralized platform */
+    .f04-slab {
+      margin-top: 40px;
+      height: 156px;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      border-radius: 12px;
+      background: rgba(30, 43, 250, 0.08);
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+      font-family: "Inter", sans-serif;
+      font-weight: 500;
+      font-size: 40px;
+      line-height: 1.4;
+      color: #111111;
+      white-space: nowrap;
+    }
+
+    /* right: separate small pieces */
+    .f04-chips {
+      margin-top: 40px;
+      display: flex;
+      gap: 20px;
+    }
+    .f04-chip {
+      padding: 12px 28px;
+      border-radius: 100px;
+      background: rgba(30, 43, 250, 0.08);
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 32px;
+      line-height: 1.25;
+      color: #111111;
+      white-space: nowrap;
+    }
+    .f04-line {
+      margin-top: 30px;
+      font-family: "Inter", sans-serif;
+      font-weight: 500;
+      font-size: 36px;
+      line-height: 1.4;
+      color: #6b6b6b;
+      white-space: nowrap;
+    }
+
+    .f04-foot {
+      margin-top: auto;
+    }
+    .f04-divider {
+      height: 1.5px;
+      background: rgba(30, 43, 250, 0.2);
+      transform-origin: 0 50%;
+    }
+    .f04-foot-row {
+      margin-top: 28px;
+      display: flex;
+    }
+    .f04-chip-cobalt {
+      padding: 12px 30px;
+      border-radius: 100px;
+      background: rgba(30, 43, 250, 0.08);
+      border: 2px solid #1e2bfa;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 34px;
+      line-height: 1.25;
+      color: #1e2bfa;
+      white-space: nowrap;
+    }
+  </style>
+
+  <div id="root" data-composition-id="04-hai-team" data-start="0" data-duration="13.46" data-width="1920" data-height="1080">
+    <div class="clip f04-bg" data-start="0" data-duration="13.46" data-track-index="0">
+      <div class="f04-progress"></div>
+    </div>
+
+    <div class="f04-stage">
+      <div class="f04-eyebrow">HAI TEAM</div>
+      <div class="f04-count">04 / 16</div>
+      <div class="f04-h2">Hai team được giao việc</div>
+
+      <div class="f04-card f04-card-left">
+        <div class="f04-badge f04-badge-left">1</div>
+        <div class="f04-card-title">Team platform</div>
+        <div class="f04-slab">Nền tảng AI tập trung</div>
+        <div class="f04-foot">
+          <div class="f04-divider f04-divider-left"></div>
+          <div class="f04-foot-row">
+            <div class="f04-chip f04-cloud">trên cloud</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="f04-card f04-card-right">
+        <div class="f04-badge f04-badge-right">2</div>
+        <div class="f04-card-title">Team kit</div>
+        <div class="f04-chips">
+          <div class="f04-chip f04-chip-1">skill</div>
+          <div class="f04-chip f04-chip-2">workflow</div>
+          <div class="f04-chip f04-chip-3">connector</div>
+        </div>
+        <div class="f04-line f04-harness">cho các harness phổ biến</div>
+        <div class="f04-foot">
+          <div class="f04-divider f04-divider-right"></div>
+          <div class="f04-foot-row">
+            <div class="f04-chip-cobalt">Claude Code · Kiro</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      const IN = "power3.out";
+
+      // Scene 1 (0.0–1.9s): slide-header + h2 settle down from above
+      tl.fromTo(".f04-eyebrow", { y: -16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: IN }, 0.0);
+      tl.fromTo(".f04-count", { y: -16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: IN }, 0.1);
+      tl.fromTo(".f04-h2", { y: -28, opacity: 0 }, { y: 0, opacity: 1, duration: 0.75, ease: "expo.out" }, 0.1);
+
+      // Scene 2 (1.9–5.4s): left card from the left wing, badge at inner edge
+      tl.fromTo(".f04-card-left", { x: -40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.7, ease: IN }, 1.9);
+      tl.fromTo(".f04-badge-left", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: IN }, 2.3);
+      // "nền tảng AI" (3.4s)
+      tl.fromTo(".f04-slab", { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: IN }, 3.4);
+      // "cloud" (4.9s)
+      tl.fromTo(".f04-divider-left", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: IN }, 4.9);
+      tl.fromTo(".f04-cloud", { y: 14, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.5, ease: IN }, 4.95);
+
+      // Scene 3 (5.4–12.96s): right card from the right wing, badge at inner edge
+      tl.fromTo(".f04-card-right", { x: 40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.7, ease: IN }, 5.4);
+      tl.fromTo(".f04-badge-right", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: IN }, 5.8);
+      // chips on the words
+      tl.fromTo(".f04-chip-1", { y: 14, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: IN }, 6.6);
+      tl.fromTo(".f04-chip-2", { y: 14, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: IN }, 7.4);
+      tl.fromTo(".f04-chip-3", { y: 14, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: IN }, 8.4);
+      // "harness phổ biến" (9.2s)
+      tl.fromTo(".f04-harness", { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: IN }, 9.2);
+      // "Claude Code" (10.7s) — the frame's one cobalt moment
+      tl.fromTo(".f04-divider-right", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: IN }, 10.7);
+      tl.fromTo(".f04-chip-cobalt", { y: 14, scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.55, ease: IN }, 10.75);
+
+      // hold still to the end
+      tl.set({}, {}, 12.96);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["04-hai-team"] = tl;
+    })();
+  </script>
+</template>

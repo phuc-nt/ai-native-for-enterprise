@@ -1,0 +1,274 @@
+<template>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: "Space Grotesk"; src: url("assets/fonts/SpaceGrotesk-VN.woff2") format("woff2"); font-weight: 300 700; font-style: normal; font-display: block; }
+    @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-VN.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: block; }
+    @font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/JetBrainsMono-VN.woff2") format("woff2"); font-weight: 100 800; font-style: normal; font-display: block; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      font-family: "Inter", sans-serif;
+      color: #111111;
+    }
+    #f04-bg {
+      position: absolute;
+      inset: 0;
+      background: #fdfae7;
+    }
+
+    /* ---- slide-header chrome ---- */
+    #f04-eyebrow {
+      position: absolute;
+      left: 130px;
+      top: 70px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 1.3;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #1e2bfa;
+    }
+    #f04-counter {
+      position: absolute;
+      right: 130px;
+      top: 62px;
+      padding: 8px 22px;
+      border-radius: 100px;
+      background: rgba(30, 43, 250, 0.08);
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 1.3;
+      letter-spacing: 0.05em;
+      color: #1e2bfa;
+    }
+    #f04-progress {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 320px;
+      height: 3px;
+      background: #1e2bfa;
+      transform-origin: 0 50%;
+    }
+
+    /* ---- diagram (upper half) ---- */
+    #f04-diagram {
+      position: absolute;
+      inset: 0;
+    }
+    #f04-asset {
+      position: absolute;
+      left: 130px;
+      top: 205px;
+      width: 680px;
+      height: 250px;
+      box-sizing: border-box;
+      padding: 0 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 14px;
+      background: rgba(30, 43, 250, 0.04);
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+      border-radius: 14px;
+    }
+    .f04-asset-title {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 46px;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: #111111;
+    }
+    .f04-asset-sub {
+      font-family: "Inter", sans-serif;
+      font-weight: 500;
+      font-size: 28px;
+      line-height: 1.4;
+      color: #6b6b6b;
+    }
+    #f04-std {
+      position: absolute;
+      left: 720px;
+      top: 302px;
+      width: 180px;
+      height: 56px;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 100px;
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+      background: linear-gradient(rgba(30, 43, 250, 0.08), rgba(30, 43, 250, 0.08)), #fdfae7;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 26px;
+      line-height: 1.3;
+      color: #1e2bfa;
+    }
+    #f04-wires {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: visible;
+    }
+    .f04-wire {
+      fill: none;
+      stroke: #1e2bfa;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+    }
+    .f04-cell {
+      position: absolute;
+      left: 1260px;
+      width: 460px;
+      height: 72px;
+      box-sizing: border-box;
+      padding-left: 40px;
+      display: flex;
+      align-items: center;
+      background: rgba(30, 43, 250, 0.04);
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+      border-radius: 12px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 34px;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: #111111;
+    }
+    #f04-cell-1 { top: 156px; }
+    #f04-cell-2 { top: 248px; }
+    #f04-cell-3 { top: 340px; }
+    #f04-cell-4 { top: 432px; }
+    .f04-dot {
+      position: absolute;
+      left: 1253px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #1e2bfa;
+    }
+    #f04-dot-1 { top: 185px; }
+    #f04-dot-2 { top: 277px; }
+    #f04-dot-3 { top: 369px; }
+    #f04-dot-4 { top: 461px; }
+
+    /* ---- hero statement (lower half) ---- */
+    #f04-hero {
+      position: absolute;
+      left: 130px;
+      top: 585px;
+      width: 1660px;
+    }
+    .f04-line {
+      display: block;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 84px;
+      line-height: 1.16;
+      letter-spacing: -0.02em;
+      color: #111111;
+      white-space: nowrap;
+    }
+    .f04-w {
+      display: inline-block;
+    }
+    .f04-strong {
+      font-weight: 700;
+    }
+  </style>
+
+  <div id="root" data-composition-id="04-he-qua-chuan-mo" data-width="1920" data-height="1080" data-duration="8.66">
+    <div id="f04-bg" class="clip" data-start="0" data-duration="8.66" data-track-index="0"></div>
+
+    <div id="f04-stage" class="clip" data-start="0" data-duration="8.66" data-track-index="1" style="position:absolute;inset:0;">
+      <div id="f04-eyebrow">BỐI CẢNH 2025–2026</div>
+      <div id="f04-counter">04 / 24</div>
+
+      <div id="f04-diagram">
+        <svg id="f04-wires" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+          <path class="f04-wire" id="f04-wire-1" pathLength="1" d="M900,330 C1090,330 1070,192 1254,192" />
+          <path class="f04-wire" id="f04-wire-2" pathLength="1" d="M900,330 C1090,330 1070,284 1254,284" />
+          <path class="f04-wire" id="f04-wire-3" pathLength="1" d="M900,330 C1090,330 1070,376 1254,376" />
+          <path class="f04-wire" id="f04-wire-4" pathLength="1" d="M900,330 C1090,330 1070,468 1254,468" />
+        </svg>
+
+        <div id="f04-asset">
+          <div class="f04-asset-title">Tài sản của tổ chức</div>
+          <div class="f04-asset-sub">kit · connector · data source</div>
+        </div>
+        <div id="f04-std">chuẩn mở</div>
+
+        <div class="f04-cell" id="f04-cell-1">Claude Code</div>
+        <div class="f04-cell" id="f04-cell-2">Codex</div>
+        <div class="f04-cell" id="f04-cell-3">Kiro</div>
+        <div class="f04-cell" id="f04-cell-4">Copilot</div>
+        <div class="f04-dot" id="f04-dot-1"></div>
+        <div class="f04-dot" id="f04-dot-2"></div>
+        <div class="f04-dot" id="f04-dot-3"></div>
+        <div class="f04-dot" id="f04-dot-4"></div>
+      </div>
+
+      <div id="f04-hero">
+        <div class="f04-line" id="f04-line-1"><span class="f04-w f04-w1">Sở</span> <span class="f04-w f04-w1">hữu</span> <span class="f04-w f04-w1">phần</span> <span class="f04-w f04-w1">tích</span> <span class="f04-w f04-w1">hợp,</span></div>
+        <div class="f04-line" id="f04-line-2"><span class="f04-w f04-w2 f04-strong">không</span> <span class="f04-w f04-w2 f04-strong">cần</span> <span class="f04-w f04-w2">sở</span> <span class="f04-w f04-w2">hữu</span> <span class="f04-w f04-w2">harness.</span></div>
+      </div>
+
+      <div id="f04-progress"></div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+      var q = function (s) { return document.querySelectorAll(s); };
+
+      // Scene 1 (0.0–4.0s): header, asset block, open-standard tag, wires to four harnesses
+      tl.fromTo("#f04-eyebrow", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.05);
+      tl.fromTo("#f04-counter", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.12);
+      tl.fromTo("#f04-progress", { scaleX: 0.75 }, { scaleX: 1, duration: 0.7, ease: "power3.out" }, 0.1);
+
+      // "tài sản" (0.5): asset block slides in from the left
+      tl.fromTo("#f04-asset", { opacity: 0, x: -32 }, { opacity: 1, x: 0, duration: 0.7, ease: "expo.out" }, 0.5);
+
+      // "chuẩn này" (1.8): the open-standard tag attaches to the block's right edge
+      tl.fromTo("#f04-std", { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.55, ease: "power3.out" }, 1.8);
+
+      // "nhiều harness" (3.3): four cobalt wires draw out, stagger 0.1s; cells land as each wire arrives
+      for (var i = 1; i <= 4; i++) {
+        var t = 3.3 + (i - 1) * 0.1;
+        tl.fromTo("#f04-wire-" + i, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.5, ease: "power2.inOut" }, t);
+        tl.fromTo("#f04-cell-" + i, { opacity: 0, x: 24 }, { opacity: 1, x: 0, duration: 0.55, ease: "power3.out" }, t + 0.2);
+        tl.fromTo("#f04-dot-" + i, { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.3, ease: "power3.out" }, t + 0.42);
+      }
+
+      // Scene 2 (4.0–8.16s): diagram steps back, hero statement builds word by word
+      tl.to("#f04-diagram", { opacity: 0.55, duration: 0.6, ease: "power2.out" }, 4.1);
+
+      // "Muốn sở hữu" (4.0): line 1
+      tl.fromTo(q(".f04-w1"), { opacity: 0, y: 28, filter: "blur(6px)" },
+        { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.6, ease: "power3.out", stagger: 0.07 }, 4.0);
+
+      // "không còn phải" (5.5): line 2, "không cần" set bold
+      tl.fromTo(q(".f04-w2"), { opacity: 0, y: 28, filter: "blur(6px)" },
+        { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.6, ease: "power3.out", stagger: 0.07 }, 5.5);
+
+      // Hold still to the end of the frame
+      tl.set({}, {}, 8.16);
+
+      window.__timelines["04-he-qua-chuan-mo"] = tl;
+    })();
+  </script>
+</template>

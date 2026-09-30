@@ -1,0 +1,401 @@
+<template>
+  <style>
+    @font-face { font-family: "Space Grotesk"; src: url("assets/fonts/SpaceGrotesk-VN.woff2") format("woff2"); font-weight: 300 700; font-style: normal; font-display: block; }
+    @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-VN.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: block; }
+    @font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/JetBrainsMono-VN.woff2") format("woff2"); font-weight: 100 800; font-style: normal; font-display: block; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      container-type: size;
+      font-family: "Space Grotesk", sans-serif;
+      color: #111111;
+    }
+
+    /* ---- full-bleed ground (full-duration clip) ---- */
+    .f09-bg {
+      position: absolute;
+      inset: 0;
+      background: #fdfae7;
+    }
+    .f09-progress {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 1080px; /* 9 / 16 of 1920 */
+      height: 3px;
+      background: #1e2bfa;
+      transform-origin: 0 50%;
+    }
+
+    /* ---- slide-header ---- */
+    .f09-eyebrow {
+      position: absolute;
+      left: 112px;
+      top: 72px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 1.3;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #1e2bfa;
+    }
+    .f09-pill {
+      position: absolute;
+      right: 112px;
+      top: 66px;
+      padding: 7px 20px 8px;
+      border-radius: 100px;
+      background: rgba(30, 43, 250, 0.08);
+      color: #1e2bfa;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 1.3;
+      letter-spacing: 0.05em;
+    }
+    .f09-h2 {
+      position: absolute;
+      left: 112px;
+      top: 134px;
+      width: 1696px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 60px;
+      line-height: 1.16;
+      letter-spacing: -0.02em;
+      color: #111111;
+    }
+    .f09-h2-a,
+    .f09-h2-b {
+      display: inline-block;
+    }
+    .f09-h2-b {
+      color: #6b6b6b;
+      font-weight: 600;
+    }
+    .f09-word {
+      position: relative;
+      display: inline-block;
+    }
+    .f09-underline {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -4px;
+      height: 4px;
+      border-radius: 2px;
+      background: #111111;
+      transform-origin: 0 50%;
+    }
+
+    /* ---- anchor card: "Cùng một harness" ---- */
+    .f09-anchor {
+      position: absolute;
+      left: 112px;
+      top: 470px;
+      width: 330px;
+      height: 190px;
+      box-sizing: border-box;
+      padding: 34px 32px;
+      border-radius: 14px;
+      background: rgba(30, 43, 250, 0.04);
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .f09-anchor-a {
+      font-family: "Inter", sans-serif;
+      font-weight: 500;
+      font-size: 28px;
+      line-height: 1.3;
+      color: #4a4a4a;
+    }
+    .f09-anchor-b {
+      margin-top: 4px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 56px;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      color: #111111;
+    }
+
+    /* ---- pipes ---- */
+    .f09-svg {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: visible;
+    }
+    .f09-node {
+      position: absolute;
+      border-radius: 50%;
+      background: #111111;
+    }
+    .f09-node-3 {
+      width: 24px;
+      height: 24px;
+      margin: -12px 0 0 -12px;
+    }
+    .f09-node-4 {
+      width: 30px;
+      height: 30px;
+      margin: -15px 0 0 -15px;
+    }
+    .f09-lbl {
+      position: absolute;
+      width: 200px;
+      margin-left: -100px;
+      text-align: center;
+      font-family: "Inter", sans-serif;
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 1.35;
+      color: #4a4a4a;
+    }
+    .f09-stop {
+      position: absolute;
+      width: 44px;
+      height: 44px;
+      margin: -22px 0 0 -22px;
+      box-sizing: border-box;
+      border-radius: 50%;
+      border: 2px solid #4a4a4a;
+      background: #fdfae7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .f09-stop svg {
+      width: 24px;
+      height: 24px;
+      display: block;
+    }
+    .f09-draft {
+      position: absolute;
+      left: 1225px;
+      top: 652px;
+      width: 130px;
+      height: 56px;
+      box-sizing: border-box;
+      border-radius: 12px;
+      background: rgba(30, 43, 250, 0.04);
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 28px;
+      line-height: 1.2;
+      color: #111111;
+    }
+    .f09-gate-bar {
+      position: absolute;
+      left: 1474px;
+      top: 612px;
+      width: 12px;
+      height: 136px;
+      border-radius: 6px;
+      background: #1e2bfa;
+    }
+    .f09-gate-head {
+      position: absolute;
+      left: 1452px;
+      top: 652px;
+      width: 56px;
+      height: 56px;
+      box-sizing: border-box;
+      border-radius: 50%;
+      border: 3px solid #1e2bfa;
+      background: #fdfae7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .f09-gate-head svg {
+      width: 28px;
+      height: 28px;
+      display: block;
+    }
+    .f09-gate-lbl {
+      position: absolute;
+      left: 1380px;
+      top: 760px;
+      width: 200px;
+      text-align: center;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 26px;
+      line-height: 1.3;
+      color: #1e2bfa;
+    }
+    .f09-level {
+      position: absolute;
+      left: 1606px;
+      width: 190px;
+      height: 96px;
+      box-sizing: border-box;
+      border-radius: 14px;
+      background: rgba(30, 43, 250, 0.04);
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 60px;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      color: #111111;
+    }
+    .f09-level-3 { top: 402px; }
+    .f09-level-4 { top: 632px; }
+  </style>
+
+  <div id="root" data-composition-id="09-workflow-quyet-dinh-muc" data-width="1920" data-height="1080" data-duration="13.76">
+    <div class="clip f09-bg" data-start="0" data-duration="13.76" data-track-index="0">
+      <div class="f09-progress"></div>
+    </div>
+
+    <!-- slide-header -->
+    <div class="f09-eyebrow">AUTOMATION LEVEL</div>
+    <div class="f09-pill">09 / 16</div>
+    <div class="f09-h2">
+      <span class="f09-h2-a">Là tính chất của <span class="f09-word">workflow<span class="f09-underline"></span></span>,</span>
+      <span class="f09-h2-b">không phải của tool.</span>
+    </div>
+
+    <!-- connectors + pipe lines -->
+    <svg class="f09-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+      <path class="f09-path-3" d="M442 565 H478 Q490 565 490 553 V462 Q490 450 502 450 H1520" fill="none" stroke="#111111" stroke-width="2" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1"></path>
+      <path class="f09-path-4a" d="M442 565 H478 Q490 565 490 577 V668 Q490 680 502 680 H1100" fill="none" stroke="#111111" stroke-width="3" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1"></path>
+      <path class="f09-path-4b" d="M1115 680 H1225" fill="none" stroke="#111111" stroke-width="3" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1"></path>
+      <path class="f09-path-4c" d="M1355 680 H1474" fill="none" stroke="#111111" stroke-width="3" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1"></path>
+    </svg>
+
+    <!-- anchor -->
+    <div class="f09-anchor">
+      <div class="f09-anchor-a">Cùng một</div>
+      <div class="f09-anchor-b">harness</div>
+    </div>
+
+    <!-- L3 pipe: 4 skill nodes with a reviewer stop between each -->
+    <div class="f09-node f09-node-3 f09-n3" style="left:560px;top:450px"></div>
+    <div class="f09-node f09-node-3 f09-n3" style="left:880px;top:450px"></div>
+    <div class="f09-node f09-node-3 f09-n3" style="left:1200px;top:450px"></div>
+    <div class="f09-node f09-node-3 f09-n3" style="left:1520px;top:450px"></div>
+    <div class="f09-lbl f09-l3-lbl f09-n3-lbl" style="left:560px;top:392px">skill</div>
+    <div class="f09-lbl f09-l3-lbl f09-n3-lbl" style="left:880px;top:392px">skill</div>
+    <div class="f09-lbl f09-l3-lbl f09-n3-lbl" style="left:1200px;top:392px">skill</div>
+    <div class="f09-lbl f09-l3-lbl f09-n3-lbl" style="left:1520px;top:392px">skill</div>
+
+    <div class="f09-stop f09-stop-1" style="left:720px;top:450px">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4.5" fill="none" stroke="#4a4a4a" stroke-width="2"></circle><path d="M4 21 Q4 14 12 14 Q20 14 20 21" fill="none" stroke="#4a4a4a" stroke-width="2" stroke-linecap="round"></path></svg>
+    </div>
+    <div class="f09-stop f09-stop-2" style="left:1040px;top:450px">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4.5" fill="none" stroke="#4a4a4a" stroke-width="2"></circle><path d="M4 21 Q4 14 12 14 Q20 14 20 21" fill="none" stroke="#4a4a4a" stroke-width="2" stroke-linecap="round"></path></svg>
+    </div>
+    <div class="f09-stop f09-stop-3" style="left:1360px;top:450px">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4.5" fill="none" stroke="#4a4a4a" stroke-width="2"></circle><path d="M4 21 Q4 14 12 14 Q20 14 20 21" fill="none" stroke="#4a4a4a" stroke-width="2" stroke-linecap="round"></path></svg>
+    </div>
+    <div class="f09-lbl f09-l3-lbl f09-stop-lbl-1" style="left:720px;top:482px">người duyệt</div>
+    <div class="f09-lbl f09-l3-lbl f09-stop-lbl-2" style="left:1040px;top:482px">người duyệt</div>
+    <div class="f09-lbl f09-l3-lbl f09-stop-lbl-3" style="left:1360px;top:482px">người duyệt</div>
+    <div class="f09-level f09-level-3">L3</div>
+
+    <!-- L4 pipe: 4 skill nodes run straight through, draft, cobalt approval gate -->
+    <div class="f09-node f09-node-4 f09-n4" style="left:560px;top:680px"></div>
+    <div class="f09-node f09-node-4 f09-n4" style="left:740px;top:680px"></div>
+    <div class="f09-node f09-node-4 f09-n4" style="left:920px;top:680px"></div>
+    <div class="f09-node f09-node-4 f09-n4" style="left:1100px;top:680px"></div>
+    <div class="f09-lbl f09-n4-lbl" style="left:560px;top:620px">skill</div>
+    <div class="f09-lbl f09-n4-lbl" style="left:740px;top:620px">skill</div>
+    <div class="f09-lbl f09-n4-lbl" style="left:920px;top:620px">skill</div>
+    <div class="f09-lbl f09-n4-lbl" style="left:1100px;top:620px">skill</div>
+
+    <div class="f09-draft">draft</div>
+    <div class="f09-gate-bar"></div>
+    <div class="f09-gate-head">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4.5" fill="none" stroke="#1e2bfa" stroke-width="2.2"></circle><path d="M4 21 Q4 14 12 14 Q20 14 20 21" fill="none" stroke="#1e2bfa" stroke-width="2.2" stroke-linecap="round"></path></svg>
+    </div>
+    <div class="f09-gate-lbl">approval gate</div>
+    <div class="f09-level f09-level-4">L4</div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      var root = document.querySelector('[data-composition-id="09-workflow-quyet-dinh-muc"]');
+      var q = function (sel) { return root.querySelector(sel); };
+      var qa = function (sel) { return root.querySelectorAll(sel); };
+      var IN = "power3.out";
+
+      var tl = gsap.timeline({ paused: true });
+
+      // Scene 1 (0.0–4.2s): slide-header, then the claim in two halves
+      tl.fromTo(q(".f09-eyebrow"), { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: IN }, 0);
+      tl.fromTo(q(".f09-pill"), { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: IN }, 0.08);
+      tl.fromTo(q(".f09-progress"), { scaleX: 8 / 9 }, { scaleX: 1, duration: 0.6, ease: IN }, 0.2);
+      tl.fromTo(q(".f09-h2-a"), { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: IN }, 0.3);
+      tl.fromTo(q(".f09-underline"), { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: IN }, 1.9);
+      tl.fromTo(q(".f09-h2-b"), { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: IN }, 3.4);
+
+      // Scene 2 (4.2–8.0s): anchor card, L3 pipe draws from it, reviewer stops, L3 label
+      tl.fromTo(q(".f09-anchor"), { x: -24, opacity: 0 }, { x: 0, opacity: 1, duration: 0.7, ease: IN }, 4.2);
+      tl.fromTo(q(".f09-path-3"), { attr: { "stroke-dashoffset": 1 } }, { attr: { "stroke-dashoffset": 0 }, duration: 1.2, ease: "none" }, 4.4);
+      var n3 = qa(".f09-n3"), n3l = qa(".f09-n3-lbl");
+      var n3t = [4.6, 4.92, 5.25, 5.57];
+      for (var i = 0; i < 4; i++) {
+        tl.fromTo(n3[i], { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: IN }, n3t[i]);
+        tl.fromTo(n3l[i], { y: 10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: IN }, n3t[i] + 0.05);
+      }
+      // "dừng hỏi người" (5.3s)
+      tl.fromTo(q(".f09-stop-1"), { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: IN }, 5.3);
+      tl.fromTo(q(".f09-stop-lbl-1"), { y: -10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: IN }, 5.4);
+      // "mỗi bước" (6.7s)
+      tl.fromTo(q(".f09-stop-2"), { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: IN }, 6.7);
+      tl.fromTo(q(".f09-stop-lbl-2"), { y: -10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: IN }, 6.8);
+      tl.fromTo(q(".f09-stop-3"), { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: IN }, 6.95);
+      tl.fromTo(q(".f09-stop-lbl-3"), { y: -10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: IN }, 7.05);
+      // "L3" (7.7s)
+      tl.fromTo(q(".f09-level-3"), { x: -20, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: IN }, 7.7);
+
+      // Scene 3 (8.0–13.16s): L3 recedes; L4 pipe draws in one pass, draft, cobalt gate, L4 label
+      tl.to([q(".f09-path-3"), n3[0], n3[1], n3[2], n3[3], q(".f09-stop-1"), q(".f09-stop-2"), q(".f09-stop-3")],
+        { opacity: 0.45, duration: 0.6, ease: "power2.out" }, 8.0);
+      tl.to(qa(".f09-l3-lbl"), { opacity: 0.8, duration: 0.6, ease: "power2.out" }, 8.0);
+      tl.to(q(".f09-level-3"), { opacity: 0.6, duration: 0.6, ease: "power2.out" }, 8.0);
+
+      tl.fromTo(q(".f09-path-4a"), { attr: { "stroke-dashoffset": 1 } }, { attr: { "stroke-dashoffset": 0 }, duration: 1.4, ease: "none" }, 8.0);
+      var n4 = qa(".f09-n4"), n4l = qa(".f09-n4-lbl");
+      var n4t = [8.4, 8.73, 9.06, 9.38];
+      for (var j = 0; j < 4; j++) {
+        tl.fromTo(n4[j], { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: IN }, n4t[j]);
+        tl.fromTo(n4l[j], { y: 10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: IN }, n4t[j] + 0.05);
+      }
+      // "draft" (10.4s)
+      tl.fromTo(q(".f09-path-4b"), { attr: { "stroke-dashoffset": 1 } }, { attr: { "stroke-dashoffset": 0 }, duration: 0.25, ease: "none" }, 10.15);
+      tl.fromTo(q(".f09-draft"), { x: -16, opacity: 0 }, { x: 0, opacity: 1, duration: 0.5, ease: IN }, 10.4);
+      // "approval gate" (10.9s) — the frame's one cobalt moment
+      tl.fromTo(q(".f09-path-4c"), { attr: { "stroke-dashoffset": 1 } }, { attr: { "stroke-dashoffset": 0 }, duration: 0.2, ease: "none" }, 10.7);
+      tl.fromTo(q(".f09-gate-bar"), { scaleY: 0 }, { scaleY: 1, duration: 0.6, ease: "expo.out" }, 10.9);
+      tl.fromTo(q(".f09-gate-head"), { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: IN }, 11.0);
+      tl.fromTo(q(".f09-gate-lbl"), { y: 12, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: IN }, 11.15);
+      // "L4" (12.2s), then still
+      tl.fromTo(q(".f09-level-4"), { x: -20, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: IN }, 12.2);
+
+      tl.set({}, {}, 13.16);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["09-workflow-quyet-dinh-muc"] = tl;
+    })();
+  </script>
+</template>

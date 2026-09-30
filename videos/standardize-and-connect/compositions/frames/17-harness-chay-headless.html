@@ -1,0 +1,656 @@
+<template>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: "Space Grotesk"; src: url("assets/fonts/SpaceGrotesk-VN.woff2") format("woff2"); font-weight: 300 700; font-style: normal; font-display: block; }
+    @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-VN.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: block; }
+    @font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/JetBrainsMono-VN.woff2") format("woff2"); font-weight: 100 800; font-style: normal; font-display: block; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      container-type: size;
+      font-family: "Inter", sans-serif;
+      color: #111111;
+    }
+    #root * { box-sizing: border-box; }
+
+    #f17-ground {
+      position: absolute;
+      inset: 0;
+      background: #fdfae7;
+    }
+
+    /* ---------- slide-header ---------- */
+    #f17-eyebrow {
+      position: absolute;
+      left: 96px;
+      top: 84px;
+      margin: 0;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 1.3;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #1e2bfa;
+    }
+    #f17-counter {
+      position: absolute;
+      right: 96px;
+      top: 78px;
+      padding: 8px 20px;
+      border-radius: 100px;
+      background: rgba(30, 43, 250, 0.08);
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 1.3;
+      letter-spacing: 0.05em;
+      color: #1e2bfa;
+    }
+    #f17-title {
+      position: absolute;
+      left: 96px;
+      top: 120px;
+      margin: 0;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 52px;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      color: #111111;
+      white-space: nowrap;
+    }
+
+    /* ---------- 5-step bar (chrome) ---------- */
+    #f17-steps {
+      position: absolute;
+      left: 96px;
+      top: 212px;
+      width: 1728px;
+      height: 60px;
+      display: flex;
+      gap: 16px;
+    }
+    .f17-step {
+      flex: 1 1 0;
+      height: 60px;
+      border-radius: 12px;
+      background: rgba(30, 43, 250, 0.04);
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 22px;
+      color: #111111;
+    }
+    .f17-step-num {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 1.2;
+    }
+    .f17-step-label {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+
+    /* ---------- upper: two standard harnesses + open-format label ---------- */
+    #f17-upper {
+      position: absolute;
+      left: 96px;
+      top: 312px;
+      width: 1728px;
+      height: 184px;
+    }
+    .f17-card {
+      position: absolute;
+      top: 0;
+      height: 184px;
+      background: rgba(30, 43, 250, 0.04);
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+      border-radius: 14px;
+      padding: 28px 32px;
+    }
+    #f17-h1 { left: 0; width: 440px; }
+    #f17-h2 { left: 464px; width: 440px; }
+    .f17-term {
+      width: 64px;
+      height: 52px;
+      border-radius: 10px;
+      border: 1.5px solid rgba(17, 17, 17, 0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "JetBrains Mono", monospace;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 1.2;
+      color: #111111;
+    }
+    .f17-card-title {
+      margin-top: 22px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 34px;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: #111111;
+      white-space: nowrap;
+    }
+    #f17-open {
+      left: 952px;
+      width: 776px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    #f17-doc {
+      position: relative;
+      flex: 0 0 auto;
+      width: 84px;
+      height: 104px;
+    }
+    .f17-sheet {
+      position: absolute;
+      width: 64px;
+      height: 84px;
+      border-radius: 8px;
+      border: 1.5px solid rgba(17, 17, 17, 0.55);
+      background: #fdfae7;
+    }
+    #f17-sheet-a { left: 20px; top: 0; }
+    #f17-sheet-b { left: 10px; top: 10px; }
+    #f17-sheet-c { left: 0; top: 20px; }
+    .f17-sheet-line {
+      position: absolute;
+      left: 12px;
+      height: 3px;
+      border-radius: 2px;
+      background: rgba(17, 17, 17, 0.45);
+    }
+    #f17-open-text { display: flex; flex-direction: column; gap: 8px; }
+    #f17-open-main {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 38px;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: #111111;
+      white-space: nowrap;
+    }
+    #f17-open-sub {
+      font-family: "Inter", sans-serif;
+      font-weight: 500;
+      font-size: 28px;
+      line-height: 1.3;
+      color: #555555;
+      white-space: nowrap;
+    }
+    .f17-arrow-glyph { font-family: "Inter", sans-serif; }
+
+    /* ---------- lower: automation pipeline ---------- */
+    #f17-sub {
+      position: absolute;
+      left: 96px;
+      top: 540px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    #f17-sub-line {
+      width: 48px;
+      height: 4px;
+      border-radius: 2px;
+      background: #1e2bfa;
+    }
+    #f17-sub-text {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 32px;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: #111111;
+      white-space: nowrap;
+    }
+
+    .f17-stage {
+      position: absolute;
+      top: 606px;
+      height: 224px;
+      width: 360px;
+      background: rgba(30, 43, 250, 0.04);
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+      border-radius: 14px;
+      padding: 26px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    #f17-s1 { left: 96px; }
+    #f17-s2 { left: 528px; }
+    #f17-s3 { left: 960px; }
+    .f17-stage-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+    .f17-stage-num {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 1.2;
+      letter-spacing: 0.08em;
+      color: #6b6b6b;
+    }
+    .f17-stage-label {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 32px;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: #111111;
+    }
+
+    /* stage glyphs (CSS-drawn, neutral ink) */
+    .f17-glyph-win {
+      position: relative;
+      width: 60px;
+      height: 48px;
+      border-radius: 8px;
+      border: 1.5px solid rgba(17, 17, 17, 0.55);
+    }
+    .f17-glyph-win-bar {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 12px;
+      height: 1.5px;
+      background: rgba(17, 17, 17, 0.55);
+    }
+    .f17-dot {
+      position: absolute;
+      top: 4px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: rgba(17, 17, 17, 0.55);
+    }
+    .f17-glyph-stack {
+      position: relative;
+      width: 60px;
+      height: 48px;
+    }
+    .f17-layer {
+      position: absolute;
+      left: 0;
+      width: 60px;
+      height: 12px;
+      border-radius: 6px;
+      border: 1.5px solid rgba(17, 17, 17, 0.55);
+    }
+
+    /* arrows between stages */
+    .f17-arrow {
+      position: absolute;
+      top: 712px;
+      width: 72px;
+      height: 14px;
+    }
+    #f17-a1 { left: 456px; }
+    #f17-a2 { left: 888px; }
+    #f17-a3 { left: 1320px; }
+    .f17-arrow-line {
+      position: absolute;
+      left: 12px;
+      top: 5.5px;
+      width: 40px;
+      height: 3px;
+      border-radius: 2px;
+      background: #6b6b6b;
+      transform-origin: 0% 50%;
+    }
+    .f17-arrow-head {
+      position: absolute;
+      left: 48px;
+      top: 0;
+      width: 0;
+      height: 0;
+      border-top: 7px solid transparent;
+      border-bottom: 7px solid transparent;
+      border-left: 12px solid #6b6b6b;
+    }
+
+    /* the approval gate (focal, the one cobalt moment) */
+    #f17-gate {
+      position: absolute;
+      left: 1392px;
+      top: 606px;
+      width: 432px;
+      height: 224px;
+      background: rgba(30, 43, 250, 0.06);
+      border: 2.5px solid #1e2bfa;
+      border-radius: 14px;
+      padding: 24px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    #f17-gate-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+    #f17-gate-icon {
+      position: relative;
+      width: 112px;
+      height: 64px;
+    }
+    #f17-gate-post {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 12px;
+      height: 64px;
+      border-radius: 4px;
+      background: #1e2bfa;
+    }
+    #f17-gate-base {
+      position: absolute;
+      left: -6px;
+      top: 58px;
+      width: 24px;
+      height: 6px;
+      border-radius: 3px;
+      background: #1e2bfa;
+    }
+    #f17-gate-arm {
+      position: absolute;
+      left: 12px;
+      top: 12px;
+      width: 96px;
+      height: 12px;
+      border-radius: 6px;
+      background: repeating-linear-gradient(90deg, #1e2bfa 0 16px, rgba(30, 43, 250, 0.25) 16px 28px);
+      border: 1.5px solid #1e2bfa;
+      transform-origin: 0% 50%;
+    }
+    #f17-gate-rest {
+      position: absolute;
+      left: 100px;
+      top: 24px;
+      width: 8px;
+      height: 40px;
+      border-radius: 3px;
+      background: rgba(30, 43, 250, 0.45);
+    }
+    #f17-reviewer {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 18px 8px 14px;
+      border-radius: 100px;
+      background: rgba(30, 43, 250, 0.1);
+    }
+    #f17-person {
+      position: relative;
+      width: 22px;
+      height: 26px;
+      flex: 0 0 auto;
+    }
+    #f17-person-head {
+      position: absolute;
+      left: 5px;
+      top: 0;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #1e2bfa;
+    }
+    #f17-person-body {
+      position: absolute;
+      left: 0;
+      top: 14px;
+      width: 22px;
+      height: 12px;
+      border-radius: 11px 11px 3px 3px;
+      background: #1e2bfa;
+    }
+    #f17-reviewer-text {
+      font-family: "Inter", sans-serif;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 1.3;
+      color: #1e2bfa;
+      white-space: nowrap;
+    }
+    #f17-gate-label {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: #111111;
+      white-space: nowrap;
+    }
+    #f17-gate-num {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 1.2;
+      letter-spacing: 0.08em;
+      color: #1e2bfa;
+    }
+    #f17-gate-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+
+    /* ---------- progress bar ---------- */
+    #f17-progress {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 1920px;
+      height: 3px;
+      background: #1e2bfa;
+      transform-origin: 0% 50%;
+    }
+  </style>
+
+  <div id="root" data-composition-id="17-harness-chay-headless" data-width="1920" data-height="1080" data-start="0" data-duration="13.16">
+    <div id="f17-ground" class="clip" data-start="0" data-duration="13.16" data-track-index="0"></div>
+
+    <div id="f17-stage-layer" class="clip" data-start="0" data-duration="13.16" data-track-index="1" style="position:absolute; inset:0;">
+      <!-- slide-header -->
+      <p id="f17-eyebrow">Đề xuất</p>
+      <div id="f17-counter">17 / 24</div>
+      <h2 id="f17-title">Harness chuẩn, chạy headless</h2>
+
+      <!-- 5-step bar -->
+      <div id="f17-steps">
+        <div id="f17-st1" class="f17-step"><span class="f17-step-num">1</span><span class="f17-step-label">Data</span></div>
+        <div id="f17-st2" class="f17-step"><span class="f17-step-num">2</span><span class="f17-step-label">Kit</span></div>
+        <div id="f17-st3" class="f17-step"><span class="f17-step-num">3</span><span class="f17-step-label">Connector</span></div>
+        <div id="f17-st4" class="f17-step"><span class="f17-step-num">4</span><span class="f17-step-label">Governance</span></div>
+        <div id="f17-st5" class="f17-step"><span class="f17-step-num">5</span><span class="f17-step-label">Harness</span></div>
+      </div>
+
+      <!-- upper half: two standard harnesses + open format -->
+      <div id="f17-upper">
+        <div id="f17-h1" class="f17-card">
+          <div class="f17-term">&gt;_</div>
+          <div class="f17-card-title">Harness chuẩn 1</div>
+        </div>
+        <div id="f17-h2" class="f17-card">
+          <div class="f17-term">&gt;_</div>
+          <div class="f17-card-title">Harness chuẩn 2</div>
+        </div>
+        <div id="f17-open" class="f17-card">
+          <div id="f17-doc">
+            <div id="f17-sheet-a" class="f17-sheet"></div>
+            <div id="f17-sheet-b" class="f17-sheet"></div>
+            <div id="f17-sheet-c" class="f17-sheet">
+              <div class="f17-sheet-line" style="top:18px; width:38px;"></div>
+              <div class="f17-sheet-line" style="top:30px; width:30px;"></div>
+              <div class="f17-sheet-line" style="top:42px; width:36px;"></div>
+              <div class="f17-sheet-line" style="top:54px; width:24px;"></div>
+            </div>
+          </div>
+          <div id="f17-open-text">
+            <div id="f17-open-main">Tài sản ở định dạng mở</div>
+            <div id="f17-open-sub"><span class="f17-arrow-glyph">↔</span> đổi harness được</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- lower half: automation pipeline -->
+      <div id="f17-sub">
+        <div id="f17-sub-line"></div>
+        <div id="f17-sub-text">Tự động hoá cao hơn</div>
+      </div>
+
+      <div id="f17-s1" class="f17-stage">
+        <div class="f17-stage-top">
+          <div class="f17-glyph-win">
+            <div class="f17-glyph-win-bar"></div>
+            <div class="f17-dot" style="left:7px;"></div>
+            <div class="f17-dot" style="left:16px;"></div>
+            <div class="f17-dot" style="left:25px;"></div>
+          </div>
+          <div class="f17-stage-num">01</div>
+        </div>
+        <div class="f17-stage-label">Cùng harness</div>
+      </div>
+
+      <div id="f17-a1" class="f17-arrow"><div class="f17-arrow-line"></div><div class="f17-arrow-head"></div></div>
+
+      <div id="f17-s2" class="f17-stage">
+        <div class="f17-stage-top">
+          <div class="f17-term">&gt;_</div>
+          <div class="f17-stage-num">02</div>
+        </div>
+        <div class="f17-stage-label">Headless<br />trong CI</div>
+      </div>
+
+      <div id="f17-a2" class="f17-arrow"><div class="f17-arrow-line"></div><div class="f17-arrow-head"></div></div>
+
+      <div id="f17-s3" class="f17-stage">
+        <div class="f17-stage-top">
+          <div class="f17-glyph-stack">
+            <div class="f17-layer" style="top:0;"></div>
+            <div class="f17-layer" style="top:18px;"></div>
+            <div class="f17-layer" style="top:36px;"></div>
+          </div>
+          <div class="f17-stage-num">03</div>
+        </div>
+        <div class="f17-stage-label">Cùng kit và<br />data source</div>
+      </div>
+
+      <div id="f17-a3" class="f17-arrow"><div class="f17-arrow-line"></div><div class="f17-arrow-head"></div></div>
+
+      <div id="f17-gate">
+        <div id="f17-gate-top">
+          <div id="f17-gate-icon">
+            <div id="f17-gate-rest"></div>
+            <div id="f17-gate-post"></div>
+            <div id="f17-gate-base"></div>
+            <div id="f17-gate-arm"></div>
+          </div>
+          <div id="f17-gate-num">04</div>
+        </div>
+        <div id="f17-gate-bottom">
+          <div id="f17-gate-label">Approval gate cuối</div>
+        </div>
+        <div id="f17-reviewer" style="position:absolute; right:28px; top:92px;">
+          <div id="f17-person">
+            <div id="f17-person-head"></div>
+            <div id="f17-person-body"></div>
+          </div>
+          <div id="f17-reviewer-text">người duyệt</div>
+        </div>
+      </div>
+
+      <!-- progress bar (only element allowed under the caption line) -->
+      <div id="f17-progress"></div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const OUT = "power3.out";
+      const COBALT = "#1e2bfa";
+      const CREAM = "#fdfae7";
+      const TINT = "rgba(30, 43, 250, 0.04)";
+      const INK = "#111111";
+
+      // ---- Scene 1 (0.0–5.0s): step 5 goes cobalt, two harnesses, open format ----
+      // header + step bar present from the first frame (hero visible by 0.5s)
+      tl.fromTo("#f17-eyebrow", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: OUT }, 0);
+      tl.fromTo("#f17-counter", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: OUT }, 0);
+      tl.fromTo("#f17-title", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: OUT }, 0.05);
+      tl.fromTo("#f17-steps", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: OUT }, 0.05);
+      tl.fromTo("#f17-progress", { scaleX: 16 / 24 }, { scaleX: 17 / 24, duration: 0.6, ease: OUT }, 0.1);
+
+      // "Năm" (0.0): step 4 hands off, step 5 turns cobalt
+      tl.fromTo("#f17-st4",
+        { backgroundColor: COBALT, borderColor: COBALT, color: CREAM },
+        { backgroundColor: TINT, borderColor: "rgba(30, 43, 250, 0.2)", color: INK, duration: 0.45, ease: OUT }, 0.1);
+      tl.fromTo("#f17-st5",
+        { backgroundColor: TINT, borderColor: "rgba(30, 43, 250, 0.2)", color: INK },
+        { backgroundColor: COBALT, borderColor: COBALT, color: CREAM, duration: 0.45, ease: OUT }, 0.15);
+
+      // "một đến hai" (1.1): the two standard harness cards assemble into their slots
+      tl.fromTo("#f17-h1", { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.6, ease: OUT }, 1.1);
+      tl.fromTo("#f17-h2", { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.6, ease: OUT }, 1.3);
+
+      // "định dạng mở" (4.0): open-format label lands beside them
+      tl.fromTo("#f17-open", { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.6, ease: OUT }, 4.0);
+      tl.fromTo("#f17-open-sub", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: OUT }, 4.3);
+
+      // ---- Scene 2 (5.0–10.3s): upper half recedes, pipeline draws from the left ----
+      tl.to("#f17-upper", { opacity: 0.6, duration: 0.6, ease: "power2.out" }, 5.0);
+      tl.to("#f17-open-sub", { color: INK, duration: 0.6, ease: "power2.out" }, 5.0);
+
+      // "tự động hoá" (5.2): small heading
+      tl.fromTo("#f17-sub", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: OUT }, 5.2);
+      tl.fromTo("#f17-sub-line", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: OUT, transformOrigin: "0% 50%" }, 5.25);
+
+      // "Cùng harness" (7.3)
+      tl.fromTo("#f17-s1", { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.6, ease: OUT }, 7.3);
+      tl.fromTo("#f17-a1 .f17-arrow-line", { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: OUT }, 7.85);
+      tl.fromTo("#f17-a1 .f17-arrow-head", { opacity: 0, x: -8 }, { opacity: 1, x: 0, duration: 0.3, ease: OUT }, 8.15);
+
+      // "Headless trong CI" (8.4)
+      tl.fromTo("#f17-s2", { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.6, ease: OUT }, 8.4);
+      tl.fromTo("#f17-a2 .f17-arrow-line", { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: OUT }, 8.95);
+      tl.fromTo("#f17-a2 .f17-arrow-head", { opacity: 0, x: -8 }, { opacity: 1, x: 0, duration: 0.3, ease: OUT }, 9.25);
+
+      // "Cùng kit và data source" (9.5)
+      tl.fromTo("#f17-s3", { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.6, ease: OUT }, 9.5);
+
+      // ---- Scene 3 (10.3–12.66s): last arrow, then the approval gate; hold still ----
+      tl.fromTo("#f17-a3 .f17-arrow-line", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: OUT }, 10.6);
+      tl.fromTo("#f17-a3 .f17-arrow-head", { opacity: 0, x: -8 }, { opacity: 1, x: 0, duration: 0.3, ease: OUT }, 10.95);
+
+      // "approval gate" (11.2): cobalt-bordered gate lands, barrier arm draws shut, reviewer label
+      tl.fromTo("#f17-gate", { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.6, ease: OUT }, 11.2);
+      tl.fromTo("#f17-gate-arm", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: OUT }, 11.4);
+      tl.fromTo("#f17-reviewer", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5, ease: OUT }, 11.65);
+
+      // still from ~12.15s to the end
+      tl.set({}, {}, 12.66);
+
+      window.__timelines["17-harness-chay-headless"] = tl;
+    })();
+  </script>
+</template>

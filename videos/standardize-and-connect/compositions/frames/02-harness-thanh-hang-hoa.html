@@ -1,0 +1,354 @@
+<template>
+  <style>
+    @font-face { font-family: "Space Grotesk"; src: url("assets/fonts/SpaceGrotesk-VN.woff2") format("woff2"); font-weight: 300 700; font-style: normal; font-display: block; }
+    @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-VN.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: block; }
+    @font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/JetBrainsMono-VN.woff2") format("woff2"); font-weight: 100 800; font-style: normal; font-display: block; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      font-family: "Inter", sans-serif;
+      color: #111111;
+    }
+    .f02-bg {
+      position: absolute;
+      inset: 0;
+      background: #fdfae7;
+    }
+    .f02-stage {
+      position: absolute;
+      inset: 0;
+    }
+
+    /* ---- slide header ---- */
+    .f02-eyebrow {
+      position: absolute;
+      left: 96px;
+      top: 58px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 1.3;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #1e2bfa;
+      white-space: nowrap;
+    }
+    .f02-pill {
+      position: absolute;
+      right: 96px;
+      top: 50px;
+      padding: 8px 22px;
+      border-radius: 100px;
+      background: rgba(30, 43, 250, 0.08);
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 1.3;
+      letter-spacing: 0.05em;
+      color: #1e2bfa;
+      white-space: nowrap;
+    }
+    .f02-h2 {
+      position: absolute;
+      left: 96px;
+      top: 100px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 64px;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: #111111;
+      white-space: nowrap;
+    }
+    .f02-sub {
+      position: absolute;
+      left: 96px;
+      top: 190px;
+      font-family: "Inter", sans-serif;
+      font-weight: 400;
+      font-size: 28px;
+      line-height: 1.4;
+      color: #6b6b6b;
+      white-space: nowrap;
+    }
+    .f02-progress {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 160px;
+      height: 3px;
+      background: #1e2bfa;
+      transform-origin: 0 50%;
+    }
+
+    /* ---- harness name grid (3 x 2) ---- */
+    .f02-slot,
+    .f02-card {
+      position: absolute;
+      width: 560px;
+      height: 100px;
+      border-radius: 14px;
+    }
+    .f02-slot {
+      border: 1.5px dashed rgba(30, 43, 250, 0.22);
+    }
+    .f02-card {
+      background: rgba(30, 43, 250, 0.04);
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+      display: flex;
+      align-items: center;
+      padding: 0 36px;
+    }
+    .f02-name {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 42px;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: #111111;
+      white-space: nowrap;
+    }
+    .f02-c1 { left: 96px;   top: 268px; }
+    .f02-c2 { left: 680px;  top: 268px; }
+    .f02-c3 { left: 1264px; top: 268px; }
+    .f02-c4 { left: 96px;   top: 386px; }
+    .f02-c5 { left: 680px;  top: 386px; }
+    .f02-c6 { left: 1264px; top: 386px; }
+    .f02-extra {
+      position: absolute;
+      right: 96px;
+      top: 498px;
+      font-family: "Inter", sans-serif;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 1.4;
+      color: #6b6b6b;
+      white-space: nowrap;
+    }
+
+    /* ---- monthly cadence strip ---- */
+    .f02-month {
+      position: absolute;
+      top: 566px;
+      width: 133px;
+      height: 100px;
+      border-radius: 10px;
+      background: rgba(30, 43, 250, 0.04);
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+      transform-origin: 0 50%;
+    }
+    .f02-mlabel {
+      position: absolute;
+      left: 14px;
+      top: 8px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 1.3;
+      color: #6b6b6b;
+      white-space: nowrap;
+    }
+    .f02-tick {
+      position: absolute;
+      bottom: 12px;
+      width: 9px;
+      border-radius: 4px;
+      background: #1e2bfa;
+      transform-origin: 50% 100%;
+    }
+    .f02-feat {
+      position: absolute;
+      right: 96px;
+      top: 682px;
+      font-family: "Inter", sans-serif;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 1.4;
+      color: #6b6b6b;
+      white-space: nowrap;
+    }
+
+    /* ---- internal team lag ---- */
+    .f02-link {
+      position: absolute;
+      left: 451px;
+      top: 674px;
+      width: 0;
+      height: 70px;
+      border-left: 2px dashed #6b6b6b;
+      transform-origin: 50% 0;
+    }
+    .f02-team {
+      position: absolute;
+      left: 332px;
+      top: 748px;
+      width: 240px;
+      height: 80px;
+      border-radius: 12px;
+      border: 2px dashed #6b6b6b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .f02-team-label {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 28px;
+      line-height: 1.2;
+      color: #111111;
+      white-space: nowrap;
+    }
+    .f02-guide {
+      position: absolute;
+      left: 1822px;
+      top: 674px;
+      width: 0;
+      height: 134px;
+      border-left: 2px dashed #6b6b6b;
+      transform-origin: 50% 0;
+    }
+    .f02-arrow {
+      position: absolute;
+      left: 582px;
+      top: 776px;
+      width: 1236px;
+      height: 24px;
+      overflow: visible;
+    }
+    .f02-gap-label {
+      position: absolute;
+      left: 1000px;
+      top: 730px;
+      width: 420px;
+      text-align: center;
+      font-family: "Inter", sans-serif;
+      font-weight: 600;
+      font-size: 28px;
+      line-height: 1.3;
+      color: #dc2626;
+      white-space: nowrap;
+    }
+  </style>
+
+  <div id="root" data-composition-id="02-harness-thanh-hang-hoa" data-width="1920" data-height="1080" data-duration="13.64">
+    <div class="clip f02-bg" data-start="0" data-duration="13.64" data-track-index="0"></div>
+
+    <div class="clip f02-stage" data-start="0" data-duration="13.64" data-track-index="1">
+      <!-- slide header -->
+      <div class="f02-eyebrow" id="f02-eyebrow">Bối cảnh 2025–2026</div>
+      <div class="f02-pill" id="f02-pill">02 / 24</div>
+      <div class="f02-h2" id="f02-h2">Harness đã thành hàng hoá</div>
+      <div class="f02-sub" id="f02-sub">Phần chung: mua được, không cần tự viết</div>
+
+      <!-- empty grid slots (establish the array region) -->
+      <div class="f02-slot f02-c1" id="f02-slot1"></div>
+      <div class="f02-slot f02-c2" id="f02-slot2"></div>
+      <div class="f02-slot f02-c3" id="f02-slot3"></div>
+      <div class="f02-slot f02-c4" id="f02-slot4"></div>
+      <div class="f02-slot f02-c5" id="f02-slot5"></div>
+      <div class="f02-slot f02-c6" id="f02-slot6"></div>
+
+      <!-- harness name cards -->
+      <div class="f02-grid" id="f02-grid">
+        <div class="f02-card f02-c1" id="f02-card1"><span class="f02-name">Claude Code</span></div>
+        <div class="f02-card f02-c2" id="f02-card2"><span class="f02-name">Codex</span></div>
+        <div class="f02-card f02-c3" id="f02-card3"><span class="f02-name">Gemini CLI</span></div>
+        <div class="f02-card f02-c4" id="f02-card4"><span class="f02-name">Copilot</span></div>
+        <div class="f02-card f02-c5" id="f02-card5"><span class="f02-name">Cursor</span></div>
+        <div class="f02-card f02-c6" id="f02-card6"><span class="f02-name">Kiro</span></div>
+        <div class="f02-extra" id="f02-extra">+ OpenCode, goose (open source)</div>
+      </div>
+
+      <!-- monthly strip: 12 cells, each with two feature ticks -->
+      <div class="f02-month" id="f02-m1" style="left:96px"><span class="f02-mlabel">T1</span><i class="f02-tick" style="left:84px;height:44px"></i><i class="f02-tick" style="left:104px;height:62px"></i></div>
+      <div class="f02-month" id="f02-m2" style="left:241px"><span class="f02-mlabel">T2</span><i class="f02-tick" style="left:84px;height:58px"></i><i class="f02-tick" style="left:104px;height:38px"></i></div>
+      <div class="f02-month" id="f02-m3" style="left:386px"><span class="f02-mlabel">T3</span><i class="f02-tick" style="left:84px;height:70px"></i><i class="f02-tick" style="left:104px;height:48px"></i></div>
+      <div class="f02-month" id="f02-m4" style="left:531px"><span class="f02-mlabel">T4</span><i class="f02-tick" style="left:84px;height:40px"></i><i class="f02-tick" style="left:104px;height:66px"></i></div>
+      <div class="f02-month" id="f02-m5" style="left:676px"><span class="f02-mlabel">T5</span><i class="f02-tick" style="left:84px;height:60px"></i><i class="f02-tick" style="left:104px;height:52px"></i></div>
+      <div class="f02-month" id="f02-m6" style="left:821px"><span class="f02-mlabel">T6</span><i class="f02-tick" style="left:84px;height:72px"></i><i class="f02-tick" style="left:104px;height:44px"></i></div>
+      <div class="f02-month" id="f02-m7" style="left:966px"><span class="f02-mlabel">T7</span><i class="f02-tick" style="left:84px;height:50px"></i><i class="f02-tick" style="left:104px;height:64px"></i></div>
+      <div class="f02-month" id="f02-m8" style="left:1111px"><span class="f02-mlabel">T8</span><i class="f02-tick" style="left:84px;height:66px"></i><i class="f02-tick" style="left:104px;height:40px"></i></div>
+      <div class="f02-month" id="f02-m9" style="left:1256px"><span class="f02-mlabel">T9</span><i class="f02-tick" style="left:84px;height:46px"></i><i class="f02-tick" style="left:104px;height:72px"></i></div>
+      <div class="f02-month" id="f02-m10" style="left:1401px"><span class="f02-mlabel">T10</span><i class="f02-tick" style="left:84px;height:62px"></i><i class="f02-tick" style="left:104px;height:56px"></i></div>
+      <div class="f02-month" id="f02-m11" style="left:1546px"><span class="f02-mlabel">T11</span><i class="f02-tick" style="left:84px;height:74px"></i><i class="f02-tick" style="left:104px;height:50px"></i></div>
+      <div class="f02-month" id="f02-m12" style="left:1691px"><span class="f02-mlabel">T12</span><i class="f02-tick" style="left:84px;height:54px"></i><i class="f02-tick" style="left:104px;height:70px"></i></div>
+
+      <div class="f02-feat" id="f02-feat">subagent · skill · hook · sandbox · headless · SDK · cloud agent</div>
+
+      <!-- internal team lagging at month 3 -->
+      <div class="f02-link" id="f02-link"></div>
+      <div class="f02-team" id="f02-team"><span class="f02-team-label">Đội nội bộ</span></div>
+      <div class="f02-guide" id="f02-guide"></div>
+      <svg class="f02-arrow" id="f02-arrow" viewBox="0 0 1236 24" width="1236" height="24">
+        <line id="f02-arrow-line" x1="4" y1="12" x2="1232" y2="12" stroke="#6b6b6b" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="1228" stroke-dashoffset="0"></line>
+        <polyline id="f02-head-l" points="16,3 4,12 16,21" fill="none" stroke="#6b6b6b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></polyline>
+        <polyline id="f02-head-r" points="1220,3 1232,12 1220,21" fill="none" stroke="#6b6b6b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></polyline>
+      </svg>
+      <div class="f02-gap-label" id="f02-gap-label">luôn đi sau</div>
+
+      <div class="f02-progress" id="f02-progress"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+      var q = function (s) { return document.querySelector('[data-composition-id="02-harness-thanh-hang-hoa"] ' + s); };
+      var qa = function (s) { return document.querySelectorAll('[data-composition-id="02-harness-thanh-hang-hoa"] ' + s); };
+
+      // Scene 1 (0.0–3.0): header chrome, empty grid slots, headline, muted line
+      tl.fromTo(q("#f02-eyebrow"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.05);
+      tl.fromTo(q("#f02-pill"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.12);
+      tl.fromTo(q("#f02-progress"), { scaleX: 0.5 }, { scaleX: 1, duration: 0.8, ease: "power3.out" }, 0.1);
+      var slots = qa(".f02-slot");
+      for (var s = 0; s < slots.length; s++) {
+        tl.fromTo(slots[s], { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.2 + s * 0.06);
+      }
+      tl.fromTo(q("#f02-h2"), { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out" }, 1.4);
+      tl.fromTo(q("#f02-sub"), { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 2.3);
+
+      // Scene 2 (3.0–8.2): each name card lands in its slot on its spoken cue
+      var cues = [3.0, 4.1, 4.8, 6.3, 7.0, 7.8];
+      for (var c = 0; c < 6; c++) {
+        var card = q("#f02-card" + (c + 1));
+        var slot = q("#f02-slot" + (c + 1));
+        tl.fromTo(card, { opacity: 0, y: 24, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "power3.out" }, cues[c]);
+        tl.to(slot, { opacity: 0, duration: 0.3, ease: "power2.out" }, cues[c] + 0.15);
+      }
+      tl.fromTo(q("#f02-extra"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 7.95);
+
+      // Scene 3 (8.2–10.2): month strip draws from the left, then cobalt feature ticks rise left to right
+      var months = qa(".f02-month");
+      for (var m = 0; m < months.length; m++) {
+        tl.fromTo(months[m], { opacity: 0, scaleX: 0 }, { opacity: 1, scaleX: 1, duration: 0.45, ease: "power3.out" }, 8.6 + m * 0.04);
+        var ticks = months[m].querySelectorAll(".f02-tick");
+        for (var k = 0; k < ticks.length; k++) {
+          tl.fromTo(ticks[k], { scaleY: 0 }, { scaleY: 1, duration: 0.45, ease: "power3.out", immediateRender: true }, 9.4 + m * 0.05 + k * 0.025);
+        }
+      }
+      tl.fromTo(q("#f02-feat"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 9.8);
+
+      // Scene 4 (10.2–13.14): internal team box sits back at month 3; gap measured to the strip head
+      tl.to(q("#f02-grid"), { opacity: 0.62, duration: 0.6, ease: "power2.out" }, 10.2);
+      tl.fromTo(q("#f02-team"), { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 10.2);
+      tl.fromTo(q("#f02-link"), { opacity: 0, scaleY: 0 }, { opacity: 1, scaleY: 1, duration: 0.5, ease: "power3.out" }, 10.35);
+
+      tl.fromTo(q("#f02-guide"), { opacity: 0, scaleY: 0 }, { opacity: 1, scaleY: 1, duration: 0.45, ease: "power3.out" }, 11.5);
+      tl.fromTo(q("#f02-arrow-line"), { strokeDashoffset: 1228 }, { strokeDashoffset: 0, duration: 0.6, ease: "power3.out" }, 11.5);
+      tl.fromTo(q("#f02-head-l"), { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 11.5);
+      tl.fromTo(q("#f02-head-r"), { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 11.95);
+      tl.fromTo(q("#f02-gap-label"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 11.8);
+
+      // hold still to the end
+      tl.set({}, {}, 13.14);
+
+      window.__timelines["02-harness-thanh-hang-hoa"] = tl;
+    })();
+  </script>
+</template>

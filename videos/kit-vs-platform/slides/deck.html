@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kit và dữ liệu</title>
+<meta name="description" content="Đề xuất định hướng đầu tư AI trong phát triển phần mềm — Tổ chức (đề xuất, chưa được duyệt).">
+<style>
+@font-face{font-family:"Space Grotesk";src:url("fonts/SpaceGrotesk-VN.woff2") format("woff2");font-weight:300 700;font-style:normal;font-display:block}
+@font-face{font-family:"Inter";src:url("fonts/Inter-VN.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:block}
+:root{
+  --bg:#fdfae7;--primary:#1e2bfa;--text:#111111;--muted:#6b6b6b;--light:#9a9a9a;
+  --accent-light:rgba(30,43,250,.08);--accent-medium:rgba(30,43,250,.15);
+  --border:rgba(30,43,250,.2);--card-bg:rgba(30,43,250,.04);
+  --positive:#059669;--negative:#dc2626;
+  --disp:"Space Grotesk",system-ui,sans-serif;--body:"Inter",system-ui,sans-serif;--sym:"Inter",system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+html{background:#e9e6d2}
+body{background:#e9e6d2;color:var(--muted);font-family:var(--body);-webkit-font-smoothing:antialiased;overflow:hidden}
+#stage{position:fixed;left:50%;top:50%;width:1920px;height:1080px;transform-origin:50% 50%;transform:translate(-50%,-50%) scale(.5)}
+.slide{position:absolute;inset:0;width:1920px;height:1080px;background:var(--bg);overflow:hidden;display:none;flex-direction:column;padding:64px 96px 84px}
+.slide.active{display:flex}
+
+/* chrome */
+.hdr{display:flex;align-items:center;justify-content:space-between;min-height:48px}
+.eyebrow{font-family:var(--disp);font-weight:600;font-size:22px;line-height:1.3;letter-spacing:.08em;text-transform:uppercase;color:var(--primary)}
+.pill{display:inline-flex;align-items:center;background:var(--accent-light);color:var(--primary);font-family:var(--disp);font-weight:500;font-size:20px;line-height:1.3;padding:10px 26px;border-radius:100px;white-space:nowrap}
+h1,h2,h3{font-family:var(--disp);color:var(--text);letter-spacing:-.02em}
+h2{font-weight:600;font-size:58px;line-height:1.16;margin-top:18px;max-width:1560px}
+.lead{font-size:30px;line-height:1.5;color:var(--muted);margin-top:14px;max-width:1500px}
+.content{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;padding:30px 0 36px}
+.foot{position:absolute;left:96px;right:96px;bottom:30px;display:flex;justify-content:space-between;font-family:var(--disp);font-weight:500;font-size:18px;letter-spacing:.05em;color:var(--light)}
+.foot .n{color:var(--muted)}
+.progress{position:absolute;left:0;bottom:0;height:3px;background:var(--primary)}
+.sym{font-family:var(--sym)}
+strong,b{color:var(--text);font-weight:600}
+.pos{color:var(--positive);font-weight:600}
+.neg{color:var(--negative);font-weight:600}
+.cob{color:var(--primary)}
+
+/* components */
+.card{background:var(--card-bg);border:1.5px solid var(--border);border-radius:14px;padding:30px 34px}
+.hl{background:var(--accent-light);border-left:4px solid var(--primary);border-radius:12px;padding:36px 40px}
+.num{font-family:var(--disp);font-weight:700;color:var(--primary);line-height:1}
+.h3{font-family:var(--disp);font-weight:600;font-size:32px;line-height:1.25;letter-spacing:-.02em;color:var(--text)}
+.txt{font-size:28px;line-height:1.5;color:var(--muted)}
+.small{font-size:24px;line-height:1.5;color:var(--muted)}
+.ey-sm{font-family:var(--disp);font-weight:600;font-size:20px;letter-spacing:.08em;text-transform:uppercase;color:var(--primary)}
+.chip{display:inline-block;background:var(--accent-light);color:var(--primary);font-family:var(--disp);font-weight:500;font-size:22px;line-height:1.3;padding:6px 18px;border-radius:100px;margin:0 8px 10px 0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+
+/* tables */
+table.t{width:100%;border-collapse:separate;border-spacing:0;background:var(--card-bg);border:1.5px solid var(--border);border-radius:14px;overflow:hidden}
+table.t th{font-family:var(--disp);font-weight:600;font-size:20px;letter-spacing:.08em;text-transform:uppercase;color:var(--primary);text-align:left;padding:20px 28px;background:var(--accent-light)}
+table.t td{font-size:27px;line-height:1.42;color:var(--muted);padding:18px 28px;border-top:1.5px solid var(--border);vertical-align:top}
+table.t td.k{font-family:var(--disp);font-weight:600;color:var(--text);font-size:28px;line-height:1.3}
+
+/* atmosphere (cover/closing only) */
+.diag{position:absolute;top:0;right:0;bottom:0;width:36%;background:var(--accent-light);clip-path:polygon(30% 0,100% 0,100% 100%,0 100%)}
+.dots{position:absolute;display:grid;grid-template-columns:repeat(3,14px);gap:30px}
+.dots i{width:14px;height:14px;border-radius:50%;background:var(--primary);display:block}
+.rings{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
+.rings i{position:absolute;left:50%;top:50%;border:1.5px solid var(--border);border-radius:50%;transform:translate(-50%,-50%);display:block}
+.aline{width:60px;height:4px;background:var(--primary);border-radius:2px}
+
+/* nav */
+.nav{position:fixed;left:50%;transform:translateX(-50%);bottom:12px;display:flex;gap:8px;z-index:5;font-family:var(--disp);opacity:0;transition:opacity .3s}
+body.ui .nav,.nav:hover{opacity:1}
+.nav button{border:1.5px solid var(--border);background:var(--bg);color:var(--primary);border-radius:100px;padding:6px 14px;font:500 14px var(--disp);cursor:pointer}
+.nav span{align-self:center;color:var(--muted);font-size:13px;letter-spacing:.05em;padding:0 6px}
+
+@media print{
+  @page{size:1920px 1080px;margin:0}
+  html,body{background:var(--bg);overflow:visible;height:auto}
+  #stage{position:static;transform:none!important;width:1920px;height:auto}
+  .slide{display:flex!important;position:relative;inset:auto;overflow:hidden;break-after:page;page-break-after:always}
+  .slide:last-child{break-after:auto;page-break-after:auto}
+  .nav{display:none}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<div id="stage">
+
+<!-- 1 COVER -->
+<section class="slide" data-title="Bìa">
+  <div class="diag"></div>
+  <div class="dots" style="right:170px;top:170px"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <svg class="rsvg" style="position:absolute;left:0;top:0;width:1920px;height:1080px;pointer-events:none" viewBox="0 0 1920 1080" aria-hidden="true"><g fill="none" stroke-width="1.5" style="stroke:var(--border)"><circle cx="2180" cy="1340" r="259"/><circle cx="2180" cy="1340" r="379"/><circle cx="2180" cy="1340" r="499"/></g></svg>
+  <div style="position:relative;flex:1;display:flex;flex-direction:column;justify-content:center;max-width:1180px;padding-bottom:40px">
+    <div class="aline"></div>
+    <div class="eyebrow" style="margin-top:28px">Tổ chức · 28/09/2026</div>
+    <h1 style="font-weight:700;font-size:92px;line-height:1.12;margin-top:26px">Đầu tư vào kit và dữ liệu, không viết harness mới</h1>
+    <p class="lead" style="font-size:34px;margin-top:30px;max-width:1100px">Đề xuất định hướng đầu tư AI trong phát triển phần mềm — Tổ chức</p>
+    <div style="margin-top:44px"><span class="pill" style="font-size:22px;padding:12px 30px">Đề xuất · chưa được duyệt</span></div>
+  </div>
+</section>
+
+<!-- 2 EXEC SUMMARY -->
+<section class="slide" data-title="Tóm tắt">
+  <div class="hdr"><div class="eyebrow">Executive summary</div><span class="pill">Đề xuất · chưa được duyệt</span></div>
+  <h2>Mua harness và LLM; đầu tư vào kit và dữ liệu AI-ready</h2>
+  <div class="content">
+    <div style="display:grid;grid-template-columns:1fr 1.22fr;gap:64px;align-items:stretch">
+      <div class="hl" style="display:flex;flex-direction:column;justify-content:center">
+        <div class="ey-sm">Luận điểm</div>
+        <div style="font-family:var(--disp);font-weight:500;font-size:46px;line-height:1.3;color:var(--text);letter-spacing:-.01em;margin-top:22px">Harness và LLM thì mua. Đầu tư vào kit và dữ liệu AI-ready — thứ bên ngoài không có.</div>
+        <p class="small" style="margin-top:28px;font-size:25px">Một agent làm việc thật = harness + LLM + kit + infrastructure. Platform cũng là bốn phần này, chỉ khác ở chỗ tự viết lại harness.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:26px;justify-content:center">
+        <div style="display:grid;grid-template-columns:84px 1fr;gap:4px 18px"><div class="num" style="font-size:44px">01</div><div><div class="h3">Harness và LLM thì mua</div><div class="txt" style="font-size:26px">Chọn từ vendor lớn hoặc open source đang phát triển nhanh.</div></div></div>
+        <div style="display:grid;grid-template-columns:84px 1fr;gap:4px 18px"><div class="num" style="font-size:44px">02</div><div><div class="h3">Đầu tư vào kit và data source AI-ready</div><div class="txt" style="font-size:26px">Trích xuất tài nguyên nội bộ — thứ bên ngoài không có.</div></div></div>
+        <div style="display:grid;grid-template-columns:84px 1fr;gap:4px 18px"><div class="num" style="font-size:44px">03</div><div><div class="h3">Viết trung lập với harness</div><div class="txt" style="font-size:26px">Gắn vào harness nào cũng được, kể cả khi chạy headless trên cloud.</div></div></div>
+        <div style="display:grid;grid-template-columns:84px 1fr;gap:4px 18px"><div class="num" style="font-size:44px">04</div><div><div class="h3">Platform thu hẹp lại, không dừng hẳn</div><div class="txt" style="font-size:26px">Giữ data layer và governance layer, bỏ phần tự viết lại orchestration.</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 CONTEXT: LADDER -->
+<section class="slide" data-title="Bối cảnh">
+  <div class="hdr"><div class="eyebrow">01 · Bối cảnh</div><span class="pill">Thang automation L1–L5</span></div>
+  <h2>Mục tiêu kỳ sau: thiết kế đạt L3, coding và testing đạt L4</h2>
+  <div class="content">
+    <div style="display:grid;grid-template-columns:1.28fr 1fr;gap:56px;align-items:center">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <!-- ladder rows: indent grows with level -->
+        <div class="card" style="padding:16px 26px;margin-left:0;display:grid;grid-template-columns:80px 1fr auto;align-items:center;gap:18px"><div class="num" style="font-size:40px">L5</div><div><div class="h3" style="font-size:28px">Autonomous</div><div class="small">Nhận mục tiêu, AI tự lập kế hoạch, tự làm, tự báo cáo</div></div><span class="ey-sm" style="font-size:18px">AI</span></div>
+        <div class="card" style="padding:16px 26px;background:var(--accent-medium);display:grid;grid-template-columns:80px 1fr auto;align-items:center;gap:18px"><div class="num" style="font-size:40px">L4</div><div><div class="h3" style="font-size:28px">Approval</div><div class="small">AI tự đề xuất và làm cả chuỗi việc, người chỉ duyệt</div></div><span class="ey-sm" style="font-size:18px">AI</span></div>
+        <div class="card" style="padding:16px 26px;background:var(--accent-medium);display:grid;grid-template-columns:80px 1fr auto;align-items:center;gap:18px"><div class="num" style="font-size:40px">L3</div><div><div class="h3" style="font-size:28px">Collaborative</div><div class="small">AI vừa làm vừa hỏi người, ra sản phẩm từ mục tiêu còn mơ hồ</div></div><span class="ey-sm" style="font-size:18px">Ranh giới</span></div>
+        <div class="card" style="padding:16px 26px;display:grid;grid-template-columns:80px 1fr auto;align-items:center;gap:18px"><div class="num" style="font-size:40px">L2</div><div><div class="h3" style="font-size:28px">Instructed</div><div class="small">AI làm theo chỉ thị cụ thể</div></div><span class="ey-sm" style="font-size:18px;color:var(--muted)">Người</span></div>
+        <div class="card" style="padding:16px 26px;display:grid;grid-template-columns:80px 1fr auto;align-items:center;gap:18px"><div class="num" style="font-size:40px">L1</div><div><div class="h3" style="font-size:28px">Assistive</div><div class="small">AI hỗ trợ từng thao tác nhỏ</div></div><span class="ey-sm" style="font-size:18px;color:var(--muted)">Người</span></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:22px">
+        <div class="ey-sm">Mục tiêu phía Dev · kỳ sau</div>
+        <div style="display:grid;grid-template-columns:110px 1fr;gap:20px;align-items:start"><div class="num" style="font-size:64px">L4</div><div><div class="h3" style="font-size:30px">Coding/unit test, testing</div><div class="small" style="font-size:25px">AI tự sinh draft, tự chạy, người approve</div></div></div>
+        <div style="display:grid;grid-template-columns:110px 1fr;gap:20px;align-items:start"><div class="num" style="font-size:64px">L3</div><div><div class="h3" style="font-size:30px">Basic design, detail design</div><div class="small" style="font-size:25px">AI cùng viết, cùng review nội dung</div></div></div>
+        <div style="display:grid;grid-template-columns:110px 1fr;gap:20px;align-items:start"><div class="num" style="font-size:64px;color:var(--light)">&lt;</div><div><div class="h3" style="font-size:30px">Planning, requirements definition</div><div class="small" style="font-size:25px">Giữ ở mức thấp hơn</div></div></div>
+        <p class="small" style="border-top:1.5px solid var(--border);padding-top:18px">Mục tiêu “AI-First” cho cả Ops và Dev, đo trên thang năm mức.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 TWO TEAMS -->
+<section class="slide" data-title="Hai team">
+  <div class="hdr"><div class="eyebrow">01 · Bối cảnh</div><span class="pill">Phân công hiện tại</span></div>
+  <h2>Hai team được giao hai hướng khác nhau</h2>
+  <div class="content">
+    <div class="grid2" style="gap:40px">
+      <div class="card" style="padding:44px 48px">
+        <div class="ey-sm">Team platform</div>
+        <div class="h3" style="font-size:44px;margin-top:18px">Centralized AI Dev Platform</div>
+        <p class="txt" style="margin-top:18px">Xây một nền tảng AI tập trung (gọi tắt: <strong>platform</strong>) chạy trên cloud, phục vụ toàn tổ chức.</p>
+        <div style="margin-top:28px"><span class="chip" style="font-size:23px">cloud</span><span class="chip" style="font-size:23px">tập trung</span><span class="chip" style="font-size:23px">toàn tổ chức</span></div>
+      </div>
+      <div class="card" style="padding:44px 48px">
+        <div class="ey-sm">Team kit</div>
+        <div class="h3" style="font-size:44px;margin-top:18px">Kit cho harness phổ biến</div>
+        <p class="txt" style="margin-top:18px">Làm <strong>kit</strong> — skill, workflow, connector — cho các harness phổ biến như Claude Code, Kiro.</p>
+        <div style="margin-top:28px"><span class="chip" style="font-size:23px">skill</span><span class="chip" style="font-size:23px">workflow</span><span class="chip" style="font-size:23px">connector</span></div>
+      </div>
+    </div>
+    <div class="hl" style="margin-top:40px;padding:28px 36px"><p class="txt" style="color:var(--text)">Câu hỏi của đề xuất: tổ chức nên đầu tư vào đâu khi muốn nâng automation level của AI trong phát triển phần mềm?</p></div>
+  </div>
+</section>
+
+<!-- 5 PLATFORM DESCRIPTION -->
+<section class="slide" data-title="Platform">
+  <div class="hdr"><div class="eyebrow">01 · Bối cảnh</div><span class="pill">Theo tài liệu platform</span></div>
+  <h2>Platform được mô tả với bốn layer và mười ba feature</h2>
+  <div class="content">
+    <div style="display:grid;grid-template-columns:1.05fr 1fr;gap:48px">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="ey-sm">Bốn layer kiến trúc</div>
+        <div class="card" style="padding:18px 26px;display:grid;grid-template-columns:52px 1fr;gap:14px"><div class="num" style="font-size:36px">1</div><div><div class="h3" style="font-size:27px">Context engine và knowledge base</div><div class="small" style="font-size:24px">RAG, vector DB; index spec; code knowledge graph nhiều chục repo, hàng triệu LOC; RBAC</div></div></div>
+        <div class="card" style="padding:18px 26px;display:grid;grid-template-columns:52px 1fr;gap:14px"><div class="num" style="font-size:36px">2</div><div><div class="h3" style="font-size:27px">Multi-agent orchestration</div><div class="small" style="font-size:24px">Chuỗi agent: requirements → design → code → review → test</div></div></div>
+        <div class="card" style="padding:18px 26px;display:grid;grid-template-columns:52px 1fr;gap:14px"><div class="num" style="font-size:36px">3</div><div><div class="h3" style="font-size:27px">Integration qua MCP</div><div class="small" style="font-size:24px">Hai chiều với Jira, GitHub, Confluence, tool design, monitoring, test automation</div></div></div>
+        <div class="card" style="padding:18px 26px;display:grid;grid-template-columns:52px 1fr;gap:14px"><div class="num" style="font-size:36px">4</div><div><div class="h3" style="font-size:27px">Governance và quality gate</div><div class="small" style="font-size:24px">Generate → Verify → Approve; guardrail, sandbox; audit trail; cost dashboard</div></div></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="ey-sm">Mười ba feature · hai nhóm</div>
+        <div class="card" style="padding:22px 28px">
+          <div style="display:flex;align-items:baseline;gap:14px"><span class="num" style="font-size:40px">5</span><span class="h3" style="font-size:27px">Nhóm common</span></div>
+          <div style="margin-top:12px"><span class="chip" style="font-size:23px">Q&amp;A có citation</span><span class="chip" style="font-size:23px">Code search, reverse engineering legacy</span><span class="chip" style="font-size:23px">Human gate</span><span class="chip" style="font-size:23px">RBAC</span><span class="chip" style="font-size:23px">Cost dashboard</span></div>
+        </div>
+        <div class="card" style="padding:22px 28px">
+          <div style="display:flex;align-items:baseline;gap:14px"><span class="num" style="font-size:40px">8</span><span class="h3" style="font-size:27px">Nhóm development lifecycle</span></div>
+          <div style="margin-top:12px"><span class="chip" style="font-size:23px">Requirements definition (SRS)</span><span class="chip" style="font-size:23px">Basic &amp; detail design</span><span class="chip" style="font-size:23px">Code gen kèm unit test</span><span class="chip" style="font-size:23px">Automated code review</span><span class="chip" style="font-size:23px">Test case design</span><span class="chip" style="font-size:23px">Test execution kèm evidence pack</span><span class="chip" style="font-size:23px">Giao trọn feature bằng một lệnh</span><span class="chip" style="font-size:23px">Change impact analysis</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 PLATFORM ARGUMENT -->
+<section class="slide" data-title="Lập luận của platform">
+  <div class="hdr"><div class="eyebrow">01 · Bối cảnh</div><span class="pill">Theo tài liệu platform</span></div>
+  <h2>Lập luận của platform: IDE harness khác về bản chất</h2>
+  <div class="content" style="padding-top:22px">
+    <table class="t">
+      <colgroup><col style="width:22%"><col style="width:36%"><col style="width:42%"></colgroup>
+      <tr><th>Tiêu chí</th><th>IDE harness</th><th>Platform</th></tr>
+      <tr><td class="k">Automation level</td><td>L3: interactive, dev prompt từng bước</td><td>L4: tự chain SRS → code → test → PR, người review/approve</td></tr>
+      <tr><td class="k">Deployment</td><td>Tool cá nhân, phụ thuộc kỹ năng prompt</td><td>Tập trung trên cloud, gắn CI/CD, Jira, GitHub</td></tr>
+      <tr><td class="k">Task scope</td><td>Task rời rạc</td><td>End-to-end delivery</td></tr>
+      <tr><td class="k">System scope</td><td>Single repo, active files</td><td>Multi-repo, change impact map giữa các service</td></tr>
+      <tr><td class="k">Quality gate</td><td>Không có human gate bắt buộc, thiếu audit log tập trung</td><td>3-layer quality gate, audit trail, RBAC</td></tr>
+      <tr><td class="k">Tích hợp tool</td><td>Giới hạn trong môi trường test local</td><td>Điều phối module test automation của doanh nghiệp</td></tr>
+    </table>
+    <div style="display:flex;gap:24px;align-items:center;margin-top:24px">
+      <span class="ey-sm" style="white-space:nowrap">Kết luận của tài liệu đó</span>
+      <p class="txt" style="font-size:27px">IDE harness (kể cả khi đã nối knowledge base) là <strong>“trợ lý cá nhân của lập trình viên”</strong>; platform là <strong>“dây chuyền sản xuất phần mềm tự động”</strong>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 7 AGENT = 4 PARTS -->
+<section class="slide" data-title="Bốn phần của agent">
+  <div class="hdr"><div class="eyebrow">02 · Đề xuất</div><span class="pill">Khung phân tích</span></div>
+  <h2>Một agent làm việc thật luôn gồm bốn phần</h2>
+  <div class="content">
+    <div style="display:grid;grid-template-columns:230px 1fr 50px 1fr 50px 1fr 50px 1fr;align-items:center;row-gap:30px">
+      <div class="ey-sm">Agent</div>
+      <div class="card" style="text-align:center;height:150px;display:flex;flex-direction:column;justify-content:center;padding:0 16px"><div class="h3" style="font-size:36px">Harness</div><div class="small" style="font-size:22px;margin-top:6px">Claude Code, Kiro…</div></div>
+      <div class="num" style="font-size:44px;text-align:center">+</div>
+      <div class="card" style="text-align:center;height:150px;display:flex;flex-direction:column;justify-content:center;padding:0 16px"><div class="h3" style="font-size:36px">LLM</div><div class="small" style="font-size:22px;margin-top:6px">vendor hoặc open source</div></div>
+      <div class="num" style="font-size:44px;text-align:center">+</div>
+      <div class="card" style="text-align:center;height:150px;display:flex;flex-direction:column;justify-content:center;padding:0 16px"><div class="h3" style="font-size:36px">Kit</div><div class="small" style="font-size:22px;margin-top:6px">skill, workflow, connector</div></div>
+      <div class="num" style="font-size:44px;text-align:center">+</div>
+      <div class="card" style="text-align:center;height:150px;display:flex;flex-direction:column;justify-content:center;padding:0 16px"><div class="h3" style="font-size:36px">Infrastructure</div><div class="small" style="font-size:22px;margin-top:6px">hạ tầng</div></div>
+
+      <div class="ey-sm">Platform</div>
+      <div class="card" style="text-align:center;height:150px;display:flex;flex-direction:column;justify-content:center;padding:0 16px;background:var(--accent-medium);border-color:var(--primary)"><div class="h3" style="font-size:36px">Harness</div><div class="ey-sm" style="font-size:19px;margin-top:10px">tự viết lại</div></div>
+      <div class="num" style="font-size:44px;text-align:center">+</div>
+      <div class="card" style="text-align:center;height:150px;display:flex;flex-direction:column;justify-content:center;padding:0 16px"><div class="h3" style="font-size:36px">LLM</div><div class="small" style="font-size:22px;margin-top:6px">giống</div></div>
+      <div class="num" style="font-size:44px;text-align:center">+</div>
+      <div class="card" style="text-align:center;height:150px;display:flex;flex-direction:column;justify-content:center;padding:0 16px"><div class="h3" style="font-size:36px">Kit</div><div class="small" style="font-size:22px;margin-top:6px">giống</div></div>
+      <div class="num" style="font-size:44px;text-align:center">+</div>
+      <div class="card" style="text-align:center;height:150px;display:flex;flex-direction:column;justify-content:center;padding:0 16px"><div class="h3" style="font-size:36px">Infrastructure</div><div class="small" style="font-size:22px;margin-top:6px">giống</div></div>
+    </div>
+    <div class="hl" style="margin-top:44px;padding:28px 36px"><p style="font-family:var(--disp);font-weight:500;font-size:34px;line-height:1.35;color:var(--text)">Platform, xét cho cùng, cũng là bốn phần này — chỉ khác ở chỗ tự viết lại harness.</p></div>
+  </div>
+</section>
+
+<!-- 8 PROPOSAL -->
+<section class="slide" data-title="Đề xuất">
+  <div class="hdr"><div class="eyebrow">02 · Đề xuất</div><span class="pill">Bốn ý đề xuất</span></div>
+  <h2>Mua phần chung, đầu tư vào phần bên ngoài không có</h2>
+  <div class="content">
+    <div class="grid2" style="gap:26px">
+      <div class="card" style="display:grid;grid-template-columns:86px 1fr;gap:16px"><div class="num" style="font-size:52px">01</div><div><div class="h3">Harness và LLM thì mua</div><p class="txt" style="font-size:26px;margin-top:8px">Chọn harness tốt, LLM tốt từ vendor lớn hoặc open source đang phát triển nhanh.</p></div></div>
+      <div class="card" style="display:grid;grid-template-columns:86px 1fr;gap:16px"><div class="num" style="font-size:52px">02</div><div><div class="h3">Đầu tư vào thứ bên ngoài không có</div><p class="txt" style="font-size:26px;margin-top:8px"><strong>Kit AI-ready</strong>: skill, workflow, template, checklist, connector, guardrail. <strong>Data source AI-ready</strong>: document index, code graph, dữ liệu dự án có RBAC.</p></div></div>
+      <div class="card" style="display:grid;grid-template-columns:86px 1fr;gap:16px"><div class="num" style="font-size:52px">03</div><div><div class="h3">Viết trung lập với harness</div><p class="txt" style="font-size:26px;margin-top:8px">Gắn vào harness nào cũng được. Khi lên cloud, chính harness đó chạy headless trên server, dùng lại nguyên các tài nguyên này.</p></div></div>
+      <div class="card" style="display:grid;grid-template-columns:86px 1fr;gap:16px"><div class="num" style="font-size:52px">04</div><div><div class="h3">Platform thu hẹp lại, không dừng hẳn</div><p class="txt" style="font-size:26px;margin-top:8px">Giữ data layer và governance layer, bỏ phần tự viết lại orchestration layer.</p></div></div>
+    </div>
+    <p class="txt" style="margin-top:30px;font-size:26px">Khớp thứ tự đầu tư <strong>data → interface → harness</strong> trong proposal ba trụ cột: model đổi được trong một dòng cấu hình; dữ liệu và dây nối thì không ai làm thay được.</p>
+  </div>
+</section>
+
+<!-- 9 WHY NOT: SPEED + DEVALUATION -->
+<section class="slide" data-title="Phép thử mất giá">
+  <div class="hdr"><div class="eyebrow">03 · Vì sao không tự viết harness</div><span class="pill">Tốc độ · Phép thử mất giá</span></div>
+  <h2>Phần tự viết harness mất giá; phần nội bộ thì không</h2>
+  <div class="content">
+    <div style="display:grid;grid-template-columns:.82fr 1.5fr;gap:40px;align-items:stretch">
+      <div class="card" style="padding:36px 38px">
+        <div class="ey-sm">Tốc độ</div>
+        <div class="h3" style="font-size:34px;margin-top:14px">Vendor và open source ra feature theo tháng</div>
+        <p class="small" style="margin-top:14px;font-size:26px">Subagent, skill, hook, sandbox, chạy headless, SDK. Harness tự viết phải đuổi theo mãi — mỗi lần đuổi là công sức không tạo ra khác biệt.</p>
+      </div>
+      <div class="card" style="padding:36px 40px">
+        <div class="ey-sm">Phép thử mất giá</div>
+        <p style="font-family:var(--disp);font-weight:500;font-size:33px;line-height:1.35;color:var(--text);margin-top:14px">“Nếu quý sau vendor ra đúng feature này, khoản đầu tư của mình có mất trắng không?”</p>
+        <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:28px;margin-top:26px;border-top:1.5px solid var(--border);padding-top:24px">
+          <div><div style="font-family:var(--disp);font-weight:700;font-size:30px" class="neg"><span class="sym">✗</span> Mất</div><p class="small" style="margin-top:8px;font-size:26px">Agent orchestration layer, chat UI</p></div>
+          <div><div style="font-family:var(--disp);font-weight:700;font-size:30px" class="pos"><span class="sym">✓</span> Không mất</div><p class="small" style="margin-top:8px;font-size:26px">Code graph hệ thống nội bộ, template theo chuẩn tài liệu của tổ chức, checklist review, connector tới tool nội bộ — vì bên ngoài không có</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 WHY NOT: WORKFLOW DECIDES LEVEL -->
+<section class="slide" data-title="Workflow quyết định mức">
+  <div class="hdr"><div class="eyebrow">03 · Vì sao không tự viết harness</div><span class="pill">L3 và L4</span></div>
+  <h2>Automation level là tính chất của workflow, không phải của tool</h2>
+  <div class="content">
+    <p class="txt" style="margin-bottom:30px">Cùng một harness, hai workflow khác nhau:</p>
+    <div style="display:flex;flex-direction:column;gap:26px">
+      <div class="card" style="display:grid;grid-template-columns:120px 1fr;gap:28px;align-items:center;padding:30px 36px">
+        <div class="num" style="font-size:64px">L3</div>
+        <div>
+          <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;font-family:var(--disp);font-size:30px;color:var(--text)">
+            <span class="chip" style="font-size:28px;padding:8px 22px;margin:0">bước 1</span><span class="cob">→</span><span class="chip" style="font-size:28px;padding:8px 22px;margin:0;background:transparent;border:1.5px solid var(--border);color:var(--muted)">hỏi người</span><span class="cob">→</span><span class="chip" style="font-size:28px;padding:8px 22px;margin:0">bước 2</span><span class="cob">→</span><span class="chip" style="font-size:28px;padding:8px 22px;margin:0;background:transparent;border:1.5px solid var(--border);color:var(--muted)">hỏi người</span><span class="cob">→</span><span class="chip" style="font-size:28px;padding:8px 22px;margin:0">bước 3</span><span class="cob">→</span><span class="chip" style="font-size:28px;padding:8px 22px;margin:0;background:transparent;border:1.5px solid var(--border);color:var(--muted)">hỏi người</span>
+          </div>
+          <p class="txt" style="margin-top:16px;font-size:28px">Cho dừng hỏi người ở mỗi bước.</p>
+        </div>
+      </div>
+      <div class="card" style="display:grid;grid-template-columns:120px 1fr;gap:28px;align-items:center;padding:30px 36px">
+        <div class="num" style="font-size:64px">L4</div>
+        <div>
+          <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;font-family:var(--disp);font-size:30px;color:var(--text)">
+            <span class="chip" style="font-size:28px;padding:8px 22px;margin:0">skill</span><span class="cob">→</span><span class="chip" style="font-size:28px;padding:8px 22px;margin:0">skill</span><span class="cob">→</span><span class="chip" style="font-size:28px;padding:8px 22px;margin:0">skill</span><span class="cob">→</span><span class="chip" style="font-size:28px;padding:8px 22px;margin:0">draft</span><span class="cob">→</span><span class="chip" style="font-size:28px;padding:8px 22px;margin:0;background:var(--primary);color:var(--bg)">approval gate</span>
+          </div>
+          <p class="txt" style="margin-top:16px;font-size:28px">Cho chạy trọn một chuỗi skill rồi trình draft ở approval gate cuối.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 WRONG COMPARISON 1/2 -->
+<section class="slide" data-title="So sai đối tượng 1/2">
+  <div class="hdr"><div class="eyebrow">04 · Bảng so sánh so sai đối tượng</div><span class="pill">1 / 2</span></div>
+  <h2>Bảng so sánh đang so hai cách triển khai, không so harness với platform</h2>
+  <p class="lead" style="font-size:27px">Nó đặt harness dùng tương tác trong IDE cạnh một platform chạy trên server. So harness chạy headless kèm kit với platform tự viết thì từng dòng đổi như sau:</p>
+  <div class="content" style="padding-top:24px">
+    <table class="t">
+      <colgroup><col style="width:28%"><col style="width:72%"></colgroup>
+      <tr><th>Dòng trong bảng</th><th>Thực tế</th></tr>
+      <tr><td class="k">L3 so với L4</td><td>Automation level do workflow quyết định. Kit tài liệu hiện chủ động dừng để hỏi người (L3) vì đó là <strong>design choice</strong>, không phải do harness giới hạn.</td></tr>
+      <tr><td class="k">Tool cá nhân so với cloud</td><td>Harness chạy được trên server: Claude Code có chế độ non-interactive, Agent SDK và tích hợp GitHub Actions; Kiro CLI có <code style="font-family:var(--body)">--no-interactive</code>, <strong>đã chạy thử thực tế</strong>.</td></tr>
+      <tr><td class="k">Task rời so với end-to-end</td><td>“Một lệnh giao trọn feature” là một skill chain workflow, tức <strong>phần kit</strong>. Kit hiện đã có lệnh slash cho từng loại tài liệu.</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- 12 WRONG COMPARISON 2/2 -->
+<section class="slide" data-title="So sai đối tượng 2/2">
+  <div class="hdr"><div class="eyebrow">04 · Bảng so sánh so sai đối tượng</div><span class="pill">2 / 2</span></div>
+  <h2>Multi-repo là bài toán dữ liệu; chỉ audit tập trung là khoảng trống thật</h2>
+  <div class="content" style="padding-top:26px">
+    <table class="t">
+      <colgroup><col style="width:31%"><col style="width:69%"></colgroup>
+      <tr><th>Dòng trong bảng</th><th>Thực tế</th></tr>
+      <tr><td class="k">Single repo so với multi-repo</td><td>Đây là vấn đề <strong>dữ liệu</strong>. Code graph nhiều repo phơi ra qua CLI hoặc MCP thì harness nào cũng dùng được. Dòng này <strong>ủng hộ</strong> đề xuất, không bác nó.</td></tr>
+      <tr><td class="k">Không có gate, không có audit</td><td>Human gate đã có: PR review, branch protection, hook của harness. <strong>Audit tập trung là khoảng trống thật</strong> (Kiro lưu session log local trên máy từng người), lấp bằng một layer mỏng: LLM gateway, telemetry, thu log về một chỗ.</td></tr>
+      <tr><td class="k">Không tích hợp tool chuyên sâu</td><td>Nối tool qua CLI hoặc MCP chính là <strong>connector trong kit</strong>. CLI cho Jira và Confluence đã chứng minh cách này khi MCP chưa được bật.</td></tr>
+    </table>
+    <div class="hl" style="margin-top:26px;padding:22px 32px"><p class="txt" style="font-size:31px;color:var(--text)">“Trợ lý cá nhân” so với “dây chuyền sản xuất” không đứng vững: cùng một harness có thể là cả hai, tuỳ nó chạy ở đâu và chạy workflow nào.</p></div>
+  </div>
+</section>
+
+<!-- 13 FOUR LAYERS -->
+<section class="slide" data-title="Bốn layer">
+  <div class="hdr"><div class="eyebrow">05 · Bốn layer của platform</div><span class="pill">Tách theo bản chất</span></div>
+  <h2>Tách theo bản chất: chỉ layer 2 là viết lại harness</h2>
+  <div class="content">
+    <div style="display:grid;grid-template-columns:1fr 360px;gap:36px;align-items:stretch">
+      <table class="t">
+        <colgroup><col style="width:31%"><col style="width:24%"><col style="width:45%"></colgroup>
+        <tr><th>Layer</th><th>Bản chất</th><th>Nên làm gì</th></tr>
+        <tr><td class="k">1 · Context engine, knowledge base</td><td>Data source AI-ready</td><td><span class="pos"><span class="sym">✓</span> Làm.</span> Tài sản bên ngoài không có</td></tr>
+        <tr><td class="k">2 · Multi-agent orchestration</td><td><strong>Viết lại harness</strong></td><td><span class="neg"><span class="sym">✗</span> Không làm.</span> Dùng subagent, skill chain, headless của harness có sẵn</td></tr>
+        <tr><td class="k">3 · Integration</td><td>Connector trong kit</td><td><span class="pos"><span class="sym">✓</span> Làm</span>, trung lập với harness (CLI hoặc MCP)</td></tr>
+        <tr><td class="k">4 · Governance, quality gate</td><td>Shared infrastructure</td><td><strong>Mua hoặc cấu hình</strong>: gate qua GitHub, guardrail qua hook và sandbox, cost và audit qua LLM gateway</td></tr>
+      </table>
+      <div class="card" style="display:flex;flex-direction:column;justify-content:center;padding:36px 34px">
+        <div class="num" style="font-size:120px;letter-spacing:-.02em">3/4</div>
+        <div class="h3" style="font-size:30px;margin-top:18px">layer của chính platform đã trùng với đề xuất</div>
+        <p class="small" style="margin-top:14px;font-size:23px">Phần tự viết lại harness dồn vào layer 2, cộng thêm chat UI.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 14 THIRTEEN FEATURES -->
+<section class="slide" data-title="Mười ba feature">
+  <div class="hdr"><div class="eyebrow">06 · Mười ba feature</div><span class="pill">13 feature · 3 loại</span></div>
+  <h2>Không feature nào bắt buộc phải có harness tự viết</h2>
+  <div class="content">
+    <div style="display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:26px;align-items:stretch">
+      <div class="card" style="padding:30px 32px;display:flex;flex-direction:column">
+        <div style="display:flex;align-items:baseline;gap:16px"><span class="num" style="font-size:72px">6</span><span class="h3" style="font-size:28px">Skill hoặc workflow</span></div>
+        <ul class="small" style="list-style:none;margin:16px 0 24px;display:flex;flex-direction:column;gap:6px;font-size:24px">
+          <li>Requirements definition (sinh SRS)</li><li>Sinh basic design, detail design</li><li>Code generation kèm unit test</li><li>Automated code review</li><li>Test case design</li><li>Giao trọn feature bằng một lệnh</li>
+        </ul>
+        <div style="margin-top:auto;padding-top:18px;border-top:1.5px solid var(--border)"><span class="ey-sm" style="font-size:18px">Ai làm</span><div class="h3" style="font-size:25px;margin-top:4px">Team kit</div></div>
+      </div>
+      <div class="card" style="padding:30px 32px;display:flex;flex-direction:column">
+        <div style="display:flex;align-items:baseline;gap:16px"><span class="num" style="font-size:72px">3</span><span class="h3" style="font-size:28px">Data source kèm skill</span></div>
+        <ul class="small" style="list-style:none;margin:16px 0 24px;display:flex;flex-direction:column;gap:6px;font-size:24px">
+          <li>Code search, reverse engineering code legacy</li><li>Change impact analysis giữa các service</li><li>Q&amp;A có citation</li>
+        </ul>
+        <div style="margin-top:auto;padding-top:18px;border-top:1.5px solid var(--border)"><span class="ey-sm" style="font-size:18px">Ai làm</span><div class="h3" style="font-size:25px;margin-top:4px">Team platform làm data, team kit làm skill dùng data</div></div>
+      </div>
+      <div class="card" style="padding:30px 32px;display:flex;flex-direction:column">
+        <div style="display:flex;align-items:baseline;gap:16px"><span class="num" style="font-size:72px">4</span><span class="h3" style="font-size:28px">Governance, CI</span></div>
+        <ul class="small" style="list-style:none;margin:16px 0 24px;display:flex;flex-direction:column;gap:6px;font-size:24px">
+          <li>Human gate</li><li>RBAC</li><li>Cost dashboard</li><li>Automated test execution kèm evidence pack</li>
+        </ul>
+        <div style="margin-top:auto;padding-top:18px;border-top:1.5px solid var(--border)"><span class="ey-sm" style="font-size:18px">Ai làm</span><div class="h3" style="font-size:25px;margin-top:4px">Mua hoặc cấu hình; CI đính evidence pack vào PR</div></div>
+      </div>
+    </div>
+    <p class="small" style="margin-top:24px;font-size:24px">Kit tài liệu waterfall hiện có đã có bản đầu cho basic design, detail design, API spec, test case và unit test cho code có sẵn.</p>
+  </div>
+</section>
+
+<!-- 15 WEAKNESSES -->
+<section class="slide" data-title="Điểm yếu và cách bù">
+  <div class="hdr"><div class="eyebrow">07 · Điểm yếu của đề xuất</div><span class="pill">5 điểm yếu · 5 cách bù</span></div>
+  <h2>Đề xuất có điểm yếu, và có cách bù</h2>
+  <div class="content" style="padding-top:22px">
+    <table class="t">
+      <colgroup><col style="width:50%"><col style="width:50%"></colgroup>
+      <tr><th>Điểm yếu</th><th>Cách bù</th></tr>
+      <tr><td><b>Portable chỉ đúng phần lớn.</b> Skill dần chung, nhưng rule/steering, hook, cách chọn agent khác nhau</td><td>Kit tách <strong>core trung lập + adapter mỏng</strong> cho từng harness. Không hứa “100% portable”</td></tr>
+      <tr><td><b>Governance tập trung là nhu cầu thật.</b> Bỏ trống thì platform thắng ở đúng chỗ này</td><td>Phương án cụ thể: <strong>LLM gateway</strong> cho cost và audit, telemetry của harness, dịch vụ có sẵn</td></tr>
+      <tr><td><b>L4 trên server cần license khác.</b> Có thể cần API key hoặc tài khoản LLM trên cloud</td><td>Nêu chi phí và thủ tục <strong>ngay từ đầu</strong>, không để phát hiện muộn</td></tr>
+      <tr><td><b>Chạy tự động cần guardrail, và tốn công.</b> Thao tác xoá qua API có thể không bị hệ thống đích chặn</td><td>Team kit nhận luôn <strong>cấu hình guardrail</strong> (permission, hook, sandbox, deny list) như một phần của kit</td></tr>
+      <tr><td><b>Bằng chứng còn mỏng.</b> Hơn một nửa số skill của kit tài liệu chưa chạy trên dự án thật</td><td>Chạy <strong>PoC trên một hệ thống có sẵn</strong> trước khi trình</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- 16 RACI -->
+<section class="slide" data-title="Phân vai">
+  <div class="hdr"><div class="eyebrow">08 · Phân vai đề xuất</div><span class="pill">Ma trận trách nhiệm</span></div>
+  <h2>Cả hai team đều có việc, và không ai viết lại harness</h2>
+  <div class="content" style="padding-top:22px">
+    <table class="t raci">
+      <colgroup><col style="width:46%"><col style="width:18%"><col style="width:18%"><col style="width:18%"></colgroup>
+      <tr><th>Hạng mục</th><th style="text-align:center">Team platform</th><th style="text-align:center">Team kit</th><th style="text-align:center">Mua / cấu hình</th></tr>
+      <tr><td class="k">Spec index, multi-repo code graph, RBAC dữ liệu</td><td class="m"><span class="sym">✓</span></td><td class="m"></td><td class="m"></td></tr>
+      <tr><td class="k">Expose data qua CLI hoặc MCP</td><td class="m"><span class="sym">✓</span></td><td class="m t2">dùng</td><td class="m"></td></tr>
+      <tr><td class="k">Skill, workflow, template, checklist</td><td class="m"></td><td class="m"><span class="sym">✓</span></td><td class="m"></td></tr>
+      <tr><td class="k">Connector tới tool nội bộ</td><td class="m"></td><td class="m"><span class="sym">✓</span></td><td class="m"></td></tr>
+      <tr><td class="k">Guardrail (permission, hook, sandbox)</td><td class="m"></td><td class="m"><span class="sym">✓</span></td><td class="m"></td></tr>
+      <tr><td class="k">Adapter cho từng harness</td><td class="m"></td><td class="m"><span class="sym">✓</span></td><td class="m"></td></tr>
+      <tr><td class="k">Harness, LLM</td><td class="m"></td><td class="m"></td><td class="m"><span class="sym">✓</span></td></tr>
+      <tr><td class="k">LLM gateway (cost, audit), telemetry</td><td class="m t2">cấu hình</td><td class="m"></td><td class="m"><span class="sym">✓</span></td></tr>
+      <tr><td class="k">Human gate, evidence pack trên PR</td><td class="m"></td><td class="m t2">workflow</td><td class="m t2">GitHub, CI</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- 17 EVIDENCE -->
+<section class="slide" data-title="Bằng chứng cần có">
+  <div class="hdr"><div class="eyebrow">09 · Bước tiếp theo</div><span class="pill">Trước khi trình</span></div>
+  <h2>Bốn bằng chứng cần có trước khi trình</h2>
+  <div class="content">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;align-items:stretch">
+      <div class="card" style="padding:32px 30px"><div class="stepc" style="opacity:1">1</div><div class="h3" style="font-size:32px;margin-top:26px">Chạy trên một hệ thống có sẵn</div><p class="small" style="margin-top:14px;font-size:27px">Chuỗi basic design → detail design → unit test của team dự án; ghi thời gian và số lỗi review so với làm tay.</p></div>
+      <div class="card" style="padding:32px 30px"><div class="stepc" style="opacity:.85">2</div><div class="h3" style="font-size:32px;margin-top:26px">Chạy headless một lần</div><p class="small" style="margin-top:14px;font-size:27px">Cùng chuỗi đó, có approval gate cuối — chứng minh mức L4 không cần harness tự viết.</p></div>
+      <div class="card" style="padding:32px 30px"><div class="stepc" style="opacity:.7">3</div><div class="h3" style="font-size:32px;margin-top:26px">Chạy trên hai harness</div><p class="small" style="margin-top:14px;font-size:27px">Cùng một kit; ghi phần phải sửa ở adapter.</p></div>
+      <div class="card" style="padding:32px 30px"><div class="stepc" style="opacity:.55">4</div><div class="h3" style="font-size:32px;margin-top:26px">Dựng thử LLM gateway</div><p class="small" style="margin-top:14px;font-size:27px">Ghi cost và log theo user — đủ để trả lời câu hỏi governance.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 18 OPEN QUESTIONS -->
+<section class="slide" data-title="Câu hỏi mở">
+  <div class="hdr"><div class="eyebrow">Câu hỏi mở</div><span class="pill">Cần làm rõ</span></div>
+  <h2>Bốn câu hỏi còn mở</h2>
+  <div class="content">
+    <div class="grid2" style="gap:26px">
+      <div class="card" style="display:grid;grid-template-columns:96px 1fr;gap:16px;padding:44px 40px"><div class="num" style="font-size:52px">Q1</div><p class="txt" style="font-size:31px;color:var(--text)">Team platform đã đầu tư tới đâu ở orchestration layer? Nếu đã nhiều, phần nào chuyển sang data layer được?</p></div>
+      <div class="card" style="display:grid;grid-template-columns:96px 1fr;gap:16px;padding:44px 40px"><div class="num" style="font-size:52px">Q2</div><p class="txt" style="font-size:31px;color:var(--text)">Điều khoản license của harness hiện dùng có cho chạy headless trong CI không, hay cần tài khoản API riêng?</p></div>
+      <div class="card" style="display:grid;grid-template-columns:96px 1fr;gap:16px;padding:44px 40px"><div class="num" style="font-size:52px">Q3</div><p class="txt" style="font-size:31px;color:var(--text)">Yêu cầu về data residency và LLM được phép dùng của phía khách có loại trừ harness nào không?</p></div>
+      <div class="card" style="display:grid;grid-template-columns:96px 1fr;gap:16px;padding:44px 40px"><div class="num" style="font-size:52px">Q4</div><p class="txt" style="font-size:31px;color:var(--text)">Ai sở hữu LLM gateway và dữ liệu audit: team platform, team infra, hay đơn vị governance?</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 19 CLOSING -->
+<section class="slide" data-title="Kết">
+  <div class="rings"><i style="width:560px;height:560px"></i><i style="width:860px;height:860px"></i><i style="width:1160px;height:1160px"></i><i style="width:1460px;height:1460px"></i></div>
+  <div class="dots" style="left:120px;top:110px"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div style="position:relative;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding-bottom:40px">
+    <div class="aline"></div>
+    <h1 style="font-weight:700;font-size:68px;line-height:1.2;margin-top:40px"><span style="display:block;white-space:nowrap">Model đổi được trong một dòng cấu hình.</span><span style="display:block;white-space:nowrap">Dữ liệu và dây nối thì không ai làm thay được.</span></h1>
+    <p class="lead" style="font-size:32px;margin-top:32px">Đó là nơi tổ chức nên đầu tư.</p>
+    <div style="margin-top:44px"><span class="pill" style="background:var(--primary);color:var(--bg);font-weight:600;font-size:24px;padding:16px 38px">Kit + dữ liệu AI-ready</span></div>
+  </div>
+</section>
+
+</div>
+
+<div class="nav" aria-label="Điều hướng">
+  <button id="prev" aria-label="Slide trước">←</button><span id="ctr">1 / 19</span><button id="next" aria-label="Slide sau">→</button>
+</div>
+
+<style>
+.stepc{width:60px;height:60px;border-radius:50%;background:var(--primary);color:var(--bg);font-family:var(--disp);font-weight:700;font-size:28px;display:flex;align-items:center;justify-content:center}
+table.raci td{padding:13px 28px}
+table.raci td.k{font-size:27px}
+table.raci td.m{text-align:center;font-family:var(--disp);font-weight:500;font-size:24px;color:var(--muted);border-left:1.5px solid var(--border)}
+table.raci td.m .sym{color:var(--primary);font-weight:700;font-size:30px}
+</style>
+
+<script>
+(function(){
+  var stage=document.getElementById('stage');
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var N=slides.length, cur=0;
+  var brand='Tổ chức · Kit và dữ liệu, không harness mới';
+  slides.forEach(function(s,k){
+    var f=document.createElement('div'); f.className='foot';
+    f.innerHTML='<span>'+(k===0?'':brand)+'</span><span class="n">'+String(k+1).padStart(2,'0')+' / '+String(N).padStart(2,'0')+'</span>';
+    s.appendChild(f);
+    var p=document.createElement('div'); p.className='progress'; p.style.width=((k+1)/N*100)+'%'; s.appendChild(p);
+  });
+  function fit(){var sc=Math.min(innerWidth/1920,innerHeight/1080);stage.style.transform='translate(-50%,-50%) scale('+sc+')';}
+  function go(n,push){
+    cur=Math.max(0,Math.min(N-1,n));
+    slides.forEach(function(s,k){s.classList.toggle('active',k===cur)});
+    document.getElementById('ctr').textContent=(cur+1)+' / '+N;
+    var h='#'+(cur+1); if(location.hash!==h) history.replaceState(null,'',h);
+  }
+  function fromHash(){var n=parseInt((location.hash||'').slice(1),10);go(isNaN(n)?0:n-1);}
+  addEventListener('resize',fit);
+  addEventListener('hashchange',fromHash);
+  addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'||e.key==='PageDown'||(e.key===' '&&!e.shiftKey)){e.preventDefault();go(cur+1)}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'||(e.key===' '&&e.shiftKey)){e.preventDefault();go(cur-1)}
+    else if(e.key==='Home'){e.preventDefault();go(0)}
+    else if(e.key==='End'){e.preventDefault();go(N-1)}
+  });
+  document.getElementById('prev').addEventListener('click',function(e){e.stopPropagation();go(cur-1)});
+  document.getElementById('next').addEventListener('click',function(e){e.stopPropagation();go(cur+1)});
+  document.addEventListener('click',function(e){
+    if(e.target.closest('.nav'))return;
+    if(e.clientX<innerWidth/3)go(cur-1);else go(cur+1);
+  });
+  var t;addEventListener('mousemove',function(){document.body.classList.add('ui');clearTimeout(t);t=setTimeout(function(){document.body.classList.remove('ui')},2500)});
+  fit(); fromHash();
+})();
+</script>
+</body>
+</html>

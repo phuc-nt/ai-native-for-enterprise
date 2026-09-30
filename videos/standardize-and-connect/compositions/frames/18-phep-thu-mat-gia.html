@@ -1,0 +1,360 @@
+<template id="f18-template">
+  <div id="root" data-composition-id="18-phep-thu-mat-gia" data-start="0" data-duration="18.26" data-width="1920" data-height="1080">
+    <style>
+      @font-face { font-family: "Space Grotesk"; src: url("assets/fonts/SpaceGrotesk-VN.woff2") format("woff2"); font-weight: 300 700; font-style: normal; font-display: block; }
+      @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-VN.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: block; }
+      @font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/JetBrainsMono-VN.woff2") format("woff2"); font-weight: 100 800; font-style: normal; font-display: block; }
+
+      #root {
+        position: absolute;
+        inset: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        font-family: "Inter", sans-serif;
+        color: #111111;
+      }
+
+      .f18-bg {
+        position: absolute;
+        inset: 0;
+        background: #fdfae7;
+      }
+
+      .f18-stage {
+        position: absolute;
+        inset: 0;
+      }
+
+      /* ---------- slide-header ---------- */
+      .f18-eyebrow {
+        position: absolute;
+        left: 96px;
+        top: 64px;
+        margin: 0;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 600;
+        font-size: 22px;
+        line-height: 1.3;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #1e2bfa;
+      }
+
+      .f18-count {
+        position: absolute;
+        right: 96px;
+        top: 58px;
+        padding: 6px 20px;
+        border-radius: 100px;
+        background: rgba(30, 43, 250, 0.08);
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 500;
+        font-size: 22px;
+        line-height: 1.3;
+        letter-spacing: 0.05em;
+        color: #1e2bfa;
+      }
+
+      .f18-title {
+        position: absolute;
+        left: 96px;
+        top: 102px;
+        margin: 0;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: 56px;
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+        color: #111111;
+      }
+
+      /* ---------- question card (supporting) ---------- */
+      .f18-qcard {
+        position: absolute;
+        left: 96px;
+        top: 206px;
+        width: 1728px;
+        box-sizing: border-box;
+        padding: 30px 44px 32px 44px;
+        border-radius: 14px;
+        background: rgba(30, 43, 250, 0.04);
+        border: 1.5px solid rgba(30, 43, 250, 0.2);
+      }
+
+      .f18-qlabel {
+        margin: 0 0 14px 0;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 600;
+        font-size: 22px;
+        line-height: 1.3;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #1e2bfa;
+      }
+
+      .f18-qtext {
+        margin: 0;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 500;
+        font-size: 38px;
+        line-height: 1.3;
+        letter-spacing: -0.01em;
+        color: #111111;
+      }
+
+      .f18-qpart {
+        display: inline-block;
+      }
+
+      /* ---------- two columns (foreground subject) ---------- */
+      .f18-col {
+        position: absolute;
+        top: 410px;
+        width: 844px;
+        height: 456px;
+        box-sizing: border-box;
+        padding: 34px 44px 30px 44px;
+        border-radius: 14px;
+        background: rgba(30, 43, 250, 0.04);
+        border: 1.5px solid rgba(30, 43, 250, 0.2);
+      }
+
+      .f18-col-left { left: 96px; }
+      .f18-col-right { left: 980px; }
+
+      .f18-ring {
+        position: absolute;
+        inset: -1.5px;
+        border-radius: 14px;
+        border: 3px solid #1e2bfa;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .f18-col-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 64px;
+        padding-bottom: 18px;
+        border-bottom: 1.5px solid rgba(30, 43, 250, 0.2);
+      }
+
+      .f18-col-title {
+        margin: 0;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: 46px;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+      }
+
+      .f18-lose { color: #dc2626; }
+      .f18-keep { color: #059669; }
+
+      .f18-tag {
+        padding: 6px 20px;
+        border-radius: 100px;
+        background: rgba(30, 43, 250, 0.08);
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 500;
+        font-size: 22px;
+        line-height: 1.3;
+        color: #1e2bfa;
+        opacity: 0;
+      }
+
+      .f18-list {
+        list-style: none;
+        margin: 0;
+        padding: 12px 0 0 0;
+      }
+
+      .f18-item {
+        display: flex;
+        align-items: center;
+        height: 96px;
+      }
+
+      .f18-mark {
+        flex: 0 0 auto;
+        width: 44px;
+        display: flex;
+        align-items: center;
+      }
+
+      .f18-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #9a9a9a;
+      }
+
+      .f18-check {
+        width: 30px;
+        height: 30px;
+        overflow: visible;
+      }
+
+      .f18-check path {
+        fill: none;
+        stroke: #059669;
+        stroke-width: 3.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-dasharray: 30;
+        stroke-dashoffset: 30;
+      }
+
+      .f18-word {
+        position: relative;
+        display: inline-block;
+      }
+
+      .f18-text {
+        display: inline-block;
+        font-family: "Inter", sans-serif;
+        font-weight: 500;
+        font-size: 34px;
+        line-height: 1.3;
+        color: #111111;
+      }
+
+      .f18-strike {
+        position: absolute;
+        left: -8px;
+        right: -8px;
+        top: 54%;
+        height: 4px;
+        margin-top: -2px;
+        border-radius: 2px;
+        background: #dc2626;
+        transform-origin: 0% 50%;
+      }
+
+      /* ---------- progress bar (chrome, the one bottom-edge exception) ---------- */
+      .f18-progress {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 1440px;
+        height: 3px;
+        background: #1e2bfa;
+        transform-origin: 0% 50%;
+      }
+    </style>
+
+    <div class="clip f18-bg" data-start="0" data-duration="18.26" data-track-index="0"></div>
+
+    <div class="clip f18-stage" data-start="0" data-duration="18.26" data-track-index="1">
+      <p class="f18-eyebrow" id="f18-eyebrow">Lập luận</p>
+      <div class="f18-count" id="f18-count">18 / 24</div>
+      <h2 class="f18-title" id="f18-title">Vì sao không tự viết harness?</h2>
+
+      <div class="f18-qcard" id="f18-qcard">
+        <p class="f18-qlabel">Phép thử mất giá</p>
+        <p class="f18-qtext">
+          <span class="f18-qpart" id="f18-q1">Nếu quý sau vendor ra đúng thứ này,</span>
+          <span class="f18-qpart" id="f18-q2">khoản đầu tư có mất trắng không?</span>
+        </p>
+      </div>
+
+      <div class="f18-col f18-col-left" id="f18-col-left">
+        <div class="f18-col-head" id="f18-head-left">
+          <h3 class="f18-col-title f18-lose">Mất</h3>
+        </div>
+        <ul class="f18-list">
+          <li class="f18-item f18-litem" id="f18-l1">
+            <span class="f18-mark f18-ldim"><span class="f18-dot"></span></span>
+            <span class="f18-word"><span class="f18-text f18-ldim">Agent loop</span><span class="f18-strike"></span></span>
+          </li>
+          <li class="f18-item f18-litem" id="f18-l2">
+            <span class="f18-mark f18-ldim"><span class="f18-dot"></span></span>
+            <span class="f18-word"><span class="f18-text f18-ldim">Orchestration</span><span class="f18-strike"></span></span>
+          </li>
+          <li class="f18-item f18-litem" id="f18-l3">
+            <span class="f18-mark f18-ldim"><span class="f18-dot"></span></span>
+            <span class="f18-word"><span class="f18-text f18-ldim">Chat UI</span><span class="f18-strike"></span></span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="f18-col f18-col-right" id="f18-col-right">
+        <div class="f18-ring" id="f18-ring"></div>
+        <div class="f18-col-head" id="f18-head-right">
+          <h3 class="f18-col-title f18-keep">Không mất</h3>
+          <span class="f18-tag" id="f18-tag">bên ngoài không có</span>
+        </div>
+        <ul class="f18-list">
+          <li class="f18-item" id="f18-r1">
+            <span class="f18-mark"><svg class="f18-check" viewBox="0 0 28 28"><path d="M4 14.5 L11 21 L24 7"></path></svg></span>
+            <span class="f18-word"><span class="f18-text">Dữ liệu</span></span>
+          </li>
+          <li class="f18-item" id="f18-r2">
+            <span class="f18-mark"><svg class="f18-check" viewBox="0 0 28 28"><path d="M4 14.5 L11 21 L24 7"></path></svg></span>
+            <span class="f18-word"><span class="f18-text">Kit theo quy trình riêng</span></span>
+          </li>
+          <li class="f18-item" id="f18-r3">
+            <span class="f18-mark"><svg class="f18-check" viewBox="0 0 28 28"><path d="M4 14.5 L11 21 L24 7"></path></svg></span>
+            <span class="f18-word"><span class="f18-text">Connector tới hệ thống nội bộ</span></span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="f18-progress" id="f18-progress"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        var tl = gsap.timeline({ paused: true });
+        var qa = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+        var enter = { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" };
+
+        /* Scene 1 (0.0–2.6s): header + h2 */
+        tl.fromTo("#f18-eyebrow", { opacity: 0, y: 16 }, Object.assign({}, enter, { duration: 0.5 }), 0.0);
+        tl.fromTo("#f18-count", { opacity: 0, y: 16 }, Object.assign({}, enter, { duration: 0.5 }), 0.05);
+        tl.fromTo("#f18-title", { opacity: 0, y: 28 }, Object.assign({}, enter, { duration: 0.7 }), 0.0);
+        tl.fromTo("#f18-progress", { scaleX: 17 / 18 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 0.1);
+
+        /* Scene 2 (2.6–8.7s): question card, then the question in two clusters */
+        tl.fromTo("#f18-qcard", { opacity: 0, y: 24 }, Object.assign({}, enter, { duration: 0.7 }), 3.0);
+        tl.fromTo("#f18-q1", { opacity: 0, y: 16 }, enter, 4.1);
+        tl.fromTo("#f18-q2", { opacity: 0, y: 16 }, enter, 7.0);
+
+        /* Scene 3 (8.7–13.1s): left column "Mất" arrives from the left wing */
+        tl.fromTo("#f18-col-left", { opacity: 0, x: -56, scale: 0.97 },
+          { opacity: 1, x: 0, scale: 1, duration: 0.7, ease: "power3.out" }, 8.7);
+        tl.fromTo("#f18-l1", { opacity: 0, y: 16 }, enter, 8.85);
+        tl.fromTo("#f18-l2", { opacity: 0, y: 16 }, enter, 9.9);
+        tl.fromTo("#f18-l3", { opacity: 0, y: 16 }, enter, 11.5);
+
+        /* on "mất" (12.4): three strike-throughs draw left→right, stagger 0.08s; text dims to ~45% */
+        qa("#f18-col-left .f18-strike").forEach(function (el, i) {
+          tl.fromTo(el, { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power2.inOut" }, 12.43 + i * 0.08);
+        });
+        tl.fromTo(".f18-ldim", { opacity: 1 }, { opacity: 0.45, duration: 0.4, ease: "power2.out", immediateRender: false }, 12.6);
+
+        /* Scene 4 (13.1–17.76s): right column "Không mất" arrives from the right wing */
+        tl.fromTo("#f18-col-right", { opacity: 0, x: 56, scale: 0.97 },
+          { opacity: 1, x: 0, scale: 1, duration: 0.7, ease: "power3.out" }, 13.1);
+        var rTimes = [13.25, 14.3, 14.8];
+        ["#f18-r1", "#f18-r2", "#f18-r3"].forEach(function (id, i) {
+          tl.fromTo(id, { opacity: 0, y: 16 }, enter, rTimes[i]);
+          tl.fromTo(id + " .f18-check path", { strokeDashoffset: 30 },
+            { strokeDashoffset: 0, duration: 0.45, ease: "power2.out" }, rTimes[i] + 0.15);
+        });
+
+        /* on "không mất" (15.9): border turns cobalt + small tag "bên ngoài không có"; then hold still */
+        tl.fromTo("#f18-ring", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 15.9);
+        tl.fromTo("#f18-tag", { opacity: 0, y: 12 }, Object.assign({}, enter, { duration: 0.5 }), 16.05);
+
+        tl.set({}, {}, 17.76);
+        window.__timelines["18-phep-thu-mat-gia"] = tl;
+      })();
+    </script>
+  </div>
+</template>

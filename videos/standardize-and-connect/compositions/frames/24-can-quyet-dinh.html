@@ -1,0 +1,302 @@
+<template>
+  <style>
+    @font-face { font-family: "Space Grotesk"; src: url("assets/fonts/SpaceGrotesk-VN.woff2") format("woff2"); font-weight: 300 700; font-style: normal; font-display: block; }
+    @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-VN.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: block; }
+    @font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/JetBrainsMono-VN.woff2") format("woff2"); font-weight: 100 800; font-style: normal; font-display: block; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      font-family: "Inter", sans-serif;
+      color: #111111;
+    }
+
+    #f24-bg {
+      position: absolute;
+      inset: 0;
+      background: #fdfae7;
+    }
+
+    #f24-stage {
+      position: absolute;
+      inset: 0;
+    }
+
+    /* ---- chrome: eyebrow (no pill) + full progress bar ---- */
+    #f24-eyebrow {
+      position: absolute;
+      left: 96px;
+      top: 64px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 1.3;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #1e2bfa;
+      white-space: nowrap;
+    }
+
+    #f24-progress {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 1920px;
+      height: 3px;
+      background: #1e2bfa;
+    }
+
+    /* ---- checklist group (scales into the left column in Scene 2) ---- */
+    #f24-list {
+      position: absolute;
+      left: 96px;
+      top: 150px;
+      width: 1100px;
+    }
+
+    #f24-title {
+      margin: 0;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 58px;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: #111111;
+      white-space: nowrap;
+    }
+
+    #f24-rows {
+      margin-top: 62px;
+    }
+
+    .f24-row {
+      display: flex;
+      align-items: center;
+      height: 104px;
+    }
+
+    .f24-box {
+      flex: 0 0 44px;
+      width: 44px;
+      height: 44px;
+      box-sizing: border-box;
+      border-radius: 10px;
+      border: 2.5px solid rgba(30, 43, 250, 0.45);
+      background: rgba(30, 43, 250, 0.04);
+      margin-right: 30px;
+    }
+
+    .f24-num {
+      flex: 0 0 auto;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 36px;
+      line-height: 1.2;
+      color: #1e2bfa;
+      white-space: nowrap;
+      margin-right: 14px;
+    }
+
+    .f24-label {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 36px;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: #111111;
+      white-space: nowrap;
+    }
+
+    .f24-detail {
+      font-family: "Inter", sans-serif;
+      font-weight: 400;
+      font-size: 30px;
+      line-height: 1.3;
+      color: #6b6b6b;
+      white-space: nowrap;
+      margin-left: 12px;
+    }
+
+    /* ---- column divider (Scene 2) ---- */
+    #f24-divider {
+      position: absolute;
+      left: 866px;
+      top: 200px;
+      width: 1.5px;
+      height: 480px;
+      background: rgba(30, 43, 250, 0.2);
+    }
+
+    /* ---- the closing line (hero, right column) ---- */
+    #f24-hero {
+      position: absolute;
+      left: 930px;
+      top: 262px;
+      width: 894px;
+    }
+
+    #f24-accent {
+      width: 60px;
+      height: 4px;
+      border-radius: 2px;
+      background: #1e2bfa;
+      margin-bottom: 30px;
+    }
+
+    #f24-line-1 {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 60px;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: #111111;
+      white-space: nowrap;
+    }
+
+    #f24-line-2 {
+      margin-top: 44px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 72px;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: #111111;
+      white-space: nowrap;
+    }
+
+    #f24-clusters {
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+    }
+
+    .f24-cluster {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 72px;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: #1e2bfa;
+      white-space: nowrap;
+    }
+
+    .f24-sep {
+      flex: 0 0 10px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(30, 43, 250, 0.35);
+      margin: 12px 24px 0 24px;
+    }
+  </style>
+
+  <div id="root" data-composition-id="24-can-quyet-dinh" data-width="1920" data-height="1080">
+    <div id="f24-bg" class="clip" data-start="0" data-duration="17.28" data-track-index="0"></div>
+
+    <div id="f24-stage" class="clip" data-start="0" data-duration="17.28" data-track-index="1">
+      <div id="f24-eyebrow">Cần quyết định</div>
+
+      <div id="f24-list">
+        <h2 id="f24-title">Năm điều cần quyết định</h2>
+        <div id="f24-rows">
+          <div class="f24-row" id="f24-row-1">
+            <div class="f24-box"></div>
+            <span class="f24-num">1 ·</span>
+            <span class="f24-label">Nguyên tắc đầu tư</span>
+          </div>
+          <div class="f24-row" id="f24-row-2">
+            <div class="f24-box"></div>
+            <span class="f24-num">2 ·</span>
+            <span class="f24-label">Owner:</span>
+            <span class="f24-detail">data, kit registry, gateway</span>
+          </div>
+          <div class="f24-row" id="f24-row-3">
+            <div class="f24-box"></div>
+            <span class="f24-num">3 ·</span>
+            <span class="f24-label">Chuẩn định dạng:</span>
+            <span class="f24-detail">MCP, SKILL.md, AGENTS.md</span>
+          </div>
+          <div class="f24-row" id="f24-row-4">
+            <div class="f24-box"></div>
+            <span class="f24-num">4 ·</span>
+            <span class="f24-label">Ràng buộc dữ liệu</span>
+          </div>
+          <div class="f24-row" id="f24-row-5">
+            <div class="f24-box"></div>
+            <span class="f24-num">5 ·</span>
+            <span class="f24-label">Pilot và chỉ số</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="f24-divider"></div>
+
+      <div id="f24-hero">
+        <div id="f24-accent"></div>
+        <div id="f24-line-1">Harness và LLM: mua.</div>
+        <div id="f24-line-2">Ngân sách xây:</div>
+        <div id="f24-clusters">
+          <span class="f24-cluster" id="f24-c1">dữ liệu</span>
+          <span class="f24-sep" id="f24-sep-1"></span>
+          <span class="f24-cluster" id="f24-c2">kit</span>
+          <span class="f24-sep" id="f24-sep-2"></span>
+          <span class="f24-cluster" id="f24-c3">connector</span>
+        </div>
+      </div>
+
+      <div id="f24-progress"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // Scene 1 (0.0–8.2s): chrome, then the five-decision checklist on its cues
+      tl.fromTo("#f24-eyebrow", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.1);
+      tl.fromTo("#f24-progress", { scaleX: 23 / 24, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 0.2);
+
+      // h2 on "quyết định" (0.7)
+      tl.fromTo("#f24-title", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out" }, 0.7);
+
+      // rows on their spoken items
+      tl.fromTo("#f24-row-1", { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 2.1);
+      tl.fromTo("#f24-row-2", { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 3.7);
+      tl.fromTo("#f24-row-3", { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 4.3);
+      tl.fromTo("#f24-row-4", { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 5.6);
+      tl.fromTo("#f24-row-5", { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 8.0);
+
+      // Scene 2 (8.2–11.6s): on "Tóm lại" the checklist folds into the left column and dims
+      tl.fromTo(
+        "#f24-list",
+        { scale: 1, y: 0, transformOrigin: "0% 0%" },
+        { scale: 0.8, y: 40, duration: 0.8, ease: "power3.inOut", immediateRender: false },
+        8.3
+      );
+      tl.to(["#f24-title", ".f24-label", ".f24-num"], { color: "#6b6b6b", duration: 0.6, ease: "power2.out" }, 8.35);
+      tl.to(".f24-box", { borderColor: "rgba(30, 43, 250, 0.22)", duration: 0.6, ease: "power2.out" }, 8.35);
+      tl.fromTo("#f24-divider", { scaleY: 0, transformOrigin: "50% 0%" }, { scaleY: 1, duration: 0.6, ease: "power3.out" }, 8.7);
+
+      // line 1 on "harness và LLM" (9.4)
+      tl.fromTo("#f24-accent", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.5, ease: "power3.out" }, 9.3);
+      tl.fromTo("#f24-line-1", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out" }, 9.4);
+
+      // Scene 3 (11.6–17.28s): "Ngân sách xây:" then the three cobalt clusters, then hold
+      tl.fromTo("#f24-line-2", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out" }, 11.6);
+      tl.to("#f24-line-1", { color: "#6b6b6b", duration: 0.6, ease: "power2.out" }, 11.7);
+
+      tl.fromTo("#f24-c1", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 13.1);
+      tl.fromTo("#f24-sep-1", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.4, ease: "power3.out" }, 13.8);
+      tl.fromTo("#f24-c2", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 13.9);
+      tl.fromTo("#f24-sep-2", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.4, ease: "power3.out" }, 14.3);
+      tl.fromTo("#f24-c3", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 14.4);
+
+      tl.set({}, {}, 17.28);
+      window.__timelines["24-can-quyet-dinh"] = tl;
+    })();
+  </script>
+</template>

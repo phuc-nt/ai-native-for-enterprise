@@ -1,0 +1,387 @@
+<template>
+  <style>
+    @font-face { font-family: "Space Grotesk"; src: url("assets/fonts/SpaceGrotesk-VN.woff2") format("woff2"); font-weight: 300 700; font-style: normal; font-display: block; }
+    @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-VN.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: block; }
+    @font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/JetBrainsMono-VN.woff2") format("woff2"); font-weight: 100 800; font-style: normal; font-display: block; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      container-type: size;
+      font-family: "Space Grotesk", sans-serif;
+      color: #111111;
+    }
+
+    /* ---- full-bleed ground + progress bar (background clip) ---- */
+    .f08-bg {
+      position: absolute;
+      inset: 0;
+      background: #fdfae7;
+    }
+    .f08-progress {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 640px; /* 8 / 24 of 1920 */
+      height: 3px;
+      background: #1e2bfa;
+      transform-origin: 0 50%;
+    }
+
+    /* ---- slide-header ---- */
+    .f08-eyebrow {
+      position: absolute;
+      left: 96px;
+      top: 64px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 1.3;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #1e2bfa;
+    }
+    .f08-count {
+      position: absolute;
+      right: 96px;
+      top: 58px;
+      padding: 6px 20px 7px;
+      border-radius: 100px;
+      background: rgba(30, 43, 250, 0.08);
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 1.3;
+      letter-spacing: 0.05em;
+      color: #1e2bfa;
+    }
+    .f08-title {
+      position: absolute;
+      left: 96px;
+      top: 118px;
+      width: 1500px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 58px;
+      line-height: 1.16;
+      letter-spacing: -0.02em;
+      color: #111111;
+    }
+
+    /* ---- threat arrow into card 1 (left gutter) ---- */
+    .f08-threat {
+      position: absolute;
+      left: 100px;
+      top: 330px;
+      width: 300px;
+      height: 110px;
+    }
+    .f08-threat-label {
+      position: absolute;
+      left: 4px;
+      top: 0;
+      font-family: "Inter", sans-serif;
+      font-weight: 600;
+      font-size: 26px;
+      line-height: 1.3;
+      color: #dc2626;
+      white-space: nowrap;
+    }
+    .f08-threat-svg {
+      position: absolute;
+      left: 0;
+      top: 40px;
+      width: 300px;
+      height: 32px;
+      overflow: visible;
+    }
+
+    /* ---- the three skill cards ---- */
+    .f08-card {
+      position: absolute;
+      top: 270px;
+      width: 440px;
+      height: 232px;
+      padding: 28px 32px;
+      background: rgba(30, 43, 250, 0.04);
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+      border-radius: 14px;
+    }
+    .f08-card-1 { left: 400px; }
+    .f08-card-2 { left: 884px; }
+    .f08-card-3 { left: 1368px; }
+    .f08-card-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 38px;
+    }
+    .f08-file {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .f08-file-icon {
+      width: 26px;
+      height: 30px;
+      flex: none;
+    }
+    .f08-file-name {
+      font-family: "JetBrains Mono", monospace;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 1.3;
+      color: #6b6b6b;
+    }
+    .f08-std {
+      padding: 5px 16px 6px;
+      border-radius: 100px;
+      background: rgba(30, 43, 250, 0.08);
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 1.3;
+      color: #1e2bfa;
+      white-space: nowrap;
+    }
+    .f08-skill-name {
+      margin-top: 18px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 50px;
+      line-height: 1.16;
+      letter-spacing: -0.02em;
+      color: #111111;
+    }
+    .f08-pass {
+      position: absolute;
+      left: 32px;
+      bottom: 26px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Inter", sans-serif;
+      font-weight: 600;
+      font-size: 26px;
+      line-height: 1.3;
+      color: #059669;
+      white-space: nowrap;
+    }
+    .f08-pass-mark {
+      font-family: "Inter", sans-serif;
+      font-weight: 700;
+    }
+
+    /* ---- combination bracket under all three (focal) ---- */
+    .f08-bracket {
+      position: absolute;
+      left: 400px;
+      top: 522px;
+      width: 1408px;
+      height: 64px;
+      overflow: visible;
+    }
+    .f08-combo {
+      position: absolute;
+      left: 400px;
+      top: 594px;
+      width: 1408px;
+      text-align: center;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 44px;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: #dc2626;
+    }
+    .f08-combo-arrow {
+      font-family: "Inter", sans-serif;
+      font-weight: 600;
+    }
+
+    /* ---- governance band (the cobalt moment) ---- */
+    .f08-band {
+      position: absolute;
+      left: 96px;
+      top: 716px;
+      width: 1728px;
+      height: 136px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 44px 0 52px;
+      background: rgba(30, 43, 250, 0.08);
+      border: 1.5px solid rgba(30, 43, 250, 0.35);
+      border-radius: 14px;
+    }
+    .f08-band-rule {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 8px;
+      height: 100%;
+      border-radius: 14px 0 0 14px;
+      background: #1e2bfa;
+    }
+    .f08-band-text {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 52px;
+      line-height: 1.16;
+      letter-spacing: -0.02em;
+      color: #111111;
+      white-space: nowrap;
+    }
+    .f08-band-chips {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .f08-chip {
+      padding: 7px 22px 8px;
+      border-radius: 100px;
+      background: rgba(30, 43, 250, 0.1);
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 26px;
+      line-height: 1.3;
+      color: #1e2bfa;
+      white-space: nowrap;
+    }
+  </style>
+
+  <div id="root" data-composition-id="08-rui-ro-chuoi-cung-ung" data-width="1920" data-height="1080" data-duration="12">
+    <div class="clip f08-bg" data-start="0" data-duration="12" data-track-index="0">
+      <div class="f08-progress"></div>
+    </div>
+
+    <!-- slide-header -->
+    <div class="f08-eyebrow">BỐI CẢNH 2025–2026</div>
+    <div class="f08-count">08 / 24</div>
+    <div class="f08-title">Rủi ro mới: skill thành chuỗi cung ứng</div>
+
+    <!-- upper group: cards + threat + bracket (dims in Scene 4) -->
+    <div class="f08-threat">
+      <div class="f08-threat-label">đường tấn công</div>
+      <svg class="f08-threat-svg" viewBox="0 0 300 32" fill="none">
+        <path class="f08-threat-line" d="M2 16 H296" stroke="#dc2626" stroke-width="3" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" />
+        <path class="f08-threat-head" d="M282 5 L298 16 L282 27" stroke="#dc2626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </div>
+
+    <div class="f08-card f08-card-1">
+      <div class="f08-card-row">
+        <div class="f08-file">
+          <svg class="f08-file-icon" viewBox="0 0 26 30" fill="none">
+            <path d="M3 2 H16 L23 9 V28 H3 Z" stroke="#1e2bfa" stroke-width="2" stroke-linejoin="round" />
+            <path d="M16 2 V9 H23" stroke="#1e2bfa" stroke-width="2" stroke-linejoin="round" />
+            <path d="M8 16 H18 M8 21 H15" stroke="#1e2bfa" stroke-width="2" stroke-linecap="round" />
+          </svg>
+          <span class="f08-file-name">SKILL.md</span>
+        </div>
+        <span class="f08-std">chuẩn chung</span>
+      </div>
+      <div class="f08-skill-name">skill A</div>
+      <div class="f08-pass"><span class="f08-pass-mark">✓</span><span>qua kiểm tra</span></div>
+    </div>
+
+    <div class="f08-card f08-card-2">
+      <div class="f08-card-row">
+        <div class="f08-file">
+          <svg class="f08-file-icon" viewBox="0 0 26 30" fill="none">
+            <path d="M3 2 H16 L23 9 V28 H3 Z" stroke="#1e2bfa" stroke-width="2" stroke-linejoin="round" />
+            <path d="M16 2 V9 H23" stroke="#1e2bfa" stroke-width="2" stroke-linejoin="round" />
+            <path d="M8 16 H18 M8 21 H15" stroke="#1e2bfa" stroke-width="2" stroke-linecap="round" />
+          </svg>
+          <span class="f08-file-name">SKILL.md</span>
+        </div>
+      </div>
+      <div class="f08-skill-name">skill B</div>
+      <div class="f08-pass"><span class="f08-pass-mark">✓</span><span>qua kiểm tra</span></div>
+    </div>
+
+    <div class="f08-card f08-card-3">
+      <div class="f08-card-row">
+        <div class="f08-file">
+          <svg class="f08-file-icon" viewBox="0 0 26 30" fill="none">
+            <path d="M3 2 H16 L23 9 V28 H3 Z" stroke="#1e2bfa" stroke-width="2" stroke-linejoin="round" />
+            <path d="M16 2 V9 H23" stroke="#1e2bfa" stroke-width="2" stroke-linejoin="round" />
+            <path d="M8 16 H18 M8 21 H15" stroke="#1e2bfa" stroke-width="2" stroke-linecap="round" />
+          </svg>
+          <span class="f08-file-name">SKILL.md</span>
+        </div>
+      </div>
+      <div class="f08-skill-name">skill C</div>
+      <div class="f08-pass"><span class="f08-pass-mark">✓</span><span>qua kiểm tra</span></div>
+    </div>
+
+    <svg class="f08-bracket" viewBox="0 0 1408 64" fill="none">
+      <path class="f08-bracket-arm" d="M2 2 V28 H1406 V2" stroke="#dc2626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" />
+      <path class="f08-bracket-tick" d="M704 28 V60" stroke="#dc2626" stroke-width="3" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" />
+    </svg>
+    <div class="f08-combo">ghép lại <span class="f08-combo-arrow">→</span> tấn công</div>
+
+    <!-- governance band -->
+    <div class="f08-band">
+      <div class="f08-band-rule"></div>
+      <div class="f08-band-text">Kit được quản trị như code</div>
+      <div class="f08-band-chips">
+        <span class="f08-chip">review</span>
+        <span class="f08-chip">version</span>
+        <span class="f08-chip">owner</span>
+        <span class="f08-chip">registry nội bộ</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      var root = document.querySelector('[data-composition-id="08-rui-ro-chuoi-cung-ung"]');
+      var q = function (sel) { return root.querySelector(sel); };
+      var qa = function (sel) { return root.querySelectorAll(sel); };
+      var IN = "power3.out";
+
+      var tl = gsap.timeline({ paused: true });
+
+      // Scene 1 (0.0–2.2s): slide-header in; h2 on "rủi ro" (1.1)
+      tl.fromTo(q(".f08-progress"), { scaleX: 0.875 }, { scaleX: 1, duration: 0.6, ease: IN }, 0.1);
+      tl.fromTo(q(".f08-eyebrow"), { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: IN }, 0.0);
+      tl.fromTo(q(".f08-count"), { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: IN }, 0.1);
+      tl.fromTo(q(".f08-title"), { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: IN }, 1.1);
+
+      // Scene 2 (2.2–5.8s): card 1 on "skill" (2.3) with "chuẩn chung"; red arrow on "đường tấn công" (4.5)
+      tl.fromTo(q(".f08-card-1"), { y: 28, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: IN }, 2.3);
+      tl.fromTo(q(".f08-std"), { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: IN }, 2.8);
+      tl.fromTo(q(".f08-threat-label"), { x: -16, opacity: 0 }, { x: 0, opacity: 1, duration: 0.5, ease: IN }, 4.5);
+      tl.fromTo(q(".f08-threat-line"), { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.5, ease: "power2.inOut" }, 4.55);
+      tl.fromTo(q(".f08-threat-head"), { opacity: 0, x: -10 }, { opacity: 1, x: 0, duration: 0.3, ease: IN }, 4.95);
+
+      // Scene 3 (5.8–8.5s): cards 2 + 3 slide in beside card 1 (5.8); ✓ stagger on "đều qua" (7.4);
+      // bracket draws under all three on "kiểm tra" (7.8) with red "ghép lại → tấn công"
+      tl.fromTo(q(".f08-card-2"), { x: 56, opacity: 0 }, { x: 0, opacity: 1, duration: 0.7, ease: IN }, 5.8);
+      tl.fromTo(q(".f08-card-3"), { x: 56, opacity: 0 }, { x: 0, opacity: 1, duration: 0.7, ease: IN }, 5.98);
+      tl.fromTo(qa(".f08-pass"), { y: 12, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: IN, stagger: 0.12 }, 7.4);
+      tl.fromTo(q(".f08-bracket-arm"), { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.55, ease: "power2.inOut" }, 7.8);
+      tl.fromTo(q(".f08-bracket-tick"), { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.2, ease: "power2.out" }, 8.2);
+      tl.fromTo(q(".f08-combo"), { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: IN }, 8.1);
+
+      // Scene 4 (8.5–11.5s): upper part dims on "Vì vậy" (8.5); governance band on "quản trị" (9.9); hold
+      tl.to(
+        [q(".f08-card-1"), q(".f08-card-2"), q(".f08-card-3"), q(".f08-threat"), q(".f08-bracket"), q(".f08-combo")],
+        { opacity: 0.5, duration: 0.6, ease: "power2.out" },
+        8.6
+      );
+      tl.fromTo(q(".f08-band"), { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: IN }, 9.9);
+      tl.fromTo(q(".f08-band-rule"), { scaleY: 0 }, { scaleY: 1, duration: 0.5, ease: IN, transformOrigin: "50% 0%" }, 10.0);
+      tl.fromTo(qa(".f08-chip"), { y: 12, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: IN, stagger: 0.1 }, 10.3);
+
+      tl.set({}, {}, 11.5);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["08-rui-ro-chuoi-cung-ung"] = tl;
+    })();
+  </script>
+</template>

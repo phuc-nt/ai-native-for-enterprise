@@ -1,0 +1,366 @@
+<template>
+  <style>
+    @font-face { font-family: "Space Grotesk"; src: url("assets/fonts/SpaceGrotesk-VN.woff2") format("woff2"); font-weight: 300 700; font-style: normal; font-display: block; }
+    @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-VN.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: block; }
+    @font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/JetBrainsMono-VN.woff2") format("woff2"); font-weight: 100 800; font-style: normal; font-display: block; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      container-type: size;
+      font-family: "Space Grotesk", sans-serif;
+      color: #111111;
+    }
+
+    /* ---- full-duration ground ---- */
+    .f11-bg {
+      position: absolute;
+      inset: 0;
+      background: #fdfae7;
+    }
+    .f11-progress {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 1320px; /* 11 / 16 of 1920 */
+      height: 3px;
+      background: #1e2bfa;
+      transform-origin: 0 50%;
+    }
+
+    /* ---- slide-header ---- */
+    .f11-eyebrow {
+      position: absolute;
+      left: 96px;
+      top: 70px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 1.3;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #1e2bfa;
+      white-space: nowrap;
+    }
+    .f11-pill {
+      position: absolute;
+      right: 96px;
+      top: 64px;
+      padding: 7px 20px 8px;
+      border-radius: 100px;
+      background: rgba(30, 43, 250, 0.08);
+      color: #1e2bfa;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 1.3;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+    .f11-h2 {
+      position: absolute;
+      left: 96px;
+      top: 124px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 58px;
+      line-height: 1.14;
+      letter-spacing: -0.02em;
+      color: #111111;
+      white-space: nowrap;
+    }
+
+    /* ---- metric (top right, lands at the end) ---- */
+    .f11-metric {
+      position: absolute;
+      left: 1264px;
+      top: 120px;
+      width: 560px;
+      text-align: right;
+    }
+    .f11-metric-value {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 116px;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: #1e2bfa;
+      white-space: nowrap;
+    }
+    .f11-metric-label {
+      margin-top: 2px;
+      font-family: "Inter", sans-serif;
+      font-weight: 500;
+      font-size: 26px;
+      line-height: 1.35;
+      color: #6b6b6b;
+      white-space: nowrap;
+    }
+
+    /* ---- layer stack rows ---- */
+    .f11-row {
+      position: absolute;
+      left: 96px;
+      width: 1728px;
+      height: 118px;
+    }
+    .f11-row-1 { top: 330px; }
+    .f11-row-2 { top: 466px; }
+    .f11-row-3 { top: 602px; }
+    .f11-row-4 { top: 738px; }
+
+    .f11-slab {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1000px;
+      height: 118px;
+      box-sizing: border-box;
+      border-radius: 14px;
+      background: rgba(30, 43, 250, 0.04);
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+      display: flex;
+      align-items: center;
+      padding-left: 40px;
+    }
+    .f11-slab-hl {
+      position: absolute;
+      inset: -1.5px;
+      border-radius: 14px;
+      box-sizing: border-box;
+      border: 2px solid rgba(30, 43, 250, 0.55);
+      background: rgba(30, 43, 250, 0.06);
+      opacity: 0;
+    }
+    .f11-slab-ring {
+      position: absolute;
+      inset: -1.5px;
+      border-radius: 14px;
+      box-sizing: border-box;
+      border: 3px solid rgba(30, 43, 250, 0.5);
+      opacity: 0;
+    }
+    .f11-idx {
+      position: relative;
+      width: 64px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 1.3;
+      letter-spacing: 0.05em;
+      color: #6b6b6b;
+    }
+    .f11-name {
+      position: relative;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 46px;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: #111111;
+      white-space: nowrap;
+    }
+
+    .f11-link {
+      position: absolute;
+      left: 1016px;
+      top: 58px;
+      width: 52px;
+      height: 2px;
+      border-radius: 1px;
+      background: rgba(30, 43, 250, 0.35);
+      transform-origin: 0 50%;
+    }
+    .f11-label {
+      position: absolute;
+      left: 1084px;
+      top: 40px;
+      width: 260px;
+      font-family: "Inter", sans-serif;
+      font-weight: 500;
+      font-size: 26px;
+      line-height: 1.35;
+      color: #6b6b6b;
+      white-space: nowrap;
+    }
+    .f11-chip {
+      position: absolute;
+      left: 1364px;
+      top: 28px;
+      display: flex;
+      align-items: center;
+      padding: 6px 22px 8px;
+      border-radius: 100px;
+      box-sizing: border-box;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 32px;
+      line-height: 1.2;
+      white-space: nowrap;
+      background: transparent;
+    }
+    .f11-chip-pos {
+      color: #059669;
+      border: 1.5px solid rgba(5, 150, 105, 0.4);
+    }
+    .f11-chip-neu {
+      color: #111111;
+      border: 1.5px solid rgba(17, 17, 17, 0.3);
+    }
+    .f11-chip-neg {
+      color: #dc2626;
+      border: 1.5px solid rgba(220, 38, 38, 0.4);
+    }
+    .f11-sym {
+      font-family: "Inter", sans-serif;
+      font-weight: 600;
+      font-size: 28px;
+      line-height: 1.2;
+      margin-right: 10px;
+    }
+
+    .f11-strike {
+      position: absolute;
+      left: 24px;
+      top: 58px;
+      width: 952px;
+      height: 3px;
+      border-radius: 2px;
+      background: #111111;
+      transform-origin: 0 50%;
+    }
+  </style>
+
+  <div id="root" data-composition-id="11-bon-layer" data-width="1920" data-height="1080" data-duration="19.66">
+    <div class="clip f11-bg" data-start="0" data-duration="19.66" data-track-index="0">
+      <div class="f11-progress"></div>
+    </div>
+
+    <div class="f11-eyebrow">BỐN LAYER CỦA PLATFORM</div>
+    <div class="f11-pill">11 / 16</div>
+    <div class="f11-h2">Tách theo bản chất</div>
+
+    <div class="f11-metric">
+      <div class="f11-metric-value">3 / 4</div>
+      <div class="f11-metric-label">layer đã trùng với đề xuất</div>
+    </div>
+
+    <div class="f11-row f11-row-1">
+      <div class="f11-slab">
+        <div class="f11-slab-hl"></div>
+        <div class="f11-slab-ring"></div>
+        <span class="f11-idx">01</span>
+        <span class="f11-name">Knowledge base</span>
+      </div>
+      <div class="f11-link"></div>
+      <div class="f11-label">dữ liệu</div>
+      <div class="f11-chip f11-chip-pos"><span class="f11-sym">✓</span>làm</div>
+    </div>
+
+    <div class="f11-row f11-row-2">
+      <div class="f11-slab">
+        <div class="f11-slab-hl"></div>
+        <div class="f11-slab-ring"></div>
+        <span class="f11-idx">02</span>
+        <span class="f11-name">Integration</span>
+      </div>
+      <div class="f11-link"></div>
+      <div class="f11-label">connector</div>
+      <div class="f11-chip f11-chip-pos"><span class="f11-sym">✓</span>làm</div>
+    </div>
+
+    <div class="f11-row f11-row-3">
+      <div class="f11-slab">
+        <div class="f11-slab-hl"></div>
+        <div class="f11-slab-ring"></div>
+        <span class="f11-idx">03</span>
+        <span class="f11-name">Governance</span>
+      </div>
+      <div class="f11-link"></div>
+      <div class="f11-chip f11-chip-neu">mua / cấu hình</div>
+    </div>
+
+    <div class="f11-row f11-row-4">
+      <div class="f11-slab">
+        <div class="f11-slab-hl"></div>
+        <span class="f11-idx">04</span>
+        <span class="f11-name">Orchestration</span>
+      </div>
+      <div class="f11-strike"></div>
+      <div class="f11-link"></div>
+      <div class="f11-label">viết lại harness</div>
+      <div class="f11-chip f11-chip-neg"><span class="f11-sym">✗</span>không làm</div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      var root = document.querySelector('[data-composition-id="11-bon-layer"]');
+      var q = function (sel) { return root.querySelector(sel); };
+      var row = function (n, sel) { return root.querySelector(".f11-row-" + n + " " + sel); };
+
+      var tl = gsap.timeline({ paused: true });
+      var IN = { duration: 0.6, ease: "power3.out" };
+
+      // Scene 1 (0.0–2.3s): slide-header, h2, four slabs drop into a stack top-down
+      tl.fromTo(q(".f11-progress"), { scaleX: 10 / 11 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 0.3);
+      tl.fromTo(q(".f11-eyebrow"), { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, 0.0);
+      tl.fromTo(q(".f11-pill"), { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, 0.05);
+      tl.fromTo(q(".f11-h2"), { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "expo.out" }, 0.2);
+      [1, 2, 3, 4].forEach(function (n, i) {
+        tl.fromTo(row(n, ".f11-slab"), { y: -36, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, 0.7 + i * 0.15);
+      });
+
+      // helper: a slab lights up + its connector draws
+      function activate(n, t) {
+        tl.to(row(n, ".f11-slab-hl"), { opacity: 1, duration: 0.4, ease: "power2.out" }, t);
+        tl.fromTo(row(n, ".f11-link"), { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power3.out" }, t + 0.1);
+      }
+      function release(n, t) {
+        tl.to(row(n, ".f11-slab-hl"), { opacity: 0, duration: 0.4, ease: "power2.out" }, t);
+      }
+      function label(n, t) {
+        tl.fromTo(row(n, ".f11-label"), { x: -16, opacity: 0 }, { x: 0, opacity: 1, duration: 0.55, ease: "power3.out" }, t);
+      }
+      function chip(n, t) {
+        tl.fromTo(row(n, ".f11-chip"), { x: -20, scale: 0.92, opacity: 0 }, { x: 0, scale: 1, opacity: 1, duration: 0.55, ease: "power3.out" }, t);
+      }
+
+      // Scene 2 (2.3–9.3s): Knowledge base → dữ liệu → làm; Integration → connector → làm
+      activate(1, 2.3);
+      label(1, 3.2);
+      chip(1, 4.8);
+      release(1, 5.3);
+      activate(2, 5.3);
+      label(2, 7.8);
+      chip(2, 8.4);
+
+      // Scene 3 (9.3–16.0s): Governance → mua / cấu hình; Orchestration → viết lại harness → không làm, struck + dimmed
+      release(2, 9.3);
+      activate(3, 9.3);
+      chip(3, 10.2);
+      release(3, 12.4);
+      activate(4, 12.4);
+      label(4, 13.6);
+      chip(4, 15.2);
+      tl.fromTo(row(4, ".f11-strike"), { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.inOut" }, 15.3);
+      release(4, 15.5);
+      tl.to([row(4, ".f11-slab"), row(4, ".f11-strike")], { opacity: 0.45, duration: 0.5, ease: "power2.out" }, 15.6);
+
+      // Scene 4 (16.0–19.16s): cobalt metric 3 / 4 lands, first three slabs take a heavier border, then hold
+      tl.fromTo(q(".f11-metric-value"), { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: "expo.out" }, 16.0);
+      tl.fromTo(q(".f11-metric-label"), { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, 16.25);
+      [1, 2, 3].forEach(function (n, i) {
+        tl.to(row(n, ".f11-slab-ring"), { opacity: 1, duration: 0.45, ease: "power2.out" }, 16.3 + i * 0.12);
+      });
+
+      tl.set({}, {}, 19.16);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["11-bon-layer"] = tl;
+    })();
+  </script>
+</template>

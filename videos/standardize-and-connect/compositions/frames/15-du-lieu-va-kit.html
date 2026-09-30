@@ -1,0 +1,514 @@
+<template>
+  <style>
+    @font-face { font-family: "Space Grotesk"; src: url("assets/fonts/SpaceGrotesk-VN.woff2") format("woff2"); font-weight: 300 700; font-style: normal; font-display: block; }
+    @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-VN.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: block; }
+    @font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/JetBrainsMono-VN.woff2") format("woff2"); font-weight: 100 800; font-style: normal; font-display: block; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      font-family: "Inter", sans-serif;
+      color: #111111;
+    }
+    #f15-bg {
+      position: absolute;
+      inset: 0;
+      background: #fdfae7;
+    }
+    #f15-stage {
+      position: absolute;
+      inset: 0;
+    }
+
+    /* ---------- slide header ---------- */
+    #f15-eyebrow {
+      position: absolute;
+      left: 96px;
+      top: 62px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 1.25;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #1e2bfa;
+    }
+    #f15-count {
+      position: absolute;
+      right: 96px;
+      top: 56px;
+      padding: 8px 22px;
+      border-radius: 100px;
+      background: rgba(30, 43, 250, 0.08);
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 1.25;
+      letter-spacing: 0.05em;
+      color: #1e2bfa;
+    }
+    #f15-title {
+      position: absolute;
+      left: 96px;
+      top: 100px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 52px;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: #111111;
+      white-space: nowrap;
+    }
+
+    /* ---------- 5-step bar ---------- */
+    #f15-steps {
+      position: absolute;
+      left: 96px;
+      top: 196px;
+      width: 1728px;
+      height: 76px;
+    }
+    #f15-steps-line {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 37px;
+      height: 2px;
+      background: rgba(30, 43, 250, 0.2);
+      transform-origin: left center;
+    }
+    #f15-steps-row {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      gap: 16px;
+    }
+    .f15-cell {
+      position: relative;
+      flex: 1 1 0;
+      height: 76px;
+      border-radius: 12px;
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+      background: linear-gradient(rgba(30, 43, 250, 0.04), rgba(30, 43, 250, 0.04)), #fdfae7;
+      opacity: 0;
+    }
+    .f15-cell-face {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 0 26px;
+      border-radius: 11px;
+    }
+    .f15-cell-num {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 30px;
+      line-height: 1.2;
+      color: #1e2bfa;
+    }
+    .f15-cell-label {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 26px;
+      line-height: 1.2;
+      color: #111111;
+      white-space: nowrap;
+    }
+    .f15-cell-on {
+      background: #1e2bfa;
+      opacity: 0;
+    }
+    .f15-cell-on .f15-cell-num,
+    .f15-cell-on .f15-cell-label {
+      color: #fdfae7;
+    }
+
+    /* ---------- cards ---------- */
+    .f15-card {
+      position: absolute;
+      top: 316px;
+      width: 846px;
+      height: 540px;
+    }
+    #f15-card-a { left: 96px; }
+    #f15-card-b { left: 978px; }
+    .f15-shell {
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+      background: rgba(30, 43, 250, 0.04);
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+    }
+    #f15-b-slot {
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+      border: 1.5px dashed rgba(30, 43, 250, 0.2);
+      opacity: 0;
+    }
+    #f15-b-shell { opacity: 0; }
+    .f15-card-tag {
+      position: absolute;
+      left: 44px;
+      top: 40px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 1.25;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #1e2bfa;
+    }
+    .f15-card-title {
+      position: absolute;
+      left: 44px;
+      top: 78px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 50px;
+      line-height: 1.14;
+      letter-spacing: -0.02em;
+      color: #111111;
+      white-space: nowrap;
+      opacity: 0;
+      transform-origin: left center;
+    }
+
+    /* scattered knowledge fragments (left card) — left/top = centre point */
+    .f15-frag {
+      position: absolute;
+      padding: 8px 18px;
+      border-radius: 10px;
+      border: 1.5px dashed rgba(17, 17, 17, 0.22);
+      font-family: "Inter", sans-serif;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 1.3;
+      color: #6b6b6b;
+      white-space: nowrap;
+      opacity: 0;
+    }
+
+    /* property chips */
+    .f15-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      border-radius: 100px;
+      background: rgba(30, 43, 250, 0.08);
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      color: #111111;
+      white-space: nowrap;
+      opacity: 0;
+    }
+    .f15-check {
+      font-family: "Inter", sans-serif;
+      font-weight: 700;
+      color: #1e2bfa;
+      line-height: 1.2;
+    }
+    #f15-a-chips {
+      position: absolute;
+      left: 44px;
+      top: 190px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 22px;
+    }
+    #f15-a-chips .f15-chip {
+      padding: 14px 30px 14px 24px;
+      font-size: 32px;
+      line-height: 1.2;
+    }
+    #f15-a-chips .f15-check { font-size: 28px; }
+
+    /* right card body */
+    #f15-b-tags {
+      position: absolute;
+      left: 44px;
+      right: 44px;
+      top: 168px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .f15-tag {
+      padding: 8px 18px;
+      border-radius: 10px;
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+      background: #fdfae7;
+      font-family: "Inter", sans-serif;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 1.3;
+      color: #333333;
+      white-space: nowrap;
+      opacity: 0;
+    }
+    #f15-b-rule {
+      position: absolute;
+      left: 44px;
+      right: 44px;
+      top: 254px;
+      height: 1.5px;
+      background: rgba(30, 43, 250, 0.2);
+      transform-origin: left center;
+    }
+    #f15-b-code {
+      position: absolute;
+      left: 44px;
+      top: 278px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      opacity: 0;
+    }
+    #f15-b-code-glyph {
+      font-family: "JetBrains Mono", monospace;
+      font-weight: 600;
+      font-size: 26px;
+      line-height: 1.2;
+      color: #6b6b6b;
+    }
+    #f15-b-code-text {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 34px;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: #111111;
+      white-space: nowrap;
+    }
+    #f15-b-chips {
+      position: absolute;
+      left: 44px;
+      top: 346px;
+      display: flex;
+      gap: 12px;
+    }
+    #f15-b-chips .f15-chip {
+      padding: 12px 26px 12px 20px;
+      font-size: 28px;
+      line-height: 1.2;
+      gap: 12px;
+    }
+    #f15-b-chips .f15-check { font-size: 24px; }
+    #f15-b-registry {
+      position: absolute;
+      left: 44px;
+      top: 428px;
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 28px 12px 22px;
+      border-radius: 100px;
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+      background: #fdfae7;
+      opacity: 0;
+    }
+    #f15-b-registry-arrow {
+      font-family: "Inter", sans-serif;
+      font-weight: 600;
+      font-size: 26px;
+      line-height: 1.2;
+      color: #1e2bfa;
+    }
+    #f15-b-registry-text {
+      font-family: "JetBrains Mono", monospace;
+      font-weight: 500;
+      font-size: 26px;
+      line-height: 1.3;
+      color: #111111;
+      white-space: nowrap;
+    }
+
+    /* progress bar (15 / 24) — the only element allowed below the caption line */
+    #f15-progress {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 1200px;
+      height: 3px;
+      background: #1e2bfa;
+    }
+  </style>
+
+  <div id="root" data-composition-id="15-du-lieu-va-kit" data-width="1920" data-height="1080" data-duration="20.42">
+    <div id="f15-bg" class="clip" data-start="0" data-duration="20.42" data-track-index="0"></div>
+
+    <div id="f15-stage" class="clip" data-start="0" data-duration="20.42" data-track-index="1">
+      <!-- slide header -->
+      <div id="f15-eyebrow">ĐỀ XUẤT</div>
+      <div id="f15-count">15 / 24</div>
+      <div id="f15-title">Việc 1 và 2: dữ liệu và kit</div>
+
+      <!-- 5-step bar -->
+      <div id="f15-steps">
+        <div id="f15-steps-line"></div>
+        <div id="f15-steps-row">
+          <div class="f15-cell" id="f15-cell-1">
+            <div class="f15-cell-face" id="f15-cell-1-off"><span class="f15-cell-num">1</span><span class="f15-cell-label">Data</span></div>
+            <div class="f15-cell-face f15-cell-on" id="f15-cell-1-on"><span class="f15-cell-num">1</span><span class="f15-cell-label">Data</span></div>
+          </div>
+          <div class="f15-cell" id="f15-cell-2">
+            <div class="f15-cell-face" id="f15-cell-2-off"><span class="f15-cell-num">2</span><span class="f15-cell-label">Kit</span></div>
+            <div class="f15-cell-face f15-cell-on" id="f15-cell-2-on"><span class="f15-cell-num">2</span><span class="f15-cell-label">Kit</span></div>
+          </div>
+          <div class="f15-cell" id="f15-cell-3">
+            <div class="f15-cell-face"><span class="f15-cell-num">3</span><span class="f15-cell-label">Connector</span></div>
+          </div>
+          <div class="f15-cell" id="f15-cell-4">
+            <div class="f15-cell-face"><span class="f15-cell-num">4</span><span class="f15-cell-label">Governance</span></div>
+          </div>
+          <div class="f15-cell" id="f15-cell-5">
+            <div class="f15-cell-face"><span class="f15-cell-num">5</span><span class="f15-cell-label">Harness</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- card A: Data source AI-ready -->
+      <div class="f15-card" id="f15-card-a">
+        <div class="f15-shell" id="f15-a-shell"></div>
+        <div class="f15-card-tag" id="f15-a-tag">VIỆC 1</div>
+        <div class="f15-card-title" id="f15-a-title">Data source AI-ready</div>
+
+        <div class="f15-frag" id="f15-frag-1" style="left: 150px; top: 222px;">wiki</div>
+        <div class="f15-frag" id="f15-frag-2" style="left: 480px; top: 200px;">issue tracker</div>
+        <div class="f15-frag" id="f15-frag-3" style="left: 712px; top: 290px;">chat</div>
+        <div class="f15-frag" id="f15-frag-4" style="left: 226px; top: 352px;">source code</div>
+        <div class="f15-frag" id="f15-frag-5" style="left: 506px; top: 330px;">spec</div>
+        <div class="f15-frag" id="f15-frag-6" style="left: 420px; top: 462px;">biên bản họp</div>
+
+        <div id="f15-a-chips">
+          <div class="f15-chip" id="f15-a-chip-1"><span class="f15-check">✓</span><span>có cấu trúc</span></div>
+          <div class="f15-chip" id="f15-a-chip-2"><span class="f15-check">✓</span><span>có nguồn gốc</span></div>
+          <div class="f15-chip" id="f15-a-chip-3"><span class="f15-check">✓</span><span>có phân quyền</span></div>
+        </div>
+      </div>
+
+      <!-- card B: Kit AI-ready -->
+      <div class="f15-card" id="f15-card-b">
+        <div id="f15-b-slot"></div>
+        <div class="f15-shell" id="f15-b-shell"></div>
+        <div class="f15-card-tag" id="f15-b-tag">VIỆC 2</div>
+        <div class="f15-card-title" id="f15-b-title">Kit AI-ready</div>
+
+        <div id="f15-b-tags">
+          <div class="f15-tag">skill</div>
+          <div class="f15-tag">workflow</div>
+          <div class="f15-tag">template</div>
+          <div class="f15-tag">checklist</div>
+          <div class="f15-tag">guardrail</div>
+        </div>
+
+        <div id="f15-b-rule"></div>
+        <div id="f15-b-code"><span id="f15-b-code-glyph">&lt;/&gt;</span><span id="f15-b-code-text">Quản lý như code</span></div>
+
+        <div id="f15-b-chips">
+          <div class="f15-chip" id="f15-b-chip-1"><span class="f15-check">✓</span><span>owner</span></div>
+          <div class="f15-chip" id="f15-b-chip-2"><span class="f15-check">✓</span><span>review</span></div>
+          <div class="f15-chip" id="f15-b-chip-3"><span class="f15-check">✓</span><span>version</span></div>
+        </div>
+        <div id="f15-b-registry"><span id="f15-b-registry-arrow">→</span><span id="f15-b-registry-text">kit registry</span></div>
+      </div>
+
+      <div id="f15-progress"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      var tl = gsap.timeline({ paused: true });
+      var OUT = "power3.out";
+
+      // ---- Scene 1 (0.0–2.3s): header + 5-step bar ----
+      tl.fromTo("#f15-eyebrow", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: OUT }, 0.05);
+      tl.fromTo("#f15-count", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: OUT }, 0.1);
+      tl.fromTo("#f15-title", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7, ease: OUT }, 0.15);
+      tl.fromTo("#f15-card-a", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7, ease: OUT }, 0.3);
+      tl.fromTo("#f15-b-slot", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: OUT }, 0.45);
+      tl.fromTo("#f15-b-tag", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: OUT }, 0.45);
+
+      // "năm việc" (1.1): the bar draws, five cells stagger in
+      tl.fromTo("#f15-steps-line", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: OUT }, 1.1);
+      tl.fromTo(".f15-cell", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: OUT, stagger: 0.1 }, 1.2);
+
+      // ---- Scene 2 (2.3–10.2s): step 1 active, fragments converge into Data source ----
+      tl.to("#f15-cell-1-on", { opacity: 1, duration: 0.35, ease: "power2.out" }, 2.3);
+      tl.to("#f15-cell-1-off", { opacity: 0, duration: 0.35, ease: "power2.out" }, 2.3);
+
+      // "tri thức rải rác" (3.5): six scattered fragments
+      var frags = ["#f15-frag-1", "#f15-frag-2", "#f15-frag-3", "#f15-frag-4", "#f15-frag-5", "#f15-frag-6"];
+      var centres = [[150, 222], [480, 200], [712, 290], [226, 352], [506, 330], [420, 462]];
+      var target = [300, 106]; // centre of the card title
+      frags.forEach(function (sel, i) {
+        tl.fromTo(
+          sel,
+          { xPercent: -50, yPercent: -50, opacity: 0, y: 16, scale: 0.96 },
+          { xPercent: -50, yPercent: -50, opacity: 1, y: 0, scale: 1, duration: 0.5, ease: OUT },
+          3.5 + i * 0.12
+        );
+      });
+
+      // "data source" (5.0): fragments slide and converge into the title
+      frags.forEach(function (sel, i) {
+        tl.to(
+          sel,
+          {
+            x: target[0] - centres[i][0],
+            y: target[1] - centres[i][1],
+            scale: 0.45,
+            opacity: 0,
+            duration: 0.75,
+            ease: "power3.inOut"
+          },
+          5.0 + i * 0.05
+        );
+      });
+      tl.fromTo("#f15-a-title", { opacity: 0, y: 14, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: "expo.out" }, 5.4);
+
+      // chips on the words
+      tl.fromTo("#f15-a-chip-1", { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.55, ease: OUT }, 6.7);
+      tl.fromTo("#f15-a-chip-2", { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.55, ease: OUT }, 7.9);
+      tl.fromTo("#f15-a-chip-3", { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.55, ease: OUT }, 9.1);
+
+      // ---- Scene 3 (10.2–15.1s): step 2 active, Kit card ----
+      tl.to("#f15-card-a", { opacity: 0.55, duration: 0.6, ease: "power2.out" }, 10.2);
+      tl.to("#f15-cell-1-on", { opacity: 0, duration: 0.35, ease: "power2.out" }, 10.2);
+      tl.to("#f15-cell-2-on", { opacity: 1, duration: 0.35, ease: "power2.out" }, 10.2);
+      tl.to("#f15-cell-1-off", { opacity: 1, duration: 0.35, ease: "power2.out" }, 10.2);
+      tl.to("#f15-cell-2-off", { opacity: 0, duration: 0.35, ease: "power2.out" }, 10.2);
+
+      // "kit" (12.6)
+      tl.to("#f15-b-slot", { opacity: 0, duration: 0.5, ease: "power2.out" }, 12.6);
+      tl.fromTo("#f15-b-shell", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7, ease: OUT }, 12.6);
+      tl.fromTo("#f15-b-title", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7, ease: OUT }, 12.7);
+
+      // "skill" (13.7): skill · workflow · template · checklist · guardrail
+      tl.fromTo("#f15-b-tags .f15-tag", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: OUT, stagger: 0.14 }, 13.7);
+
+      // ---- Scene 4 (15.1–19.82s): managed like code ----
+      tl.fromTo("#f15-b-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: OUT }, 15.1);
+      tl.fromTo("#f15-b-code", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.6, ease: OUT }, 15.2);
+
+      tl.fromTo("#f15-b-chip-1", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: OUT }, 16.8);
+      tl.fromTo("#f15-b-chip-2", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: OUT }, 17.3);
+      tl.fromTo("#f15-b-chip-3", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: OUT }, 18.2);
+      tl.fromTo("#f15-b-registry", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.55, ease: OUT }, 18.7);
+
+      // hold still to the end
+      tl.set({}, {}, 19.82);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["15-du-lieu-va-kit"] = tl;
+    })();
+  </script>
+</template>

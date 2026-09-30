@@ -1,0 +1,272 @@
+<template>
+  <div
+    id="root"
+    data-composition-id="05-lap-luan-platform"
+    data-start="0"
+    data-duration="10.6"
+    data-width="1920"
+    data-height="1080"
+  >
+    <style>
+      @font-face { font-family: "Space Grotesk"; src: url("assets/fonts/SpaceGrotesk-VN.woff2") format("woff2"); font-weight: 300 700; font-style: normal; font-display: block; }
+      @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-VN.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: block; }
+      @font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/JetBrainsMono-VN.woff2") format("woff2"); font-weight: 100 800; font-style: normal; font-display: block; }
+
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        font-family: "Inter", sans-serif;
+        color: #111111;
+      }
+      .f05-bg {
+        position: absolute;
+        inset: 0;
+        background: #fdfae7;
+      }
+      .f05-stage {
+        position: absolute;
+        inset: 0;
+      }
+
+      /* slide-header */
+      .f05-eyebrow {
+        position: absolute;
+        left: 96px;
+        top: 88px;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 1.3;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #1e2bfa;
+      }
+      .f05-pill {
+        position: absolute;
+        right: 96px;
+        top: 82px;
+        padding: 8px 22px;
+        border-radius: 100px;
+        background: rgba(30, 43, 250, 0.08);
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 500;
+        font-size: 22px;
+        line-height: 1.3;
+        letter-spacing: 0.05em;
+        color: #1e2bfa;
+      }
+
+      /* metric cards — left column */
+      .f05-card {
+        position: absolute;
+        left: 96px;
+        width: 580px;
+        height: 272px;
+        background: rgba(30, 43, 250, 0.04);
+        border: 1.5px solid rgba(30, 43, 250, 0.2);
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 48px;
+      }
+      #f05-card-a { top: 248px; }
+      #f05-card-b { top: 548px; }
+      .f05-metric {
+        display: flex;
+        align-items: baseline;
+        gap: 24px;
+      }
+      .f05-num-wrap {
+        width: 200px;
+        display: flex;
+        justify-content: flex-end;
+      }
+      .f05-num {
+        display: inline-block;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: 156px;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        font-variant-numeric: tabular-nums;
+        color: #1e2bfa;
+        transform-origin: left bottom;
+      }
+      .f05-unit {
+        display: inline-block;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 500;
+        font-size: 48px;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+        color: #111111;
+      }
+
+      /* quote — right column */
+      .f05-qmark {
+        position: absolute;
+        left: 686px;
+        top: 214px;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: 236px;
+        line-height: 1.1;
+        color: #1e2bfa;
+        opacity: 0.15;
+      }
+      .f05-source {
+        position: absolute;
+        left: 812px;
+        top: 282px;
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        font-family: "Inter", sans-serif;
+        font-weight: 500;
+        font-size: 28px;
+        line-height: 1.4;
+        color: #6b6b6b;
+      }
+      .f05-source-rule {
+        display: block;
+        width: 44px;
+        height: 3px;
+        border-radius: 2px;
+        background: #6b6b6b;
+      }
+      .f05-quote {
+        position: absolute;
+        left: 812px;
+        top: 360px;
+        width: 1012px;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 500;
+        font-size: 64px;
+        line-height: 1.3;
+        letter-spacing: -0.02em;
+        color: #111111;
+      }
+      .f05-clause + .f05-clause {
+        margin-top: 26px;
+      }
+      .f05-line {
+        position: relative;
+        display: block;
+        white-space: nowrap;
+      }
+      .f05-w {
+        display: inline-block;
+      }
+      .f05-line-u {
+        width: fit-content;
+      }
+      .f05-underline {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -4px;
+        height: 4px;
+        border-radius: 2px;
+        background: #111111;
+        transform-origin: left center;
+      }
+
+      /* progress bar — 5/16 */
+      .f05-progress {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 600px;
+        height: 3px;
+        background: #1e2bfa;
+        transform-origin: left center;
+      }
+    </style>
+
+    <div class="f05-bg clip" data-start="0" data-duration="10.6" data-track-index="0"></div>
+
+    <div class="f05-stage clip" data-start="0" data-duration="10.6" data-track-index="1">
+      <div class="f05-eyebrow" id="f05-eyebrow">Lập luận của platform</div>
+      <div class="f05-pill" id="f05-pill">05 / 16</div>
+
+      <div class="f05-card" id="f05-card-a">
+        <div class="f05-metric">
+          <div class="f05-num-wrap"><span class="f05-num" id="f05-num-a">0</span></div>
+          <span class="f05-unit" id="f05-unit-a">layer</span>
+        </div>
+      </div>
+      <div class="f05-card" id="f05-card-b">
+        <div class="f05-metric">
+          <div class="f05-num-wrap"><span class="f05-num" id="f05-num-b">0</span></div>
+          <span class="f05-unit" id="f05-unit-b">feature</span>
+        </div>
+      </div>
+
+      <div class="f05-qmark" id="f05-qmark">&ldquo;</div>
+      <div class="f05-source" id="f05-source">
+        <span class="f05-source-rule"></span><span>Kết luận trong tài liệu platform</span>
+      </div>
+
+      <div class="f05-quote">
+        <div class="f05-clause" id="f05-clause-a">
+          <span class="f05-line"><span class="f05-w f05-wa">IDE</span> <span class="f05-w f05-wa">harness</span> <span class="f05-w f05-wa">chỉ</span> <span class="f05-w f05-wa">là</span></span>
+          <span class="f05-line"><span class="f05-w f05-wa">trợ</span> <span class="f05-w f05-wa">lý</span> <span class="f05-w f05-wa">cá</span> <span class="f05-w f05-wa">nhân,</span></span>
+        </div>
+        <div class="f05-clause" id="f05-clause-b">
+          <span class="f05-line"><span class="f05-w f05-wb">còn</span> <span class="f05-w f05-wb">platform</span> <span class="f05-w f05-wb">mới</span> <span class="f05-w f05-wb">là</span></span>
+          <span class="f05-line f05-line-u"><span class="f05-w f05-wb">dây</span> <span class="f05-w f05-wb">chuyền</span> <span class="f05-w f05-wb">sản</span> <span class="f05-w f05-wb">xuất</span> <span class="f05-w f05-wb">phần</span> <span class="f05-w f05-wb">mềm.</span><span class="f05-underline" id="f05-underline"></span></span>
+        </div>
+      </div>
+
+      <div class="f05-progress" id="f05-progress"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        const tl = gsap.timeline({ paused: true });
+        const q = (s) => document.querySelectorAll('[data-composition-id="05-lap-luan-platform"] ' + s);
+        const one = (s) => document.querySelector('[data-composition-id="05-lap-luan-platform"] ' + s);
+
+        // Scene 1 (0.0–2.6s): slide-header, then the two metric cards count up on cue
+        tl.fromTo(one("#f05-eyebrow"), { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.1);
+        tl.fromTo(one("#f05-pill"), { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.2);
+        tl.fromTo(one("#f05-progress"), { scaleX: 0.8 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 0.2);
+
+        function countCard(card, num, unit, target, at) {
+          tl.fromTo(card, { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, at - 0.15);
+          // count-up: integer snap, driven by the tween itself (seek-safe, no callbacks)
+          tl.fromTo(
+            num,
+            { innerText: 0 },
+            { innerText: target, snap: { innerText: 1 }, duration: 0.6, ease: "power3.out", immediateRender: false },
+            at,
+          );
+          tl.fromTo(num, { scale: 0.6 }, { scale: 1, duration: 0.6, ease: "power3.out" }, at);
+          tl.fromTo(unit, { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, at + 0.3);
+        }
+        countCard(one("#f05-card-a"), one("#f05-num-a"), one("#f05-unit-a"), 4, 0.8);
+        countCard(one("#f05-card-b"), one("#f05-num-b"), one("#f05-unit-b"), 13, 1.6);
+
+        // Scene 2 (2.6–4.6s): big quote mark fades in (to 0.15), source label at 3.7s
+        tl.fromTo(one("#f05-qmark"), { opacity: 0, y: 28 }, { opacity: 0.15, y: 0, duration: 0.8, ease: "power3.out" }, 2.6);
+        tl.fromTo(one("#f05-source"), { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 3.7);
+
+        // Scene 3 (4.6–10.0s): blockquote builds in two clauses, word by word
+        tl.fromTo(q(".f05-wa"), { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out", stagger: 0.09 }, 4.6);
+        tl.to(one("#f05-clause-a"), { color: "#6b6b6b", duration: 0.5, ease: "power2.out" }, 7.0);
+        tl.fromTo(q(".f05-wb"), { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out", stagger: 0.09 }, 7.0);
+        tl.fromTo(one("#f05-underline"), { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power3.out" }, 8.55);
+
+        // still from ~9.1s; anchor the end
+        tl.set({}, {}, 10);
+
+        window.__timelines["05-lap-luan-platform"] = tl;
+      })();
+    </script>
+  </div>
+</template>

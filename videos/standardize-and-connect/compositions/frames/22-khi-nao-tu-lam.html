@@ -1,0 +1,287 @@
+<template id="f22-template">
+  <div id="root" data-composition-id="22-khi-nao-tu-lam" data-start="0" data-duration="14.16" data-width="1920" data-height="1080">
+    <style>
+      @font-face { font-family: "Space Grotesk"; src: url("assets/fonts/SpaceGrotesk-VN.woff2") format("woff2"); font-weight: 300 700; font-style: normal; font-display: block; }
+      @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-VN.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: block; }
+      @font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/JetBrainsMono-VN.woff2") format("woff2"); font-weight: 100 800; font-style: normal; font-display: block; }
+
+      #root {
+        position: absolute;
+        inset: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        font-family: "Inter", sans-serif;
+        color: #111111;
+      }
+
+      .f22-bg {
+        position: absolute;
+        inset: 0;
+        background: #fdfae7;
+      }
+
+      .f22-stage {
+        position: absolute;
+        inset: 0;
+      }
+
+      /* ---------- slide-header (chrome) ---------- */
+      .f22-eyebrow {
+        position: absolute;
+        left: 96px;
+        top: 64px;
+        margin: 0;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 600;
+        font-size: 22px;
+        line-height: 1.3;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #1e2bfa;
+      }
+
+      .f22-count {
+        position: absolute;
+        right: 96px;
+        top: 58px;
+        padding: 6px 20px;
+        border-radius: 100px;
+        background: rgba(30, 43, 250, 0.08);
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 500;
+        font-size: 22px;
+        line-height: 1.3;
+        letter-spacing: 0.05em;
+        color: #1e2bfa;
+      }
+
+      .f22-title {
+        position: absolute;
+        left: 96px;
+        top: 102px;
+        margin: 0;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: 56px;
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+        color: #111111;
+      }
+
+      /* ---------- 2×2 grid (foreground subject) ---------- */
+      .f22-grid {
+        position: absolute;
+        left: 96px;
+        top: 232px;
+        width: 1728px;
+        height: 444px;
+      }
+
+      .f22-slot,
+      .f22-card {
+        position: absolute;
+        width: 852px;
+        height: 210px;
+        box-sizing: border-box;
+        border-radius: 14px;
+      }
+
+      .f22-slot {
+        border: 1.5px dashed rgba(30, 43, 250, 0.2);
+      }
+
+      .f22-card {
+        padding: 26px 40px 26px 40px;
+        background: rgba(30, 43, 250, 0.04);
+        border: 1.5px solid rgba(30, 43, 250, 0.2);
+      }
+
+      .f22-p1 { left: 0; top: 0; }
+      .f22-p2 { left: 876px; top: 0; }
+      .f22-p3 { left: 0; top: 234px; }
+      .f22-p4 { left: 876px; top: 234px; }
+
+      .f22-num {
+        display: block;
+        margin: 0 0 8px 0;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 600;
+        font-size: 22px;
+        line-height: 1.3;
+        letter-spacing: 0.08em;
+        color: #1e2bfa;
+      }
+
+      .f22-card-title {
+        display: block;
+        margin: 0 0 10px 0;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: 38px;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+        color: #111111;
+        white-space: nowrap;
+      }
+
+      .f22-card-sub {
+        display: block;
+        margin: 0;
+        font-family: "Inter", sans-serif;
+        font-weight: 500;
+        font-size: 28px;
+        line-height: 1.35;
+        color: #6b6b6b;
+        white-space: nowrap;
+      }
+
+      /* ---------- closing band (supporting, the frame's cobalt moment) ---------- */
+      .f22-band {
+        position: absolute;
+        left: 96px;
+        top: 712px;
+        width: 1728px;
+        height: 128px;
+        box-sizing: border-box;
+        padding: 0 48px 0 56px;
+        display: flex;
+        align-items: center;
+        border-radius: 14px;
+        background: rgba(30, 43, 250, 0.08);
+        border: 2px solid #1e2bfa;
+      }
+
+      .f22-band-rule {
+        position: absolute;
+        left: 22px;
+        top: 30px;
+        width: 6px;
+        height: 64px;
+        border-radius: 3px;
+        background: #1e2bfa;
+        transform-origin: 50% 100%;
+      }
+
+      .f22-band-arrow {
+        flex: 0 0 auto;
+        margin-right: 22px;
+        font-family: "Inter", sans-serif;
+        font-weight: 600;
+        font-size: 44px;
+        line-height: 1.2;
+        color: #1e2bfa;
+      }
+
+      .f22-band-text {
+        margin: 0;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+        color: #111111;
+        white-space: nowrap;
+      }
+
+      /* ---------- progress bar (chrome, the one bottom-edge exception) ---------- */
+      .f22-progress {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 1760px;
+        height: 3px;
+        background: #1e2bfa;
+        transform-origin: 0% 50%;
+      }
+    </style>
+
+    <div class="clip f22-bg" data-start="0" data-duration="14.16" data-track-index="0"></div>
+
+    <div class="clip f22-stage" data-start="0" data-duration="14.16" data-track-index="1">
+      <p class="f22-eyebrow" id="f22-eyebrow">Phạm vi và lộ trình</p>
+      <div class="f22-count" id="f22-count">22 / 24</div>
+      <h2 class="f22-title" id="f22-title">Khi nào nên tự làm nhiều hơn</h2>
+
+      <div class="f22-grid" id="f22-grid">
+        <div class="f22-slot f22-p1" id="f22-slot1"></div>
+        <div class="f22-slot f22-p2" id="f22-slot2"></div>
+        <div class="f22-slot f22-p3" id="f22-slot3"></div>
+        <div class="f22-slot f22-p4" id="f22-slot4"></div>
+
+        <div class="f22-card f22-p1" id="f22-card1">
+          <span class="f22-num">01</span>
+          <span class="f22-card-title">Người dùng không phải kỹ sư</span>
+          <span class="f22-card-sub">chat doanh nghiệp của vendor, harness đa kênh</span>
+        </div>
+        <div class="f22-card f22-p2" id="f22-card2">
+          <span class="f22-num">02</span>
+          <span class="f22-card-title">Môi trường air-gapped</span>
+          <span class="f22-card-sub">harness open source và model tự host</span>
+        </div>
+        <div class="f22-card f22-p3" id="f22-card3">
+          <span class="f22-num">03</span>
+          <span class="f22-card-title">Agent là sản phẩm bán cho khách</span>
+          <span class="f22-card-sub">Agent SDK hoặc framework; kit dùng lại được</span>
+        </div>
+        <div class="f22-card f22-p4" id="f22-card4">
+          <span class="f22-num">04</span>
+          <span class="f22-card-title">Harness thiếu năng lực bắt buộc</span>
+          <span class="f22-card-sub">vá bằng hook, plugin, MCP server</span>
+        </div>
+      </div>
+
+      <div class="f22-band" id="f22-band">
+        <div class="f22-band-rule" id="f22-band-rule"></div>
+        <span class="f22-band-arrow">→</span>
+        <p class="f22-band-text" id="f22-band-text">Nhưng vẫn bắt đầu từ thứ có sẵn</p>
+      </div>
+
+      <div class="f22-progress" id="f22-progress"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        var tl = gsap.timeline({ paused: true });
+
+        var enter = { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" };
+
+        /* Scene 1 (0.0–2.2s): header in; h2 lands on "không tuyệt đối" (0.8); empty 2×2 slots established */
+        tl.fromTo("#f22-eyebrow", { opacity: 0, y: 16 }, Object.assign({}, enter, { duration: 0.5 }), 0.0);
+        tl.fromTo("#f22-count", { opacity: 0, y: 16 }, Object.assign({}, enter, { duration: 0.5 }), 0.05);
+        tl.fromTo("#f22-progress", { scaleX: 21 / 22 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 0.1);
+        ["#f22-slot1", "#f22-slot2", "#f22-slot3", "#f22-slot4"].forEach(function (id, i) {
+          tl.fromTo(id, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 0.3 + i * 0.06);
+        });
+        tl.fromTo("#f22-title", { opacity: 0, y: 28 }, Object.assign({}, enter, { duration: 0.7 }), 0.8);
+
+        /* Scene 2 (2.2–9.7s): four cards assemble into their slots on the voiceover cues */
+        var cues = [2.2, 4.2, 5.7, 7.5];
+        cues.forEach(function (t, i) {
+          var n = i + 1;
+          tl.fromTo("#f22-card" + n, { opacity: 0, y: 24, scale: 0.97 },
+            { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "power3.out" }, t);
+          tl.fromTo("#f22-card" + n + " .f22-num", { opacity: 0, y: 12 },
+            Object.assign({}, enter, { duration: 0.5 }), t + 0.05);
+          tl.fromTo("#f22-card" + n + " .f22-card-title", { opacity: 0, y: 16 }, enter, t + 0.1);
+          tl.fromTo("#f22-card" + n + " .f22-card-sub", { opacity: 0, y: 16 }, enter, t + 0.3);
+        });
+
+        /* Scene 3 (9.7–13.66s): on "tự làm nhiều hơn" (10.1) the grid dims to ~60% */
+        tl.fromTo("#f22-grid", { opacity: 1 },
+          { opacity: 0.6, duration: 0.5, ease: "power2.out", immediateRender: false }, 10.1);
+
+        /* on "nhưng vẫn" (11.1): the cobalt band lands, rule draws up, text follows; then hold still */
+        tl.fromTo("#f22-band", { opacity: 0, y: 24 }, Object.assign({}, enter, { duration: 0.7 }), 11.1);
+        tl.fromTo("#f22-band-rule", { scaleY: 0 }, { scaleY: 1, duration: 0.5, ease: "power2.out" }, 11.25);
+        tl.fromTo("#f22-band-text", { opacity: 0, x: -16 },
+          { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 11.3);
+
+        tl.set({}, {}, 13.66);
+        window.__timelines["22-khi-nao-tu-lam"] = tl;
+      })();
+    </script>
+  </div>
+</template>

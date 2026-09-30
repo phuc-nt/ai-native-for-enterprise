@@ -1,0 +1,306 @@
+<template>
+  <div
+    id="root"
+    data-composition-id="13-diem-yeu-cach-bu"
+    data-start="0"
+    data-duration="14.86"
+    data-width="1920"
+    data-height="1080"
+  >
+    <style>
+      @font-face { font-family: "Space Grotesk"; src: url("assets/fonts/SpaceGrotesk-VN.woff2") format("woff2"); font-weight: 300 700; font-style: normal; font-display: block; }
+      @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-VN.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: block; }
+      @font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/JetBrainsMono-VN.woff2") format("woff2"); font-weight: 100 800; font-style: normal; font-display: block; }
+
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        font-family: "Inter", sans-serif;
+        color: #111111;
+      }
+      .f13-bg {
+        position: absolute;
+        inset: 0;
+        background: #fdfae7;
+      }
+      .f13-stage {
+        position: absolute;
+        inset: 0;
+      }
+
+      /* slide-header */
+      .f13-eyebrow {
+        position: absolute;
+        left: 96px;
+        top: 88px;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 1.3;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #1e2bfa;
+      }
+      .f13-pill {
+        position: absolute;
+        right: 96px;
+        top: 82px;
+        padding: 8px 22px;
+        border-radius: 100px;
+        background: rgba(30, 43, 250, 0.08);
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 500;
+        font-size: 22px;
+        line-height: 1.3;
+        letter-spacing: 0.05em;
+        color: #1e2bfa;
+      }
+
+      /* column headings */
+      .f13-colhead {
+        position: absolute;
+        top: 192px;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: 40px;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+      }
+      #f13-head-weak {
+        left: 96px;
+        color: #6b6b6b;
+      }
+      #f13-head-fix {
+        left: 980px;
+        color: #111111;
+      }
+      .f13-head-rule {
+        position: absolute;
+        left: 96px;
+        top: 268px;
+        width: 1728px;
+        height: 1.5px;
+        background: rgba(30, 43, 250, 0.2);
+        transform-origin: left center;
+      }
+
+      /* rows */
+      .f13-row {
+        position: absolute;
+        left: 0;
+        width: 1920px;
+        height: 170px;
+      }
+      #f13-row-1 { top: 296px; }
+      #f13-row-2 { top: 490px; }
+      #f13-row-3 { top: 684px; }
+
+      /* weakness — tinted muted card, left 40% */
+      .f13-weak {
+        position: absolute;
+        left: 96px;
+        top: 0;
+        width: 704px;
+        height: 170px;
+        box-sizing: border-box;
+        padding: 0 44px;
+        display: flex;
+        align-items: center;
+        background: rgba(30, 43, 250, 0.04);
+        border: 1.5px solid rgba(30, 43, 250, 0.2);
+        border-radius: 14px;
+      }
+      .f13-weak-text {
+        font-family: "Inter", sans-serif;
+        font-weight: 500;
+        font-size: 38px;
+        line-height: 1.35;
+        color: #6b6b6b;
+      }
+
+      /* thin arrow */
+      .f13-arrow {
+        position: absolute;
+        left: 832px;
+        top: 70px;
+        width: 116px;
+        height: 30px;
+      }
+      .f13-arrow-line {
+        position: absolute;
+        left: 0;
+        top: 13.5px;
+        width: 104px;
+        height: 3px;
+        border-radius: 2px;
+        background: #6b6b6b;
+        transform-origin: left center;
+      }
+      .f13-arrow-head {
+        position: absolute;
+        left: 94px;
+        top: 3px;
+        width: 22px;
+        height: 24px;
+      }
+      .f13-arrow-head polyline {
+        fill: none;
+        stroke: #6b6b6b;
+        stroke-width: 3;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      #f13-arrow-1 .f13-arrow-line { background: #1e2bfa; }
+      #f13-arrow-1 .f13-arrow-head polyline { stroke: #1e2bfa; }
+
+      /* fix — split-highlight, right 50% (focal) */
+      .f13-fix {
+        position: absolute;
+        left: 980px;
+        top: 0;
+        width: 844px;
+        height: 170px;
+        box-sizing: border-box;
+        padding: 0 44px 0 52px;
+        display: flex;
+        align-items: center;
+        background: rgba(30, 43, 250, 0.08);
+        border-radius: 12px;
+      }
+      .f13-fix-rule {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 4px;
+        height: 170px;
+        border-radius: 12px 0 0 12px;
+        background: #1e2bfa;
+        transform-origin: center top;
+      }
+      .f13-fix-text {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: 52px;
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+        color: #111111;
+      }
+
+      /* progress bar — 13/16 */
+      .f13-progress {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 1560px;
+        height: 3px;
+        background: #1e2bfa;
+        transform-origin: left center;
+      }
+    </style>
+
+    <div class="f13-bg clip" data-start="0" data-duration="14.86" data-track-index="0"></div>
+
+    <div class="f13-stage clip" data-start="0" data-duration="14.86" data-track-index="1">
+      <div class="f13-eyebrow" id="f13-eyebrow">Điểm yếu và cách bù</div>
+      <div class="f13-pill" id="f13-pill">13 / 16</div>
+
+      <div class="f13-colhead" id="f13-head-weak">Điểm yếu</div>
+      <div class="f13-colhead" id="f13-head-fix">Cách bù</div>
+      <div class="f13-head-rule" id="f13-head-rule"></div>
+
+      <div class="f13-row" id="f13-row-1">
+        <div class="f13-weak" id="f13-weak-1"><span class="f13-weak-text">Portable không trọn vẹn</span></div>
+        <div class="f13-arrow" id="f13-arrow-1">
+          <div class="f13-arrow-line"></div>
+          <svg class="f13-arrow-head" viewBox="0 0 22 24"><polyline points="4,3 18,12 4,21"></polyline></svg>
+        </div>
+        <div class="f13-fix" id="f13-fix-1">
+          <div class="f13-fix-rule"></div>
+          <span class="f13-fix-text" id="f13-fix-text-1">Core trung lập + adapter mỏng</span>
+        </div>
+      </div>
+
+      <div class="f13-row" id="f13-row-2">
+        <div class="f13-weak" id="f13-weak-2"><span class="f13-weak-text">Governance là nhu cầu thật</span></div>
+        <div class="f13-arrow" id="f13-arrow-2">
+          <div class="f13-arrow-line"></div>
+          <svg class="f13-arrow-head" viewBox="0 0 22 24"><polyline points="4,3 18,12 4,21"></polyline></svg>
+        </div>
+        <div class="f13-fix" id="f13-fix-2">
+          <div class="f13-fix-rule"></div>
+          <span class="f13-fix-text" id="f13-fix-text-2">LLM gateway</span>
+        </div>
+      </div>
+
+      <div class="f13-row" id="f13-row-3">
+        <div class="f13-weak" id="f13-weak-3"><span class="f13-weak-text">Headless cần license và guardrail</span></div>
+        <div class="f13-arrow" id="f13-arrow-3">
+          <div class="f13-arrow-line"></div>
+          <svg class="f13-arrow-head" viewBox="0 0 22 24"><polyline points="4,3 18,12 4,21"></polyline></svg>
+        </div>
+        <div class="f13-fix" id="f13-fix-3">
+          <div class="f13-fix-rule"></div>
+          <span class="f13-fix-text" id="f13-fix-text-3">Nêu rõ từ đầu</span>
+        </div>
+      </div>
+
+      <div class="f13-progress" id="f13-progress"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script>
+      (function () {
+        window.__timelines = window.__timelines || {};
+        const tl = gsap.timeline({ paused: true });
+        const one = (s) => document.querySelector('[data-composition-id="13-diem-yeu-cach-bu"] ' + s);
+
+        // Scene 1 (0.0–3.2s): slide-header, then the two column headings on cue
+        tl.fromTo(one("#f13-eyebrow"), { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.1);
+        tl.fromTo(one("#f13-pill"), { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.2);
+        tl.fromTo(one("#f13-progress"), { scaleX: 12 / 13 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 0.2);
+        tl.fromTo(one("#f13-head-weak"), { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 1.3);
+        tl.fromTo(one("#f13-head-rule"), { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 1.3);
+        tl.fromTo(one("#f13-head-fix"), { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 2.1);
+
+        // One row: weakness card assembles into its slot, the thin arrow draws left→right,
+        // then the split-highlight fix lands (cobalt rule draws down, text rises).
+        function buildRow(n, tWeak, tArrow, tFix) {
+          const weak = one("#f13-weak-" + n);
+          const arrowLine = one("#f13-arrow-" + n + " .f13-arrow-line");
+          const arrowHead = one("#f13-arrow-" + n + " .f13-arrow-head");
+          const fix = one("#f13-fix-" + n);
+          const fixRule = one("#f13-fix-" + n + " .f13-fix-rule");
+          const fixText = one("#f13-fix-text-" + n);
+
+          tl.fromTo(weak, { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, tWeak);
+          tl.fromTo(arrowLine, { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power3.out" }, tArrow);
+          tl.fromTo(arrowHead, { opacity: 0, x: -12 }, { opacity: 1, x: 0, duration: 0.35, ease: "power3.out" }, tArrow + 0.2);
+          tl.fromTo(fix, { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.7, ease: "expo.out" }, tFix);
+          tl.fromTo(fixRule, { scaleY: 0 }, { scaleY: 1, duration: 0.5, ease: "power3.out" }, tFix + 0.05);
+          tl.fromTo(fixText, { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, tFix + 0.12);
+        }
+
+        // Scene 2 (3.2–7.2s): row 1 — "Portable không trọn vẹn" → "Core trung lập + adapter mỏng"
+        buildRow(1, 3.2, 4.8, 5.0);
+
+        // Scene 3 (7.2–10.3s): row 2 — previous fix steps back to muted, then "LLM gateway"
+        tl.to(one("#f13-fix-text-1"), { color: "#6b6b6b", duration: 0.5, ease: "power2.out" }, 7.2);
+        buildRow(2, 7.2, 8.35, 8.6);
+
+        // Scene 4 (10.3–14.36s): row 3 — "Headless cần license và guardrail" → "Nêu rõ từ đầu"
+        tl.to(one("#f13-fix-text-2"), { color: "#6b6b6b", duration: 0.5, ease: "power2.out" }, 10.3);
+        buildRow(3, 10.3, 12.6, 12.9);
+
+        // settle: all three fixes read together at full ink, then hold still
+        tl.to([one("#f13-fix-text-1"), one("#f13-fix-text-2")], { color: "#111111", duration: 0.6, ease: "power2.out" }, 13.5);
+
+        // anchor the end
+        tl.set({}, {}, 14.36);
+
+        window.__timelines["13-diem-yeu-cach-bu"] = tl;
+      })();
+    </script>
+  </div>
+</template>

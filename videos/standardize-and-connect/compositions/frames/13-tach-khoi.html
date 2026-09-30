@@ -1,0 +1,281 @@
+<template>
+  <style>
+    @font-face { font-family: "Space Grotesk"; src: url("assets/fonts/SpaceGrotesk-VN.woff2") format("woff2"); font-weight: 300 700; font-style: normal; font-display: block; }
+    @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-VN.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: block; }
+    @font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/JetBrainsMono-VN.woff2") format("woff2"); font-weight: 100 800; font-style: normal; font-display: block; }
+
+    #root {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      container-type: size;
+      color: #111111;
+      font-family: "Inter", sans-serif;
+    }
+
+    /* ---------- ground ---------- */
+    #f13-bg {
+      position: absolute;
+      inset: 0;
+      background: #fdfae7;
+      z-index: 0;
+    }
+
+    /* ---------- slide-header chrome ---------- */
+    #f13-eyebrow {
+      position: absolute;
+      left: 96px;
+      top: 62px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 1.3;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #1e2bfa;
+      white-space: nowrap;
+      z-index: 2;
+    }
+    #f13-counter {
+      position: absolute;
+      right: 96px;
+      top: 56px;
+      padding: 8px 20px;
+      border-radius: 100px;
+      background: rgba(30, 43, 250, 0.08);
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 1.3;
+      letter-spacing: 0.05em;
+      color: #1e2bfa;
+      white-space: nowrap;
+      z-index: 2;
+    }
+    #f13-progress {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 1040px;
+      height: 3px;
+      background: #1e2bfa;
+      z-index: 2;
+    }
+
+    /* ---------- monolith outline carried over from frame 12 ---------- */
+    #f13-mono-outline {
+      position: absolute;
+      left: 678px;
+      top: 194px;
+      width: 564px;
+      height: 572px;
+      box-sizing: border-box;
+      border: 3px solid #1e2bfa;
+      border-radius: 14px;
+      z-index: 6;
+    }
+
+    /* ---------- tiers (final position = column slot) ---------- */
+    .f13-tier {
+      position: absolute;
+      width: 552px;
+      height: 112px;
+      box-sizing: border-box;
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+      border-radius: 10px;
+      background: linear-gradient(rgba(30, 43, 250, 0.04), rgba(30, 43, 250, 0.04)), #fdfae7;
+    }
+    .f13-tier-num {
+      flex: 0 0 auto;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 28px;
+      line-height: 1.2;
+      color: #1e2bfa;
+    }
+    .f13-tier-name {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 30px;
+      line-height: 1.18;
+      letter-spacing: -0.01em;
+      color: #111111;
+    }
+
+    /* column 1 (x 96): Knowledge base, Integration */
+    #f13-t1 { left: 96px;   top: 304px; z-index: 5; }
+    #f13-t3 { left: 96px;   top: 436px; z-index: 3; }
+    /* column 2 (x 684): Governance */
+    #f13-t4 { left: 684px;  top: 304px; z-index: 4; }
+    /* column 3 (x 1272): Orchestration, Chat UI */
+    #f13-t2 { left: 1272px; top: 304px; z-index: 5; }
+    #f13-t5 { left: 1272px; top: 436px; z-index: 3; }
+
+    /* ---------- column headers ---------- */
+    .f13-head {
+      position: absolute;
+      top: 200px;
+      padding: 12px 30px 13px;
+      border-radius: 100px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 30px;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+      z-index: 4;
+    }
+    #f13-head1 {
+      left: 96px;
+      background: #1e2bfa;
+      color: #fdfae7;
+    }
+    #f13-head2 {
+      left: 684px;
+      background: rgba(30, 43, 250, 0.08);
+      color: #111111;
+    }
+    #f13-head3 {
+      left: 1272px;
+      background: rgba(30, 43, 250, 0.08);
+      color: #111111;
+    }
+
+    /* ---------- column notes ---------- */
+    .f13-note {
+      position: absolute;
+      top: 592px;
+      line-height: 1.25;
+      white-space: nowrap;
+      z-index: 4;
+    }
+    #f13-note1 {
+      left: 100px;
+      font-family: "Inter", sans-serif;
+      font-weight: 600;
+      font-size: 30px;
+      color: #059669;
+    }
+    #f13-note2 {
+      left: 688px;
+      font-family: "Inter", sans-serif;
+      font-weight: 500;
+      font-size: 30px;
+      color: #6b6b6b;
+    }
+    #f13-note3 {
+      left: 1276px;
+      top: 584px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 44px;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: #dc2626;
+    }
+
+    /* ---------- red dashed frame around column 3 ---------- */
+    #f13-col3-frame {
+      position: absolute;
+      left: 1250px;
+      top: 180px;
+      width: 596px;
+      height: 488px;
+      box-sizing: border-box;
+      border: 3px dashed #dc2626;
+      border-radius: 16px;
+      z-index: 2;
+    }
+  </style>
+
+  <div id="root" data-composition-id="13-tach-khoi" data-width="1920" data-height="1080" data-start="0" data-duration="12.82">
+    <div id="f13-bg" class="clip" data-start="0" data-duration="12.82" data-track-index="0"></div>
+
+    <div id="f13-eyebrow">Ba khái niệm</div>
+    <div id="f13-counter">13 / 24</div>
+
+    <div id="f13-col3-frame"></div>
+
+    <div id="f13-head1" class="f13-head">Chỉ tổ chức có</div>
+    <div id="f13-head2" class="f13-head">Mua hoặc cấu hình</div>
+    <div id="f13-head3" class="f13-head">Chính là…</div>
+
+    <div id="f13-t1" class="f13-tier"><span class="f13-tier-num">1</span><span class="f13-tier-name">Knowledge base</span></div>
+    <div id="f13-t2" class="f13-tier"><span class="f13-tier-num">2</span><span class="f13-tier-name">Multi-agent orchestration</span></div>
+    <div id="f13-t3" class="f13-tier"><span class="f13-tier-num">3</span><span class="f13-tier-name">Integration</span></div>
+    <div id="f13-t4" class="f13-tier"><span class="f13-tier-num">4</span><span class="f13-tier-name">Governance</span></div>
+    <div id="f13-t5" class="f13-tier"><span class="f13-tier-num">5</span><span class="f13-tier-name">Chat UI</span></div>
+
+    <div id="f13-mono-outline"></div>
+
+    <div id="f13-note1" class="f13-note">✓ giữ lại, đầu tư</div>
+    <div id="f13-note2" class="f13-note">phần lớn có sẵn</div>
+    <div id="f13-note3" class="f13-note">= viết lại harness</div>
+
+    <div id="f13-progress"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+
+      // ---- Scene 1 (0.0–0.8s + 0.7s flight): monolith (as frame 12 ends) splits into three columns ----
+      // Monolith sits centred at x 684, stacked top→bottom 5,4,3,2,1 from y 200 (112px tiers, no gaps).
+      // Each tier is authored at its column slot; the "from" offset puts it back in the monolith.
+      var FLY = { duration: 0.7, ease: "power3.inOut" };
+      tl.fromTo("#f13-t1", { x: 588, y: 344 },  Object.assign({ x: 0, y: 0 }, FLY), 0.30);
+      tl.fromTo("#f13-t3", { x: 588, y: -12 },  Object.assign({ x: 0, y: 0 }, FLY), 0.34);
+      tl.fromTo("#f13-t4", { x: 0,   y: 8 },    Object.assign({ x: 0, y: 0 }, FLY), 0.30);
+      tl.fromTo("#f13-t2", { x: -588, y: 232 }, Object.assign({ x: 0, y: 0 }, FLY), 0.30);
+      tl.fromTo("#f13-t5", { x: -588, y: -236 },Object.assign({ x: 0, y: 0 }, FLY), 0.34);
+      tl.fromTo("#f13-mono-outline", { opacity: 1, scale: 1 }, { opacity: 0, scale: 1.04, duration: 0.3, ease: "power2.out" }, 0.30);
+
+      // ---- Scene 2 (0.8–4.5s): column 1 — cobalt pill on "tài sản" (2.1), green note ----
+      tl.fromTo("#f13-head1",
+        { opacity: 0, y: 20, scale: 0.92 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "power3.out" }, 2.1);
+      tl.fromTo("#f13-note1",
+        { opacity: 0, y: 18 },
+        { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 2.8);
+
+      // ---- Scene 3 (4.5–6.8s): column 2 — header on "Governance" (4.5), muted note ----
+      tl.fromTo("#f13-head2",
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 4.5);
+      tl.fromTo("#f13-note2",
+        { opacity: 0, y: 18 },
+        { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 5.3);
+
+      // ---- Scene 4 (6.8–12.32s): column 3 ----
+      // "orchestration và chat UI" (6.8): the two tiers firm their edge
+      tl.fromTo(["#f13-t2", "#f13-t5"],
+        { borderColor: "rgba(30,43,250,0.2)" },
+        { borderColor: "rgba(17,17,17,0.45)", duration: 0.4, ease: "power2.out", stagger: 0.12, immediateRender: false }, 6.8);
+      // "xét cho cùng" (8.9): header
+      tl.fromTo("#f13-head3",
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 8.9);
+      // "viết lại harness" (10.3): red label + dashed red frame
+      tl.fromTo("#f13-note3",
+        { opacity: 0, y: 24 },
+        { opacity: 1, y: 0, duration: 0.55, ease: "expo.out" }, 10.3);
+      tl.fromTo("#f13-col3-frame",
+        { opacity: 0, scale: 1.03 },
+        { opacity: 1, scale: 1, duration: 0.5, ease: "power3.out" }, 10.3);
+
+      // hold still to the end
+      tl.set({}, {}, 12.32);
+
+      window.__timelines["13-tach-khoi"] = tl;
+    })();
+  </script>
+</template>

@@ -3,3 +3,14 @@
 /*
 !/docs/
 !/.gitignore
+!/videos/
+# videos/: publish sources and finished renders only; keep render working
+# files, frame snapshots, extracted capture data and background music local.
+/videos/**/.hyperframes/
+/videos/**/snapshots/
+/videos/**/capture/
+/videos/**/assets/bgm/
+.DS_Store
+# Narration of this video speaks an alias that cannot be masked without re-rendering.
+/videos/kit-vs-platform/renders/
+/videos/kit-vs-platform/assets/voice/

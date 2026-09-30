@@ -1,0 +1,298 @@
+<template>
+  <style>
+    @font-face { font-family: "Space Grotesk"; src: url("assets/fonts/SpaceGrotesk-VN.woff2") format("woff2"); font-weight: 300 700; font-style: normal; font-display: block; }
+    @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-VN.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: block; }
+    @font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/JetBrainsMono-VN.woff2") format("woff2"); font-weight: 100 800; font-style: normal; font-display: block; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      font-family: "Inter", sans-serif;
+      color: #111111;
+    }
+    .f06-bg {
+      position: absolute;
+      inset: 0;
+      background: #fdfae7;
+    }
+    .f06-stage {
+      position: absolute;
+      inset: 0;
+    }
+
+    /* slide-header */
+    .f06-eyebrow {
+      position: absolute;
+      left: 96px;
+      top: 72px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 1.3;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #1e2bfa;
+    }
+    .f06-pill {
+      position: absolute;
+      right: 96px;
+      top: 64px;
+      padding: 8px 18px;
+      border-radius: 100px;
+      background: rgba(30, 43, 250, 0.08);
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 1.3;
+      letter-spacing: 0.05em;
+      color: #1e2bfa;
+    }
+    .f06-label {
+      position: absolute;
+      left: 96px;
+      top: 122px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 40px;
+      line-height: 1.3;
+      letter-spacing: -0.02em;
+      color: #111111;
+    }
+
+    /* rail + blocks */
+    .f06-rail {
+      position: absolute;
+      left: 120px;
+      top: 488px;
+      width: 1680px;
+      height: 2px;
+      border-radius: 2px;
+      background: rgba(17, 17, 17, 0.28);
+      transform-origin: 0 50%;
+    }
+    .f06-block {
+      position: absolute;
+      top: 300px;
+      width: 380px;
+      height: 180px;
+    }
+    .f06-b1 { left: 152px; }
+    .f06-b2 { left: 564px; }
+    .f06-b3 { left: 976px; }
+    .f06-b4 { left: 1388px; }
+    .f06-block-bg {
+      position: absolute;
+      inset: 0;
+      box-sizing: border-box;
+      background: rgba(30, 43, 250, 0.04);
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+      border-radius: 14px;
+    }
+    .f06-idx {
+      position: absolute;
+      left: 22px;
+      top: 18px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 1.3;
+      letter-spacing: 0.05em;
+      color: #6b6b6b;
+    }
+    .f06-word {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 58px;
+      text-align: center;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 64px;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: #111111;
+    }
+    .f06-edge {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 380px;
+      height: 180px;
+      overflow: visible;
+    }
+    .f06-tagwrap {
+      position: absolute;
+      left: 152px;
+      top: 234px;
+      width: 380px;
+      display: flex;
+      justify-content: center;
+    }
+    .f06-tag {
+      padding: 8px 22px;
+      border-radius: 100px;
+      background: rgba(30, 43, 250, 0.08);
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 1.25;
+      color: #1e2bfa;
+      white-space: nowrap;
+    }
+
+    /* platform bracket */
+    .f06-bracket {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: visible;
+    }
+    .f06-platform {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 582px;
+      text-align: center;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 46px;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: #111111;
+    }
+    .f06-same {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 650px;
+      text-align: center;
+      font-family: "Inter", sans-serif;
+      font-weight: 500;
+      font-size: 30px;
+      line-height: 1.4;
+      color: #6b6b6b;
+    }
+
+    /* hero line */
+    .f06-hero {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 752px;
+      text-align: center;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 50px;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      color: #111111;
+    }
+    .f06-hw {
+      display: inline-block;
+    }
+
+    /* progress bar (6 / 16) */
+    .f06-progress {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 720px;
+      height: 3px;
+      background: #1e2bfa;
+    }
+  </style>
+
+  <div id="root" data-composition-id="06-bon-phan-agent" data-width="1920" data-height="1080" data-start="0" data-duration="12.62">
+    <div class="clip f06-bg" data-start="0" data-duration="12.62" data-track-index="0"></div>
+
+    <div class="f06-stage">
+      <div class="f06-eyebrow">BẢN CHẤT</div>
+      <div class="f06-pill">06 / 16</div>
+      <div class="f06-label">Một agent làm việc thật</div>
+
+      <div class="f06-rail"></div>
+
+      <div class="f06-block f06-b1">
+        <div class="f06-block-bg"></div>
+        <div class="f06-idx">01</div>
+        <div class="f06-word f06-w1">Harness</div>
+        <svg class="f06-edge" viewBox="0 0 380 180" aria-hidden="true">
+          <path class="f06-edge-rect" d="M15 1 H365 A14 14 0 0 1 379 15 V165 A14 14 0 0 1 365 179 H15 A14 14 0 0 1 1 165 V15 A14 14 0 0 1 15 1 Z" fill="none" stroke="#1e2bfa" stroke-width="2" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1"></path>
+        </svg>
+      </div>
+      <div class="f06-block f06-b2">
+        <div class="f06-block-bg f06-dimbg"></div>
+        <div class="f06-idx">02</div>
+        <div class="f06-word f06-dimtxt">LLM</div>
+      </div>
+      <div class="f06-block f06-b3">
+        <div class="f06-block-bg f06-dimbg"></div>
+        <div class="f06-idx">03</div>
+        <div class="f06-word f06-dimtxt">Kit</div>
+      </div>
+      <div class="f06-block f06-b4">
+        <div class="f06-block-bg f06-dimbg"></div>
+        <div class="f06-idx">04</div>
+        <div class="f06-word f06-dimtxt">Hạ tầng</div>
+      </div>
+
+      <div class="f06-tagwrap"><div class="f06-tag">tự viết lại</div></div>
+
+      <svg class="f06-bracket" viewBox="0 0 1920 1080" aria-hidden="true">
+        <path class="f06-br-main" d="M152 508 V546 H1768 V508" fill="none" stroke="#111111" stroke-width="2" stroke-linejoin="round" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1"></path>
+        <path class="f06-br-stem" d="M960 546 V570" fill="none" stroke="#111111" stroke-width="2" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1"></path>
+      </svg>
+      <div class="f06-platform">Platform</div>
+      <div class="f06-same">= cùng bốn phần</div>
+
+      <div class="f06-hero"><span class="f06-hw">Chỉ</span> <span class="f06-hw">khác</span> <span class="f06-hw">ở</span> <span class="f06-hw">chỗ</span> <span class="f06-hw">tự</span> <span class="f06-hw">viết</span> <span class="f06-hw">lại</span> <span class="f06-hw">harness.</span></div>
+    </div>
+
+    <div class="f06-progress"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      var root = document.querySelector('[data-composition-id="06-bon-phan-agent"]');
+      var q = function (sel) { return root.querySelectorAll(sel); };
+      var tl = gsap.timeline({ paused: true });
+
+      // Scene 1 (0.0–3.0s): slide-header, label, rail
+      tl.fromTo(q(".f06-eyebrow"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.1);
+      tl.fromTo(q(".f06-pill"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.2);
+      tl.fromTo(q(".f06-label"), { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 0.7);
+      tl.fromTo(q(".f06-rail"), { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 2.4);
+
+      // Scene 2 (3.0–6.1s): four blocks drop onto the rail on their words
+      var drops = [[".f06-b1", 3.0], [".f06-b2", 3.6], [".f06-b3", 4.5], [".f06-b4", 5.2]];
+      drops.forEach(function (d) {
+        tl.fromTo(q(d[0]), { opacity: 0, y: -32 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, d[1]);
+      });
+
+      // Scene 3 (6.1–8.8s): Platform bracket wraps all four, label, sub-label
+      tl.fromTo(q(".f06-br-main"), { attr: { "stroke-dashoffset": 1 } }, { attr: { "stroke-dashoffset": 0 }, duration: 0.6, ease: "power3.out" }, 6.1);
+      tl.fromTo(q(".f06-br-stem"), { attr: { "stroke-dashoffset": 1 } }, { attr: { "stroke-dashoffset": 0 }, duration: 0.25, ease: "power2.out" }, 6.55);
+      tl.fromTo(q(".f06-platform"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 6.6);
+      tl.fromTo(q(".f06-same"), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 8.0);
+
+      // Scene 4 (8.8–12.12s): hero line builds word by word, then harness singled out
+      tl.fromTo(q(".f06-hw"), { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out", stagger: 0.08 }, 8.85);
+      tl.to(q(".f06-dimbg"), { opacity: 0.45, duration: 0.5, ease: "power2.out" }, 9.9);
+      tl.to(q(".f06-dimtxt"), { color: "#6b6b6b", duration: 0.5, ease: "power2.out" }, 9.9);
+      tl.fromTo(q(".f06-edge-rect"), { attr: { "stroke-dashoffset": 1 } }, { attr: { "stroke-dashoffset": 0 }, duration: 0.6, ease: "power3.out" }, 9.9);
+      tl.fromTo(q(".f06-tag"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 10.1);
+
+      // Hold still to read; anchor the end
+      tl.set({}, {}, 12.12);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["06-bon-phan-agent"] = tl;
+    })();
+  </script>
+</template>

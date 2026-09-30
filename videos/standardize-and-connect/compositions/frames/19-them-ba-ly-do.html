@@ -1,0 +1,265 @@
+<template>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: "Space Grotesk"; src: url("assets/fonts/SpaceGrotesk-VN.woff2") format("woff2"); font-weight: 300 700; font-style: normal; font-display: block; }
+    @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-VN.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: block; }
+    @font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/JetBrainsMono-VN.woff2") format("woff2"); font-weight: 100 800; font-style: normal; font-display: block; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      font-family: "Inter", sans-serif;
+      color: #111111;
+    }
+    #f19-ground {
+      position: absolute;
+      inset: 0;
+      background: #fdfae7;
+    }
+
+    /* ---------- slide-header ---------- */
+    #f19-eyebrow {
+      position: absolute;
+      left: 96px;
+      top: 84px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 1.3;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #1e2bfa;
+    }
+    #f19-counter {
+      position: absolute;
+      right: 96px;
+      top: 78px;
+      padding: 8px 20px;
+      border-radius: 100px;
+      background: rgba(30, 43, 250, 0.08);
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 1.3;
+      letter-spacing: 0.05em;
+      color: #1e2bfa;
+    }
+    #f19-title {
+      position: absolute;
+      left: 96px;
+      top: 128px;
+      margin: 0;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 60px;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      color: #111111;
+      white-space: nowrap;
+    }
+
+    /* ---------- three numbered rows ---------- */
+    #f19-list {
+      position: absolute;
+      left: 96px;
+      top: 250px;
+      width: 1728px;
+      height: 616px;
+      transform-origin: 0% 50%;
+    }
+    .f19-row {
+      position: absolute;
+      left: 0;
+      width: 1728px;
+      height: 192px;
+    }
+    #f19-row1 { top: 0; }
+    #f19-row2 { top: 212px; }
+    #f19-row3 { top: 424px; }
+
+    .f19-card {
+      position: absolute;
+      inset: 0;
+      box-sizing: border-box;
+      background: rgba(30, 43, 250, 0.04);
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+      border-radius: 14px;
+    }
+    #f19-rule2 {
+      position: absolute;
+      left: 22px;
+      top: 36px;
+      width: 4px;
+      height: 120px;
+      border-radius: 2px;
+      background: #1e2bfa;
+      transform-origin: 50% 0%;
+    }
+
+    .f19-num {
+      position: absolute;
+      left: 52px;
+      top: 22px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 132px;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: #1e2bfa;
+      white-space: nowrap;
+    }
+    .f19-num-light { font-weight: 300; }
+    .f19-num-bold { font-weight: 700; }
+
+    .f19-text {
+      position: absolute;
+      left: 260px;
+      top: 38px;
+    }
+    .f19-h {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 48px;
+      line-height: 1.16;
+      letter-spacing: -0.02em;
+      color: #111111;
+      white-space: nowrap;
+    }
+    .f19-w {
+      display: inline-block;
+    }
+    .f19-sub {
+      margin-top: 12px;
+      font-family: "Inter", sans-serif;
+      font-weight: 500;
+      font-size: 28px;
+      line-height: 1.45;
+      color: #6b6b6b;
+      white-space: nowrap;
+    }
+
+    /* ---------- progress bar (19 / 24) ---------- */
+    #f19-progress {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 1520px;
+      height: 3px;
+      background: #1e2bfa;
+      transform-origin: 0% 50%;
+    }
+  </style>
+
+  <div id="root" data-composition-id="19-them-ba-ly-do" data-width="1920" data-height="1080" data-start="0" data-duration="13.22">
+    <div id="f19-ground" class="clip" data-start="0" data-duration="13.22" data-track-index="0"></div>
+
+    <div id="f19-eyebrow">Lập luận</div>
+    <div id="f19-counter">19 / 24</div>
+    <h2 id="f19-title">Thêm ba lý do</h2>
+
+    <div id="f19-list">
+      <div id="f19-row1" class="f19-row">
+        <div id="f19-card1" class="f19-card"></div>
+        <div id="f19-num1" class="f19-num f19-num-light">01</div>
+        <div class="f19-text">
+          <div id="f19-h1" class="f19-h"><span class="f19-w">Tự</span> <span class="f19-w">động</span> <span class="f19-w">hoá</span> <span class="f19-w">là</span> <span class="f19-w">tính</span> <span class="f19-w">chất</span> <span class="f19-w">của</span> <span class="f19-w">workflow</span></div>
+          <div id="f19-sub1" class="f19-sub">không phải của tool: cùng harness, dừng hỏi người mỗi bước hay chạy trọn chuỗi skill</div>
+        </div>
+      </div>
+
+      <div id="f19-row2" class="f19-row">
+        <div id="f19-card2" class="f19-card"></div>
+        <div id="f19-rule2"></div>
+        <div id="f19-num2" class="f19-num f19-num-bold">02</div>
+        <div class="f19-text">
+          <div id="f19-h2" class="f19-h"><span class="f19-w">Lock-in</span> <span class="f19-w">lớn</span> <span class="f19-w">nhất</span> <span class="f19-w">là</span> <span class="f19-w">harness</span> <span class="f19-w">tự</span> <span class="f19-w">viết</span></div>
+          <div id="f19-sub2" class="f19-sub">chỉ đội làm ra nó bảo trì được</div>
+        </div>
+      </div>
+
+      <div id="f19-row3" class="f19-row">
+        <div id="f19-card3" class="f19-card"></div>
+        <div id="f19-num3" class="f19-num f19-num-light">03</div>
+        <div class="f19-text">
+          <div id="f19-h3" class="f19-h"><span class="f19-w">Chi</span> <span class="f19-w">phí</span> <span class="f19-w">cơ</span> <span class="f19-w">hội</span></div>
+          <div id="f19-sub3" class="f19-sub">người giỏi nhất bị dồn vào phần không tạo khác biệt</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="f19-progress"></div>
+  </div>
+
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+      var OUT = "power3.out";
+
+      // Dimmed levels for a row already read (~45% card; text kept above AA large-text contrast)
+      var DIM_CARD = 0.45;
+      var DIM_NUM = 0.6;
+      var DIM_H = 0.5;
+      var DIM_SUB = 0.8;
+
+      function words(sel, at, step) {
+        tl.fromTo(
+          sel + " .f19-w",
+          { opacity: 0, y: 24 },
+          { opacity: 1, y: 0, duration: 0.55, ease: OUT, stagger: step },
+          at
+        );
+      }
+      function dimRow(n, at) {
+        tl.to("#f19-card" + n, { opacity: DIM_CARD, duration: 0.5, ease: OUT }, at);
+        tl.to("#f19-num" + n, { opacity: DIM_NUM, duration: 0.5, ease: OUT }, at);
+        tl.to("#f19-h" + n, { opacity: DIM_H, duration: 0.5, ease: OUT }, at);
+        tl.to("#f19-sub" + n, { opacity: DIM_SUB, duration: 0.5, ease: OUT }, at);
+      }
+
+      // ---- Scene 1 (0.0–4.5s): header, three empty slots, row 01 ----
+      tl.fromTo("#f19-eyebrow", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: OUT }, 0.05);
+      tl.fromTo("#f19-counter", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: OUT }, 0.12);
+      tl.fromTo("#f19-progress", { scaleX: 18 / 19 }, { scaleX: 1, duration: 0.6, ease: OUT }, 0.12);
+      tl.fromTo("#f19-title", { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out" }, 0.15);
+      tl.fromTo(
+        ["#f19-card1", "#f19-card2", "#f19-card3"],
+        { opacity: 0, y: 24 },
+        { opacity: 0.3, y: 0, duration: 0.6, ease: OUT, stagger: 0.08 },
+        0.3
+      );
+
+      // slow push under the list, settles before the final hold
+      tl.fromTo("#f19-list", { scale: 1 }, { scale: 1.012, duration: 10.4, ease: "sine.inOut" }, 0.7);
+
+      // row 01 at "mức tự động hoá" (0.7); headline builds word by word to "workflow" (3.0)
+      tl.to("#f19-card1", { opacity: 1, duration: 0.4, ease: OUT }, 0.7);
+      tl.fromTo("#f19-num1", { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.6, ease: OUT }, 0.7);
+      words("#f19-h1", 0.85, 0.3);
+      tl.fromTo("#f19-sub1", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: OUT }, 3.2);
+
+      // ---- Scene 2 (4.5–9.4s): row 01 dims, row 02 (cobalt "02") ----
+      dimRow(1, 4.5);
+      tl.to("#f19-card2", { opacity: 1, duration: 0.4, ease: OUT }, 4.5);
+      tl.fromTo("#f19-num2", { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.6, ease: OUT }, 4.5);
+      tl.fromTo("#f19-rule2", { scaleY: 0 }, { scaleY: 1, duration: 0.5, ease: "power2.out" }, 4.6);
+      words("#f19-h2", 4.65, 0.3);
+      tl.fromTo("#f19-sub2", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: OUT }, 8.4);
+
+      // ---- Scene 3 (9.4–12.62s): row 02 dims, row 03, then hold still ----
+      dimRow(2, 9.4);
+      tl.to("#f19-rule2", { opacity: DIM_CARD, duration: 0.5, ease: OUT }, 9.4);
+      tl.to("#f19-card3", { opacity: 1, duration: 0.4, ease: OUT }, 9.7);
+      tl.fromTo("#f19-num3", { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.6, ease: OUT }, 9.7);
+      words("#f19-h3", 9.8, 0.12);
+      tl.fromTo("#f19-sub3", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: OUT }, 10.6);
+
+      // everything lands by ~11.2s; hold to the end
+      tl.set({}, {}, 12.62);
+
+      window.__timelines["19-them-ba-ly-do"] = tl;
+    })();
+  </script>
+</template>

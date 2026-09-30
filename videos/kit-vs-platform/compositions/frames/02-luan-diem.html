@@ -1,0 +1,305 @@
+<template>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: "Space Grotesk"; src: url("assets/fonts/SpaceGrotesk-VN.woff2") format("woff2"); font-weight: 300 700; font-style: normal; font-display: block; }
+    @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-VN.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: block; }
+    @font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/JetBrainsMono-VN.woff2") format("woff2"); font-weight: 100 800; font-style: normal; font-display: block; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      font-family: "Inter", sans-serif;
+      color: #111111;
+    }
+
+    .f02-ground {
+      position: absolute;
+      inset: 0;
+      background: #fdfae7;
+    }
+
+    /* ---------- slide-header ---------- */
+    .f02-header {
+      position: absolute;
+      left: 96px;
+      right: 96px;
+      top: 88px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .f02-eyebrow {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 1.2;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #1e2bfa;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .f02-eyebrow-rule {
+      width: 60px;
+      height: 4px;
+      border-radius: 2px;
+      background: #1e2bfa;
+    }
+    .f02-counter {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 1.2;
+      letter-spacing: 0.05em;
+      color: #1e2bfa;
+      background: rgba(30, 43, 250, 0.08);
+      border-radius: 100px;
+      padding: 9px 22px;
+    }
+
+    /* ---------- hero line ---------- */
+    .f02-headline {
+      position: absolute;
+      left: 96px;
+      top: 168px;
+      width: 1728px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 42px;
+      line-height: 1.24;
+      letter-spacing: -0.02em;
+      color: #111111;
+      margin: 0;
+    }
+    .f02-hl-line {
+      display: block;
+    }
+    .f02-word {
+      display: inline-block;
+    }
+
+    /* ---------- columns ---------- */
+    .f02-col {
+      position: absolute;
+      top: 316px;
+      width: 840px;
+      height: 474px;
+      box-sizing: border-box;
+      padding: 28px 36px 0 40px;
+    }
+    .f02-col-buy { left: 96px; }
+    .f02-col-invest { left: 984px; }
+
+    .f02-hilite {
+      position: absolute;
+      inset: 0;
+      border-radius: 12px;
+      background: rgba(30, 43, 250, 0.08);
+      opacity: 0;
+    }
+    .f02-hilite-rule {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      border-radius: 2px;
+      background: #1e2bfa;
+      transform-origin: 50% 0%;
+    }
+
+    .f02-col-inner {
+      position: relative;
+    }
+    .f02-label {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 40px;
+      line-height: 1.2;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .f02-label-buy { color: #6b6b6b; }
+    .f02-label-invest { color: #111111; }
+
+    .f02-sub {
+      margin-top: 10px;
+      height: 44px;
+      font-family: "Inter", sans-serif;
+      font-weight: 500;
+      font-size: 28px;
+      line-height: 1.5;
+    }
+    .f02-sub-buy { color: #6b6b6b; }
+    .f02-sub-invest { color: #5a5a5a; }
+
+    .f02-cards {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .f02-card {
+      position: relative;
+      height: 132px;
+      box-sizing: border-box;
+      padding: 0 36px;
+      display: flex;
+      align-items: center;
+    }
+    .f02-card-surface {
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+      background: rgba(30, 43, 250, 0.04);
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+    }
+    .f02-card-text {
+      position: relative;
+      font-family: "Space Grotesk", sans-serif;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+    }
+    .f02-card-buy .f02-card-text {
+      font-weight: 500;
+      font-size: 48px;
+      color: #6b6b6b;
+    }
+    .f02-card-invest .f02-card-text {
+      font-weight: 700;
+      font-size: 56px;
+      color: #111111;
+    }
+
+    /* ---------- status pill ---------- */
+    .f02-status {
+      position: absolute;
+      right: 96px;
+      top: 812px;
+      height: 56px;
+      box-sizing: border-box;
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      border-radius: 100px;
+      border: 1.5px solid rgba(30, 43, 250, 0.55);
+      background: rgba(30, 43, 250, 0.08);
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 26px;
+      line-height: 1.3;
+      letter-spacing: 0.01em;
+      color: #1e2bfa;
+      white-space: nowrap;
+    }
+
+    /* ---------- progress bar ---------- */
+    .f02-progress {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 240px;
+      height: 3px;
+      background: #1e2bfa;
+    }
+  </style>
+
+  <div id="root" data-composition-id="02-luan-diem" data-start="0" data-duration="11.64" data-width="1920" data-height="1080">
+    <div class="clip f02-ground" data-start="0" data-duration="11.64" data-track-index="0"></div>
+
+    <div class="f02-header">
+      <div class="f02-eyebrow" id="f02-eyebrow"><span class="f02-eyebrow-rule"></span><span>Luận điểm</span></div>
+      <div class="f02-counter" id="f02-counter">02 / 16</div>
+    </div>
+
+    <h2 class="f02-headline">
+      <span class="f02-hl-line" id="f02-line1">Harness và LLM thì mua.</span>
+      <span class="f02-hl-line" id="f02-line2"><span class="f02-word f02-w-a">Tổ</span> <span class="f02-word f02-w-a">chức</span> <span class="f02-word f02-w-a">F</span> <span class="f02-word f02-w-a">đầu</span> <span class="f02-word f02-w-a">tư</span> <span class="f02-word f02-w-a">vào</span> <span class="f02-word f02-w-b">kit</span> <span class="f02-word f02-w-b">và</span> <span class="f02-word f02-w-b">dữ</span> <span class="f02-word f02-w-b">liệu,</span> <span class="f02-word f02-w-c">sẵn</span> <span class="f02-word f02-w-c">sàng</span> <span class="f02-word f02-w-c">cho</span> <span class="f02-word f02-w-c">AI.</span></span>
+    </h2>
+
+    <!-- MUA column (supporting, muted) -->
+    <div class="f02-col f02-col-buy" id="f02-col-buy">
+      <div class="f02-col-inner">
+        <div class="f02-label f02-label-buy" id="f02-label-buy">Mua</div>
+        <div class="f02-sub f02-sub-buy"><span id="f02-sub-buy" style="display:inline-block">sẵn có trên thị trường</span></div>
+        <div class="f02-cards">
+          <div class="f02-card f02-card-buy" id="f02-card-harness">
+            <div class="f02-card-surface f02-surface-buy"></div>
+            <div class="f02-card-text">Harness</div>
+          </div>
+          <div class="f02-card f02-card-buy" id="f02-card-llm">
+            <div class="f02-card-surface f02-surface-buy"></div>
+            <div class="f02-card-text">LLM</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ĐẦU TƯ column (foreground, focal) -->
+    <div class="f02-col f02-col-invest" id="f02-col-invest">
+      <div class="f02-hilite" id="f02-hilite"></div>
+      <div class="f02-hilite-rule" id="f02-hilite-rule"></div>
+      <div class="f02-col-inner">
+        <div class="f02-label f02-label-invest" id="f02-label-invest">Đầu tư</div>
+        <div class="f02-sub f02-sub-invest"><span id="f02-sub-invest" style="display:inline-block">Thứ bên ngoài không có</span></div>
+        <div class="f02-cards">
+          <div class="f02-card f02-card-invest" id="f02-card-kit">
+            <div class="f02-card-surface"></div>
+            <div class="f02-card-text">Kit</div>
+          </div>
+          <div class="f02-card f02-card-invest" id="f02-card-data">
+            <div class="f02-card-surface"></div>
+            <div class="f02-card-text">Dữ liệu AI-ready</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="f02-status" id="f02-status">Đề xuất · chưa được duyệt</div>
+
+    <div class="f02-progress"></div>
+  </div>
+
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const IN = "power3.out";
+
+      // Scene 1 (0.0–2.7s): header, MUA column, Harness → LLM, sub-label on "mua"
+      tl.fromTo("#f02-eyebrow", { opacity: 0, y: -16 }, { opacity: 1, y: 0, duration: 0.6, ease: IN }, 0.0);
+      tl.fromTo("#f02-counter", { opacity: 0, y: -16 }, { opacity: 1, y: 0, duration: 0.6, ease: IN }, 0.08);
+      tl.fromTo("#f02-label-buy", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: IN }, 0.0);
+      tl.fromTo("#f02-card-harness", { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.7, ease: IN }, 0.05);
+      tl.fromTo("#f02-line1", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7, ease: IN }, 0.2);
+      tl.fromTo("#f02-card-llm", { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.7, ease: IN }, 1.2);
+      tl.fromTo("#f02-sub-buy", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: IN }, 2.1);
+
+      // Scene 2 (2.7–8.1s): ĐẦU TƯ column builds, hero line words land on their cues
+      tl.fromTo("#f02-label-invest", { opacity: 0, x: 24 }, { opacity: 1, x: 0, duration: 0.6, ease: IN }, 2.7);
+      tl.fromTo(".f02-w-a", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.55, ease: IN, stagger: 0.06 }, 2.75);
+      tl.fromTo("#f02-sub-invest", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: IN }, 4.0);
+      tl.fromTo("#f02-card-kit", { opacity: 0, x: 32 }, { opacity: 1, x: 0, duration: 0.7, ease: IN }, 5.6);
+      tl.fromTo(".f02-w-b", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.55, ease: IN, stagger: 0.06 }, 5.6);
+      tl.fromTo("#f02-card-data", { opacity: 0, x: 32 }, { opacity: 1, x: 0, duration: 0.7, ease: IN }, 6.0);
+
+      // 7.1s "sẵn sàng cho AI": cobalt split-highlight draws around the right column; left recedes
+      tl.fromTo("#f02-hilite-rule", { scaleY: 0 }, { scaleY: 1, duration: 0.55, ease: IN }, 7.1);
+      tl.fromTo("#f02-hilite", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: IN }, 7.15);
+      tl.fromTo(".f02-w-c", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.55, ease: IN, stagger: 0.06 }, 7.1);
+      tl.fromTo(".f02-surface-buy", { opacity: 1 }, { opacity: 0.5, duration: 0.6, ease: "power2.out", immediateRender: false }, 7.2);
+
+      // Scene 3 (8.1–11.04s): status pill on "đề xuất", then hold still
+      tl.fromTo("#f02-status", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: IN }, 8.6);
+
+      tl.set({}, {}, 11.04);
+      window.__timelines["02-luan-diem"] = tl;
+    })();
+  </script>
+</template>

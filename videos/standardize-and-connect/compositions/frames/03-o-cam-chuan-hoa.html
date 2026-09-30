@@ -1,0 +1,428 @@
+<template id="f03-template">
+  <style>
+    @font-face { font-family: "Space Grotesk"; src: url("assets/fonts/SpaceGrotesk-VN.woff2") format("woff2"); font-weight: 300 700; font-style: normal; font-display: block; }
+    @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-VN.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: block; }
+    @font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/JetBrainsMono-VN.woff2") format("woff2"); font-weight: 100 800; font-style: normal; font-display: block; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      container-type: size;
+      font-family: "Inter", sans-serif;
+      color: #111111;
+    }
+    #root * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    .f03-bg {
+      position: absolute;
+      inset: 0;
+      background: #fdfae7;
+    }
+
+    .f03-stage {
+      position: absolute;
+      inset: 0;
+    }
+
+    /* ── slide-header ── */
+    .f03-eyebrow {
+      position: absolute;
+      left: 96px;
+      top: 62px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 1.3;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #1e2bfa;
+    }
+    .f03-counter {
+      position: absolute;
+      right: 96px;
+      top: 54px;
+      padding: 8px 20px;
+      border-radius: 100px;
+      background: rgba(30, 43, 250, 0.08);
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 1.3;
+      letter-spacing: 0.05em;
+      color: #1e2bfa;
+    }
+    .f03-h2 {
+      position: absolute;
+      left: 96px;
+      top: 104px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 50px;
+      line-height: 1.16;
+      letter-spacing: -0.02em;
+      color: #111111;
+      white-space: nowrap;
+    }
+    .f03-progress {
+      position: absolute;
+      left: 0;
+      top: 1077px;
+      width: 240px;
+      height: 3px;
+      background: #1e2bfa;
+      transform-origin: left center;
+    }
+
+    /* ── left column: socket cards ── */
+    .f03-card {
+      position: absolute;
+      left: 96px;
+      width: 740px;
+      height: 290px;
+    }
+    .f03-card-1 { top: 250px; }
+    .f03-card-2 { top: 570px; }
+    .f03-card-inner {
+      position: absolute;
+      inset: 0;
+      background: rgba(30, 43, 250, 0.04);
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+      border-radius: 14px;
+    }
+    .f03-card-title {
+      position: absolute;
+      left: 44px;
+      top: 42px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 56px;
+      line-height: 1.14;
+      letter-spacing: -0.02em;
+      color: #111111;
+      white-space: nowrap;
+    }
+    .f03-card-body {
+      position: absolute;
+      left: 44px;
+      top: 128px;
+      font-family: "Inter", sans-serif;
+      font-weight: 500;
+      font-size: 30px;
+      line-height: 1.4;
+      color: #3f3f3f;
+      white-space: nowrap;
+    }
+    .f03-card-small {
+      position: absolute;
+      left: 44px;
+      top: 196px;
+      font-family: "Inter", sans-serif;
+      font-weight: 400;
+      font-size: 22px;
+      line-height: 1.5;
+      color: #6b6b6b;
+      white-space: nowrap;
+    }
+    .f03-mono {
+      font-family: "JetBrains Mono", monospace;
+      font-weight: 500;
+      font-size: 21px;
+      color: #3f3f3f;
+    }
+
+    /* CSS socket: rounded plate + two pin holes, short cord to the card edge */
+    .f03-socket {
+      position: absolute;
+      left: 600px;
+      top: 111px;
+      width: 68px;
+      height: 68px;
+      border-radius: 14px;
+      background: rgba(30, 43, 250, 0.12);
+      border: 1.5px solid rgba(30, 43, 250, 0.35);
+    }
+    .f03-pin {
+      position: absolute;
+      top: 21px;
+      width: 9px;
+      height: 23px;
+      border-radius: 5px;
+      background: #111111;
+    }
+    .f03-pin-a { left: 18px; }
+    .f03-pin-b { left: 38px; }
+    .f03-cord {
+      position: absolute;
+      left: 668px;
+      top: 144px;
+      width: 72px;
+      height: 3px;
+      border-radius: 2px;
+      background: rgba(30, 43, 250, 0.45);
+      transform-origin: left center;
+    }
+
+    /* ── connectors card → panel ── */
+    .f03-wires {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: visible;
+    }
+    .f03-wire {
+      fill: none;
+      stroke: rgba(30, 43, 250, 0.45);
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+    }
+    .f03-port {
+      position: absolute;
+      left: 937px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: rgba(30, 43, 250, 0.55);
+    }
+    .f03-port-1 { top: 463px; }
+    .f03-port-2 { top: 633px; }
+
+    /* ── right column: foundation panel ── */
+    .f03-panel {
+      position: absolute;
+      left: 944px;
+      top: 250px;
+      width: 880px;
+      height: 610px;
+    }
+    .f03-panel-fill {
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+      background: rgba(30, 43, 250, 0.04);
+    }
+    .f03-panel-edge {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 880px;
+      height: 610px;
+      overflow: visible;
+    }
+    .f03-panel-rect {
+      fill: none;
+      stroke: rgba(30, 43, 250, 0.28);
+      stroke-width: 2;
+      stroke-dasharray: 2952;
+      stroke-dashoffset: 2952;
+    }
+    .f03-date {
+      position: absolute;
+      left: 56px;
+      top: -29px;
+      padding: 10px 30px;
+      border-radius: 100px;
+      background: #1e2bfa;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 30px;
+      line-height: 1.25;
+      letter-spacing: 0.02em;
+      color: #fdfae7;
+      white-space: nowrap;
+      transform-origin: center center;
+    }
+    .f03-panel-title {
+      position: absolute;
+      left: 56px;
+      top: 82px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 60px;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: #111111;
+      white-space: nowrap;
+    }
+    .f03-panel-sub {
+      position: absolute;
+      left: 56px;
+      top: 166px;
+      font-family: "Inter", sans-serif;
+      font-weight: 500;
+      font-size: 30px;
+      line-height: 1.4;
+      color: #6b6b6b;
+      white-space: nowrap;
+    }
+    .f03-divider {
+      position: absolute;
+      left: 56px;
+      top: 262px;
+      width: 768px;
+      height: 1.5px;
+      background: rgba(30, 43, 250, 0.2);
+      transform-origin: left center;
+    }
+    .f03-members-label {
+      position: absolute;
+      left: 56px;
+      top: 292px;
+      font-family: "Inter", sans-serif;
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 1.5;
+      color: #6b6b6b;
+      white-space: nowrap;
+    }
+    .f03-chips {
+      position: absolute;
+      left: 56px;
+      top: 348px;
+      width: 768px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .f03-chip {
+      padding: 10px 22px;
+      border-radius: 100px;
+      background: rgba(30, 43, 250, 0.08);
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 26px;
+      line-height: 1.3;
+      color: #111111;
+      white-space: nowrap;
+    }
+  </style>
+
+  <div id="root" data-composition-id="03-o-cam-chuan-hoa" data-start="0" data-duration="14.58" data-width="1920" data-height="1080">
+    <div id="f03-bg" class="clip f03-bg" data-start="0" data-duration="14.58" data-track-index="0"></div>
+
+    <div class="f03-stage">
+      <!-- slide-header -->
+      <div id="f03-eyebrow" class="f03-eyebrow">Bối cảnh 2025–2026</div>
+      <div id="f03-counter" class="f03-counter">03 / 24</div>
+      <h2 id="f03-h2" class="f03-h2">Các ổ cắm đã được chuẩn hoá</h2>
+
+      <!-- card 1: MCP -->
+      <div id="f03-card-1" class="f03-card f03-card-1">
+        <div id="f03-card-1-inner" class="f03-card-inner">
+          <div id="f03-c1-title" class="f03-card-title">MCP</div>
+          <div id="f03-c1-body" class="f03-card-body">Nối agent với tool và dữ liệu</div>
+          <div id="f03-c1-small" class="f03-card-small">Model Context Protocol</div>
+          <div id="f03-c1-socket" class="f03-socket">
+            <div class="f03-pin f03-pin-a"></div>
+            <div class="f03-pin f03-pin-b"></div>
+          </div>
+          <div id="f03-c1-cord" class="f03-cord"></div>
+        </div>
+      </div>
+
+      <!-- card 2: Agent Skills -->
+      <div id="f03-card-2" class="f03-card f03-card-2">
+        <div id="f03-card-2-inner" class="f03-card-inner">
+          <div id="f03-c2-title" class="f03-card-title">Agent Skills</div>
+          <div id="f03-c2-body" class="f03-card-body">Đóng gói quy trình</div>
+          <div id="f03-c2-small" class="f03-card-small">một thư mục có <span class="f03-mono">SKILL.md</span></div>
+          <div id="f03-c2-socket" class="f03-socket">
+            <div class="f03-pin f03-pin-a"></div>
+            <div class="f03-pin f03-pin-b"></div>
+          </div>
+          <div id="f03-c2-cord" class="f03-cord"></div>
+        </div>
+      </div>
+
+      <!-- connectors from both cards into the panel -->
+      <svg class="f03-wires" viewBox="0 0 1920 1080" width="1920" height="1080" aria-hidden="true">
+        <path id="f03-wire-1" class="f03-wire" pathLength="1" d="M 836 395.5 C 894 395.5, 886 470, 944 470" />
+        <path id="f03-wire-2" class="f03-wire" pathLength="1" d="M 836 715.5 C 894 715.5, 886 640, 944 640" />
+      </svg>
+
+      <!-- foundation panel (focal) -->
+      <div id="f03-panel" class="f03-panel">
+        <div id="f03-panel-fill" class="f03-panel-fill"></div>
+        <svg class="f03-panel-edge" viewBox="0 0 880 610" width="880" height="610" aria-hidden="true">
+          <rect id="f03-panel-rect" class="f03-panel-rect" x="1" y="1" width="878" height="608" rx="14" ry="14" />
+        </svg>
+        <div id="f03-date" class="f03-date">12/2025</div>
+        <div id="f03-panel-title" class="f03-panel-title">Agentic AI Foundation</div>
+        <div id="f03-panel-sub" class="f03-panel-sub">thuộc Linux Foundation</div>
+        <div id="f03-divider" class="f03-divider"></div>
+        <div id="f03-members-label" class="f03-members-label">thành viên hạng cao nhất</div>
+        <div id="f03-chips" class="f03-chips">
+          <div class="f03-chip">AWS</div>
+          <div class="f03-chip">Anthropic</div>
+          <div class="f03-chip">Block</div>
+          <div class="f03-chip">Bloomberg</div>
+          <div class="f03-chip">Cloudflare</div>
+          <div class="f03-chip">Google</div>
+          <div class="f03-chip">Microsoft</div>
+          <div class="f03-chip">OpenAI</div>
+        </div>
+      </div>
+
+      <div id="f03-port-1" class="f03-port f03-port-1"></div>
+      <div id="f03-port-2" class="f03-port f03-port-2"></div>
+
+      <div id="f03-progress" class="f03-progress"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      /* Scene 1 (0.0–3.0s): header in; h2 lands on "ổ cắm" (0.9) */
+      tl.fromTo("#f03-progress", { scaleX: 0.667 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 0.2);
+      tl.fromTo("#f03-eyebrow", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.1);
+      tl.fromTo("#f03-counter", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.2);
+      tl.fromTo("#f03-h2", { opacity: 0, y: -28 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out" }, 0.9);
+
+      /* Scene 2 (3.0–7.5s): card 1 on "MCP" (3.0), card 2 on "Agent Skills" (5.5) */
+      function cardIn(n, t) {
+        tl.fromTo("#f03-card-" + n, { opacity: 0, x: -32 }, { opacity: 1, x: 0, duration: 0.7, ease: "power3.out" }, t);
+        tl.fromTo("#f03-c" + n + "-title", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, t + 0.12);
+        tl.fromTo("#f03-c" + n + "-body", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, t + 0.26);
+        tl.fromTo("#f03-c" + n + "-small", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, t + 0.4);
+        tl.fromTo("#f03-c" + n + "-socket", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.5, ease: "power3.out" }, t + 0.45);
+        tl.fromTo("#f03-c" + n + "-cord", { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power2.out" }, t + 0.8);
+      }
+      cardIn(1, 3.0);
+      cardIn(2, 5.5);
+
+      /* Scene 3 (7.5–11.2s): panel opens on "Cuối năm 2025" (7.5) */
+      tl.to(["#f03-card-1-inner", "#f03-card-2-inner"], { opacity: 0.45, duration: 0.5, ease: "power2.out" }, 7.5);
+      tl.fromTo("#f03-panel-rect", { strokeDashoffset: 2952 }, { strokeDashoffset: 0, duration: 0.9, ease: "power2.inOut" }, 7.5);
+      tl.fromTo("#f03-panel-fill", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.out" }, 7.8);
+      tl.fromTo("#f03-date", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.5, ease: "expo.out" }, 8.0);
+
+      /* "chuyển về" (9.6): both cards wire into the panel */
+      tl.to(["#f03-card-1-inner", "#f03-card-2-inner"], { opacity: 1, duration: 0.4, ease: "power2.out" }, 9.6);
+      tl.fromTo("#f03-wire-1", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 9.6);
+      tl.fromTo("#f03-wire-2", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }, 9.72);
+      tl.fromTo(["#f03-port-1", "#f03-port-2"], { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.35, ease: "power3.out", stagger: 0.12 }, 10.05);
+
+      /* "Linux Foundation" (10.5): panel title + sub-line */
+      tl.fromTo("#f03-panel-title", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 10.5);
+      tl.fromTo("#f03-panel-sub", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 10.75);
+
+      /* Scene 4 (11.2–13.98s): members on "chuẩn chung" (11.8), then hold */
+      tl.fromTo("#f03-divider", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.out" }, 11.5);
+      tl.fromTo("#f03-members-label", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 11.8);
+      tl.fromTo("#f03-chips .f03-chip", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out", stagger: 0.09 }, 11.95);
+
+      tl.set({}, {}, 13.98);
+      window.__timelines["03-o-cam-chuan-hoa"] = tl;
+    })();
+  </script>
+</template>

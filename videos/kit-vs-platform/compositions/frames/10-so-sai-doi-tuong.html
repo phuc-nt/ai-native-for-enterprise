@@ -1,0 +1,311 @@
+<template>
+  <style>
+    @font-face { font-family: "Space Grotesk"; src: url("assets/fonts/SpaceGrotesk-VN.woff2") format("woff2"); font-weight: 300 700; font-style: normal; font-display: block; }
+    @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-VN.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: block; }
+    @font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/JetBrainsMono-VN.woff2") format("woff2"); font-weight: 100 800; font-style: normal; font-display: block; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      container-type: size;
+      font-family: "Space Grotesk", sans-serif;
+      color: #111111;
+    }
+
+    /* ---- background layer (full-duration clip) ---- */
+    .f10-bg {
+      position: absolute;
+      inset: 0;
+      background: #fdfae7;
+    }
+    .f10-progress {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 1200px; /* 10 / 16 of 1920 */
+      height: 3px;
+      background: #1e2bfa;
+      transform-origin: 0 50%;
+    }
+
+    /* ---- slide-header ---- */
+    .f10-eyebrow {
+      position: absolute;
+      left: 112px;
+      top: 84px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 1.3;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #1e2bfa;
+    }
+    .f10-count {
+      position: absolute;
+      right: 112px;
+      top: 78px;
+      padding: 7px 22px 8px;
+      border-radius: 100px;
+      background: rgba(30, 43, 250, 0.08);
+      color: #1e2bfa;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 1.3;
+      letter-spacing: 0.05em;
+    }
+    .f10-title {
+      position: absolute;
+      left: 112px;
+      top: 128px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 66px;
+      line-height: 1.14;
+      letter-spacing: -0.02em;
+      color: #111111;
+    }
+
+    /* ---- three equal column slots ---- */
+    .f10-ghost,
+    .f10-card {
+      position: absolute;
+      top: 268px;
+      width: 544px;
+      height: 596px;
+      box-sizing: border-box;
+      border-radius: 14px;
+    }
+    .f10-ghost {
+      border: 1.5px dashed rgba(30, 43, 250, 0.2);
+    }
+    .f10-card {
+      background: rgba(30, 43, 250, 0.04);
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+    }
+    .f10-col-1 { left: 112px; }
+    .f10-col-2 { left: 688px; }
+    .f10-col-3 { left: 1264px; }
+
+    .f10-top {
+      position: absolute;
+      left: 40px;
+      right: 40px;
+      top: 38px;
+    }
+    .f10-bot {
+      position: absolute;
+      left: 40px;
+      right: 40px;
+      top: 300px;
+    }
+    .f10-label {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 1.3;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .f10-label-claim { color: #6b6b6b; }
+    .f10-label-real { color: #111111; }
+
+    .f10-claim {
+      margin-top: 22px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 42px;
+      line-height: 1.18;
+      letter-spacing: -0.02em;
+      color: #222222;
+    }
+    .f10-claim-vs {
+      margin-top: 8px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 32px;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: #222222;
+    }
+    .f10-divider {
+      position: absolute;
+      left: 40px;
+      right: 40px;
+      top: 270px;
+      height: 1.5px;
+      background: rgba(30, 43, 250, 0.2);
+      transform-origin: 0 50%;
+    }
+    .f10-real {
+      margin-top: 22px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 42px;
+      line-height: 1.18;
+      letter-spacing: -0.02em;
+      color: #111111;
+    }
+    .f10-nowrap { white-space: nowrap; }
+
+    .f10-outline {
+      position: absolute;
+      left: -1.5px;
+      top: -1.5px;
+      width: 544px;
+      height: 596px;
+      pointer-events: none;
+    }
+    .f10-outline-rect {
+      fill: none;
+      stroke: #1e2bfa;
+      stroke-width: 2;
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+    }
+    .f10-fill-pill {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 10px 26px 11px;
+      border-radius: 100px;
+      background: #1e2bfa;
+      color: #fdfae7;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 28px;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+    }
+  </style>
+
+  <div id="root" data-composition-id="10-so-sai-doi-tuong" data-width="1920" data-height="1080" data-duration="16.7">
+    <div class="clip f10-bg" data-start="0" data-duration="16.7" data-track-index="0">
+      <div class="f10-progress"></div>
+    </div>
+
+    <div class="f10-eyebrow">Phản biện</div>
+    <div class="f10-count">10 / 16</div>
+    <div class="f10-title">So sai đối tượng</div>
+
+    <div class="f10-ghost f10-col-1 f10-ghost-1"></div>
+    <div class="f10-ghost f10-col-2 f10-ghost-2"></div>
+    <div class="f10-ghost f10-col-3 f10-ghost-3"></div>
+
+    <!-- Card 1 -->
+    <div class="f10-card f10-col-1 f10-card-1">
+      <div class="f10-top">
+        <div class="f10-label f10-label-claim f10-lc-1">Luận điểm</div>
+        <div class="f10-claim f10-claim-1">Harness trong IDE</div>
+        <div class="f10-claim-vs f10-claim-1b">vs hệ thống trên server</div>
+      </div>
+      <div class="f10-divider f10-div-1"></div>
+      <div class="f10-bot">
+        <div class="f10-label f10-label-real f10-lr-1">Thực tế</div>
+        <div class="f10-real f10-real-1"><span class="f10-nowrap">Claude Code</span> và Kiro chạy headless được</div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="f10-card f10-col-2 f10-card-2">
+      <div class="f10-top">
+        <div class="f10-label f10-label-claim">Luận điểm</div>
+        <div class="f10-claim f10-claim-2">Multi-repo</div>
+      </div>
+      <div class="f10-divider f10-div-2"></div>
+      <div class="f10-bot">
+        <div class="f10-label f10-label-real f10-lr-2">Thực tế</div>
+        <div class="f10-real f10-real-2">Bài toán dữ liệu</div>
+      </div>
+    </div>
+
+    <!-- Card 3 (focal) -->
+    <div class="f10-card f10-col-3 f10-card-3">
+      <svg class="f10-outline" viewBox="0 0 544 596" xmlns="http://www.w3.org/2000/svg">
+        <rect class="f10-outline-rect" x="1" y="1" width="542" height="594" rx="13" ry="13" pathLength="1"></rect>
+      </svg>
+      <div class="f10-top">
+        <div class="f10-label f10-label-claim">Luận điểm</div>
+        <div class="f10-claim f10-claim-3">Audit tập trung</div>
+      </div>
+      <div class="f10-divider f10-div-3"></div>
+      <div class="f10-bot">
+        <div class="f10-label f10-label-real f10-lr-3">Thực tế</div>
+        <div class="f10-real f10-real-3">Khoảng trống thật</div>
+        <div class="f10-fill-pill">lấp bằng layer mỏng</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      var root = document.querySelector('[data-composition-id="10-so-sai-doi-tuong"]');
+      var q = function (sel) { return root.querySelector(sel); };
+
+      var tl = gsap.timeline({ paused: true });
+      var IN = { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" };
+      var enter = function (sel, at, dy) {
+        tl.fromTo(q(sel), { opacity: 0, y: dy || 20 }, IN, at);
+      };
+      var draw = function (sel, at) {
+        tl.fromTo(q(sel), { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power3.out" }, at);
+      };
+
+      // Scene 1 (0.0–5.7s): slide-header + title, empty grid slots, card 1 claim
+      enter(".f10-title", 0.0, 24);
+      enter(".f10-eyebrow", 0.05, 16);
+      enter(".f10-count", 0.15, 16);
+      tl.fromTo(q(".f10-progress"), { scaleX: 0.9 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 0.2);
+      tl.fromTo([q(".f10-ghost-1"), q(".f10-ghost-2"), q(".f10-ghost-3")],
+        { opacity: 0, y: 16 },
+        { opacity: 1, y: 0, duration: 0.5, ease: "power3.out", stagger: 0.08 }, 0.35);
+
+      // card 1 slides into its slot
+      tl.to(q(".f10-ghost-1"), { opacity: 0, duration: 0.4, ease: "power2.out" }, 2.0);
+      tl.fromTo(q(".f10-card-1"), { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 1.95);
+      enter(".f10-claim-1", 2.2, 20);
+      enter(".f10-claim-1b", 4.8, 20);
+
+      // Scene 2 (5.7–8.8s): card 1 reality; claim recedes to muted
+      draw(".f10-div-1", 5.55);
+      enter(".f10-lr-1", 5.7, 14);
+      tl.to([q(".f10-claim-1"), q(".f10-claim-1b")], { color: "#6b6b6b", duration: 0.6, ease: "power2.out" }, 5.7);
+      enter(".f10-real-1", 5.9, 22);
+
+      // Scene 3 (8.8–11.3s): card 2
+      tl.to(q(".f10-ghost-2"), { opacity: 0, duration: 0.4, ease: "power2.out" }, 8.75);
+      tl.fromTo(q(".f10-card-2"), { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 8.7);
+      enter(".f10-claim-2", 8.85, 20);
+      draw(".f10-div-2", 10.3);
+      enter(".f10-lr-2", 10.4, 14);
+      enter(".f10-real-2", 10.5, 22);
+      tl.to(q(".f10-claim-2"), { color: "#6b6b6b", duration: 0.6, ease: "power2.out" }, 10.55);
+
+      // Scene 4 (11.3–16.2s): card 3 (focal) — the real gap
+      tl.to(q(".f10-ghost-3"), { opacity: 0, duration: 0.4, ease: "power2.out" }, 11.35);
+      tl.fromTo(q(".f10-card-3"), { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 11.3);
+      enter(".f10-claim-3", 11.5, 20);
+      draw(".f10-div-3", 12.4);
+      enter(".f10-lr-3", 12.5, 14);
+      enter(".f10-real-3", 12.6, 22);
+      // cobalt outline draws around the card on "khoảng trống thật"
+      tl.fromTo(q(".f10-outline-rect"), { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.9, ease: "power2.inOut" }, 12.7);
+      // the two rebutted cards step back slightly (text stays ≥ 4.5:1)
+      tl.to([q(".f10-real-1"), q(".f10-real-2")], { color: "#4a4a4a", duration: 0.6, ease: "power2.out" }, 12.8);
+
+      // cobalt pill on "layer mỏng": mask-wipe left → right
+      tl.fromTo(q(".f10-fill-pill"),
+        { opacity: 0, y: 12, clipPath: "inset(0% 100% 0% 0% round 100px)" },
+        { opacity: 1, y: 0, clipPath: "inset(0% 0% 0% 0% round 100px)", duration: 0.6, ease: "power3.out" }, 14.8);
+
+      // hold still to the end
+      tl.set({}, {}, 16.2);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["10-so-sai-doi-tuong"] = tl;
+    })();
+  </script>
+</template>

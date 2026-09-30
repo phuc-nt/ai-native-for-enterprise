@@ -1,0 +1,322 @@
+<template>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <style>
+    @font-face { font-family: "Space Grotesk"; src: url("assets/fonts/SpaceGrotesk-VN.woff2") format("woff2"); font-weight: 300 700; font-style: normal; font-display: block; }
+    @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-VN.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: block; }
+    @font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/JetBrainsMono-VN.woff2") format("woff2"); font-weight: 100 800; font-style: normal; font-display: block; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      font-family: "Inter", sans-serif;
+      color: #111111;
+    }
+    #f07-ground {
+      position: absolute;
+      inset: 0;
+      background: #fdfae7;
+    }
+
+    /* ---------- slide-header ---------- */
+    #f07-eyebrow {
+      position: absolute;
+      left: 96px;
+      top: 84px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 1.3;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #1e2bfa;
+    }
+    #f07-counter {
+      position: absolute;
+      right: 96px;
+      top: 78px;
+      padding: 8px 20px;
+      border-radius: 100px;
+      background: rgba(30, 43, 250, 0.08);
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 1.3;
+      letter-spacing: 0.05em;
+      color: #1e2bfa;
+    }
+    #f07-title {
+      position: absolute;
+      left: 96px;
+      top: 128px;
+      margin: 0;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 60px;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      color: #111111;
+    }
+
+    /* ---------- list ---------- */
+    #f07-cam {
+      position: absolute;
+      left: 96px;
+      top: 262px;
+      width: 1728px;
+      height: 554px;
+      transform-origin: 0% 50%;
+    }
+    .f07-row {
+      position: absolute;
+      left: 0;
+      width: 1728px;
+      box-sizing: border-box;
+      background: rgba(30, 43, 250, 0.04);
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+      border-radius: 14px;
+    }
+    #f07-row1 { top: 0; height: 140px; }
+    #f07-row2 { top: 162px; height: 140px; }
+    #f07-row3 { top: 324px; height: 230px; }
+
+    .f07-step {
+      position: absolute;
+      left: 36px;
+      width: 56px;
+      height: 56px;
+    }
+    #f07-row1 .f07-step,
+    #f07-row2 .f07-step { top: 40px; }
+    #f07-row3 .f07-step { top: 44px; }
+
+    .f07-ghost {
+      position: absolute;
+      inset: 0;
+      box-sizing: border-box;
+      border-radius: 50%;
+      border: 1.5px dashed rgba(30, 43, 250, 0.35);
+    }
+    .f07-dot {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: #1e2bfa;
+      color: #fdfae7;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 26px;
+      line-height: 56px;
+      text-align: center;
+    }
+
+    .f07-text {
+      position: absolute;
+      left: 124px;
+    }
+    #f07-row1 .f07-text,
+    #f07-row2 .f07-text { top: 38px; }
+    #f07-row3 .f07-text { top: 40px; }
+
+    .f07-line {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .f07-h {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 46px;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: #111111;
+      white-space: nowrap;
+    }
+    #f07-pill {
+      display: inline-block;
+      padding: 8px 22px;
+      border-radius: 100px;
+      background: rgba(30, 43, 250, 0.08);
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 26px;
+      line-height: 1.25;
+      color: #1e2bfa;
+      white-space: nowrap;
+    }
+    #f07-sub {
+      margin-top: 14px;
+      font-family: "Inter", sans-serif;
+      font-weight: 500;
+      font-size: 30px;
+      line-height: 1.5;
+      color: #6b6b6b;
+      white-space: nowrap;
+    }
+
+    /* ---------- row 3: plug-in fork to two environments ---------- */
+    .f07-wire {
+      position: absolute;
+      background: rgba(30, 43, 250, 0.4);
+    }
+    #f07-socket {
+      position: absolute;
+      left: 712px;
+      top: 108px;
+      width: 14px;
+      height: 14px;
+      box-sizing: border-box;
+      border-radius: 50%;
+      border: 2px solid rgba(30, 43, 250, 0.55);
+      background: #fdfae7;
+    }
+    #f07-stem { left: 726px; top: 114px; width: 504px; height: 2px; transform-origin: 0% 50%; }
+    #f07-fork-up { left: 1229px; top: 70px; width: 2px; height: 46px; transform-origin: 50% 100%; }
+    #f07-fork-dn { left: 1229px; top: 114px; width: 2px; height: 46px; transform-origin: 50% 0%; }
+    #f07-br-up { left: 1229px; top: 70px; width: 62px; height: 2px; transform-origin: 0% 50%; }
+    #f07-br-dn { left: 1229px; top: 158px; width: 62px; height: 2px; transform-origin: 0% 50%; }
+
+    .f07-chip {
+      position: absolute;
+      left: 1290px;
+      height: 62px;
+      box-sizing: border-box;
+      padding: 0 28px;
+      border-radius: 100px;
+      background: rgba(30, 43, 250, 0.08);
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 28px;
+      line-height: 59px;
+      color: #1e2bfa;
+      white-space: nowrap;
+    }
+    #f07-chip-ide { top: 40px; }
+    #f07-chip-cloud { top: 128px; }
+
+    /* ---------- progress bar ---------- */
+    #f07-progress {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 840px;
+      height: 3px;
+      background: #1e2bfa;
+      transform-origin: 0% 50%;
+    }
+  </style>
+
+  <div id="root" data-composition-id="07-de-xuat-ba-y" data-width="1920" data-height="1080" data-start="0" data-duration="15.74">
+    <div id="f07-ground" class="clip" data-start="0" data-duration="15.74" data-track-index="0"></div>
+
+    <div id="f07-eyebrow">Đề xuất</div>
+    <div id="f07-counter">07 / 16</div>
+    <h2 id="f07-title">Đề xuất có ba ý</h2>
+
+    <div id="f07-cam">
+      <div id="f07-row1" class="f07-row">
+        <div class="f07-step"><div class="f07-ghost"></div><div id="f07-dot1" class="f07-dot">1</div></div>
+        <div class="f07-text">
+          <div id="f07-h1" class="f07-h">Harness và LLM: mua</div>
+        </div>
+      </div>
+
+      <div id="f07-row2" class="f07-row">
+        <div class="f07-step"><div class="f07-ghost"></div><div id="f07-dot2" class="f07-dot">2</div></div>
+        <div class="f07-text">
+          <div class="f07-line">
+            <div id="f07-h2" class="f07-h">Đầu tư vào kit và data source</div>
+            <div id="f07-pill">AI-ready</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="f07-row3" class="f07-row">
+        <div class="f07-step"><div class="f07-ghost"></div><div id="f07-dot3" class="f07-dot">3</div></div>
+        <div class="f07-text">
+          <div id="f07-h3" class="f07-h">Viết trung lập</div>
+          <div id="f07-sub">gắn vào harness nào cũng được</div>
+        </div>
+        <div id="f07-socket"></div>
+        <div id="f07-stem" class="f07-wire"></div>
+        <div id="f07-fork-up" class="f07-wire"></div>
+        <div id="f07-fork-dn" class="f07-wire"></div>
+        <div id="f07-br-up" class="f07-wire"></div>
+        <div id="f07-br-dn" class="f07-wire"></div>
+        <div id="f07-chip-ide" class="f07-chip">trong IDE</div>
+        <div id="f07-chip-cloud" class="f07-chip">headless trên cloud</div>
+      </div>
+    </div>
+
+    <div id="f07-progress"></div>
+  </div>
+
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+      var OUT = "power3.out";
+      var DIM = 0.74;
+
+      // ---- Scene 1 (0.0–2.3s): slide-header, h2, three empty slots ----
+      tl.fromTo("#f07-eyebrow", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: OUT }, 0.1);
+      tl.fromTo("#f07-counter", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: OUT }, 0.2);
+      tl.fromTo("#f07-progress", { scaleX: 6 / 7 }, { scaleX: 1, duration: 0.6, ease: OUT }, 0.2);
+      tl.fromTo("#f07-title", { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out" }, 0.8);
+      tl.fromTo(
+        ["#f07-row1", "#f07-row2", "#f07-row3"],
+        { opacity: 0, y: 24 },
+        { opacity: 0.5, y: 0, duration: 0.6, ease: OUT, stagger: 0.08 },
+        1.3
+      );
+
+      // slow camera push under the whole list, settles before the end
+      tl.fromTo("#f07-cam", { scale: 1 }, { scale: 1.012, duration: 12.3, ease: "sine.inOut" }, 2.3);
+
+      // ---- Scene 2 (2.3–5.3s): row 1 ----
+      tl.to("#f07-row1", { opacity: 1, duration: 0.4, ease: OUT }, 2.3);
+      tl.fromTo("#f07-dot1", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.5, ease: OUT }, 2.3);
+      tl.fromTo("#f07-h1", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: OUT }, 3.0);
+
+      // ---- Scene 3 (5.3–9.0s): row 2 + AI-ready pill ----
+      tl.to("#f07-row1", { opacity: DIM, duration: 0.5, ease: OUT }, 5.3);
+      tl.to("#f07-row2", { opacity: 1, duration: 0.4, ease: OUT }, 5.3);
+      tl.fromTo("#f07-dot2", { opacity: 0, scale: 0.6 }, { opacity: 0.85, scale: 1, duration: 0.5, ease: OUT }, 5.3);
+      tl.fromTo("#f07-h2", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: OUT }, 6.4);
+      tl.fromTo(
+        "#f07-pill",
+        { opacity: 0, clipPath: "inset(0% 100% 0% 0% round 100px)" },
+        { opacity: 1, clipPath: "inset(0% 0% 0% 0% round 100px)", duration: 0.5, ease: OUT },
+        8.3
+      );
+
+      // ---- Scene 4 (9.0–15.24s): row 3, sub-line, two environment chips ----
+      tl.to("#f07-row2", { opacity: DIM, duration: 0.5, ease: OUT }, 9.0);
+      tl.to("#f07-row3", { opacity: 1, duration: 0.4, ease: OUT }, 9.0);
+      tl.fromTo("#f07-dot3", { opacity: 0, scale: 0.6 }, { opacity: 0.7, scale: 1, duration: 0.5, ease: OUT }, 9.0);
+      tl.fromTo("#f07-h3", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: OUT }, 10.2);
+      tl.fromTo("#f07-sub", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: OUT }, 11.2);
+
+      // wire out of the neutral kit, then fork up to "trong IDE"
+      tl.fromTo("#f07-socket", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.3, ease: OUT }, 11.6);
+      tl.fromTo("#f07-stem", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power2.inOut" }, 11.7);
+      tl.fromTo("#f07-fork-up", { scaleY: 0 }, { scaleY: 1, duration: 0.2, ease: "power2.out" }, 12.2);
+      tl.fromTo("#f07-br-up", { scaleX: 0 }, { scaleX: 1, duration: 0.2, ease: "power2.out" }, 12.35);
+      tl.fromTo("#f07-chip-ide", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.6, ease: OUT }, 12.5);
+
+      // fork down to "headless trên cloud"
+      tl.fromTo("#f07-fork-dn", { scaleY: 0 }, { scaleY: 1, duration: 0.2, ease: "power2.out" }, 13.7);
+      tl.fromTo("#f07-br-dn", { scaleX: 0 }, { scaleX: 1, duration: 0.2, ease: "power2.out" }, 13.85);
+      tl.fromTo("#f07-chip-cloud", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.6, ease: OUT }, 14.0);
+
+      // hold still to the end
+      tl.set({}, {}, 15.24);
+
+      window.__timelines["07-de-xuat-ba-y"] = tl;
+    })();
+  </script>
+</template>

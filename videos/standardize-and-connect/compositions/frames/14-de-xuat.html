@@ -1,0 +1,263 @@
+<template>
+  <style>
+    @font-face { font-family: "Space Grotesk"; src: url("assets/fonts/SpaceGrotesk-VN.woff2") format("woff2"); font-weight: 300 700; font-style: normal; font-display: block; }
+    @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-VN.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: block; }
+    @font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/JetBrainsMono-VN.woff2") format("woff2"); font-weight: 100 800; font-style: normal; font-display: block; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      font-family: "Inter", sans-serif;
+      color: #111111;
+    }
+
+    #f14-bg {
+      position: absolute;
+      inset: 0;
+      background: #fdfae7;
+    }
+
+    #f14-stage {
+      position: absolute;
+      inset: 0;
+    }
+
+    /* ---- slide-header chrome ---- */
+    #f14-eyebrow {
+      position: absolute;
+      left: 96px;
+      top: 64px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 1.3;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #1e2bfa;
+    }
+
+    #f14-pill {
+      position: absolute;
+      right: 96px;
+      top: 58px;
+      padding: 8px 22px;
+      border-radius: 100px;
+      background: rgba(30, 43, 250, 0.08);
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 1.3;
+      letter-spacing: 0.05em;
+      color: #1e2bfa;
+    }
+
+    #f14-progress {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 1120px; /* 14 / 24 of 1920 */
+      height: 3px;
+      background: #1e2bfa;
+    }
+
+    /* ---- kicker ---- */
+    #f14-kicker {
+      position: absolute;
+      left: 96px;
+      top: 186px;
+    }
+
+    #f14-accent-line {
+      width: 60px;
+      height: 4px;
+      border-radius: 2px;
+      background: #1e2bfa;
+      margin-bottom: 18px;
+    }
+
+    #f14-kicker-text {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 26px;
+      line-height: 1.3;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #1e2bfa;
+    }
+
+    /* ---- three proposition rows ---- */
+    #f14-rows {
+      position: absolute;
+      left: 96px;
+      right: 96px;
+      top: 310px;
+    }
+
+    .f14-row {
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 46px 0;
+    }
+
+    .f14-rule {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 1.5px;
+      background: rgba(30, 43, 250, 0.2);
+    }
+
+    #f14-rule-end {
+      position: relative;
+      height: 1.5px;
+      background: rgba(30, 43, 250, 0.2);
+    }
+
+    .f14-chip-col {
+      flex: 0 0 250px;
+      margin-right: 40px;
+    }
+
+    .f14-chip {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 100px;
+      background: rgba(30, 43, 250, 0.08);
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 26px;
+      line-height: 1.3;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #1e2bfa;
+      white-space: nowrap;
+    }
+
+    .f14-chip-muted {
+      background: transparent;
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+      padding: 10.5px 22.5px;
+      color: #6b6b6b;
+    }
+
+    .f14-line {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #111111;
+    }
+
+    #f14-line-1 {
+      font-size: 64px;
+      line-height: 1.2;
+    }
+
+    #f14-line-2 {
+      font-size: 48px;
+      line-height: 1.2;
+    }
+
+    #f14-line-3 {
+      font-size: 48px;
+      line-height: 1.2;
+      font-weight: 600;
+      color: #6b6b6b;
+    }
+
+    .f14-keep {
+      position: relative;
+      white-space: nowrap;
+    }
+
+    #f14-underline {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -16px;
+      height: 6px;
+      border-radius: 3px;
+      background: #1e2bfa;
+    }
+  </style>
+
+  <div id="root" data-composition-id="14-de-xuat" data-width="1920" data-height="1080" data-duration="15.62">
+    <div id="f14-bg" class="clip" data-start="0" data-duration="15.62" data-track-index="0"></div>
+
+    <div id="f14-stage" class="clip" data-start="0" data-duration="15.62" data-track-index="1">
+      <div id="f14-eyebrow">Đề xuất</div>
+      <div id="f14-pill">14 / 24</div>
+
+      <div id="f14-kicker">
+        <div id="f14-accent-line"></div>
+        <div id="f14-kicker-text">Đề xuất trung tâm</div>
+      </div>
+
+      <div id="f14-rows">
+        <div class="f14-row" id="f14-row-1">
+          <div class="f14-rule" id="f14-rule-1"></div>
+          <div class="f14-chip-col"><span class="f14-chip" id="f14-chip-1">Chuẩn hoá</span></div>
+          <div class="f14-line" id="f14-line-1">Thứ bên ngoài không có: <span class="f14-keep">dữ liệu và quy trình<span id="f14-underline"></span></span>.</div>
+        </div>
+
+        <div class="f14-row" id="f14-row-2">
+          <div class="f14-rule" id="f14-rule-2"></div>
+          <div class="f14-chip-col"><span class="f14-chip" id="f14-chip-2">Nối</span></div>
+          <div class="f14-line" id="f14-line-2">Tới mọi harness, qua connector theo chuẩn mở.</div>
+        </div>
+
+        <div class="f14-row" id="f14-row-3">
+          <div class="f14-rule" id="f14-rule-3"></div>
+          <div class="f14-chip-col"><span class="f14-chip f14-chip-muted" id="f14-chip-3">Mua</span></div>
+          <div class="f14-line" id="f14-line-3">Harness và LLM: mua, hoặc dùng open source.</div>
+        </div>
+
+        <div id="f14-rule-end"></div>
+      </div>
+
+      <div id="f14-progress"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // Scene 1 (0.0–2.2s): header enters; kicker + three-slot scaffold on "đề xuất" (1.0)
+      tl.fromTo("#f14-eyebrow", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.1);
+      tl.fromTo("#f14-pill", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.2);
+      tl.fromTo("#f14-progress", { scaleX: 13 / 14, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 0.2);
+
+      tl.fromTo("#f14-accent-line", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.5, ease: "power3.out" }, 1.0);
+      tl.fromTo("#f14-kicker-text", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 1.05);
+      tl.fromTo(
+        ["#f14-rule-1", "#f14-rule-2", "#f14-rule-3", "#f14-rule-end"],
+        { scaleX: 0, transformOrigin: "0% 50%" },
+        { scaleX: 1, duration: 0.55, ease: "power3.out", stagger: 0.12 },
+        1.15
+      );
+
+      // Scene 2 (2.2–5.5s): CHUẨN HOÁ + hero line on "chuẩn hoá" (2.2)
+      tl.fromTo("#f14-chip-1", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 2.2);
+      tl.fromTo("#f14-line-1", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out" }, 2.35);
+      // cobalt underline under "dữ liệu và quy trình" on "dữ liệu" (4.2)
+      tl.fromTo("#f14-underline", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.55, ease: "power3.out" }, 4.2);
+
+      // Scene 3 (5.5–10.0s): NỐI + line 2 on "Nối" (5.5)
+      tl.fromTo("#f14-chip-2", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 5.5);
+      tl.fromTo("#f14-line-2", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out" }, 5.65);
+
+      // Scene 4 (10.0–15.12s): MUA + muted line 3 on "Harness và LLM" (10.0), then hold still
+      tl.fromTo("#f14-chip-3", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 10.0);
+      tl.fromTo("#f14-line-3", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out" }, 10.15);
+
+      tl.set({}, {}, 15.12);
+      window.__timelines["14-de-xuat"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,224 @@
+<template>
+  <style>
+    @font-face { font-family: "Space Grotesk"; src: url("assets/fonts/SpaceGrotesk-VN.woff2") format("woff2"); font-weight: 300 700; font-style: normal; font-display: block; }
+    @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-VN.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: block; }
+    @font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/JetBrainsMono-VN.woff2") format("woff2"); font-weight: 100 800; font-style: normal; font-display: block; }
+
+    #root {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      container-type: size;
+      font-family: "Space Grotesk", sans-serif;
+      color: #111111;
+    }
+
+    /* full-bleed ground + progress bar (background layer) */
+    .f15-bg {
+      position: absolute;
+      inset: 0;
+      background: #fdfae7;
+    }
+    .f15-progress {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 1800px; /* 15 / 16 of 1920 */
+      height: 3px;
+      background: #1e2bfa;
+    }
+
+    .f15-stage {
+      position: absolute;
+      inset: 0;
+    }
+
+    /* slide-header */
+    .f15-eyebrow {
+      position: absolute;
+      left: 96px;
+      top: 92px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 1.3;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #1e2bfa;
+    }
+    .f15-count {
+      position: absolute;
+      right: 96px;
+      top: 86px;
+      padding: 8px 20px;
+      border-radius: 100px;
+      background: rgba(30, 43, 250, 0.08);
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 1.3;
+      letter-spacing: 0.05em;
+      color: #1e2bfa;
+    }
+    .f15-h2 {
+      position: absolute;
+      left: 96px;
+      top: 140px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 66px;
+      line-height: 1.16;
+      letter-spacing: -0.02em;
+      color: #111111;
+      white-space: nowrap;
+    }
+
+    /* 2x2 evidence grid: 852 x 282 cards, 24px gutters, bottom edge at y = 870 */
+    .f15-card {
+      position: absolute;
+      width: 852px;
+      height: 282px;
+      box-sizing: border-box;
+      border-radius: 14px;
+      background: rgba(30, 43, 250, 0.04);
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+    }
+    .f15-card-1 { left: 96px;  top: 282px; }
+    .f15-card-2 { left: 972px; top: 282px; }
+    .f15-card-3 { left: 96px;  top: 588px; }
+    .f15-card-4 { left: 972px; top: 588px; }
+
+    .f15-num {
+      position: absolute;
+      left: 40px;
+      top: 30px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 92px;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: #1e2bfa;
+    }
+    .f15-box {
+      position: absolute;
+      right: 40px;
+      top: 44px;
+      width: 28px;
+      height: 28px;
+      box-sizing: border-box;
+      border-radius: 6px;
+      border: 2px solid rgba(30, 43, 250, 0.2);
+      background: rgba(253, 250, 231, 0.6);
+    }
+    .f15-title {
+      position: absolute;
+      left: 40px;
+      top: 150px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 46px;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: #111111;
+      white-space: nowrap;
+    }
+    .f15-arrow {
+      font-family: "Inter", sans-serif;
+      font-weight: 500;
+      color: #111111;
+    }
+    .f15-sub {
+      position: absolute;
+      left: 40px;
+      top: 212px;
+      font-family: "Inter", sans-serif;
+      font-weight: 500;
+      font-size: 28px;
+      line-height: 1.4;
+      color: #6b6b6b;
+      white-space: nowrap;
+    }
+  </style>
+
+  <div id="root" data-composition-id="15-bang-chung" data-width="1920" data-height="1080" data-duration="12.8">
+    <div class="clip f15-bg" data-start="0" data-duration="12.8" data-track-index="0">
+      <div class="f15-progress"></div>
+    </div>
+
+    <div class="f15-stage">
+      <div class="f15-eyebrow">TRƯỚC KHI TRÌNH</div>
+      <div class="f15-count">15 / 16</div>
+      <div class="f15-h2">Cần bốn bằng chứng</div>
+
+      <div class="f15-card f15-card-1">
+        <div class="f15-num">1</div>
+        <div class="f15-box"></div>
+        <div class="f15-title">Chuỗi thiết kế <span class="f15-arrow">→</span> unit test</div>
+        <div class="f15-sub">trên một hệ thống thật</div>
+      </div>
+
+      <div class="f15-card f15-card-2">
+        <div class="f15-num">2</div>
+        <div class="f15-box"></div>
+        <div class="f15-title">Headless có approval gate</div>
+      </div>
+
+      <div class="f15-card f15-card-3">
+        <div class="f15-num">3</div>
+        <div class="f15-box"></div>
+        <div class="f15-title">Chạy trên hai harness</div>
+      </div>
+
+      <div class="f15-card f15-card-4">
+        <div class="f15-num">4</div>
+        <div class="f15-box"></div>
+        <div class="f15-title">Dựng thử LLM gateway</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+    (function () {
+      var root = document.querySelector('[data-composition-id="15-bang-chung"]');
+      var q = function (sel) { return root.querySelector(sel); };
+      var IN = "power3.out";
+
+      var tl = gsap.timeline({ paused: true });
+
+      // Card shell assembles into its slot, number + empty checkbox follow (short path, no bounce)
+      function card(n, at, withTitle) {
+        var c = q(".f15-card-" + n);
+        tl.fromTo(c, { y: 28, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: IN }, at);
+        tl.fromTo(c.querySelector(".f15-num"), { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: IN }, at + 0.12);
+        tl.fromTo(c.querySelector(".f15-box"), { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: IN }, at + 0.25);
+        if (withTitle) {
+          tl.fromTo(c.querySelector(".f15-title"), { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: IN }, at + 0.2);
+        }
+      }
+
+      // Scene 1 (0.0–2.5s): slide-header, then h2 on "bốn bằng chứng" (1.2s)
+      tl.fromTo(q(".f15-eyebrow"), { y: -16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: IN }, 0.0);
+      tl.fromTo(q(".f15-count"), { y: -16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: IN }, 0.1);
+      tl.fromTo(q(".f15-h2"), { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.75, ease: "expo.out" }, 1.2);
+
+      // Scene 2 (2.5–6.1s): card 1 with its title (2.5s), subline "trên một hệ thống thật" (5.0s)
+      card(1, 2.5, true);
+      tl.fromTo(q(".f15-card-1 .f15-sub"), { y: 14, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: IN }, 5.0);
+
+      // Scene 3 (6.1–9.8s): card 2 "headless" (6.1s), card 3 "hai harness" (8.1s)
+      card(2, 6.1, true);
+      card(3, 8.1, true);
+
+      // Scene 4 (9.8–12.2s): card 4 shell (9.8s), title on "LLM gateway" (11.1s), then still
+      card(4, 9.8, false);
+      tl.fromTo(q(".f15-card-4 .f15-title"), { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: IN }, 11.1);
+
+      tl.set({}, {}, 12.2);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["15-bang-chung"] = tl;
+    })();
+  </script>
+</template>
