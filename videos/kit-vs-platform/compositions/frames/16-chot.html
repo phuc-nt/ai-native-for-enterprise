@@ -95,7 +95,7 @@
   </style>
 
   <div id="root" data-composition-id="16-chot" data-width="1920" data-height="1080">
-    <div class="clip f16-bg" data-start="0" data-duration="10.06" data-track-index="0">
+    <div class="clip f16-bg" data-start="0" data-duration="9.98" data-track-index="0">
       <svg class="f16-rings" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
         <circle class="f16-ring-core" cx="1960" cy="430" r="90"></circle>
         <circle class="f16-ring f16-ring-1" cx="1960" cy="430" r="90" pathLength="1" transform="rotate(180 1960 430)"></circle>
@@ -137,15 +137,15 @@
       tl.fromTo(q(".f16-setup"), { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, 0.2);
 
       // Scene 2 (2.3–5.0s): hero line 1 at 2.3s, setup recedes to muted; hero line 2 at 4.0s
-      tl.fromTo(q(".f16-hero-1"), { y: 28, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "expo.out" }, 2.3);
-      tl.to(q(".f16-setup"), { color: "#6b6b6b", duration: 0.6, ease: "power2.out" }, 2.3);
-      tl.fromTo(q(".f16-hero-2"), { y: 28, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "expo.out" }, 4.0);
+      tl.fromTo(q(".f16-hero-1"), { y: 28, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "expo.out" }, 2.6);
+      tl.to(q(".f16-setup"), { color: "#6b6b6b", duration: 0.6, ease: "power2.out" }, 2.6);
+      tl.fromTo(q(".f16-hero-2"), { y: 28, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "expo.out" }, 4.1);
 
-      // Scene 3 (5.0–10.06s): cobalt accent line draws (5.0s), sign-off lands (5.5s), then still hold
-      tl.fromTo(q(".f16-accent"), { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power3.out" }, 5.0);
-      tl.fromTo(q(".f16-signoff"), { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "power3.out" }, 5.5);
+      // Scene 3 (5.6–9.98s): cobalt accent line draws (5.6s), sign-off lands (5.8s), then still hold
+      tl.fromTo(q(".f16-accent"), { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power3.out" }, 5.6);
+      tl.fromTo(q(".f16-signoff"), { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "power3.out" }, 5.8);
 
-      tl.set({}, {}, 10.06);
+      tl.set({}, {}, 9.98);
 
       window.__timelines = window.__timelines || {};
       window.__timelines["16-chot"] = tl;

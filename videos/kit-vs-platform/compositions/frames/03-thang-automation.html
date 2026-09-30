@@ -203,8 +203,8 @@
     }
   </style>
 
-  <div id="root" data-composition-id="03-thang-automation" data-width="1920" data-height="1080" data-duration="12.74">
-    <div class="clip f03-bg" data-start="0" data-duration="12.74" data-track-index="0"></div>
+  <div id="root" data-composition-id="03-thang-automation" data-width="1920" data-height="1080" data-duration="13.66">
+    <div class="clip f03-bg" data-start="0" data-duration="13.66" data-track-index="0"></div>
 
     <div class="f03-stage" id="f03-stage">
       <p class="f03-eyebrow" id="f03-eyebrow">BỐI CẢNH</p>
@@ -272,7 +272,7 @@
       tl.fromTo("#f03-progress", { scaleX: 2 / 3 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 0.2);
 
       // Slow camera push underneath (settles before the end)
-      tl.fromTo("#f03-stage", { scale: 1 }, { scale: 1.015, duration: 11.6, ease: "sine.inOut" }, 0);
+      tl.fromTo("#f03-stage", { scale: 1 }, { scale: 1.015, duration: 12.52, ease: "sine.inOut" }, 0);
 
       // Scene 1 (0.0–3.0s): header, h2, staircase rises
       tl.fromTo("#f03-eyebrow", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.1);
@@ -283,31 +283,31 @@
       var steps = ["#f03-step1", "#f03-step2", "#f03-step3", "#f03-step4", "#f03-step5"];
       var lvls = ["#f03-lvl1", "#f03-lvl2", "#f03-lvl3", "#f03-lvl4", "#f03-lvl5"];
       for (var i = 0; i < 5; i++) {
-        tl.fromTo(steps[i], { scaleY: 0 }, { scaleY: 1, duration: 0.7, ease: "power3.out" }, 2.2 + i * 0.12);
-        tl.fromTo(lvls[i], { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 2.35 + i * 0.12);
+        tl.fromTo(steps[i], { scaleY: 0 }, { scaleY: 1, duration: 0.7, ease: "power3.out" }, 2.3 + i * 0.12);
+        tl.fromTo(lvls[i], { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 2.45 + i * 0.12);
       }
 
       // Scene 2 (3.0–7.0s): end labels
-      tl.fromTo("#f03-desc1", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 3.1);
-      tl.fromTo("#f03-desc5", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 5.2);
+      tl.fromTo("#f03-desc1", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 3.35);
+      tl.fromTo("#f03-desc5", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 5.95);
 
-      // Scene 3 (7.0–12.24s): goals
-      tl.fromTo("#f03-goal", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 7.0);
+      // Scene 3 (7.55–13.16s): goals
+      tl.fromTo("#f03-goal", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 7.55);
 
       // L3 — cobalt outline + "Thiết kế" flag; non-target steps recede
-      tl.fromTo("#f03-ring3", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power3.out" }, 9.1);
-      tl.to(["#f03-step1", "#f03-step2", "#f03-step5"], { opacity: 0.5, duration: 0.6, ease: "power2.out" }, 9.1);
-      tl.to(["#f03-lvl1", "#f03-lvl2", "#f03-lvl5"], { color: "#6b6b6b", duration: 0.6, ease: "power2.out" }, 9.1);
-      tl.fromTo("#f03-pole3", { scaleY: 0 }, { scaleY: 1, duration: 0.45, ease: "power3.out" }, 9.2);
-      tl.fromTo("#f03-flag3", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 9.45);
+      tl.fromTo("#f03-ring3", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power3.out" }, 9.85);
+      tl.to(["#f03-step1", "#f03-step2", "#f03-step5"], { opacity: 0.5, duration: 0.6, ease: "power2.out" }, 9.85);
+      tl.to(["#f03-lvl1", "#f03-lvl2", "#f03-lvl5"], { color: "#6b6b6b", duration: 0.6, ease: "power2.out" }, 9.85);
+      tl.fromTo("#f03-pole3", { scaleY: 0 }, { scaleY: 1, duration: 0.45, ease: "power3.out" }, 9.95);
+      tl.fromTo("#f03-flag3", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 10.2);
 
       // L4 — solid cobalt fill + "Coding · Testing" flag (focal)
-      tl.fromTo("#f03-fill4", { scaleY: 0 }, { scaleY: 1, duration: 0.6, ease: "power3.out" }, 11.1);
-      tl.fromTo("#f03-pole4", { scaleY: 0 }, { scaleY: 1, duration: 0.45, ease: "power3.out" }, 11.2);
-      tl.fromTo("#f03-flag4", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 11.4);
+      tl.fromTo("#f03-fill4", { scaleY: 0 }, { scaleY: 1, duration: 0.6, ease: "power3.out" }, 12.15);
+      tl.fromTo("#f03-pole4", { scaleY: 0 }, { scaleY: 1, duration: 0.45, ease: "power3.out" }, 12.25);
+      tl.fromTo("#f03-flag4", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 12.45);
 
       // Hold still to the end
-      tl.set({}, {}, 12.24);
+      tl.set({}, {}, 13.16);
 
       window.__timelines["03-thang-automation"] = tl;
     })();

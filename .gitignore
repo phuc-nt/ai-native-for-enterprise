@@ -11,6 +11,3 @@
 /videos/**/capture/
 /videos/**/assets/bgm/
 .DS_Store
-# Narration of this video speaks an alias that cannot be masked without re-rendering.
-/videos/kit-vs-platform/renders/
-/videos/kit-vs-platform/assets/voice/

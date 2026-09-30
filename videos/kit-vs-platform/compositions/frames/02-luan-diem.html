@@ -210,8 +210,8 @@
     }
   </style>
 
-  <div id="root" data-composition-id="02-luan-diem" data-start="0" data-duration="11.64" data-width="1920" data-height="1080">
-    <div class="clip f02-ground" data-start="0" data-duration="11.64" data-track-index="0"></div>
+  <div id="root" data-composition-id="02-luan-diem" data-start="0" data-duration="11.68" data-width="1920" data-height="1080">
+    <div class="clip f02-ground" data-start="0" data-duration="11.68" data-track-index="0"></div>
 
     <div class="f02-header">
       <div class="f02-eyebrow" id="f02-eyebrow"><span class="f02-eyebrow-rule"></span><span>Luận điểm</span></div>
@@ -220,7 +220,7 @@
 
     <h2 class="f02-headline">
       <span class="f02-hl-line" id="f02-line1">Harness và LLM thì mua.</span>
-      <span class="f02-hl-line" id="f02-line2"><span class="f02-word f02-w-a">Tổ</span> <span class="f02-word f02-w-a">chức</span> <span class="f02-word f02-w-a">F</span> <span class="f02-word f02-w-a">đầu</span> <span class="f02-word f02-w-a">tư</span> <span class="f02-word f02-w-a">vào</span> <span class="f02-word f02-w-b">kit</span> <span class="f02-word f02-w-b">và</span> <span class="f02-word f02-w-b">dữ</span> <span class="f02-word f02-w-b">liệu,</span> <span class="f02-word f02-w-c">sẵn</span> <span class="f02-word f02-w-c">sàng</span> <span class="f02-word f02-w-c">cho</span> <span class="f02-word f02-w-c">AI.</span></span>
+      <span class="f02-hl-line" id="f02-line2"><span class="f02-word f02-w-a">Tổ</span> <span class="f02-word f02-w-a">chức</span> <span class="f02-word f02-w-a">đầu</span> <span class="f02-word f02-w-a">tư</span> <span class="f02-word f02-w-a">vào</span> <span class="f02-word f02-w-b">kit</span> <span class="f02-word f02-w-b">và</span> <span class="f02-word f02-w-b">dữ</span> <span class="f02-word f02-w-b">liệu,</span> <span class="f02-word f02-w-c">sẵn</span> <span class="f02-word f02-w-c">sàng</span> <span class="f02-word f02-w-c">cho</span> <span class="f02-word f02-w-c">AI.</span></span>
     </h2>
 
     <!-- MUA column (supporting, muted) -->
@@ -279,26 +279,26 @@
       tl.fromTo("#f02-card-harness", { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.7, ease: IN }, 0.05);
       tl.fromTo("#f02-line1", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7, ease: IN }, 0.2);
       tl.fromTo("#f02-card-llm", { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.7, ease: IN }, 1.2);
-      tl.fromTo("#f02-sub-buy", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: IN }, 2.1);
+      tl.fromTo("#f02-sub-buy", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: IN }, 2.0);
 
       // Scene 2 (2.7–8.1s): ĐẦU TƯ column builds, hero line words land on their cues
-      tl.fromTo("#f02-label-invest", { opacity: 0, x: 24 }, { opacity: 1, x: 0, duration: 0.6, ease: IN }, 2.7);
-      tl.fromTo(".f02-w-a", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.55, ease: IN, stagger: 0.06 }, 2.75);
-      tl.fromTo("#f02-sub-invest", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: IN }, 4.0);
-      tl.fromTo("#f02-card-kit", { opacity: 0, x: 32 }, { opacity: 1, x: 0, duration: 0.7, ease: IN }, 5.6);
-      tl.fromTo(".f02-w-b", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.55, ease: IN, stagger: 0.06 }, 5.6);
-      tl.fromTo("#f02-card-data", { opacity: 0, x: 32 }, { opacity: 1, x: 0, duration: 0.7, ease: IN }, 6.0);
+      tl.fromTo("#f02-label-invest", { opacity: 0, x: 24 }, { opacity: 1, x: 0, duration: 0.6, ease: IN }, 2.45);
+      tl.fromTo(".f02-w-a", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.55, ease: IN, stagger: 0.06 }, 2.5);
+      tl.fromTo("#f02-sub-invest", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: IN }, 3.65);
+      tl.fromTo("#f02-card-kit", { opacity: 0, x: 32 }, { opacity: 1, x: 0, duration: 0.7, ease: IN }, 5.3);
+      tl.fromTo(".f02-w-b", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.55, ease: IN, stagger: 0.06 }, 5.3);
+      tl.fromTo("#f02-card-data", { opacity: 0, x: 32 }, { opacity: 1, x: 0, duration: 0.7, ease: IN }, 5.6);
 
       // 7.1s "sẵn sàng cho AI": cobalt split-highlight draws around the right column; left recedes
-      tl.fromTo("#f02-hilite-rule", { scaleY: 0 }, { scaleY: 1, duration: 0.55, ease: IN }, 7.1);
-      tl.fromTo("#f02-hilite", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: IN }, 7.15);
-      tl.fromTo(".f02-w-c", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.55, ease: IN, stagger: 0.06 }, 7.1);
-      tl.fromTo(".f02-surface-buy", { opacity: 1 }, { opacity: 0.5, duration: 0.6, ease: "power2.out", immediateRender: false }, 7.2);
+      tl.fromTo("#f02-hilite-rule", { scaleY: 0 }, { scaleY: 1, duration: 0.55, ease: IN }, 7.05);
+      tl.fromTo("#f02-hilite", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: IN }, 7.1);
+      tl.fromTo(".f02-w-c", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.55, ease: IN, stagger: 0.06 }, 7.05);
+      tl.fromTo(".f02-surface-buy", { opacity: 1 }, { opacity: 0.5, duration: 0.6, ease: "power2.out", immediateRender: false }, 7.15);
 
       // Scene 3 (8.1–11.04s): status pill on "đề xuất", then hold still
-      tl.fromTo("#f02-status", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: IN }, 8.6);
+      tl.fromTo("#f02-status", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6, ease: IN }, 8.9);
 
-      tl.set({}, {}, 11.04);
+      tl.set({}, {}, 11.08);
       window.__timelines["02-luan-diem"] = tl;
     })();
   </script>

@@ -161,410 +161,398 @@
     {
       "frame": 2,
       "path": "assets/voice/02.wav",
-      "duration_s": 11.04,
+      "duration_s": 11.08,
       "words": [
         {
           "id": "w0",
           "text": "Harness",
           "start": 0.01,
-          "end": 0.85
+          "end": 0.76
         },
         {
           "id": "w1",
           "text": "và",
-          "start": 0.86,
-          "end": 1.23
+          "start": 0.87,
+          "end": 1.16
         },
         {
           "id": "w2",
           "text": "LLM",
-          "start": 1.23,
-          "end": 1.59
+          "start": 1.16,
+          "end": 1.49
         },
         {
           "id": "w3",
           "text": "thì",
-          "start": 1.59,
-          "end": 2.09
+          "start": 1.49,
+          "end": 1.96
         },
         {
           "id": "w4",
           "text": "mua.",
-          "start": 2.09,
-          "end": 2.66
+          "start": 1.96,
+          "end": 2.46
         },
         {
           "id": "w5",
           "text": "Tổ",
-          "start": 2.71,
-          "end": 2.87
+          "start": 2.46,
+          "end": 2.67
         },
         {
           "id": "w6",
           "text": "chức",
-          "start": 2.87,
-          "end": 3.2
+          "start": 2.67,
+          "end": 2.98
         },
         {
           "id": "w7",
-          "text": "F",
-          "start": 3.2,
-          "end": 3.25
+          "text": "đầu",
+          "start": 2.98,
+          "end": 3.3
         },
         {
           "id": "w8",
-          "text": "đầu",
-          "start": 3.25,
-          "end": 3.58
+          "text": "tư",
+          "start": 3.3,
+          "end": 3.45
         },
         {
           "id": "w9",
-          "text": "tư",
-          "start": 3.58,
-          "end": 3.69
+          "text": "vào",
+          "start": 3.45,
+          "end": 3.59
         },
         {
           "id": "w10",
-          "text": "vào",
-          "start": 3.8,
-          "end": 3.96
+          "text": "thứ",
+          "start": 3.66,
+          "end": 3.93
         },
         {
           "id": "w11",
-          "text": "thứ",
-          "start": 3.96,
-          "end": 4.24
+          "text": "bên",
+          "start": 3.93,
+          "end": 4.14
         },
         {
           "id": "w12",
-          "text": "bên",
-          "start": 4.24,
+          "text": "ngoài",
+          "start": 4.14,
           "end": 4.46
         },
         {
           "id": "w13",
-          "text": "ngoài",
+          "text": "không",
           "start": 4.46,
           "end": 4.78
         },
         {
           "id": "w14",
-          "text": "không",
+          "text": "có:",
           "start": 4.78,
-          "end": 5.11
+          "end": 5.04
         },
         {
           "id": "w15",
-          "text": "có:",
-          "start": 5.11,
-          "end": 5.5
+          "text": "kit",
+          "start": 5.29,
+          "end": 5.32
         },
         {
           "id": "w16",
-          "text": "kit",
-          "start": 5.6,
-          "end": 5.71
+          "text": "và",
+          "start": 5.34,
+          "end": 5.62
         },
         {
           "id": "w17",
-          "text": "và",
-          "start": 5.71,
-          "end": 5.74
+          "text": "dữ",
+          "start": 5.62,
+          "end": 6.01
         },
         {
           "id": "w18",
-          "text": "dữ",
-          "start": 6,
-          "end": 6.27
+          "text": "liệu,",
+          "start": 6.01,
+          "end": 6.59
         },
         {
           "id": "w19",
-          "text": "liệu,",
-          "start": 6.28,
-          "end": 6.56
+          "text": "sẵn",
+          "start": 6.59,
+          "end": 7.06
         },
         {
           "id": "w20",
-          "text": "sẵn",
-          "start": 6.74,
-          "end": 7.13
-        },
-        {
-          "id": "w21",
           "text": "sàng",
-          "start": 7.13,
+          "start": 7.06,
           "end": 7.55
         },
         {
-          "id": "w22",
+          "id": "w21",
           "text": "cho",
-          "start": 7.55,
-          "end": 7.6
+          "start": 7.68,
+          "end": 7.84
+        },
+        {
+          "id": "w22",
+          "text": "AI.",
+          "start": 7.84,
+          "end": 8.26
         },
         {
           "id": "w23",
-          "text": "AI.",
-          "start": 7.79,
-          "end": 8.12
+          "text": "Đây",
+          "start": 8.26,
+          "end": 8.51
         },
         {
           "id": "w24",
-          "text": "Đây",
-          "start": 8.13,
-          "end": 8.32
+          "text": "là",
+          "start": 8.51,
+          "end": 8.63
         },
         {
           "id": "w25",
-          "text": "là",
-          "start": 8.32,
-          "end": 8.44
+          "text": "một",
+          "start": 8.69,
+          "end": 8.84
         },
         {
           "id": "w26",
-          "text": "một",
-          "start": 8.44,
-          "end": 8.64
+          "text": "đề",
+          "start": 8.94,
+          "end": 9.15
         },
         {
           "id": "w27",
-          "text": "đề",
-          "start": 8.64,
-          "end": 8.83
+          "text": "xuất,",
+          "start": 9.15,
+          "end": 9.39
         },
         {
           "id": "w28",
-          "text": "xuất,",
-          "start": 8.92,
-          "end": 9.16
+          "text": "chưa",
+          "start": 9.49,
+          "end": 9.69
         },
         {
           "id": "w29",
-          "text": "chưa",
-          "start": 9.32,
-          "end": 9.36
+          "text": "được",
+          "start": 9.69,
+          "end": 9.91
         },
         {
           "id": "w30",
-          "text": "được",
-          "start": 9.36,
-          "end": 9.68
-        },
-        {
-          "id": "w31",
           "text": "duyệt.",
-          "start": 9.68,
-          "end": 10
+          "start": 9.99,
+          "end": 10.61
         }
       ]
     },
     {
       "frame": 3,
       "path": "assets/voice/03.wav",
-      "duration_s": 12.24,
+      "duration_s": 13.16,
       "words": [
         {
           "id": "w0",
           "text": "Tổ",
           "start": 0.01,
-          "end": 0.24
+          "end": 0.28
         },
         {
           "id": "w1",
           "text": "chức",
-          "start": 0.24,
-          "end": 0.6
+          "start": 0.31,
+          "end": 0.59
         },
         {
           "id": "w2",
-          "text": "F",
-          "start": 0.6,
-          "end": 0.64
+          "text": "đo",
+          "start": 0.73,
+          "end": 0.91
         },
         {
           "id": "w3",
-          "text": "đo",
-          "start": 0.78,
-          "end": 0.96
+          "text": "automation",
+          "start": 0.91,
+          "end": 1.61
         },
         {
           "id": "w4",
-          "text": "automation",
-          "start": 0.96,
-          "end": 1.57
+          "text": "level",
+          "start": 1.61,
+          "end": 1.96
         },
         {
           "id": "w5",
-          "text": "level",
-          "start": 1.57,
-          "end": 1.87
+          "text": "trên",
+          "start": 1.96,
+          "end": 2.31
         },
         {
           "id": "w6",
-          "text": "trên",
-          "start": 1.87,
-          "end": 2.17
+          "text": "năm",
+          "start": 2.31,
+          "end": 2.52
         },
         {
           "id": "w7",
-          "text": "năm",
-          "start": 2.17,
-          "end": 2.35
+          "text": "mức,",
+          "start": 2.52,
+          "end": 3.03
         },
         {
           "id": "w8",
-          "text": "mức,",
-          "start": 2.35,
-          "end": 2.71
+          "text": "từ",
+          "start": 3.14,
+          "end": 3.35
         },
         {
           "id": "w9",
-          "text": "từ",
-          "start": 3.02,
-          "end": 3.06
-        },
-        {
-          "id": "w10",
           "text": "L1",
-          "start": 3.06,
-          "end": 3.48
-        },
-        {
-          "id": "w11",
-          "text": "hỗ",
-          "start": 3.48,
-          "end": 3.72
-        },
-        {
-          "id": "w12",
-          "text": "trợ",
-          "start": 3.75,
+          "start": 3.35,
           "end": 4.02
         },
         {
-          "id": "w13",
+          "id": "w10",
+          "text": "hỗ",
+          "start": 4.08,
+          "end": 4.25
+        },
+        {
+          "id": "w11",
+          "text": "trợ",
+          "start": 4.25,
+          "end": 4.48
+        },
+        {
+          "id": "w12",
           "text": "từng",
-          "start": 4.02,
-          "end": 4.38
+          "start": 4.57,
+          "end": 4.86
+        },
+        {
+          "id": "w13",
+          "text": "thao",
+          "start": 4.93,
+          "end": 5.06
         },
         {
           "id": "w14",
-          "text": "thao",
-          "start": 4.38,
-          "end": 4.62
+          "text": "tác,",
+          "start": 5.1,
+          "end": 5.54
         },
         {
           "id": "w15",
-          "text": "tác,",
-          "start": 4.62,
-          "end": 4.88
+          "text": "tới",
+          "start": 5.58,
+          "end": 5.95
         },
         {
           "id": "w16",
-          "text": "tới",
-          "start": 5.1,
-          "end": 5.23
+          "text": "L5",
+          "start": 5.95,
+          "end": 6.72
         },
         {
           "id": "w17",
-          "text": "L5",
-          "start": 5.23,
-          "end": 5.72
+          "text": "tự",
+          "start": 6.77,
+          "end": 6.93
         },
         {
           "id": "w18",
-          "text": "tự",
-          "start": 5.72,
-          "end": 6
+          "text": "vận",
+          "start": 6.93,
+          "end": 7.18
         },
         {
           "id": "w19",
-          "text": "vận",
-          "start": 6,
-          "end": 6.35
+          "text": "hành.",
+          "start": 7.19,
+          "end": 7.54
         },
         {
           "id": "w20",
-          "text": "hành.",
-          "start": 6.35,
-          "end": 7.04
+          "text": "Mục",
+          "start": 7.55,
+          "end": 7.85
         },
         {
           "id": "w21",
-          "text": "Mục",
-          "start": 7.05,
-          "end": 7.32
+          "text": "tiêu",
+          "start": 7.85,
+          "end": 8.13
         },
         {
           "id": "w22",
-          "text": "tiêu",
-          "start": 7.32,
-          "end": 7.6
+          "text": "kỳ",
+          "start": 8.21,
+          "end": 8.39
         },
         {
           "id": "w23",
-          "text": "kỳ",
-          "start": 7.6,
-          "end": 7.81
+          "text": "sau:",
+          "start": 8.39,
+          "end": 8.68
         },
         {
           "id": "w24",
-          "text": "sau:",
-          "start": 7.82,
-          "end": 8.08
+          "text": "thiết",
+          "start": 8.76,
+          "end": 9.11
         },
         {
           "id": "w25",
-          "text": "thiết",
-          "start": 8.08,
-          "end": 8.47
+          "text": "kế",
+          "start": 9.11,
+          "end": 9.36
         },
         {
           "id": "w26",
-          "text": "kế",
-          "start": 8.51,
-          "end": 8.71
+          "text": "đạt",
+          "start": 9.42,
+          "end": 9.845
         },
         {
           "id": "w27",
-          "text": "đạt",
-          "start": 8.71,
-          "end": 9.05
+          "text": "L3,",
+          "start": 9.845,
+          "end": 10.27
         },
         {
           "id": "w28",
-          "text": "L3,",
-          "start": 9.05,
-          "end": 9.481
+          "text": "coding",
+          "start": 10.27,
+          "end": 10.95
         },
         {
           "id": "w29",
-          "text": "coding",
-          "start": 9.481,
-          "end": 10.17
+          "text": "và",
+          "start": 10.95,
+          "end": 11.13
         },
         {
           "id": "w30",
-          "text": "và",
-          "start": 10.17,
-          "end": 10.34
+          "text": "testing",
+          "start": 11.13,
+          "end": 11.16
         },
         {
           "id": "w31",
-          "text": "testing",
-          "start": 10.34,
-          "end": 10.54
+          "text": "đạt",
+          "start": 11.69,
+          "end": 12.145
         },
         {
           "id": "w32",
-          "text": "đạt",
-          "start": 10.79,
-          "end": 11.09
-        },
-        {
-          "id": "w33",
           "text": "L4.",
-          "start": 11.09,
-          "end": 11.76
+          "start": 12.145,
+          "end": 12.6
         }
       ]
     },
@@ -3235,175 +3223,169 @@
     {
       "frame": 16,
       "path": "assets/voice/16.wav",
-      "duration_s": 10.06,
+      "duration_s": 9.98,
       "words": [
         {
           "id": "w0",
           "text": "Model",
-          "start": 0.23,
-          "end": 0.25
+          "start": 0.05,
+          "end": 0.4
         },
         {
           "id": "w1",
           "text": "đổi",
-          "start": 0.25,
-          "end": 0.54
+          "start": 0.4,
+          "end": 0.68
         },
         {
           "id": "w2",
           "text": "được",
-          "start": 0.54,
-          "end": 0.93
+          "start": 0.77,
+          "end": 1.11
         },
         {
           "id": "w3",
           "text": "trong",
-          "start": 0.93,
-          "end": 1.09
+          "start": 1.11,
+          "end": 1.36
         },
         {
           "id": "w4",
           "text": "một",
-          "start": 1.19,
-          "end": 1.43
+          "start": 1.36,
+          "end": 1.57
         },
         {
           "id": "w5",
           "text": "dòng",
-          "start": 1.43,
-          "end": 1.66
+          "start": 1.64,
+          "end": 1.86
         },
         {
           "id": "w6",
           "text": "cấu",
-          "start": 1.67,
-          "end": 1.91
+          "start": 1.86,
+          "end": 2.06
         },
         {
           "id": "w7",
           "text": "hình.",
-          "start": 1.91,
-          "end": 2.2
+          "start": 2.06,
+          "end": 2.49
         },
         {
           "id": "w8",
           "text": "Dữ",
-          "start": 2.33,
-          "end": 2.63
+          "start": 2.62,
+          "end": 2.82
         },
         {
           "id": "w9",
           "text": "liệu",
-          "start": 2.63,
-          "end": 3.07
+          "start": 2.85,
+          "end": 3.1
         },
         {
           "id": "w10",
           "text": "và",
-          "start": 3.07,
-          "end": 3.29
+          "start": 3.22,
+          "end": 3.41
         },
         {
           "id": "w11",
           "text": "dây",
-          "start": 3.29,
-          "end": 3.58
+          "start": 3.41,
+          "end": 3.74
         },
         {
           "id": "w12",
           "text": "nối",
-          "start": 3.58,
-          "end": 4
+          "start": 3.74,
+          "end": 4.1
         },
         {
           "id": "w13",
           "text": "thì",
-          "start": 4,
-          "end": 4.14
+          "start": 4.1,
+          "end": 4.24
         },
         {
           "id": "w14",
           "text": "không",
-          "start": 4.14,
-          "end": 4.35
+          "start": 4.38,
+          "end": 4.55
         },
         {
           "id": "w15",
           "text": "ai",
-          "start": 4.35,
-          "end": 4.42
+          "start": 4.55,
+          "end": 4.64
         },
         {
           "id": "w16",
           "text": "làm",
-          "start": 4.42,
-          "end": 4.54
+          "start": 4.64,
+          "end": 4.81
         },
         {
           "id": "w17",
           "text": "thay",
-          "start": 4.58,
-          "end": 4.7
+          "start": 4.86,
+          "end": 5
         },
         {
           "id": "w18",
           "text": "được.",
-          "start": 4.7,
-          "end": 5.01
+          "start": 5,
+          "end": 5.47
         },
         {
           "id": "w19",
           "text": "Đó",
-          "start": 5.03,
-          "end": 5.28
+          "start": 5.65,
+          "end": 5.66
         },
         {
           "id": "w20",
           "text": "là",
-          "start": 5.42,
-          "end": 5.46
+          "start": 5.66,
+          "end": 5.8
         },
         {
           "id": "w21",
           "text": "nơi",
-          "start": 5.46,
-          "end": 5.7
+          "start": 5.8,
+          "end": 5.98
         },
         {
           "id": "w22",
           "text": "tổ",
-          "start": 5.7,
-          "end": 5.93
+          "start": 5.98,
+          "end": 6.16
         },
         {
           "id": "w23",
           "text": "chức",
-          "start": 6.02,
-          "end": 6.27
+          "start": 6.16,
+          "end": 6.44
         },
         {
           "id": "w24",
-          "text": "F",
-          "start": 6.3,
-          "end": 6.386
+          "text": "nên",
+          "start": 6.44,
+          "end": 6.63
         },
         {
           "id": "w25",
-          "text": "nên",
-          "start": 6.386,
-          "end": 6.53
+          "text": "đầu",
+          "start": 6.63,
+          "end": 6.91
         },
         {
           "id": "w26",
-          "text": "đầu",
-          "start": 6.7,
-          "end": 6.97
-        },
-        {
-          "id": "w27",
           "text": "tư.",
-          "start": 6.97,
-          "end": 7.2
+          "start": 6.91,
+          "end": 7.11
         }
       ]
     }
@@ -3419,7 +3401,7 @@
     {
       "frame": 3,
       "file": "assets/sfx/click-soft.mp3",
-      "offset_s": 11.1,
+      "offset_s": 12.15,
       "duration_s": 0.37,
       "volume": 0.22
     },
@@ -3503,7 +3485,7 @@
     {
       "frame": 16,
       "file": "assets/sfx/chime.mp3",
-      "offset_s": 5.0,
+      "offset_s": 5.65,
       "duration_s": 2.5,
       "volume": 0.22
     }

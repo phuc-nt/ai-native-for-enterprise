@@ -1,6 +1,6 @@
 ---
 format: 1920x1080
-duration: 207.78s
+duration: 208.66s
 message: "Harness và LLM thì mua; tổ chức đầu tư vào kit và dữ liệu AI-ready — thứ bên ngoài không có."
 arc: concept-explainer with process
 audience: "Lãnh đạo phân bổ nguồn lực giữa các team AI của tổ chức, và team kit. Đã quen khái niệm automation level L1–L5, platform, harness."
@@ -63,7 +63,7 @@ narrativeRole: Mở bằng câu hỏi mà lãnh đạo đang cân nhắc, và tr
 keyMessage: Đạt L4 không đòi hỏi tự viết nền tảng agent.
 
 Adapt: bìa bất đối xứng, khối chữ lệch trái (~60% rộng), atmosphere bên phải; câu hỏi dựng theo nhịp lời, câu trả lời là payoff.
-Scene 1 (0.0–1.8s): panel chéo cobalt-tint trượt vào mép phải, lưới chấm 3×3 fade lên góc trên phải; accent line 60×4 vẽ ra, eyebrow "ĐỀ XUẤT CHIẾN LƯỢC · TỔ CHỨC F" fade lên; dòng h3 muted "Muốn AI tự làm tới mức" hiện ra (0.0).
+Scene 1 (0.0–1.8s): panel chéo cobalt-tint trượt vào mép phải, lưới chấm 3×3 fade lên góc trên phải; accent line 60×4 vẽ ra, eyebrow "ĐỀ XUẤT CHIẾN LƯỢC · TỔ CHỨC" fade lên; dòng h3 muted "Muốn AI tự làm tới mức" hiện ra (0.0).
 Scene 2 (1.8–5.3s): trên "L4" (1.8s) pill cobalt "L4" bật lên cuối dòng (scale 0.9→1, power3); trên "tự viết" (2.9s) dòng h2 "Có cần tự viết một nền tảng agent riêng?" hiện từng cụm, xong ở "không?" (4.6s).
 Scene 3 (5.3–7.8s): trên "trả lời" (5.8s) câu hỏi mờ xuống ~45%; trên "không cần" (6.6s) h1 "Không cần." hạ vào dưới câu hỏi (y 24→0, expo.out). Đứng yên tới hết khung.
 
@@ -71,7 +71,7 @@ Scene 3 (5.3–7.8s): trên "trả lời" (5.8s) câu hỏi mờ xuống ~45%; t
 
 - scene: Hai cột: MUA (Harness, LLM) và ĐẦU TƯ (Kit, Dữ liệu AI-ready); cuối cùng pill trạng thái "Đề xuất · chưa được duyệt"
 - voiceover: "Harness và LLM thì mua. Tổ chức đầu tư vào thứ bên ngoài không có: kit và dữ liệu, sẵn sàng cho AI. Đây là một đề xuất, chưa được duyệt."
-- duration: 11.04s
+- duration: 11.08s
 - transition_in: crossfade
 - status: animated
 - src: compositions/frames/02-luan-diem.html
@@ -89,15 +89,15 @@ narrativeRole: Nêu luận điểm chính một lần, rõ ràng, để phần s
 keyMessage: Mua cái thị trường có; đầu tư cái chỉ tổ chức có.
 
 Adapt: phẳng, không tilt 3D; hai cột bằng nhau, cột phải nặng hơn về thị giác.
-Scene 1 (0.0–2.7s): slide-header vào (eyebrow "LUẬN ĐIỂM", pill "02 / 16"); cột trái nhãn "MUA" (Space Grotesk 600, muted); thẻ "Harness" (0.0s) rồi thẻ "LLM" (1.2s) trượt lên, chữ muted; trên "mua" (2.1s) nhãn phụ "sẵn có trên thị trường" hiện dưới.
-Scene 2 (2.7–8.1s): cột phải nhãn "ĐẦU TƯ" (2.7s); dòng Inter "Thứ bên ngoài không có" (4.0s); thẻ "Kit" (5.6s) và thẻ "Dữ liệu AI-ready" (6.0s) vào với chữ gần-đen đậm; split-highlight cobalt bao cột phải vẽ ra ở "sẵn sàng cho AI" (7.1s); cột trái mờ về ~60%.
-Scene 3 (8.1–11.04s): trên "đề xuất" (8.6s) pill viền cobalt "Đề xuất · chưa được duyệt" fade vào góc dưới phải vùng nội dung (trên y 880). Đứng yên để đọc.
+Scene 1 (0.0–2.45s): slide-header vào (eyebrow "LUẬN ĐIỂM", pill "02 / 16"); cột trái nhãn "MUA" (Space Grotesk 600, muted); thẻ "Harness" (0.0s) rồi thẻ "LLM" (1.2s) trượt lên, chữ muted; trên "mua" (2.0s) nhãn phụ "sẵn có trên thị trường" hiện dưới.
+Scene 2 (2.45–8.3s): cột phải nhãn "ĐẦU TƯ" (2.45s); dòng Inter "Thứ bên ngoài không có" (3.65s); thẻ "Kit" (5.3s) và thẻ "Dữ liệu AI-ready" (5.6s) vào với chữ gần-đen đậm; split-highlight cobalt bao cột phải vẽ ra ở "sẵn sàng cho AI" (7.05s); cột trái mờ về ~60%.
+Scene 3 (8.3–11.08s): trên "đề xuất" (8.9s) pill viền cobalt "Đề xuất · chưa được duyệt" fade vào góc dưới phải vùng nội dung (trên y 880). Đứng yên để đọc.
 
 ## Frame 3 — Thang automation
 
 - scene: Cầu thang 5 bậc L1→L5, nhãn hai đầu; rồi hai cờ mục tiêu: thiết kế ở L3, coding và testing ở L4
 - voiceover: "Tổ chức đo automation level trên năm mức, từ L1 hỗ trợ từng thao tác, tới L5 tự vận hành. Mục tiêu kỳ sau: thiết kế đạt L3, coding và testing đạt L4."
-- duration: 12.24s
+- duration: 13.16s
 - transition_in: blur-crossfade
 - status: animated
 - src: compositions/frames/03-thang-automation.html
@@ -109,15 +109,15 @@ Scene 3 (8.1–11.04s): trên "đề xuất" (8.6s) pill viền cobalt "Đề xu
 - roles: 5 bậc = subject · cờ mục tiêu = payload · nhãn hai đầu = supporting · slide-header = chrome
 - cobalt: fill đặc của bậc L4
 - sfx: click-soft
-- sfx_at: 11.1
+- sfx_at: 12.15
 
 narrativeRole: Đặt thước đo chung mà cả video dựa vào.
 keyMessage: Mục tiêu là L3 cho thiết kế, L4 cho coding và testing.
 
 Adapt: không count-up số; "dữ liệu" là 5 bậc cao dần từ trái sang phải (bar-track tinted), nhãn Space Grotesk.
-Scene 1 (0.0–3.0s): slide-header (eyebrow "BỐI CẢNH", pill "03 / 16"), h2 "Automation level: năm mức" (1.0s); năm bậc tinted mọc lên từ đường nền, stagger 0.12s, bắt đầu ở "năm mức" (2.2s); nhãn L1…L5 Space Grotesk dưới chân bậc.
-Scene 2 (3.0–7.0s): trên "L1" (3.1s) nhãn Inter "hỗ trợ từng thao tác" hiện dưới bậc L1; trên "L5" (5.2s) nhãn "tự vận hành" hiện trên đỉnh bậc L5.
-Scene 3 (7.0–12.24s): trên "Mục tiêu kỳ sau" (7.0s) eyebrow nhỏ "MỤC TIÊU KỲ SAU" hiện; trên "L3" (9.1s) bậc L3 viền cobalt đậm + cờ "Thiết kế" cắm trên đỉnh; trên "L4" (11.1s) bậc L4 tô cobalt đặc + cờ "Coding · Testing". L1, L2, L5 mờ ~50%. Đứng yên.
+Scene 1 (0.0–3.2s): slide-header (eyebrow "BỐI CẢNH", pill "03 / 16"), h2 "Automation level: năm mức" (1.0s); năm bậc tinted mọc lên từ đường nền, stagger 0.12s, bắt đầu ở "năm mức" (2.3s); nhãn L1…L5 Space Grotesk dưới chân bậc.
+Scene 2 (3.2–7.4s): trên "L1" (3.35s) nhãn Inter "hỗ trợ từng thao tác" hiện dưới bậc L1; trên "L5" (5.95s) nhãn "tự vận hành" hiện trên đỉnh bậc L5.
+Scene 3 (7.4–13.16s): trên "Mục tiêu kỳ sau" (7.55s) eyebrow nhỏ "MỤC TIÊU KỲ SAU" hiện; trên "L3" (9.85s) bậc L3 viền cobalt đậm + cờ "Thiết kế" cắm trên đỉnh; trên "L4" (12.15s) bậc L4 tô cobalt đặc + cờ "Coding · Testing". L1, L2, L5 mờ ~50%. Đứng yên.
 
 ## Frame 4 — Hai team
 
@@ -443,7 +443,7 @@ Scene 4 (9.8–12.2s): thẻ 4 (9.8s): "Dựng thử LLM gateway" (11.1s). Đứ
 
 - scene: Bìa chốt: "Model đổi được trong một dòng cấu hình" nhỏ, "Dữ liệu và dây nối thì không ai làm thay được" lớn, rồi "Đó là nơi tổ chức nên đầu tư"; vòng tròn đồng tâm cobalt-tint
 - voiceover: "Model đổi được trong một dòng cấu hình. Dữ liệu và dây nối thì không ai làm thay được. Đó là nơi tổ chức nên đầu tư."
-- duration: 10.06s
+- duration: 9.98s
 - transition_in: blur-crossfade
 - status: animated
 - src: compositions/frames/16-chot.html
@@ -456,12 +456,12 @@ Scene 4 (9.8–12.2s): thẻ 4 (9.8s): "Dựng thử LLM gateway" (11.1s). Đứ
 - hero_text: "Dữ liệu và dây nối thì không ai làm thay được. Đó là nơi tổ chức nên đầu tư."
 - cobalt: accent line 60×4 trên dòng "Đó là nơi tổ chức nên đầu tư"
 - sfx: chime
-- sfx_at: 5.0
+- sfx_at: 5.65
 
 narrativeRole: Đóng lại bằng một tương phản dễ nhớ.
 keyMessage: Model thay được; dữ liệu và dây nối thì không.
 
 Adapt: căn giữa trái, ba dòng; vòng đồng tâm cobalt-tint mảnh ở mép phải, vẽ ra chậm một lần rồi đứng yên. Không slide-header, không pill đếm; thanh tiến độ đầy 16/16.
-Scene 1 (0.0–2.3s): vòng đồng tâm vẽ ra (0.0–1.2s); dòng h3 muted "Model đổi được trong một dòng cấu hình." hiện ở 0.2s.
-Scene 2 (2.3–5.0s): h1 "Dữ liệu và dây nối" (2.3s), xuống dòng "thì không ai làm thay được." (4.0s); dòng model mờ ~45%.
-Scene 3 (5.0–10.06s): accent line cobalt vẽ ra (5.0s), dòng h2 "Đó là nơi tổ chức nên đầu tư." hiện (5.5s). Đứng yên tới hết (khoảng lặng cuối 2.5s).
+Scene 1 (0.0–2.6s): vòng đồng tâm vẽ ra (0.0–1.2s); dòng h3 muted "Model đổi được trong một dòng cấu hình." hiện ở 0.2s.
+Scene 2 (2.6–5.6s): h1 "Dữ liệu và dây nối" (2.6s), xuống dòng "thì không ai làm thay được." (4.1s); dòng model mờ ~45%.
+Scene 3 (5.6–9.98s): accent line cobalt vẽ ra (5.6s), dòng h2 "Đó là nơi tổ chức nên đầu tư." hiện (5.8s). Đứng yên tới hết (khoảng lặng cuối 2.5s).

@@ -1,5 +1,5 @@
 {
-  "total_duration_s": 207.78,
+  "total_duration_s": 208.66,
   "width": 1920,
   "height": 1080,
   "groups": [
@@ -178,3818 +178,3800 @@
       "id": "caption-group-3",
       "frame": 2,
       "start": 7.81,
-      "end": 10.51,
+      "end": 10.26,
       "text": "Harness và LLM thì mua.",
       "words": [
         {
           "id": "caption-word-3-0",
           "text": "Harness",
           "start": 7.81,
-          "end": 8.65
+          "end": 8.56
         },
         {
           "id": "caption-word-3-1",
           "text": "và",
-          "start": 8.66,
-          "end": 9.03
+          "start": 8.67,
+          "end": 8.96
         },
         {
           "id": "caption-word-3-2",
           "text": "LLM",
-          "start": 9.03,
-          "end": 9.39
+          "start": 8.96,
+          "end": 9.29
         },
         {
           "id": "caption-word-3-3",
           "text": "thì",
-          "start": 9.39,
-          "end": 9.89
+          "start": 9.29,
+          "end": 9.76
         },
         {
           "id": "caption-word-3-4",
           "text": "mua.",
-          "start": 9.89,
-          "end": 10.46
+          "start": 9.76,
+          "end": 10.26
         }
       ]
     },
     {
       "id": "caption-group-4",
       "frame": 2,
-      "start": 10.51,
-      "end": 13.4,
+      "start": 10.26,
+      "end": 12.96,
       "text": "Tổ chức đầu tư vào thứ bên ngoài không có:",
       "words": [
         {
           "id": "caption-word-4-0",
           "text": "Tổ",
-          "start": 10.51,
-          "end": 10.67
+          "start": 10.26,
+          "end": 10.47
         },
         {
           "id": "caption-word-4-1",
           "text": "chức",
-          "start": 10.67,
-          "end": 11
+          "start": 10.47,
+          "end": 10.78
         },
         {
           "id": "caption-word-4-2",
-          "text": "F",
-          "start": 11,
-          "end": 11.05
+          "text": "đầu",
+          "start": 10.78,
+          "end": 11.1
         },
         {
           "id": "caption-word-4-3",
-          "text": "đầu",
-          "start": 11.05,
-          "end": 11.38
+          "text": "tư",
+          "start": 11.1,
+          "end": 11.25
         },
         {
           "id": "caption-word-4-4",
-          "text": "tư",
-          "start": 11.38,
-          "end": 11.49
+          "text": "vào",
+          "start": 11.25,
+          "end": 11.39
         },
         {
           "id": "caption-word-4-5",
-          "text": "vào",
-          "start": 11.6,
-          "end": 11.76
+          "text": "thứ",
+          "start": 11.46,
+          "end": 11.73
         },
         {
           "id": "caption-word-4-6",
-          "text": "thứ",
-          "start": 11.76,
-          "end": 12.04
+          "text": "bên",
+          "start": 11.73,
+          "end": 11.94
         },
         {
           "id": "caption-word-4-7",
-          "text": "bên",
-          "start": 12.04,
+          "text": "ngoài",
+          "start": 11.94,
           "end": 12.26
         },
         {
           "id": "caption-word-4-8",
-          "text": "ngoài",
+          "text": "không",
           "start": 12.26,
           "end": 12.58
         },
         {
           "id": "caption-word-4-9",
-          "text": "không",
-          "start": 12.58,
-          "end": 12.91
-        },
-        {
-          "id": "caption-word-4-10",
           "text": "có:",
-          "start": 12.91,
-          "end": 13.3
+          "start": 12.58,
+          "end": 12.84
         }
       ]
     },
     {
       "id": "caption-group-5",
       "frame": 2,
-      "start": 13.4,
-      "end": 15.93,
+      "start": 13.09,
+      "end": 16.06,
       "text": "kit và dữ liệu, sẵn sàng cho AI.",
       "words": [
         {
           "id": "caption-word-5-0",
           "text": "kit",
-          "start": 13.4,
-          "end": 13.51
+          "start": 13.09,
+          "end": 13.12
         },
         {
           "id": "caption-word-5-1",
           "text": "và",
-          "start": 13.51,
-          "end": 13.54
+          "start": 13.14,
+          "end": 13.42
         },
         {
           "id": "caption-word-5-2",
           "text": "dữ",
-          "start": 13.8,
-          "end": 14.07
+          "start": 13.42,
+          "end": 13.81
         },
         {
           "id": "caption-word-5-3",
           "text": "liệu,",
-          "start": 14.08,
-          "end": 14.36
+          "start": 13.81,
+          "end": 14.39
         },
         {
           "id": "caption-word-5-4",
           "text": "sẵn",
-          "start": 14.54,
-          "end": 14.93
+          "start": 14.39,
+          "end": 14.86
         },
         {
           "id": "caption-word-5-5",
           "text": "sàng",
-          "start": 14.93,
+          "start": 14.86,
           "end": 15.35
         },
         {
           "id": "caption-word-5-6",
           "text": "cho",
-          "start": 15.35,
-          "end": 15.4
+          "start": 15.48,
+          "end": 15.64
         },
         {
           "id": "caption-word-5-7",
           "text": "AI.",
-          "start": 15.59,
-          "end": 15.92
+          "start": 15.64,
+          "end": 16.06
         }
       ]
     },
     {
       "id": "caption-group-6",
       "frame": 2,
-      "start": 15.93,
-      "end": 17.92,
+      "start": 16.06,
+      "end": 18.53,
       "text": "Đây là một đề xuất, chưa được duyệt.",
       "words": [
         {
           "id": "caption-word-6-0",
           "text": "Đây",
-          "start": 15.93,
-          "end": 16.12
+          "start": 16.06,
+          "end": 16.31
         },
         {
           "id": "caption-word-6-1",
           "text": "là",
-          "start": 16.12,
-          "end": 16.24
+          "start": 16.31,
+          "end": 16.43
         },
         {
           "id": "caption-word-6-2",
           "text": "một",
-          "start": 16.24,
-          "end": 16.44
+          "start": 16.49,
+          "end": 16.64
         },
         {
           "id": "caption-word-6-3",
           "text": "đề",
-          "start": 16.44,
-          "end": 16.63
+          "start": 16.74,
+          "end": 16.95
         },
         {
           "id": "caption-word-6-4",
           "text": "xuất,",
-          "start": 16.72,
-          "end": 16.96
+          "start": 16.95,
+          "end": 17.19
         },
         {
           "id": "caption-word-6-5",
           "text": "chưa",
-          "start": 17.12,
-          "end": 17.16
+          "start": 17.29,
+          "end": 17.49
         },
         {
           "id": "caption-word-6-6",
           "text": "được",
-          "start": 17.16,
-          "end": 17.48
+          "start": 17.49,
+          "end": 17.71
         },
         {
           "id": "caption-word-6-7",
           "text": "duyệt.",
-          "start": 17.48,
-          "end": 17.8
+          "start": 17.79,
+          "end": 18.41
         }
       ]
     },
     {
       "id": "caption-group-7",
       "frame": 3,
-      "start": 18.85,
-      "end": 21.67,
+      "start": 18.89,
+      "end": 22.02,
       "text": "Tổ chức đo automation level trên năm mức,",
       "words": [
         {
           "id": "caption-word-7-0",
           "text": "Tổ",
-          "start": 18.85,
-          "end": 19.08
+          "start": 18.89,
+          "end": 19.16
         },
         {
           "id": "caption-word-7-1",
           "text": "chức",
-          "start": 19.08,
-          "end": 19.44
+          "start": 19.19,
+          "end": 19.47
         },
         {
           "id": "caption-word-7-2",
-          "text": "F",
-          "start": 19.44,
-          "end": 19.48
+          "text": "đo",
+          "start": 19.61,
+          "end": 19.79
         },
         {
           "id": "caption-word-7-3",
-          "text": "đo",
-          "start": 19.62,
-          "end": 19.8
+          "text": "automation",
+          "start": 19.79,
+          "end": 20.49
         },
         {
           "id": "caption-word-7-4",
-          "text": "automation",
-          "start": 19.8,
-          "end": 20.41
+          "text": "level",
+          "start": 20.49,
+          "end": 20.84
         },
         {
           "id": "caption-word-7-5",
-          "text": "level",
-          "start": 20.41,
-          "end": 20.71
-        },
-        {
-          "id": "caption-word-7-6",
           "text": "trên",
-          "start": 20.71,
-          "end": 21.01
-        },
-        {
-          "id": "caption-word-7-7",
-          "text": "năm",
-          "start": 21.01,
+          "start": 20.84,
           "end": 21.19
         },
         {
-          "id": "caption-word-7-8",
-          "text": "mức,",
+          "id": "caption-word-7-6",
+          "text": "năm",
           "start": 21.19,
-          "end": 21.55
+          "end": 21.4
+        },
+        {
+          "id": "caption-word-7-7",
+          "text": "mức,",
+          "start": 21.4,
+          "end": 21.91
         }
       ]
     },
     {
       "id": "caption-group-8",
       "frame": 3,
-      "start": 21.86,
-      "end": 23.84,
+      "start": 22.02,
+      "end": 24.46,
       "text": "từ L1 hỗ trợ từng thao tác,",
       "words": [
         {
           "id": "caption-word-8-0",
           "text": "từ",
-          "start": 21.86,
-          "end": 21.9
+          "start": 22.02,
+          "end": 22.23
         },
         {
           "id": "caption-word-8-1",
           "text": "L1",
-          "start": 21.9,
-          "end": 22.32
+          "start": 22.23,
+          "end": 22.9
         },
         {
           "id": "caption-word-8-2",
           "text": "hỗ",
-          "start": 22.32,
-          "end": 22.56
+          "start": 22.96,
+          "end": 23.13
         },
         {
           "id": "caption-word-8-3",
           "text": "trợ",
-          "start": 22.59,
-          "end": 22.86
+          "start": 23.13,
+          "end": 23.36
         },
         {
           "id": "caption-word-8-4",
           "text": "từng",
-          "start": 22.86,
-          "end": 23.22
+          "start": 23.45,
+          "end": 23.74
         },
         {
           "id": "caption-word-8-5",
           "text": "thao",
-          "start": 23.22,
-          "end": 23.46
+          "start": 23.81,
+          "end": 23.94
         },
         {
           "id": "caption-word-8-6",
           "text": "tác,",
-          "start": 23.46,
-          "end": 23.72
+          "start": 23.98,
+          "end": 24.42
         }
       ]
     },
     {
       "id": "caption-group-9",
       "frame": 3,
-      "start": 23.94,
-      "end": 25.89,
+      "start": 24.46,
+      "end": 26.43,
       "text": "tới L5 tự vận hành.",
       "words": [
         {
           "id": "caption-word-9-0",
           "text": "tới",
-          "start": 23.94,
-          "end": 24.07
+          "start": 24.46,
+          "end": 24.83
         },
         {
           "id": "caption-word-9-1",
           "text": "L5",
-          "start": 24.07,
-          "end": 24.56
+          "start": 24.83,
+          "end": 25.6
         },
         {
           "id": "caption-word-9-2",
           "text": "tự",
-          "start": 24.56,
-          "end": 24.84
+          "start": 25.65,
+          "end": 25.81
         },
         {
           "id": "caption-word-9-3",
           "text": "vận",
-          "start": 24.84,
-          "end": 25.19
+          "start": 25.81,
+          "end": 26.06
         },
         {
           "id": "caption-word-9-4",
           "text": "hành.",
-          "start": 25.19,
-          "end": 25.88
+          "start": 26.07,
+          "end": 26.42
         }
       ]
     },
     {
       "id": "caption-group-10",
       "frame": 3,
-      "start": 25.89,
-      "end": 28.321,
+      "start": 26.43,
+      "end": 29.15,
       "text": "Mục tiêu kỳ sau: thiết kế đạt L3,",
       "words": [
         {
           "id": "caption-word-10-0",
           "text": "Mục",
-          "start": 25.89,
-          "end": 26.16
+          "start": 26.43,
+          "end": 26.73
         },
         {
           "id": "caption-word-10-1",
           "text": "tiêu",
-          "start": 26.16,
-          "end": 26.44
+          "start": 26.73,
+          "end": 27.01
         },
         {
           "id": "caption-word-10-2",
           "text": "kỳ",
-          "start": 26.44,
-          "end": 26.65
+          "start": 27.09,
+          "end": 27.27
         },
         {
           "id": "caption-word-10-3",
           "text": "sau:",
-          "start": 26.66,
-          "end": 26.92
+          "start": 27.27,
+          "end": 27.56
         },
         {
           "id": "caption-word-10-4",
           "text": "thiết",
-          "start": 26.92,
-          "end": 27.31
+          "start": 27.64,
+          "end": 27.99
         },
         {
           "id": "caption-word-10-5",
           "text": "kế",
-          "start": 27.35,
-          "end": 27.55
+          "start": 27.99,
+          "end": 28.24
         },
         {
           "id": "caption-word-10-6",
           "text": "đạt",
-          "start": 27.55,
-          "end": 27.89
+          "start": 28.3,
+          "end": 28.725
         },
         {
           "id": "caption-word-10-7",
           "text": "L3,",
-          "start": 27.89,
-          "end": 28.321
+          "start": 28.725,
+          "end": 29.15
         }
       ]
     },
     {
       "id": "caption-group-11",
       "frame": 3,
-      "start": 28.321,
-      "end": 30.72,
+      "start": 29.15,
+      "end": 31.6,
       "text": "coding và testing đạt L4.",
       "words": [
         {
           "id": "caption-word-11-0",
           "text": "coding",
-          "start": 28.321,
-          "end": 29.01
+          "start": 29.15,
+          "end": 29.83
         },
         {
           "id": "caption-word-11-1",
           "text": "và",
-          "start": 29.01,
-          "end": 29.18
+          "start": 29.83,
+          "end": 30.01
         },
         {
           "id": "caption-word-11-2",
           "text": "testing",
-          "start": 29.18,
-          "end": 29.38
+          "start": 30.01,
+          "end": 30.04
         },
         {
           "id": "caption-word-11-3",
           "text": "đạt",
-          "start": 29.63,
-          "end": 29.93
+          "start": 30.57,
+          "end": 31.025
         },
         {
           "id": "caption-word-11-4",
           "text": "L4.",
-          "start": 29.93,
-          "end": 30.6
+          "start": 31.025,
+          "end": 31.48
         }
       ]
     },
     {
       "id": "caption-group-12",
       "frame": 4,
-      "start": 31.09,
-      "end": 33.03,
+      "start": 32.05,
+      "end": 33.99,
       "text": "Hai team được giao việc.",
       "words": [
         {
           "id": "caption-word-12-0",
           "text": "Hai",
-          "start": 31.09,
-          "end": 31.1
+          "start": 32.05,
+          "end": 32.06
         },
         {
           "id": "caption-word-12-1",
           "text": "team",
-          "start": 31.32,
-          "end": 31.68
+          "start": 32.28,
+          "end": 32.64
         },
         {
           "id": "caption-word-12-2",
           "text": "được",
-          "start": 31.68,
-          "end": 32.17
+          "start": 32.64,
+          "end": 33.13
         },
         {
           "id": "caption-word-12-3",
           "text": "giao",
-          "start": 32.17,
-          "end": 32.4
+          "start": 33.13,
+          "end": 33.36
         },
         {
           "id": "caption-word-12-4",
           "text": "việc.",
-          "start": 32.4,
-          "end": 32.94
+          "start": 33.36,
+          "end": 33.9
         }
       ]
     },
     {
       "id": "caption-group-13",
       "frame": 4,
-      "start": 33.03,
-      "end": 36.5,
+      "start": 33.99,
+      "end": 37.46,
       "text": "Team platform xây một nền tảng AI tập trung trên cloud.",
       "words": [
         {
           "id": "caption-word-13-0",
           "text": "Team",
-          "start": 33.03,
-          "end": 33.25
+          "start": 33.99,
+          "end": 34.21
         },
         {
           "id": "caption-word-13-1",
           "text": "platform",
-          "start": 33.25,
-          "end": 34.02
+          "start": 34.21,
+          "end": 34.98
         },
         {
           "id": "caption-word-13-2",
           "text": "xây",
-          "start": 34.02,
-          "end": 34.23
+          "start": 34.98,
+          "end": 35.19
         },
         {
           "id": "caption-word-13-3",
           "text": "một",
-          "start": 34.23,
-          "end": 34.5
+          "start": 35.19,
+          "end": 35.46
         },
         {
           "id": "caption-word-13-4",
           "text": "nền",
-          "start": 34.5,
-          "end": 34.76
+          "start": 35.46,
+          "end": 35.72
         },
         {
           "id": "caption-word-13-5",
           "text": "tảng",
-          "start": 34.76,
-          "end": 35.07
+          "start": 35.72,
+          "end": 36.03
         },
         {
           "id": "caption-word-13-6",
           "text": "AI",
-          "start": 35.07,
-          "end": 35.17
+          "start": 36.03,
+          "end": 36.13
         },
         {
           "id": "caption-word-13-7",
           "text": "tập",
-          "start": 35.17,
-          "end": 35.34
+          "start": 36.13,
+          "end": 36.3
         },
         {
           "id": "caption-word-13-8",
           "text": "trung",
-          "start": 35.45,
-          "end": 35.65
+          "start": 36.41,
+          "end": 36.61
         },
         {
           "id": "caption-word-13-9",
           "text": "trên",
-          "start": 35.69,
-          "end": 35.96
+          "start": 36.65,
+          "end": 36.92
         },
         {
           "id": "caption-word-13-10",
           "text": "cloud.",
-          "start": 35.96,
-          "end": 36.5
+          "start": 36.92,
+          "end": 37.46
         }
       ]
     },
     {
       "id": "caption-group-14",
       "frame": 4,
-      "start": 36.5,
-      "end": 38.5,
+      "start": 37.46,
+      "end": 39.46,
       "text": "Team kit làm skill,",
       "words": [
         {
           "id": "caption-word-14-0",
           "text": "Team",
-          "start": 36.5,
-          "end": 36.87
+          "start": 37.46,
+          "end": 37.83
         },
         {
           "id": "caption-word-14-1",
           "text": "kit",
-          "start": 36.87,
-          "end": 37.34
+          "start": 37.83,
+          "end": 38.3
         },
         {
           "id": "caption-word-14-2",
           "text": "làm",
-          "start": 37.34,
-          "end": 37.72
+          "start": 38.3,
+          "end": 38.68
         },
         {
           "id": "caption-word-14-3",
           "text": "skill,",
-          "start": 37.72,
-          "end": 38.38
+          "start": 38.68,
+          "end": 39.34
         }
       ]
     },
     {
       "id": "caption-group-15",
       "frame": 4,
-      "start": 38.51,
-      "end": 40.99,
+      "start": 39.47,
+      "end": 41.95,
       "text": "workflow và connector cho các harness phổ",
       "words": [
         {
           "id": "caption-word-15-0",
           "text": "workflow",
-          "start": 38.51,
-          "end": 39.2
+          "start": 39.47,
+          "end": 40.16
         },
         {
           "id": "caption-word-15-1",
           "text": "và",
-          "start": 39.2,
-          "end": 39.21
+          "start": 40.16,
+          "end": 40.17
         },
         {
           "id": "caption-word-15-2",
           "text": "connector",
-          "start": 39.45,
-          "end": 39.9
+          "start": 40.41,
+          "end": 40.86
         },
         {
           "id": "caption-word-15-3",
           "text": "cho",
-          "start": 39.9,
-          "end": 40
+          "start": 40.86,
+          "end": 40.96
         },
         {
           "id": "caption-word-15-4",
           "text": "các",
-          "start": 40.07,
-          "end": 40.28
+          "start": 41.03,
+          "end": 41.24
         },
         {
           "id": "caption-word-15-5",
           "text": "harness",
-          "start": 40.3,
-          "end": 40.71
+          "start": 41.26,
+          "end": 41.67
         },
         {
           "id": "caption-word-15-6",
           "text": "phổ",
-          "start": 40.71,
-          "end": 40.99
+          "start": 41.67,
+          "end": 41.95
         }
       ]
     },
     {
       "id": "caption-group-16",
       "frame": 4,
-      "start": 40.99,
-      "end": 43.52,
+      "start": 41.95,
+      "end": 44.48,
       "text": "biến như Claude Code và Kiro.",
       "words": [
         {
           "id": "caption-word-16-0",
           "text": "biến",
-          "start": 40.99,
-          "end": 41.4
+          "start": 41.95,
+          "end": 42.36
         },
         {
           "id": "caption-word-16-1",
           "text": "như",
-          "start": 41.4,
-          "end": 41.53
+          "start": 42.36,
+          "end": 42.49
         },
         {
           "id": "caption-word-16-2",
           "text": "Claude",
-          "start": 41.73,
-          "end": 42.141
+          "start": 42.69,
+          "end": 43.101
         },
         {
           "id": "caption-word-16-3",
           "text": "Code",
-          "start": 42.141,
-          "end": 42.45
+          "start": 43.101,
+          "end": 43.41
         },
         {
           "id": "caption-word-16-4",
           "text": "và",
-          "start": 42.51,
-          "end": 42.65
+          "start": 43.47,
+          "end": 43.61
         },
         {
           "id": "caption-word-16-5",
           "text": "Kiro.",
-          "start": 42.85,
-          "end": 43.4
+          "start": 43.81,
+          "end": 44.36
         }
       ]
     },
     {
       "id": "caption-group-17",
       "frame": 5,
-      "start": 44.29,
-      "end": 46.63,
+      "start": 45.25,
+      "end": 47.59,
       "text": "Platform có bốn layer và mười ba feature.",
       "words": [
         {
           "id": "caption-word-17-0",
           "text": "Platform",
-          "start": 44.29,
-          "end": 44.62
+          "start": 45.25,
+          "end": 45.58
         },
         {
           "id": "caption-word-17-1",
           "text": "có",
-          "start": 44.62,
-          "end": 44.82
+          "start": 45.58,
+          "end": 45.78
         },
         {
           "id": "caption-word-17-2",
           "text": "bốn",
-          "start": 44.88,
-          "end": 45.04
+          "start": 45.84,
+          "end": 46
         },
         {
           "id": "caption-word-17-3",
           "text": "layer",
-          "start": 45.04,
-          "end": 45.4
+          "start": 46,
+          "end": 46.36
         },
         {
           "id": "caption-word-17-4",
           "text": "và",
-          "start": 45.4,
-          "end": 45.46
+          "start": 46.36,
+          "end": 46.42
         },
         {
           "id": "caption-word-17-5",
           "text": "mười",
-          "start": 45.65,
-          "end": 45.884
+          "start": 46.61,
+          "end": 46.844
         },
         {
           "id": "caption-word-17-6",
           "text": "ba",
-          "start": 45.884,
-          "end": 46.04
+          "start": 46.844,
+          "end": 47
         },
         {
           "id": "caption-word-17-7",
           "text": "feature.",
-          "start": 46.04,
-          "end": 46.63
+          "start": 47,
+          "end": 47.59
         }
       ]
     },
     {
       "id": "caption-group-18",
       "frame": 5,
-      "start": 46.63,
-      "end": 48.51,
+      "start": 47.59,
+      "end": 49.47,
       "text": "Tài liệu của nó kết luận:",
       "words": [
         {
           "id": "caption-word-18-0",
           "text": "Tài",
-          "start": 46.63,
-          "end": 47
+          "start": 47.59,
+          "end": 47.96
         },
         {
           "id": "caption-word-18-1",
           "text": "liệu",
-          "start": 47,
-          "end": 47.3
+          "start": 47.96,
+          "end": 48.26
         },
         {
           "id": "caption-word-18-2",
           "text": "của",
-          "start": 47.3,
-          "end": 47.55
+          "start": 48.26,
+          "end": 48.51
         },
         {
           "id": "caption-word-18-3",
           "text": "nó",
-          "start": 47.55,
-          "end": 47.63
+          "start": 48.51,
+          "end": 48.59
         },
         {
           "id": "caption-word-18-4",
           "text": "kết",
-          "start": 47.7,
-          "end": 47.95
+          "start": 48.66,
+          "end": 48.91
         },
         {
           "id": "caption-word-18-5",
           "text": "luận:",
-          "start": 47.95,
-          "end": 48.39
+          "start": 48.91,
+          "end": 49.35
         }
       ]
     },
     {
       "id": "caption-group-19",
       "frame": 5,
-      "start": 48.6,
-      "end": 50.8,
+      "start": 49.56,
+      "end": 51.76,
       "text": "IDE harness chỉ là trợ lý cá nhân,",
       "words": [
         {
           "id": "caption-word-19-0",
           "text": "IDE",
-          "start": 48.6,
-          "end": 48.78
+          "start": 49.56,
+          "end": 49.74
         },
         {
           "id": "caption-word-19-1",
           "text": "harness",
-          "start": 48.78,
-          "end": 49.5
+          "start": 49.74,
+          "end": 50.46
         },
         {
           "id": "caption-word-19-2",
           "text": "chỉ",
-          "start": 49.5,
-          "end": 49.59
+          "start": 50.46,
+          "end": 50.55
         },
         {
           "id": "caption-word-19-3",
           "text": "là",
-          "start": 49.76,
-          "end": 49.91
+          "start": 50.72,
+          "end": 50.87
         },
         {
           "id": "caption-word-19-4",
           "text": "trợ",
-          "start": 49.91,
-          "end": 50.16
+          "start": 50.87,
+          "end": 51.12
         },
         {
           "id": "caption-word-19-5",
           "text": "lý",
-          "start": 50.21,
-          "end": 50.31
+          "start": 51.17,
+          "end": 51.27
         },
         {
           "id": "caption-word-19-6",
           "text": "cá",
-          "start": 50.31,
-          "end": 50.46
+          "start": 51.27,
+          "end": 51.42
         },
         {
           "id": "caption-word-19-7",
           "text": "nhân,",
-          "start": 50.46,
-          "end": 50.8
+          "start": 51.42,
+          "end": 51.76
         }
       ]
     },
     {
       "id": "caption-group-20",
       "frame": 5,
-      "start": 50.8,
-      "end": 53.5,
+      "start": 51.76,
+      "end": 54.46,
       "text": "còn platform mới là dây chuyền sản xuất phần mềm.",
       "words": [
         {
           "id": "caption-word-20-0",
           "text": "còn",
-          "start": 50.8,
-          "end": 51.05
+          "start": 51.76,
+          "end": 52.01
         },
         {
           "id": "caption-word-20-1",
           "text": "platform",
-          "start": 51.05,
-          "end": 51.35
+          "start": 52.01,
+          "end": 52.31
         },
         {
           "id": "caption-word-20-2",
           "text": "mới",
-          "start": 51.35,
-          "end": 51.58
+          "start": 52.31,
+          "end": 52.54
         },
         {
           "id": "caption-word-20-3",
           "text": "là",
-          "start": 51.58,
-          "end": 51.71
+          "start": 52.54,
+          "end": 52.67
         },
         {
           "id": "caption-word-20-4",
           "text": "dây",
-          "start": 51.71,
-          "end": 51.902
+          "start": 52.67,
+          "end": 52.862
         },
         {
           "id": "caption-word-20-5",
           "text": "chuyền",
-          "start": 51.902,
-          "end": 52.21
+          "start": 52.862,
+          "end": 53.17
         },
         {
           "id": "caption-word-20-6",
           "text": "sản",
-          "start": 52.33,
-          "end": 52.51
+          "start": 53.29,
+          "end": 53.47
         },
         {
           "id": "caption-word-20-7",
           "text": "xuất",
-          "start": 52.51,
-          "end": 52.78
+          "start": 53.47,
+          "end": 53.74
         },
         {
           "id": "caption-word-20-8",
           "text": "phần",
-          "start": 52.78,
-          "end": 53.03
+          "start": 53.74,
+          "end": 53.99
         },
         {
           "id": "caption-word-20-9",
           "text": "mềm.",
-          "start": 53.09,
-          "end": 53.38
+          "start": 54.05,
+          "end": 54.34
         }
       ]
     },
     {
       "id": "caption-group-21",
       "frame": 6,
-      "start": 54.05,
-      "end": 57.06,
+      "start": 55.01,
+      "end": 58.02,
       "text": "Nhưng một agent làm việc thật luôn gồm bốn phần:",
       "words": [
         {
           "id": "caption-word-21-0",
           "text": "Nhưng",
-          "start": 54.05,
-          "end": 54.37
+          "start": 55.01,
+          "end": 55.33
         },
         {
           "id": "caption-word-21-1",
           "text": "một",
-          "start": 54.37,
-          "end": 54.62
+          "start": 55.33,
+          "end": 55.58
         },
         {
           "id": "caption-word-21-2",
           "text": "agent",
-          "start": 54.71,
-          "end": 54.93
+          "start": 55.67,
+          "end": 55.89
         },
         {
           "id": "caption-word-21-3",
           "text": "làm",
-          "start": 54.93,
-          "end": 55.15
+          "start": 55.89,
+          "end": 56.11
         },
         {
           "id": "caption-word-21-4",
           "text": "việc",
-          "start": 55.15,
-          "end": 55.41
+          "start": 56.11,
+          "end": 56.37
         },
         {
           "id": "caption-word-21-5",
           "text": "thật",
-          "start": 55.52,
-          "end": 55.62
+          "start": 56.48,
+          "end": 56.58
         },
         {
           "id": "caption-word-21-6",
           "text": "luôn",
-          "start": 55.87,
-          "end": 56.09
+          "start": 56.83,
+          "end": 57.05
         },
         {
           "id": "caption-word-21-7",
           "text": "gồm",
-          "start": 56.09,
-          "end": 56.33
+          "start": 57.05,
+          "end": 57.29
         },
         {
           "id": "caption-word-21-8",
           "text": "bốn",
-          "start": 56.4,
-          "end": 56.59
+          "start": 57.36,
+          "end": 57.55
         },
         {
           "id": "caption-word-21-9",
           "text": "phần:",
-          "start": 56.7,
-          "end": 56.94
+          "start": 57.66,
+          "end": 57.9
         }
       ]
     },
     {
       "id": "caption-group-22",
       "frame": 6,
-      "start": 57.08,
-      "end": 59.83,
+      "start": 58.04,
+      "end": 60.79,
       "text": "harness, LLM, kit và hạ tầng.",
       "words": [
         {
           "id": "caption-word-22-0",
           "text": "harness,",
-          "start": 57.08,
-          "end": 57.62
+          "start": 58.04,
+          "end": 58.58
         },
         {
           "id": "caption-word-22-1",
           "text": "LLM,",
-          "start": 57.62,
-          "end": 58.45
+          "start": 58.58,
+          "end": 59.41
         },
         {
           "id": "caption-word-22-2",
           "text": "kit",
-          "start": 58.57,
-          "end": 58.71
+          "start": 59.53,
+          "end": 59.67
         },
         {
           "id": "caption-word-22-3",
           "text": "và",
-          "start": 58.8,
-          "end": 58.93
+          "start": 59.76,
+          "end": 59.89
         },
         {
           "id": "caption-word-22-4",
           "text": "hạ",
-          "start": 58.93,
-          "end": 59.21
+          "start": 59.89,
+          "end": 60.17
         },
         {
           "id": "caption-word-22-5",
           "text": "tầng.",
-          "start": 59.22,
-          "end": 59.71
+          "start": 60.18,
+          "end": 60.67
         }
       ]
     },
     {
       "id": "caption-group-23",
       "frame": 6,
-      "start": 60.16,
-      "end": 62.84,
+      "start": 61.12,
+      "end": 63.8,
       "text": "Platform, xét cho cùng, cũng là bốn phần này.",
       "words": [
         {
           "id": "caption-word-23-0",
           "text": "Platform,",
-          "start": 60.16,
-          "end": 60.46
+          "start": 61.12,
+          "end": 61.42
         },
         {
           "id": "caption-word-23-1",
           "text": "xét",
-          "start": 60.46,
-          "end": 60.66
+          "start": 61.42,
+          "end": 61.62
         },
         {
           "id": "caption-word-23-2",
           "text": "cho",
-          "start": 60.66,
-          "end": 60.86
+          "start": 61.62,
+          "end": 61.82
         },
         {
           "id": "caption-word-23-3",
           "text": "cùng,",
-          "start": 60.86,
-          "end": 61.14
+          "start": 61.82,
+          "end": 62.1
         },
         {
           "id": "caption-word-23-4",
           "text": "cũng",
-          "start": 61.2,
-          "end": 61.5
+          "start": 62.16,
+          "end": 62.46
         },
         {
           "id": "caption-word-23-5",
           "text": "là",
-          "start": 61.5,
-          "end": 61.75
+          "start": 62.46,
+          "end": 62.71
         },
         {
           "id": "caption-word-23-6",
           "text": "bốn",
-          "start": 61.75,
-          "end": 62.02
+          "start": 62.71,
+          "end": 62.98
         },
         {
           "id": "caption-word-23-7",
           "text": "phần",
-          "start": 62.06,
-          "end": 62.46
+          "start": 63.02,
+          "end": 63.42
         },
         {
           "id": "caption-word-23-8",
           "text": "này.",
-          "start": 62.46,
-          "end": 62.84
+          "start": 63.42,
+          "end": 63.8
         }
       ]
     },
     {
       "id": "caption-group-24",
       "frame": 6,
-      "start": 62.84,
-      "end": 65.4,
+      "start": 63.8,
+      "end": 66.36,
       "text": "Chỉ khác ở chỗ tự viết lại harness.",
       "words": [
         {
           "id": "caption-word-24-0",
           "text": "Chỉ",
-          "start": 62.84,
-          "end": 63.15
+          "start": 63.8,
+          "end": 64.11
         },
         {
           "id": "caption-word-24-1",
           "text": "khác",
-          "start": 63.15,
-          "end": 63.4
+          "start": 64.11,
+          "end": 64.36
         },
         {
           "id": "caption-word-24-2",
           "text": "ở",
-          "start": 63.4,
-          "end": 63.5
+          "start": 64.36,
+          "end": 64.46
         },
         {
           "id": "caption-word-24-3",
           "text": "chỗ",
-          "start": 63.55,
-          "end": 63.92
+          "start": 64.51,
+          "end": 64.88
         },
         {
           "id": "caption-word-24-4",
           "text": "tự",
-          "start": 63.92,
-          "end": 64.16
+          "start": 64.88,
+          "end": 65.12
         },
         {
           "id": "caption-word-24-5",
           "text": "viết",
-          "start": 64.16,
-          "end": 64.34
+          "start": 65.12,
+          "end": 65.3
         },
         {
           "id": "caption-word-24-6",
           "text": "lại",
-          "start": 64.68,
-          "end": 64.82
+          "start": 65.64,
+          "end": 65.78
         },
         {
           "id": "caption-word-24-7",
           "text": "harness.",
-          "start": 64.82,
-          "end": 65.28
+          "start": 65.78,
+          "end": 66.24
         }
       ]
     },
     {
       "id": "caption-group-25",
       "frame": 7,
-      "start": 66.17,
-      "end": 68.28,
+      "start": 67.13,
+      "end": 69.24,
       "text": "Vì vậy, đề xuất có ba ý.",
       "words": [
         {
           "id": "caption-word-25-0",
           "text": "Vì",
-          "start": 66.17,
-          "end": 66.35
+          "start": 67.13,
+          "end": 67.31
         },
         {
           "id": "caption-word-25-1",
           "text": "vậy,",
-          "start": 66.43,
-          "end": 66.79
+          "start": 67.39,
+          "end": 67.75
         },
         {
           "id": "caption-word-25-2",
           "text": "đề",
-          "start": 66.94,
-          "end": 67.2
+          "start": 67.9,
+          "end": 68.16
         },
         {
           "id": "caption-word-25-3",
           "text": "xuất",
-          "start": 67.2,
-          "end": 67.59
+          "start": 68.16,
+          "end": 68.55
         },
         {
           "id": "caption-word-25-4",
           "text": "có",
-          "start": 67.59,
-          "end": 67.79
+          "start": 68.55,
+          "end": 68.75
         },
         {
           "id": "caption-word-25-5",
           "text": "ba",
-          "start": 67.79,
-          "end": 67.99
+          "start": 68.75,
+          "end": 68.95
         },
         {
           "id": "caption-word-25-6",
           "text": "ý.",
-          "start": 67.99,
-          "end": 68.16
+          "start": 68.95,
+          "end": 69.12
         }
       ]
     },
     {
       "id": "caption-group-26",
       "frame": 7,
-      "start": 68.43,
-      "end": 71.28,
+      "start": 69.39,
+      "end": 72.24,
       "text": "Một, harness và LLM thì mua.",
       "words": [
         {
           "id": "caption-word-26-0",
           "text": "Một,",
-          "start": 68.43,
-          "end": 69.16
+          "start": 69.39,
+          "end": 70.12
         },
         {
           "id": "caption-word-26-1",
           "text": "harness",
-          "start": 69.16,
-          "end": 69.85
+          "start": 70.12,
+          "end": 70.81
         },
         {
           "id": "caption-word-26-2",
           "text": "và",
-          "start": 69.85,
-          "end": 70.09
+          "start": 70.81,
+          "end": 71.05
         },
         {
           "id": "caption-word-26-3",
           "text": "LLM",
-          "start": 70.25,
-          "end": 70.43
+          "start": 71.21,
+          "end": 71.39
         },
         {
           "id": "caption-word-26-4",
           "text": "thì",
-          "start": 70.71,
-          "end": 70.83
+          "start": 71.67,
+          "end": 71.79
         },
         {
           "id": "caption-word-26-5",
           "text": "mua.",
-          "start": 70.83,
-          "end": 71.16
+          "start": 71.79,
+          "end": 72.12
         }
       ]
     },
     {
       "id": "caption-group-27",
       "frame": 7,
-      "start": 71.43,
-      "end": 75.209,
+      "start": 72.39,
+      "end": 76.169,
       "text": "Hai, đầu tư vào kit và data source AI-ready.",
       "words": [
         {
           "id": "caption-word-27-0",
           "text": "Hai,",
-          "start": 71.43,
-          "end": 71.72
+          "start": 72.39,
+          "end": 72.68
         },
         {
           "id": "caption-word-27-1",
           "text": "đầu",
-          "start": 71.72,
-          "end": 72.29
+          "start": 72.68,
+          "end": 73.25
         },
         {
           "id": "caption-word-27-2",
           "text": "tư",
-          "start": 72.29,
-          "end": 72.57
+          "start": 73.25,
+          "end": 73.53
         },
         {
           "id": "caption-word-27-3",
           "text": "vào",
-          "start": 72.57,
-          "end": 72.95
+          "start": 73.53,
+          "end": 73.91
         },
         {
           "id": "caption-word-27-4",
           "text": "kit",
-          "start": 72.95,
-          "end": 73.09
+          "start": 73.91,
+          "end": 74.05
         },
         {
           "id": "caption-word-27-5",
           "text": "và",
-          "start": 73.31,
-          "end": 73.42
+          "start": 74.27,
+          "end": 74.38
         },
         {
           "id": "caption-word-27-6",
           "text": "data",
-          "start": 73.71,
-          "end": 73.88
+          "start": 74.67,
+          "end": 74.84
         },
         {
           "id": "caption-word-27-7",
           "text": "source",
-          "start": 74.42,
-          "end": 74.46
+          "start": 75.38,
+          "end": 75.42
         },
         {
           "id": "caption-word-27-8",
           "text": "AI-ready.",
-          "start": 74.46,
-          "end": 75.209
+          "start": 75.42,
+          "end": 76.169
         }
       ]
     },
     {
       "id": "caption-group-28",
       "frame": 7,
-      "start": 75.209,
-      "end": 77.09,
+      "start": 76.169,
+      "end": 78.05,
       "text": "Ba, viết chúng trung lập,",
       "words": [
         {
           "id": "caption-word-28-0",
           "text": "Ba,",
-          "start": 75.209,
-          "end": 75.55
+          "start": 76.169,
+          "end": 76.51
         },
         {
           "id": "caption-word-28-1",
           "text": "viết",
-          "start": 75.55,
-          "end": 75.8
+          "start": 76.51,
+          "end": 76.76
         },
         {
           "id": "caption-word-28-2",
           "text": "chúng",
-          "start": 76.1,
-          "end": 76.32
+          "start": 77.06,
+          "end": 77.28
         },
         {
           "id": "caption-word-28-3",
           "text": "trung",
-          "start": 76.34,
-          "end": 76.66
+          "start": 77.3,
+          "end": 77.62
         },
         {
           "id": "caption-word-28-4",
           "text": "lập,",
-          "start": 76.66,
-          "end": 77.09
+          "start": 77.62,
+          "end": 78.05
         }
       ]
     },
     {
       "id": "caption-group-29",
       "frame": 7,
-      "start": 77.09,
-      "end": 79.26,
+      "start": 78.05,
+      "end": 80.22,
       "text": "để gắn vào harness nào cũng được,",
       "words": [
         {
           "id": "caption-word-29-0",
           "text": "để",
-          "start": 77.09,
-          "end": 77.39
+          "start": 78.05,
+          "end": 78.35
         },
         {
           "id": "caption-word-29-1",
           "text": "gắn",
-          "start": 77.39,
-          "end": 77.62
+          "start": 78.35,
+          "end": 78.58
         },
         {
           "id": "caption-word-29-2",
           "text": "vào",
-          "start": 77.71,
-          "end": 77.81
+          "start": 78.67,
+          "end": 78.77
         },
         {
           "id": "caption-word-29-3",
           "text": "harness",
-          "start": 77.81,
-          "end": 77.88
+          "start": 78.77,
+          "end": 78.84
         },
         {
           "id": "caption-word-29-4",
           "text": "nào",
-          "start": 77.88,
-          "end": 78.43
+          "start": 78.84,
+          "end": 79.39
         },
         {
           "id": "caption-word-29-5",
           "text": "cũng",
-          "start": 78.43,
-          "end": 78.68
+          "start": 79.39,
+          "end": 79.64
         },
         {
           "id": "caption-word-29-6",
           "text": "được,",
-          "start": 78.68,
-          "end": 79.26
+          "start": 79.64,
+          "end": 80.22
         }
       ]
     },
     {
       "id": "caption-group-30",
       "frame": 7,
-      "start": 79.26,
-      "end": 81.12,
+      "start": 80.22,
+      "end": 82.08,
       "text": "kể cả khi chạy headless trên cloud.",
       "words": [
         {
           "id": "caption-word-30-0",
           "text": "kể",
-          "start": 79.26,
-          "end": 79.47
+          "start": 80.22,
+          "end": 80.43
         },
         {
           "id": "caption-word-30-1",
           "text": "cả",
-          "start": 79.47,
-          "end": 79.67
+          "start": 80.43,
+          "end": 80.63
         },
         {
           "id": "caption-word-30-2",
           "text": "khi",
-          "start": 79.67,
-          "end": 79.68
+          "start": 80.63,
+          "end": 80.64
         },
         {
           "id": "caption-word-30-3",
           "text": "chạy",
-          "start": 79.84,
-          "end": 80.15
+          "start": 80.8,
+          "end": 81.11
         },
         {
           "id": "caption-word-30-4",
           "text": "headless",
-          "start": 80.15,
-          "end": 80.57
+          "start": 81.11,
+          "end": 81.53
         },
         {
           "id": "caption-word-30-5",
           "text": "trên",
-          "start": 80.78,
-          "end": 80.84
+          "start": 81.74,
+          "end": 81.8
         },
         {
           "id": "caption-word-30-6",
           "text": "cloud.",
-          "start": 80.84,
-          "end": 81
+          "start": 81.8,
+          "end": 81.96
         }
       ]
     },
     {
       "id": "caption-group-31",
       "frame": 8,
-      "start": 81.51,
-      "end": 82.76,
+      "start": 82.47,
+      "end": 83.72,
       "text": "Phép thử đơn giản:",
       "words": [
         {
           "id": "caption-word-31-0",
           "text": "Phép",
-          "start": 81.51,
-          "end": 81.67
+          "start": 82.47,
+          "end": 82.63
         },
         {
           "id": "caption-word-31-1",
           "text": "thử",
-          "start": 81.67,
-          "end": 81.93
+          "start": 82.63,
+          "end": 82.89
         },
         {
           "id": "caption-word-31-2",
           "text": "đơn",
-          "start": 81.94,
-          "end": 82.15
+          "start": 82.9,
+          "end": 83.11
         },
         {
           "id": "caption-word-31-3",
           "text": "giản:",
-          "start": 82.15,
-          "end": 82.7
+          "start": 83.11,
+          "end": 83.66
         }
       ]
     },
     {
       "id": "caption-group-32",
       "frame": 8,
-      "start": 82.76,
-      "end": 85.46,
+      "start": 83.72,
+      "end": 86.42,
       "text": "nếu quý sau vendor ra đúng feature này,",
       "words": [
         {
           "id": "caption-word-32-0",
           "text": "nếu",
-          "start": 82.76,
-          "end": 83.02
+          "start": 83.72,
+          "end": 83.98
         },
         {
           "id": "caption-word-32-1",
           "text": "quý",
-          "start": 83.02,
-          "end": 83.28
+          "start": 83.98,
+          "end": 84.24
         },
         {
           "id": "caption-word-32-2",
           "text": "sau",
-          "start": 83.28,
-          "end": 83.48
+          "start": 84.24,
+          "end": 84.44
         },
         {
           "id": "caption-word-32-3",
           "text": "vendor",
-          "start": 83.77,
-          "end": 83.94
+          "start": 84.73,
+          "end": 84.9
         },
         {
           "id": "caption-word-32-4",
           "text": "ra",
-          "start": 83.94,
-          "end": 84.07
+          "start": 84.9,
+          "end": 85.03
         },
         {
           "id": "caption-word-32-5",
           "text": "đúng",
-          "start": 84.07,
-          "end": 84.46
+          "start": 85.03,
+          "end": 85.42
         },
         {
           "id": "caption-word-32-6",
           "text": "feature",
-          "start": 84.46,
-          "end": 84.99
+          "start": 85.42,
+          "end": 85.95
         },
         {
           "id": "caption-word-32-7",
           "text": "này,",
-          "start": 84.99,
-          "end": 85.34
+          "start": 85.95,
+          "end": 86.3
         }
       ]
     },
     {
       "id": "caption-group-33",
       "frame": 8,
-      "start": 85.53,
-      "end": 87.52,
+      "start": 86.49,
+      "end": 88.48,
       "text": "khoản đầu tư có mất trắng không?",
       "words": [
         {
           "id": "caption-word-33-0",
           "text": "khoản",
-          "start": 85.53,
-          "end": 85.74
+          "start": 86.49,
+          "end": 86.7
         },
         {
           "id": "caption-word-33-1",
           "text": "đầu",
-          "start": 85.74,
-          "end": 86
+          "start": 86.7,
+          "end": 86.96
         },
         {
           "id": "caption-word-33-2",
           "text": "tư",
-          "start": 86.07,
-          "end": 86.16
+          "start": 87.03,
+          "end": 87.12
         },
         {
           "id": "caption-word-33-3",
           "text": "có",
-          "start": 86.16,
-          "end": 86.26
+          "start": 87.12,
+          "end": 87.22
         },
         {
           "id": "caption-word-33-4",
           "text": "mất",
-          "start": 86.34,
-          "end": 86.52
+          "start": 87.3,
+          "end": 87.48
         },
         {
           "id": "caption-word-33-5",
           "text": "trắng",
-          "start": 86.53,
-          "end": 86.68
+          "start": 87.49,
+          "end": 87.64
         },
         {
           "id": "caption-word-33-6",
           "text": "không?",
-          "start": 86.86,
-          "end": 87.4
+          "start": 87.82,
+          "end": 88.36
         }
       ]
     },
     {
       "id": "caption-group-34",
       "frame": 8,
-      "start": 87.61,
-      "end": 90.56,
+      "start": 88.57,
+      "end": 91.52,
       "text": "Orchestration layer và chat UI: mất.",
       "words": [
         {
           "id": "caption-word-34-0",
           "text": "Orchestration",
-          "start": 87.61,
-          "end": 88.26
+          "start": 88.57,
+          "end": 89.22
         },
         {
           "id": "caption-word-34-1",
           "text": "layer",
-          "start": 88.87,
-          "end": 88.88
+          "start": 89.83,
+          "end": 89.84
         },
         {
           "id": "caption-word-34-2",
           "text": "và",
-          "start": 88.88,
-          "end": 89.12
+          "start": 89.84,
+          "end": 90.08
         },
         {
           "id": "caption-word-34-3",
           "text": "chat",
-          "start": 89.12,
-          "end": 89.45
+          "start": 90.08,
+          "end": 90.41
         },
         {
           "id": "caption-word-34-4",
           "text": "UI:",
-          "start": 89.45,
-          "end": 89.92
+          "start": 90.41,
+          "end": 90.88
         },
         {
           "id": "caption-word-34-5",
           "text": "mất.",
-          "start": 89.92,
-          "end": 90.56
+          "start": 90.88,
+          "end": 91.52
         }
       ]
     },
     {
       "id": "caption-group-35",
       "frame": 8,
-      "start": 90.56,
-      "end": 94.52,
+      "start": 91.52,
+      "end": 95.48,
       "text": "Code graph, template, checklist, connector nội bộ: không mất.",
       "words": [
         {
           "id": "caption-word-35-0",
           "text": "Code",
-          "start": 90.56,
-          "end": 90.93
+          "start": 91.52,
+          "end": 91.89
         },
         {
           "id": "caption-word-35-1",
           "text": "graph,",
-          "start": 90.93,
-          "end": 91.54
+          "start": 91.89,
+          "end": 92.5
         },
         {
           "id": "caption-word-35-2",
           "text": "template,",
-          "start": 91.54,
-          "end": 92
+          "start": 92.5,
+          "end": 92.96
         },
         {
           "id": "caption-word-35-3",
           "text": "checklist,",
-          "start": 92.07,
-          "end": 92.68
+          "start": 93.03,
+          "end": 93.64
         },
         {
           "id": "caption-word-35-4",
           "text": "connector",
-          "start": 92.68,
-          "end": 93.15
+          "start": 93.64,
+          "end": 94.11
         },
         {
           "id": "caption-word-35-5",
           "text": "nội",
-          "start": 93.15,
-          "end": 93.41
+          "start": 94.11,
+          "end": 94.37
         },
         {
           "id": "caption-word-35-6",
           "text": "bộ:",
-          "start": 93.46,
-          "end": 93.78
+          "start": 94.42,
+          "end": 94.74
         },
         {
           "id": "caption-word-35-7",
           "text": "không",
-          "start": 93.78,
-          "end": 94.09
+          "start": 94.74,
+          "end": 95.05
         },
         {
           "id": "caption-word-35-8",
           "text": "mất.",
-          "start": 94.09,
-          "end": 94.4
+          "start": 95.05,
+          "end": 95.36
         }
       ]
     },
     {
       "id": "caption-group-36",
       "frame": 9,
-      "start": 95.2,
-      "end": 98.36,
+      "start": 96.16,
+      "end": 99.32,
       "text": "Và automation level là tính chất của workflow,",
       "words": [
         {
           "id": "caption-word-36-0",
           "text": "Và",
-          "start": 95.2,
-          "end": 95.27
+          "start": 96.16,
+          "end": 96.23
         },
         {
           "id": "caption-word-36-1",
           "text": "automation",
-          "start": 95.27,
-          "end": 95.89
+          "start": 96.23,
+          "end": 96.85
         },
         {
           "id": "caption-word-36-2",
           "text": "level",
-          "start": 95.89,
-          "end": 96.23
+          "start": 96.85,
+          "end": 97.19
         },
         {
           "id": "caption-word-36-3",
           "text": "là",
-          "start": 96.23,
-          "end": 96.43
+          "start": 97.19,
+          "end": 97.39
         },
         {
           "id": "caption-word-36-4",
           "text": "tính",
-          "start": 96.43,
-          "end": 96.74
+          "start": 97.39,
+          "end": 97.7
         },
         {
           "id": "caption-word-36-5",
           "text": "chất",
-          "start": 96.89,
-          "end": 97.18
+          "start": 97.85,
+          "end": 98.14
         },
         {
           "id": "caption-word-36-6",
           "text": "của",
-          "start": 97.18,
-          "end": 97.52
+          "start": 98.14,
+          "end": 98.48
         },
         {
           "id": "caption-word-36-7",
           "text": "workflow,",
-          "start": 97.52,
-          "end": 98.24
+          "start": 98.48,
+          "end": 99.2
         }
       ]
     },
     {
       "id": "caption-group-37",
       "frame": 9,
-      "start": 98.39,
-      "end": 99.2,
+      "start": 99.35,
+      "end": 100.16,
       "text": "không phải của tool.",
       "words": [
         {
           "id": "caption-word-37-0",
           "text": "không",
-          "start": 98.39,
-          "end": 98.5
+          "start": 99.35,
+          "end": 99.46
         },
         {
           "id": "caption-word-37-1",
           "text": "phải",
-          "start": 98.5,
-          "end": 98.73
+          "start": 99.46,
+          "end": 99.69
         },
         {
           "id": "caption-word-37-2",
           "text": "của",
-          "start": 98.8,
-          "end": 98.98
+          "start": 99.76,
+          "end": 99.94
         },
         {
           "id": "caption-word-37-3",
           "text": "tool.",
-          "start": 98.98,
-          "end": 99.2
+          "start": 99.94,
+          "end": 100.16
         }
       ]
     },
     {
       "id": "caption-group-38",
       "frame": 9,
-      "start": 99.2,
-      "end": 100.32,
+      "start": 100.16,
+      "end": 101.28,
       "text": "Cùng một harness,",
       "words": [
         {
           "id": "caption-word-38-0",
           "text": "Cùng",
-          "start": 99.2,
-          "end": 99.51
+          "start": 100.16,
+          "end": 100.47
         },
         {
           "id": "caption-word-38-1",
           "text": "một",
-          "start": 99.51,
-          "end": 99.83
+          "start": 100.47,
+          "end": 100.79
         },
         {
           "id": "caption-word-38-2",
           "text": "harness,",
-          "start": 99.83,
-          "end": 100.32
+          "start": 100.79,
+          "end": 101.28
         }
       ]
     },
     {
       "id": "caption-group-39",
       "frame": 9,
-      "start": 100.32,
-      "end": 103.01,
+      "start": 101.28,
+      "end": 103.97,
       "text": "dừng hỏi người ở mỗi bước là L3.",
       "words": [
         {
           "id": "caption-word-39-0",
           "text": "dừng",
-          "start": 100.32,
-          "end": 100.7
+          "start": 101.28,
+          "end": 101.66
         },
         {
           "id": "caption-word-39-1",
           "text": "hỏi",
-          "start": 100.7,
-          "end": 100.94
+          "start": 101.66,
+          "end": 101.9
         },
         {
           "id": "caption-word-39-2",
           "text": "người",
-          "start": 101.08,
-          "end": 101.48
+          "start": 102.04,
+          "end": 102.44
         },
         {
           "id": "caption-word-39-3",
           "text": "ở",
-          "start": 101.61,
-          "end": 101.71
+          "start": 102.57,
+          "end": 102.67
         },
         {
           "id": "caption-word-39-4",
           "text": "mỗi",
-          "start": 101.71,
-          "end": 101.88
+          "start": 102.67,
+          "end": 102.84
         },
         {
           "id": "caption-word-39-5",
           "text": "bước",
-          "start": 102.04,
-          "end": 102.23
+          "start": 103,
+          "end": 103.19
         },
         {
           "id": "caption-word-39-6",
           "text": "là",
-          "start": 102.59,
-          "end": 102.65
+          "start": 103.55,
+          "end": 103.61
         },
         {
           "id": "caption-word-39-7",
           "text": "L3.",
-          "start": 102.65,
-          "end": 103
+          "start": 103.61,
+          "end": 103.96
         }
       ]
     },
     {
       "id": "caption-group-40",
       "frame": 9,
-      "start": 103.01,
-      "end": 105.81,
+      "start": 103.97,
+      "end": 106.77,
       "text": "Chạy trọn chuỗi skill rồi trình draft",
       "words": [
         {
           "id": "caption-word-40-0",
           "text": "Chạy",
-          "start": 103.01,
-          "end": 103.44
+          "start": 103.97,
+          "end": 104.4
         },
         {
           "id": "caption-word-40-1",
           "text": "trọn",
-          "start": 103.44,
-          "end": 103.752
+          "start": 104.4,
+          "end": 104.712
         },
         {
           "id": "caption-word-40-2",
           "text": "chuỗi",
-          "start": 103.752,
-          "end": 104.116
+          "start": 104.712,
+          "end": 105.076
         },
         {
           "id": "caption-word-40-3",
           "text": "skill",
-          "start": 104.116,
-          "end": 104.48
+          "start": 105.076,
+          "end": 105.44
         },
         {
           "id": "caption-word-40-4",
           "text": "rồi",
-          "start": 104.48,
-          "end": 104.74
+          "start": 105.44,
+          "end": 105.7
         },
         {
           "id": "caption-word-40-5",
           "text": "trình",
-          "start": 104.89,
-          "end": 105.28
+          "start": 105.85,
+          "end": 106.24
         },
         {
           "id": "caption-word-40-6",
           "text": "draft",
-          "start": 105.41,
-          "end": 105.69
+          "start": 106.37,
+          "end": 106.65
         }
       ]
     },
     {
       "id": "caption-group-41",
       "frame": 9,
-      "start": 105.84,
-      "end": 107.76,
+      "start": 106.8,
+      "end": 108.72,
       "text": "ở approval gate cuối là L4.",
       "words": [
         {
           "id": "caption-word-41-0",
           "text": "ở",
-          "start": 105.84,
-          "end": 105.91
+          "start": 106.8,
+          "end": 106.87
         },
         {
           "id": "caption-word-41-1",
           "text": "approval",
-          "start": 105.91,
-          "end": 106.42
+          "start": 106.87,
+          "end": 107.38
         },
         {
           "id": "caption-word-41-2",
           "text": "gate",
-          "start": 106.42,
-          "end": 106.59
+          "start": 107.38,
+          "end": 107.55
         },
         {
           "id": "caption-word-41-3",
           "text": "cuối",
-          "start": 106.65,
-          "end": 106.98
+          "start": 107.61,
+          "end": 107.94
         },
         {
           "id": "caption-word-41-4",
           "text": "là",
-          "start": 106.98,
-          "end": 107.08
+          "start": 107.94,
+          "end": 108.04
         },
         {
           "id": "caption-word-41-5",
           "text": "L4.",
-          "start": 107.23,
-          "end": 107.64
+          "start": 108.19,
+          "end": 108.6
         }
       ]
     },
     {
       "id": "caption-group-42",
       "frame": 10,
-      "start": 108.16,
-      "end": 111.59,
+      "start": 109.12,
+      "end": 112.55,
       "text": "Bảng so sánh của platform đặt harness dùng trong",
       "words": [
         {
           "id": "caption-word-42-0",
           "text": "Bảng",
-          "start": 108.16,
-          "end": 108.58
+          "start": 109.12,
+          "end": 109.54
         },
         {
           "id": "caption-word-42-1",
           "text": "so",
-          "start": 108.58,
-          "end": 108.68
+          "start": 109.54,
+          "end": 109.64
         },
         {
           "id": "caption-word-42-2",
           "text": "sánh",
-          "start": 108.77,
-          "end": 109.07
+          "start": 109.73,
+          "end": 110.03
         },
         {
           "id": "caption-word-42-3",
           "text": "của",
-          "start": 109.07,
-          "end": 109.39
+          "start": 110.03,
+          "end": 110.35
         },
         {
           "id": "caption-word-42-4",
           "text": "platform",
-          "start": 109.48,
-          "end": 109.95
+          "start": 110.44,
+          "end": 110.91
         },
         {
           "id": "caption-word-42-5",
           "text": "đặt",
-          "start": 110.12,
-          "end": 110.4
+          "start": 111.08,
+          "end": 111.36
         },
         {
           "id": "caption-word-42-6",
           "text": "harness",
-          "start": 110.41,
-          "end": 110.88
+          "start": 111.37,
+          "end": 111.84
         },
         {
           "id": "caption-word-42-7",
           "text": "dùng",
-          "start": 110.89,
-          "end": 111.24
+          "start": 111.85,
+          "end": 112.2
         },
         {
           "id": "caption-word-42-8",
           "text": "trong",
-          "start": 111.24,
-          "end": 111.59
+          "start": 112.2,
+          "end": 112.55
         }
       ]
     },
     {
       "id": "caption-group-43",
       "frame": 10,
-      "start": 111.59,
-      "end": 113.82,
+      "start": 112.55,
+      "end": 114.78,
       "text": "IDE cạnh một hệ thống chạy trên server.",
       "words": [
         {
           "id": "caption-word-43-0",
           "text": "IDE",
-          "start": 111.59,
-          "end": 111.74
+          "start": 112.55,
+          "end": 112.7
         },
         {
           "id": "caption-word-43-1",
           "text": "cạnh",
-          "start": 111.88,
-          "end": 112.16
+          "start": 112.84,
+          "end": 113.12
         },
         {
           "id": "caption-word-43-2",
           "text": "một",
-          "start": 112.16,
-          "end": 112.41
+          "start": 113.12,
+          "end": 113.37
         },
         {
           "id": "caption-word-43-3",
           "text": "hệ",
-          "start": 112.41,
-          "end": 112.61
+          "start": 113.37,
+          "end": 113.57
         },
         {
           "id": "caption-word-43-4",
           "text": "thống",
-          "start": 112.61,
-          "end": 112.96
+          "start": 113.57,
+          "end": 113.92
         },
         {
           "id": "caption-word-43-5",
           "text": "chạy",
-          "start": 112.96,
-          "end": 113.26
+          "start": 113.92,
+          "end": 114.22
         },
         {
           "id": "caption-word-43-6",
           "text": "trên",
-          "start": 113.26,
-          "end": 113.5
+          "start": 114.22,
+          "end": 114.46
         },
         {
           "id": "caption-word-43-7",
           "text": "server.",
-          "start": 113.51,
-          "end": 113.82
+          "start": 114.47,
+          "end": 114.78
         }
       ]
     },
     {
       "id": "caption-group-44",
       "frame": 10,
-      "start": 113.82,
-      "end": 116.84,
+      "start": 114.78,
+      "end": 117.8,
       "text": "Nhưng Claude Code và Kiro đều chạy headless được.",
       "words": [
         {
           "id": "caption-word-44-0",
           "text": "Nhưng",
-          "start": 113.82,
-          "end": 114.073
+          "start": 114.78,
+          "end": 115.033
         },
         {
           "id": "caption-word-44-1",
           "text": "Claude",
-          "start": 114.073,
-          "end": 114.363
+          "start": 115.033,
+          "end": 115.323
         },
         {
           "id": "caption-word-44-2",
           "text": "Code",
-          "start": 114.363,
-          "end": 114.58
+          "start": 115.323,
+          "end": 115.54
         },
         {
           "id": "caption-word-44-3",
           "text": "và",
-          "start": 114.58,
-          "end": 114.74
+          "start": 115.54,
+          "end": 115.7
         },
         {
           "id": "caption-word-44-4",
           "text": "Kiro",
-          "start": 114.74,
-          "end": 114.87
+          "start": 115.7,
+          "end": 115.83
         },
         {
           "id": "caption-word-44-5",
           "text": "đều",
-          "start": 114.96,
-          "end": 115.28
+          "start": 115.92,
+          "end": 116.24
         },
         {
           "id": "caption-word-44-6",
           "text": "chạy",
-          "start": 115.28,
-          "end": 115.6
+          "start": 116.24,
+          "end": 116.56
         },
         {
           "id": "caption-word-44-7",
           "text": "headless",
-          "start": 115.6,
-          "end": 116.02
+          "start": 116.56,
+          "end": 116.98
         },
         {
           "id": "caption-word-44-8",
           "text": "được.",
-          "start": 116.05,
-          "end": 116.72
+          "start": 117.01,
+          "end": 117.68
         }
       ]
     },
     {
       "id": "caption-group-45",
       "frame": 10,
-      "start": 116.96,
-      "end": 119.42,
+      "start": 117.92,
+      "end": 120.38,
       "text": "Multi-repo là bài toán dữ liệu.",
       "words": [
         {
           "id": "caption-word-45-0",
           "text": "Multi-repo",
-          "start": 116.96,
-          "end": 117.6
+          "start": 117.92,
+          "end": 118.56
         },
         {
           "id": "caption-word-45-1",
           "text": "là",
-          "start": 117.6,
-          "end": 117.77
+          "start": 118.56,
+          "end": 118.73
         },
         {
           "id": "caption-word-45-2",
           "text": "bài",
-          "start": 117.84,
-          "end": 118.15
+          "start": 118.8,
+          "end": 119.11
         },
         {
           "id": "caption-word-45-3",
           "text": "toán",
-          "start": 118.16,
-          "end": 118.52
+          "start": 119.12,
+          "end": 119.48
         },
         {
           "id": "caption-word-45-4",
           "text": "dữ",
-          "start": 118.64,
-          "end": 118.88
+          "start": 119.6,
+          "end": 119.84
         },
         {
           "id": "caption-word-45-5",
           "text": "liệu.",
-          "start": 118.97,
-          "end": 119.42
+          "start": 119.93,
+          "end": 120.38
         }
       ]
     },
     {
       "id": "caption-group-46",
       "frame": 10,
-      "start": 119.42,
-      "end": 121.96,
+      "start": 120.38,
+      "end": 122.92,
       "text": "Chỉ audit tập trung là khoảng trống thật,",
       "words": [
         {
           "id": "caption-word-46-0",
           "text": "Chỉ",
-          "start": 119.42,
-          "end": 119.7
+          "start": 120.38,
+          "end": 120.66
         },
         {
           "id": "caption-word-46-1",
           "text": "audit",
-          "start": 119.7,
-          "end": 119.96
+          "start": 120.66,
+          "end": 120.92
         },
         {
           "id": "caption-word-46-2",
           "text": "tập",
-          "start": 120.03,
-          "end": 120.19
+          "start": 120.99,
+          "end": 121.15
         },
         {
           "id": "caption-word-46-3",
           "text": "trung",
-          "start": 120.25,
-          "end": 120.47
+          "start": 121.21,
+          "end": 121.43
         },
         {
           "id": "caption-word-46-4",
           "text": "là",
-          "start": 120.54,
-          "end": 120.65
+          "start": 121.5,
+          "end": 121.61
         },
         {
           "id": "caption-word-46-5",
           "text": "khoảng",
-          "start": 120.74,
-          "end": 121.15
+          "start": 121.7,
+          "end": 122.11
         },
         {
           "id": "caption-word-46-6",
           "text": "trống",
-          "start": 121.15,
-          "end": 121.54
+          "start": 122.11,
+          "end": 122.5
         },
         {
           "id": "caption-word-46-7",
           "text": "thật,",
-          "start": 121.54,
-          "end": 121.96
+          "start": 122.5,
+          "end": 122.92
         }
       ]
     },
     {
       "id": "caption-group-47",
       "frame": 10,
-      "start": 121.96,
-      "end": 123.78,
+      "start": 122.92,
+      "end": 124.74,
       "text": "và lấp bằng một layer mỏng.",
       "words": [
         {
           "id": "caption-word-47-0",
           "text": "và",
-          "start": 121.96,
-          "end": 122.169
+          "start": 122.92,
+          "end": 123.129
         },
         {
           "id": "caption-word-47-1",
           "text": "lấp",
-          "start": 122.169,
-          "end": 122.43
+          "start": 123.129,
+          "end": 123.39
         },
         {
           "id": "caption-word-47-2",
           "text": "bằng",
-          "start": 122.43,
-          "end": 122.69
+          "start": 123.39,
+          "end": 123.65
         },
         {
           "id": "caption-word-47-3",
           "text": "một",
-          "start": 122.69,
-          "end": 122.91
+          "start": 123.65,
+          "end": 123.87
         },
         {
           "id": "caption-word-47-4",
           "text": "layer",
-          "start": 122.91,
-          "end": 123.21
+          "start": 123.87,
+          "end": 124.17
         },
         {
           "id": "caption-word-47-5",
           "text": "mỏng.",
-          "start": 123.21,
-          "end": 123.66
+          "start": 124.17,
+          "end": 124.62
         }
       ]
     },
     {
       "id": "caption-group-48",
       "frame": 11,
-      "start": 124.58,
-      "end": 126.3,
+      "start": 125.54,
+      "end": 127.26,
       "text": "Tách bốn layer theo bản chất.",
       "words": [
         {
           "id": "caption-word-48-0",
           "text": "Tách",
-          "start": 124.58,
-          "end": 124.711
+          "start": 125.54,
+          "end": 125.671
         },
         {
           "id": "caption-word-48-1",
           "text": "bốn",
-          "start": 124.711,
-          "end": 124.82
+          "start": 125.671,
+          "end": 125.78
         },
         {
           "id": "caption-word-48-2",
           "text": "layer",
-          "start": 125.01,
-          "end": 125.2
+          "start": 125.97,
+          "end": 126.16
         },
         {
           "id": "caption-word-48-3",
           "text": "theo",
-          "start": 125.2,
-          "end": 125.5
+          "start": 126.16,
+          "end": 126.46
         },
         {
           "id": "caption-word-48-4",
           "text": "bản",
-          "start": 125.5,
-          "end": 125.82
+          "start": 126.46,
+          "end": 126.78
         },
         {
           "id": "caption-word-48-5",
           "text": "chất.",
-          "start": 125.87,
-          "end": 126.18
+          "start": 126.83,
+          "end": 127.14
         }
       ]
     },
     {
       "id": "caption-group-49",
       "frame": 11,
-      "start": 126.7,
-      "end": 129.48,
+      "start": 127.66,
+      "end": 130.44,
       "text": "Knowledge base là dữ liệu: làm.",
       "words": [
         {
           "id": "caption-word-49-0",
           "text": "Knowledge",
-          "start": 126.7,
-          "end": 127.05
+          "start": 127.66,
+          "end": 128.01
         },
         {
           "id": "caption-word-49-1",
           "text": "base",
-          "start": 127.05,
-          "end": 127.35
+          "start": 128.01,
+          "end": 128.31
         },
         {
           "id": "caption-word-49-2",
           "text": "là",
-          "start": 127.35,
-          "end": 127.58
+          "start": 128.31,
+          "end": 128.54
         },
         {
           "id": "caption-word-49-3",
           "text": "dữ",
-          "start": 127.58,
-          "end": 127.88
+          "start": 128.54,
+          "end": 128.84
         },
         {
           "id": "caption-word-49-4",
           "text": "liệu:",
-          "start": 127.88,
-          "end": 128.69
+          "start": 128.84,
+          "end": 129.65
         },
         {
           "id": "caption-word-49-5",
           "text": "làm.",
-          "start": 129.19,
-          "end": 129.36
+          "start": 130.15,
+          "end": 130.32
         }
       ]
     },
     {
       "id": "caption-group-50",
       "frame": 11,
-      "start": 129.71,
-      "end": 133.48,
+      "start": 130.67,
+      "end": 134.44,
       "text": "Integration là connector: làm.",
       "words": [
         {
           "id": "caption-word-50-0",
           "text": "Integration",
-          "start": 129.71,
-          "end": 130.83
+          "start": 130.67,
+          "end": 131.79
         },
         {
           "id": "caption-word-50-1",
           "text": "là",
-          "start": 130.86,
-          "end": 131.16
+          "start": 131.82,
+          "end": 132.12
         },
         {
           "id": "caption-word-50-2",
           "text": "connector:",
-          "start": 132.19,
-          "end": 132.79
+          "start": 133.15,
+          "end": 133.75
         },
         {
           "id": "caption-word-50-3",
           "text": "làm.",
-          "start": 132.79,
-          "end": 133.36
+          "start": 133.75,
+          "end": 134.32
         }
       ]
     },
     {
       "id": "caption-group-51",
       "frame": 11,
-      "start": 133.7,
-      "end": 136.37,
+      "start": 134.66,
+      "end": 137.33,
       "text": "Governance: mua hoặc cấu hình.",
       "words": [
         {
           "id": "caption-word-51-0",
           "text": "Governance:",
-          "start": 133.7,
-          "end": 134.51
+          "start": 134.66,
+          "end": 135.47
         },
         {
           "id": "caption-word-51-1",
           "text": "mua",
-          "start": 134.51,
-          "end": 134.79
+          "start": 135.47,
+          "end": 135.75
         },
         {
           "id": "caption-word-51-2",
           "text": "hoặc",
-          "start": 134.79,
-          "end": 135.18
+          "start": 135.75,
+          "end": 136.14
         },
         {
           "id": "caption-word-51-3",
           "text": "cấu",
-          "start": 135.36,
-          "end": 135.83
+          "start": 136.32,
+          "end": 136.79
         },
         {
           "id": "caption-word-51-4",
           "text": "hình.",
-          "start": 135.83,
-          "end": 136.36
+          "start": 136.79,
+          "end": 137.32
         }
       ]
     },
     {
       "id": "caption-group-52",
       "frame": 11,
-      "start": 136.37,
-      "end": 140.37,
+      "start": 137.33,
+      "end": 141.33,
       "text": "Chỉ orchestration là viết lại harness: không làm.",
       "words": [
         {
           "id": "caption-word-52-0",
           "text": "Chỉ",
-          "start": 136.37,
-          "end": 136.74
+          "start": 137.33,
+          "end": 137.7
         },
         {
           "id": "caption-word-52-1",
           "text": "orchestration",
-          "start": 136.74,
-          "end": 137.73
+          "start": 137.7,
+          "end": 138.69
         },
         {
           "id": "caption-word-52-2",
           "text": "là",
-          "start": 137.73,
-          "end": 137.95
+          "start": 138.69,
+          "end": 138.91
         },
         {
           "id": "caption-word-52-3",
           "text": "viết",
-          "start": 137.96,
-          "end": 138.19
+          "start": 138.92,
+          "end": 139.15
         },
         {
           "id": "caption-word-52-4",
           "text": "lại",
-          "start": 138.4,
-          "end": 138.79
+          "start": 139.36,
+          "end": 139.75
         },
         {
           "id": "caption-word-52-5",
           "text": "harness:",
-          "start": 139.19,
-          "end": 139.45
+          "start": 140.15,
+          "end": 140.41
         },
         {
           "id": "caption-word-52-6",
           "text": "không",
-          "start": 139.58,
-          "end": 140.02
+          "start": 140.54,
+          "end": 140.98
         },
         {
           "id": "caption-word-52-7",
           "text": "làm.",
-          "start": 140.02,
-          "end": 140.36
+          "start": 140.98,
+          "end": 141.32
         }
       ]
     },
     {
       "id": "caption-group-53",
       "frame": 11,
-      "start": 140.37,
-      "end": 143.24,
+      "start": 141.33,
+      "end": 144.2,
       "text": "Ba trên bốn layer đã trùng với đề xuất.",
       "words": [
         {
           "id": "caption-word-53-0",
           "text": "Ba",
-          "start": 140.37,
-          "end": 140.57
+          "start": 141.33,
+          "end": 141.53
         },
         {
           "id": "caption-word-53-1",
           "text": "trên",
-          "start": 140.7,
-          "end": 140.83
+          "start": 141.66,
+          "end": 141.79
         },
         {
           "id": "caption-word-53-2",
           "text": "bốn",
-          "start": 141.01,
-          "end": 141.13
+          "start": 141.97,
+          "end": 142.09
         },
         {
           "id": "caption-word-53-3",
           "text": "layer",
-          "start": 141.13,
-          "end": 141.48
+          "start": 142.09,
+          "end": 142.44
         },
         {
           "id": "caption-word-53-4",
           "text": "đã",
-          "start": 141.48,
-          "end": 141.75
+          "start": 142.44,
+          "end": 142.71
         },
         {
           "id": "caption-word-53-5",
           "text": "trùng",
-          "start": 141.75,
-          "end": 142.16
+          "start": 142.71,
+          "end": 143.12
         },
         {
           "id": "caption-word-53-6",
           "text": "với",
-          "start": 142.16,
-          "end": 142.19
+          "start": 143.12,
+          "end": 143.15
         },
         {
           "id": "caption-word-53-7",
           "text": "đề",
-          "start": 142.53,
-          "end": 142.832
+          "start": 143.49,
+          "end": 143.792
         },
         {
           "id": "caption-word-53-8",
           "text": "xuất.",
-          "start": 142.832,
-          "end": 143.12
+          "start": 143.792,
+          "end": 144.08
         }
       ]
     },
     {
       "id": "caption-group-54",
       "frame": 12,
-      "start": 143.53,
-      "end": 145.41,
+      "start": 144.49,
+      "end": 146.37,
       "text": "Mười ba feature cũng vậy.",
       "words": [
         {
           "id": "caption-word-54-0",
           "text": "Mười",
-          "start": 143.53,
-          "end": 143.96
+          "start": 144.49,
+          "end": 144.92
         },
         {
           "id": "caption-word-54-1",
           "text": "ba",
-          "start": 143.96,
-          "end": 144.08
+          "start": 144.92,
+          "end": 145.04
         },
         {
           "id": "caption-word-54-2",
           "text": "feature",
-          "start": 144.08,
-          "end": 144.53
+          "start": 145.04,
+          "end": 145.49
         },
         {
           "id": "caption-word-54-3",
           "text": "cũng",
-          "start": 144.53,
-          "end": 144.85
+          "start": 145.49,
+          "end": 145.81
         },
         {
           "id": "caption-word-54-4",
           "text": "vậy.",
-          "start": 144.85,
-          "end": 145.34
+          "start": 145.81,
+          "end": 146.3
         }
       ]
     },
     {
       "id": "caption-group-55",
       "frame": 12,
-      "start": 145.41,
-      "end": 149.01,
+      "start": 146.37,
+      "end": 149.97,
       "text": "Sáu feature là skill và workflow, giao team kit.",
       "words": [
         {
           "id": "caption-word-55-0",
           "text": "Sáu",
-          "start": 145.41,
-          "end": 145.62
+          "start": 146.37,
+          "end": 146.58
         },
         {
           "id": "caption-word-55-1",
           "text": "feature",
-          "start": 145.62,
-          "end": 146.11
+          "start": 146.58,
+          "end": 147.07
         },
         {
           "id": "caption-word-55-2",
           "text": "là",
-          "start": 146.11,
-          "end": 146.32
+          "start": 147.07,
+          "end": 147.28
         },
         {
           "id": "caption-word-55-3",
           "text": "skill",
-          "start": 146.32,
-          "end": 146.67
+          "start": 147.28,
+          "end": 147.63
         },
         {
           "id": "caption-word-55-4",
           "text": "và",
-          "start": 146.67,
-          "end": 146.95
+          "start": 147.63,
+          "end": 147.91
         },
         {
           "id": "caption-word-55-5",
           "text": "workflow,",
-          "start": 146.95,
-          "end": 147.72
+          "start": 147.91,
+          "end": 148.68
         },
         {
           "id": "caption-word-55-6",
           "text": "giao",
-          "start": 147.72,
-          "end": 148.12
+          "start": 148.68,
+          "end": 149.08
         },
         {
           "id": "caption-word-55-7",
           "text": "team",
-          "start": 148.12,
-          "end": 148.42
+          "start": 149.08,
+          "end": 149.38
         },
         {
           "id": "caption-word-55-8",
           "text": "kit.",
-          "start": 148.42,
-          "end": 149
+          "start": 149.38,
+          "end": 149.96
         }
       ]
     },
     {
       "id": "caption-group-56",
       "frame": 12,
-      "start": 149.01,
-      "end": 151.65,
+      "start": 149.97,
+      "end": 152.61,
       "text": "Ba feature cần dữ liệu kèm skill.",
       "words": [
         {
           "id": "caption-word-56-0",
           "text": "Ba",
-          "start": 149.01,
-          "end": 149.14
+          "start": 149.97,
+          "end": 150.1
         },
         {
           "id": "caption-word-56-1",
           "text": "feature",
-          "start": 149.27,
-          "end": 149.64
+          "start": 150.23,
+          "end": 150.6
         },
         {
           "id": "caption-word-56-2",
           "text": "cần",
-          "start": 149.64,
-          "end": 150
+          "start": 150.6,
+          "end": 150.96
         },
         {
           "id": "caption-word-56-3",
           "text": "dữ",
-          "start": 150,
-          "end": 150.27
+          "start": 150.96,
+          "end": 151.23
         },
         {
           "id": "caption-word-56-4",
           "text": "liệu",
-          "start": 150.27,
-          "end": 150.84
+          "start": 151.23,
+          "end": 151.8
         },
         {
           "id": "caption-word-56-5",
           "text": "kèm",
-          "start": 150.91,
-          "end": 151.1
+          "start": 151.87,
+          "end": 152.06
         },
         {
           "id": "caption-word-56-6",
           "text": "skill.",
-          "start": 151.19,
-          "end": 151.65
+          "start": 152.15,
+          "end": 152.61
         }
       ]
     },
     {
       "id": "caption-group-57",
       "frame": 12,
-      "start": 151.65,
-      "end": 153.88,
+      "start": 152.61,
+      "end": 154.84,
       "text": "Còn lại là governance và CI.",
       "words": [
         {
           "id": "caption-word-57-0",
           "text": "Còn",
-          "start": 151.65,
-          "end": 151.86
+          "start": 152.61,
+          "end": 152.82
         },
         {
           "id": "caption-word-57-1",
           "text": "lại",
-          "start": 151.95,
-          "end": 152.19
+          "start": 152.91,
+          "end": 153.15
         },
         {
           "id": "caption-word-57-2",
           "text": "là",
-          "start": 152.3,
-          "end": 152.49
+          "start": 153.26,
+          "end": 153.45
         },
         {
           "id": "caption-word-57-3",
           "text": "governance",
-          "start": 152.49,
-          "end": 152.95
+          "start": 153.45,
+          "end": 153.91
         },
         {
           "id": "caption-word-57-4",
           "text": "và",
-          "start": 152.95,
-          "end": 153.42
+          "start": 153.91,
+          "end": 154.38
         },
         {
           "id": "caption-word-57-5",
           "text": "CI.",
-          "start": 153.42,
-          "end": 153.76
+          "start": 154.38,
+          "end": 154.72
         }
       ]
     },
     {
       "id": "caption-group-58",
       "frame": 12,
-      "start": 154.03,
-      "end": 157,
+      "start": 154.99,
+      "end": 157.96,
       "text": "Không feature nào bắt buộc phải có harness tự viết.",
       "words": [
         {
           "id": "caption-word-58-0",
           "text": "Không",
-          "start": 154.03,
-          "end": 154.09
+          "start": 154.99,
+          "end": 155.05
         },
         {
           "id": "caption-word-58-1",
           "text": "feature",
-          "start": 154.09,
-          "end": 154.43
+          "start": 155.05,
+          "end": 155.39
         },
         {
           "id": "caption-word-58-2",
           "text": "nào",
-          "start": 154.51,
-          "end": 154.7
+          "start": 155.47,
+          "end": 155.66
         },
         {
           "id": "caption-word-58-3",
           "text": "bắt",
-          "start": 154.7,
-          "end": 154.97
+          "start": 155.66,
+          "end": 155.93
         },
         {
           "id": "caption-word-58-4",
           "text": "buộc",
-          "start": 154.97,
-          "end": 155.2
+          "start": 155.93,
+          "end": 156.16
         },
         {
           "id": "caption-word-58-5",
           "text": "phải",
-          "start": 155.2,
-          "end": 155.67
+          "start": 156.16,
+          "end": 156.63
         },
         {
           "id": "caption-word-58-6",
           "text": "có",
-          "start": 155.67,
-          "end": 155.79
+          "start": 156.63,
+          "end": 156.75
         },
         {
           "id": "caption-word-58-7",
           "text": "harness",
-          "start": 155.79,
-          "end": 156.18
+          "start": 156.75,
+          "end": 157.14
         },
         {
           "id": "caption-word-58-8",
           "text": "tự",
-          "start": 156.18,
-          "end": 156.39
+          "start": 157.14,
+          "end": 157.35
         },
         {
           "id": "caption-word-58-9",
           "text": "viết.",
-          "start": 156.39,
-          "end": 156.88
+          "start": 157.35,
+          "end": 157.84
         }
       ]
     },
     {
       "id": "caption-group-59",
       "frame": 13,
-      "start": 157.29,
-      "end": 160.3,
+      "start": 158.25,
+      "end": 161.26,
       "text": "Đề xuất có điểm yếu, và có cách bù.",
       "words": [
         {
           "id": "caption-word-59-0",
           "text": "Đề",
-          "start": 157.29,
-          "end": 157.58
+          "start": 158.25,
+          "end": 158.54
         },
         {
           "id": "caption-word-59-1",
           "text": "xuất",
-          "start": 157.58,
-          "end": 157.9
+          "start": 158.54,
+          "end": 158.86
         },
         {
           "id": "caption-word-59-2",
           "text": "có",
-          "start": 158.11,
-          "end": 158.12
+          "start": 159.07,
+          "end": 159.08
         },
         {
           "id": "caption-word-59-3",
           "text": "điểm",
-          "start": 158.12,
-          "end": 158.54
+          "start": 159.08,
+          "end": 159.5
         },
         {
           "id": "caption-word-59-4",
           "text": "yếu,",
-          "start": 158.54,
-          "end": 158.68
+          "start": 159.5,
+          "end": 159.64
         },
         {
           "id": "caption-word-59-5",
           "text": "và",
-          "start": 159.01,
-          "end": 159.1
+          "start": 159.97,
+          "end": 160.06
         },
         {
           "id": "caption-word-59-6",
           "text": "có",
-          "start": 159.1,
-          "end": 159.3
+          "start": 160.06,
+          "end": 160.26
         },
         {
           "id": "caption-word-59-7",
           "text": "cách",
-          "start": 159.38,
-          "end": 159.69
+          "start": 160.34,
+          "end": 160.65
         },
         {
           "id": "caption-word-59-8",
           "text": "bù.",
-          "start": 159.69,
-          "end": 160.18
+          "start": 160.65,
+          "end": 161.14
         }
       ]
     },
     {
       "id": "caption-group-60",
       "frame": 13,
-      "start": 160.45,
-      "end": 162.04,
+      "start": 161.41,
+      "end": 163,
       "text": "Portable không trọn vẹn:",
       "words": [
         {
           "id": "caption-word-60-0",
           "text": "Portable",
-          "start": 160.45,
-          "end": 160.74
+          "start": 161.41,
+          "end": 161.7
         },
         {
           "id": "caption-word-60-1",
           "text": "không",
-          "start": 160.74,
-          "end": 161.16
+          "start": 161.7,
+          "end": 162.12
         },
         {
           "id": "caption-word-60-2",
           "text": "trọn",
-          "start": 161.16,
-          "end": 161.56
+          "start": 162.12,
+          "end": 162.52
         },
         {
           "id": "caption-word-60-3",
           "text": "vẹn:",
-          "start": 161.57,
-          "end": 162.04
+          "start": 162.53,
+          "end": 163
         }
       ]
     },
     {
       "id": "caption-group-61",
       "frame": 13,
-      "start": 162.04,
-      "end": 164.3,
+      "start": 163,
+      "end": 165.26,
       "text": "tách core trung lập với adapter mỏng.",
       "words": [
         {
           "id": "caption-word-61-0",
           "text": "tách",
-          "start": 162.04,
-          "end": 162.3
+          "start": 163,
+          "end": 163.26
         },
         {
           "id": "caption-word-61-1",
           "text": "core",
-          "start": 162.3,
-          "end": 162.457
+          "start": 163.26,
+          "end": 163.417
         },
         {
           "id": "caption-word-61-2",
           "text": "trung",
-          "start": 162.457,
-          "end": 162.64
+          "start": 163.417,
+          "end": 163.6
         },
         {
           "id": "caption-word-61-3",
           "text": "lập",
-          "start": 162.81,
-          "end": 163.07
+          "start": 163.77,
+          "end": 164.03
         },
         {
           "id": "caption-word-61-4",
           "text": "với",
-          "start": 163.33,
-          "end": 163.34
+          "start": 164.29,
+          "end": 164.3
         },
         {
           "id": "caption-word-61-5",
           "text": "adapter",
-          "start": 163.34,
-          "end": 163.7
+          "start": 164.3,
+          "end": 164.66
         },
         {
           "id": "caption-word-61-6",
           "text": "mỏng.",
-          "start": 163.7,
-          "end": 164.18
+          "start": 164.66,
+          "end": 165.14
         }
       ]
     },
     {
       "id": "caption-group-62",
       "frame": 13,
-      "start": 164.45,
-      "end": 167.59,
+      "start": 165.41,
+      "end": 168.55,
       "text": "Governance là nhu cầu thật: dùng LLM gateway.",
       "words": [
         {
           "id": "caption-word-62-0",
           "text": "Governance",
-          "start": 164.45,
-          "end": 164.78
+          "start": 165.41,
+          "end": 165.74
         },
         {
           "id": "caption-word-62-1",
           "text": "là",
-          "start": 164.78,
-          "end": 164.9
+          "start": 165.74,
+          "end": 165.86
         },
         {
           "id": "caption-word-62-2",
           "text": "nhu",
-          "start": 165.01,
-          "end": 165.14
+          "start": 165.97,
+          "end": 166.1
         },
         {
           "id": "caption-word-62-3",
           "text": "cầu",
-          "start": 165.14,
-          "end": 165.38
+          "start": 166.1,
+          "end": 166.34
         },
         {
           "id": "caption-word-62-4",
           "text": "thật:",
-          "start": 165.38,
-          "end": 165.9
+          "start": 166.34,
+          "end": 166.86
         },
         {
           "id": "caption-word-62-5",
           "text": "dùng",
-          "start": 165.91,
-          "end": 166.45
+          "start": 166.87,
+          "end": 167.41
         },
         {
           "id": "caption-word-62-6",
           "text": "LLM",
-          "start": 166.45,
-          "end": 166.78
+          "start": 167.41,
+          "end": 167.74
         },
         {
           "id": "caption-word-62-7",
           "text": "gateway.",
-          "start": 167.33,
-          "end": 167.58
+          "start": 168.29,
+          "end": 168.54
         }
       ]
     },
     {
       "id": "caption-group-63",
       "frame": 13,
-      "start": 167.59,
-      "end": 170.16,
+      "start": 168.55,
+      "end": 171.12,
       "text": "Chạy headless cần license và guardrail:",
       "words": [
         {
           "id": "caption-word-63-0",
           "text": "Chạy",
-          "start": 167.59,
-          "end": 167.97
+          "start": 168.55,
+          "end": 168.93
         },
         {
           "id": "caption-word-63-1",
           "text": "headless",
-          "start": 167.97,
-          "end": 168.5
+          "start": 168.93,
+          "end": 169.46
         },
         {
           "id": "caption-word-63-2",
           "text": "cần",
-          "start": 168.5,
-          "end": 168.83
+          "start": 169.46,
+          "end": 169.79
         },
         {
           "id": "caption-word-63-3",
           "text": "license",
-          "start": 168.83,
-          "end": 168.98
+          "start": 169.79,
+          "end": 169.94
         },
         {
           "id": "caption-word-63-4",
           "text": "và",
-          "start": 169.31,
-          "end": 169.45
+          "start": 170.27,
+          "end": 170.41
         },
         {
           "id": "caption-word-63-5",
           "text": "guardrail:",
-          "start": 169.52,
-          "end": 170.04
+          "start": 170.48,
+          "end": 171
         }
       ]
     },
     {
       "id": "caption-group-64",
       "frame": 13,
-      "start": 170.16,
-      "end": 171.36,
+      "start": 171.12,
+      "end": 172.32,
       "text": "nêu rõ từ đầu.",
       "words": [
         {
           "id": "caption-word-64-0",
           "text": "nêu",
-          "start": 170.16,
-          "end": 170.43
+          "start": 171.12,
+          "end": 171.39
         },
         {
           "id": "caption-word-64-1",
           "text": "rõ",
-          "start": 170.43,
-          "end": 170.62
+          "start": 171.39,
+          "end": 171.58
         },
         {
           "id": "caption-word-64-2",
           "text": "từ",
-          "start": 170.73,
-          "end": 170.85
+          "start": 171.69,
+          "end": 171.81
         },
         {
           "id": "caption-word-64-3",
           "text": "đầu.",
-          "start": 170.91,
-          "end": 171.24
+          "start": 171.87,
+          "end": 172.2
         }
       ]
     },
     {
       "id": "caption-group-65",
       "frame": 14,
-      "start": 171.65,
-      "end": 173.31,
+      "start": 172.61,
+      "end": 174.27,
       "text": "Phân vai rõ ràng.",
       "words": [
         {
           "id": "caption-word-65-0",
           "text": "Phân",
-          "start": 171.65,
-          "end": 172.16
+          "start": 172.61,
+          "end": 173.12
         },
         {
           "id": "caption-word-65-1",
           "text": "vai",
-          "start": 172.18,
-          "end": 172.38
+          "start": 173.14,
+          "end": 173.34
         },
         {
           "id": "caption-word-65-2",
           "text": "rõ",
-          "start": 172.43,
-          "end": 172.67
+          "start": 173.39,
+          "end": 173.63
         },
         {
           "id": "caption-word-65-3",
           "text": "ràng.",
-          "start": 172.67,
-          "end": 173.19
+          "start": 173.63,
+          "end": 174.15
         }
       ]
     },
     {
       "id": "caption-group-66",
       "frame": 14,
-      "start": 173.38,
-      "end": 177.14,
+      "start": 174.34,
+      "end": 178.1,
       "text": "Team platform làm dữ liệu: spec index, code graph,",
       "words": [
         {
           "id": "caption-word-66-0",
           "text": "Team",
-          "start": 173.38,
-          "end": 173.44
+          "start": 174.34,
+          "end": 174.4
         },
         {
           "id": "caption-word-66-1",
           "text": "platform",
-          "start": 173.44,
-          "end": 173.93
+          "start": 174.4,
+          "end": 174.89
         },
         {
           "id": "caption-word-66-2",
           "text": "làm",
-          "start": 173.93,
-          "end": 174.17
+          "start": 174.89,
+          "end": 175.13
         },
         {
           "id": "caption-word-66-3",
           "text": "dữ",
-          "start": 174.17,
-          "end": 174.41
+          "start": 175.13,
+          "end": 175.37
         },
         {
           "id": "caption-word-66-4",
           "text": "liệu:",
-          "start": 174.41,
-          "end": 174.84
+          "start": 175.37,
+          "end": 175.8
         },
         {
           "id": "caption-word-66-5",
           "text": "spec",
-          "start": 175.06,
-          "end": 175.3
+          "start": 176.02,
+          "end": 176.26
         },
         {
           "id": "caption-word-66-6",
           "text": "index,",
-          "start": 175.37,
-          "end": 175.88
+          "start": 176.33,
+          "end": 176.84
         },
         {
           "id": "caption-word-66-7",
           "text": "code",
-          "start": 176.27,
-          "end": 176.38
+          "start": 177.23,
+          "end": 177.34
         },
         {
           "id": "caption-word-66-8",
           "text": "graph,",
-          "start": 176.48,
-          "end": 177.08
+          "start": 177.44,
+          "end": 178.04
         }
       ]
     },
     {
       "id": "caption-group-67",
       "frame": 14,
-      "start": 177.14,
-      "end": 178.08,
+      "start": 178.1,
+      "end": 179.04,
       "text": "RBAC.",
       "words": [
         {
           "id": "caption-word-67-0",
           "text": "RBAC.",
-          "start": 177.14,
-          "end": 178.08
+          "start": 178.1,
+          "end": 179.04
         }
       ]
     },
     {
       "id": "caption-group-68",
       "frame": 14,
-      "start": 178.08,
-      "end": 182.25,
+      "start": 179.04,
+      "end": 183.21,
       "text": "Team kit làm skill, connector, guardrail và adapter.",
       "words": [
         {
           "id": "caption-word-68-0",
           "text": "Team",
-          "start": 178.08,
-          "end": 178.43
+          "start": 179.04,
+          "end": 179.39
         },
         {
           "id": "caption-word-68-1",
           "text": "kit",
-          "start": 178.43,
-          "end": 178.67
+          "start": 179.39,
+          "end": 179.63
         },
         {
           "id": "caption-word-68-2",
           "text": "làm",
-          "start": 178.67,
-          "end": 179.01
+          "start": 179.63,
+          "end": 179.97
         },
         {
           "id": "caption-word-68-3",
           "text": "skill,",
-          "start": 179.01,
-          "end": 179.54
+          "start": 179.97,
+          "end": 180.5
         },
         {
           "id": "caption-word-68-4",
           "text": "connector,",
-          "start": 179.82,
-          "end": 180.55
+          "start": 180.78,
+          "end": 181.51
         },
         {
           "id": "caption-word-68-5",
           "text": "guardrail",
-          "start": 180.55,
-          "end": 181.1
+          "start": 181.51,
+          "end": 182.06
         },
         {
           "id": "caption-word-68-6",
           "text": "và",
-          "start": 181.1,
-          "end": 181.51
+          "start": 182.06,
+          "end": 182.47
         },
         {
           "id": "caption-word-68-7",
           "text": "adapter.",
-          "start": 181.51,
-          "end": 182.25
+          "start": 182.47,
+          "end": 183.21
         }
       ]
     },
     {
       "id": "caption-group-69",
       "frame": 14,
-      "start": 182.25,
-      "end": 185.24,
+      "start": 183.21,
+      "end": 186.2,
       "text": "Harness, LLM và gateway thì mua.",
       "words": [
         {
           "id": "caption-word-69-0",
           "text": "Harness,",
-          "start": 182.25,
-          "end": 183.11
+          "start": 183.21,
+          "end": 184.07
         },
         {
           "id": "caption-word-69-1",
           "text": "LLM",
-          "start": 183.22,
-          "end": 183.4
+          "start": 184.18,
+          "end": 184.36
         },
         {
           "id": "caption-word-69-2",
           "text": "và",
-          "start": 183.58,
-          "end": 183.69
+          "start": 184.54,
+          "end": 184.65
         },
         {
           "id": "caption-word-69-3",
           "text": "gateway",
-          "start": 183.69,
-          "end": 184.19
+          "start": 184.65,
+          "end": 185.15
         },
         {
           "id": "caption-word-69-4",
           "text": "thì",
-          "start": 184.19,
-          "end": 184.86
+          "start": 185.15,
+          "end": 185.82
         },
         {
           "id": "caption-word-69-5",
           "text": "mua.",
-          "start": 184.86,
-          "end": 185.12
+          "start": 185.82,
+          "end": 186.08
         }
       ]
     },
     {
       "id": "caption-group-70",
       "frame": 15,
-      "start": 185.53,
-      "end": 188.03,
+      "start": 186.49,
+      "end": 188.99,
       "text": "Trước khi trình, cần bốn bằng chứng:",
       "words": [
         {
           "id": "caption-word-70-0",
           "text": "Trước",
-          "start": 185.53,
-          "end": 185.9
+          "start": 186.49,
+          "end": 186.86
         },
         {
           "id": "caption-word-70-1",
           "text": "khi",
-          "start": 185.99,
-          "end": 186.15
+          "start": 186.95,
+          "end": 187.11
         },
         {
           "id": "caption-word-70-2",
           "text": "trình,",
-          "start": 186.15,
-          "end": 186.6
+          "start": 187.11,
+          "end": 187.56
         },
         {
           "id": "caption-word-70-3",
           "text": "cần",
-          "start": 186.68,
-          "end": 186.88
+          "start": 187.64,
+          "end": 187.84
         },
         {
           "id": "caption-word-70-4",
           "text": "bốn",
-          "start": 186.89,
-          "end": 187.05
+          "start": 187.85,
+          "end": 188.01
         },
         {
           "id": "caption-word-70-5",
           "text": "bằng",
-          "start": 187.06,
-          "end": 187.4
+          "start": 188.02,
+          "end": 188.36
         },
         {
           "id": "caption-word-70-6",
           "text": "chứng:",
-          "start": 187.4,
-          "end": 188.02
+          "start": 188.36,
+          "end": 188.98
         }
       ]
     },
     {
       "id": "caption-group-71",
       "frame": 15,
-      "start": 188.03,
-      "end": 189.8,
+      "start": 188.99,
+      "end": 190.76,
       "text": "chạy chuỗi thiết kế tới unit",
       "words": [
         {
           "id": "caption-word-71-0",
           "text": "chạy",
-          "start": 188.03,
-          "end": 188.34
+          "start": 188.99,
+          "end": 189.3
         },
         {
           "id": "caption-word-71-1",
           "text": "chuỗi",
-          "start": 188.34,
-          "end": 188.72
+          "start": 189.3,
+          "end": 189.68
         },
         {
           "id": "caption-word-71-2",
           "text": "thiết",
-          "start": 188.72,
-          "end": 189.1
+          "start": 189.68,
+          "end": 190.06
         },
         {
           "id": "caption-word-71-3",
           "text": "kế",
-          "start": 189.15,
-          "end": 189.31
+          "start": 190.11,
+          "end": 190.27
         },
         {
           "id": "caption-word-71-4",
           "text": "tới",
-          "start": 189.31,
-          "end": 189.57
+          "start": 190.27,
+          "end": 190.53
         },
         {
           "id": "caption-word-71-5",
           "text": "unit",
-          "start": 189.57,
-          "end": 189.75
+          "start": 190.53,
+          "end": 190.71
         }
       ]
     },
     {
       "id": "caption-group-72",
       "frame": 15,
-      "start": 189.8,
-      "end": 191.64,
+      "start": 190.76,
+      "end": 192.6,
       "text": "test trên một hệ thống thật;",
       "words": [
         {
           "id": "caption-word-72-0",
           "text": "test",
-          "start": 189.8,
-          "end": 190.04
+          "start": 190.76,
+          "end": 191
         },
         {
           "id": "caption-word-72-1",
           "text": "trên",
-          "start": 190.04,
-          "end": 190.07
+          "start": 191,
+          "end": 191.03
         },
         {
           "id": "caption-word-72-2",
           "text": "một",
-          "start": 190.27,
-          "end": 190.48
+          "start": 191.23,
+          "end": 191.44
         },
         {
           "id": "caption-word-72-3",
           "text": "hệ",
-          "start": 190.48,
-          "end": 190.64
+          "start": 191.44,
+          "end": 191.6
         },
         {
           "id": "caption-word-72-4",
           "text": "thống",
-          "start": 190.72,
-          "end": 190.93
+          "start": 191.68,
+          "end": 191.89
         },
         {
           "id": "caption-word-72-5",
           "text": "thật;",
-          "start": 190.93,
-          "end": 191.52
+          "start": 191.89,
+          "end": 192.48
         }
       ]
     },
     {
       "id": "caption-group-73",
       "frame": 15,
-      "start": 191.65,
-      "end": 195.02,
+      "start": 192.61,
+      "end": 195.98,
       "text": "chạy headless có approval gate; chạy trên hai harness;",
       "words": [
         {
           "id": "caption-word-73-0",
           "text": "chạy",
-          "start": 191.65,
-          "end": 191.89
+          "start": 192.61,
+          "end": 192.85
         },
         {
           "id": "caption-word-73-1",
           "text": "headless",
-          "start": 191.99,
-          "end": 192.33
+          "start": 192.95,
+          "end": 193.29
         },
         {
           "id": "caption-word-73-2",
           "text": "có",
-          "start": 192.33,
-          "end": 192.68
+          "start": 193.29,
+          "end": 193.64
         },
         {
           "id": "caption-word-73-3",
           "text": "approval",
-          "start": 192.68,
-          "end": 193.2
+          "start": 193.64,
+          "end": 194.16
         },
         {
           "id": "caption-word-73-4",
           "text": "gate;",
-          "start": 193.2,
-          "end": 193.52
+          "start": 194.16,
+          "end": 194.48
         },
         {
           "id": "caption-word-73-5",
           "text": "chạy",
-          "start": 193.66,
-          "end": 193.88
+          "start": 194.62,
+          "end": 194.84
         },
         {
           "id": "caption-word-73-6",
           "text": "trên",
-          "start": 193.99,
-          "end": 194.29
+          "start": 194.95,
+          "end": 195.25
         },
         {
           "id": "caption-word-73-7",
           "text": "hai",
-          "start": 194.29,
-          "end": 194.33
+          "start": 195.25,
+          "end": 195.29
         },
         {
           "id": "caption-word-73-8",
           "text": "harness;",
-          "start": 194.68,
-          "end": 195.02
+          "start": 195.64,
+          "end": 195.98
         }
       ]
     },
     {
       "id": "caption-group-74",
       "frame": 15,
-      "start": 195.02,
-      "end": 197.44,
+      "start": 195.98,
+      "end": 198.4,
       "text": "và dựng thử một LLM gateway.",
       "words": [
         {
           "id": "caption-word-74-0",
           "text": "và",
-          "start": 195.02,
-          "end": 195.25
+          "start": 195.98,
+          "end": 196.21
         },
         {
           "id": "caption-word-74-1",
           "text": "dựng",
-          "start": 195.3,
-          "end": 195.83
+          "start": 196.26,
+          "end": 196.79
         },
         {
           "id": "caption-word-74-2",
           "text": "thử",
-          "start": 195.83,
-          "end": 196.28
+          "start": 196.79,
+          "end": 197.24
         },
         {
           "id": "caption-word-74-3",
           "text": "một",
-          "start": 196.33,
-          "end": 196.575
+          "start": 197.29,
+          "end": 197.535
         },
         {
           "id": "caption-word-74-4",
           "text": "LLM",
-          "start": 196.575,
-          "end": 196.82
+          "start": 197.535,
+          "end": 197.78
         },
         {
           "id": "caption-word-74-5",
           "text": "gateway.",
-          "start": 196.82,
-          "end": 197.32
+          "start": 197.78,
+          "end": 198.28
         }
       ]
     },
     {
       "id": "caption-group-75",
       "frame": 16,
-      "start": 197.95,
-      "end": 200.04,
+      "start": 198.73,
+      "end": 201.29,
       "text": "Model đổi được trong một dòng cấu hình.",
       "words": [
         {
           "id": "caption-word-75-0",
           "text": "Model",
-          "start": 197.95,
-          "end": 197.97
+          "start": 198.73,
+          "end": 199.08
         },
         {
           "id": "caption-word-75-1",
           "text": "đổi",
-          "start": 197.97,
-          "end": 198.26
+          "start": 199.08,
+          "end": 199.36
         },
         {
           "id": "caption-word-75-2",
           "text": "được",
-          "start": 198.26,
-          "end": 198.65
+          "start": 199.45,
+          "end": 199.79
         },
         {
           "id": "caption-word-75-3",
           "text": "trong",
-          "start": 198.65,
-          "end": 198.81
+          "start": 199.79,
+          "end": 200.04
         },
         {
           "id": "caption-word-75-4",
           "text": "một",
-          "start": 198.91,
-          "end": 199.15
+          "start": 200.04,
+          "end": 200.25
         },
         {
           "id": "caption-word-75-5",
           "text": "dòng",
-          "start": 199.15,
-          "end": 199.38
+          "start": 200.32,
+          "end": 200.54
         },
         {
           "id": "caption-word-75-6",
           "text": "cấu",
-          "start": 199.39,
-          "end": 199.63
+          "start": 200.54,
+          "end": 200.74
         },
         {
           "id": "caption-word-75-7",
           "text": "hình.",
-          "start": 199.63,
-          "end": 199.92
+          "start": 200.74,
+          "end": 201.17
         }
       ]
     },
     {
       "id": "caption-group-76",
       "frame": 16,
-      "start": 200.05,
-      "end": 202.75,
+      "start": 201.3,
+      "end": 204.27,
       "text": "Dữ liệu và dây nối thì không ai làm thay được.",
       "words": [
         {
           "id": "caption-word-76-0",
           "text": "Dữ",
-          "start": 200.05,
-          "end": 200.35
+          "start": 201.3,
+          "end": 201.5
         },
         {
           "id": "caption-word-76-1",
           "text": "liệu",
-          "start": 200.35,
-          "end": 200.79
+          "start": 201.53,
+          "end": 201.78
         },
         {
           "id": "caption-word-76-2",
           "text": "và",
-          "start": 200.79,
-          "end": 201.01
+          "start": 201.9,
+          "end": 202.09
         },
         {
           "id": "caption-word-76-3",
           "text": "dây",
-          "start": 201.01,
-          "end": 201.3
+          "start": 202.09,
+          "end": 202.42
         },
         {
           "id": "caption-word-76-4",
           "text": "nối",
-          "start": 201.3,
-          "end": 201.72
+          "start": 202.42,
+          "end": 202.78
         },
         {
           "id": "caption-word-76-5",
           "text": "thì",
-          "start": 201.72,
-          "end": 201.86
+          "start": 202.78,
+          "end": 202.92
         },
         {
           "id": "caption-word-76-6",
           "text": "không",
-          "start": 201.86,
-          "end": 202.07
+          "start": 203.06,
+          "end": 203.23
         },
         {
           "id": "caption-word-76-7",
           "text": "ai",
-          "start": 202.07,
-          "end": 202.14
+          "start": 203.23,
+          "end": 203.32
         },
         {
           "id": "caption-word-76-8",
           "text": "làm",
-          "start": 202.14,
-          "end": 202.26
+          "start": 203.32,
+          "end": 203.49
         },
         {
           "id": "caption-word-76-9",
           "text": "thay",
-          "start": 202.3,
-          "end": 202.42
+          "start": 203.54,
+          "end": 203.68
         },
         {
           "id": "caption-word-76-10",
           "text": "được.",
-          "start": 202.42,
-          "end": 202.73
+          "start": 203.68,
+          "end": 204.15
         }
       ]
     },
     {
       "id": "caption-group-77",
       "frame": 16,
-      "start": 202.75,
-      "end": 205.04,
+      "start": 204.33,
+      "end": 205.91,
       "text": "Đó là nơi tổ chức nên đầu tư.",
       "words": [
         {
           "id": "caption-word-77-0",
           "text": "Đó",
-          "start": 202.75,
-          "end": 203
+          "start": 204.33,
+          "end": 204.34
         },
         {
           "id": "caption-word-77-1",
           "text": "là",
-          "start": 203.14,
-          "end": 203.18
+          "start": 204.34,
+          "end": 204.48
         },
         {
           "id": "caption-word-77-2",
           "text": "nơi",
-          "start": 203.18,
-          "end": 203.42
+          "start": 204.48,
+          "end": 204.66
         },
         {
           "id": "caption-word-77-3",
           "text": "tổ",
-          "start": 203.42,
-          "end": 203.65
+          "start": 204.66,
+          "end": 204.84
         },
         {
           "id": "caption-word-77-4",
           "text": "chức",
-          "start": 203.74,
-          "end": 203.99
+          "start": 204.84,
+          "end": 205.12
         },
         {
           "id": "caption-word-77-5",
-          "text": "F",
-          "start": 204.02,
-          "end": 204.106
+          "text": "nên",
+          "start": 205.12,
+          "end": 205.31
         },
         {
           "id": "caption-word-77-6",
-          "text": "nên",
-          "start": 204.106,
-          "end": 204.25
+          "text": "đầu",
+          "start": 205.31,
+          "end": 205.59
         },
         {
           "id": "caption-word-77-7",
-          "text": "đầu",
-          "start": 204.42,
-          "end": 204.69
-        },
-        {
-          "id": "caption-word-77-8",
           "text": "tư.",
-          "start": 204.69,
-          "end": 204.92
+          "start": 205.59,
+          "end": 205.79
         }
       ]
     }
