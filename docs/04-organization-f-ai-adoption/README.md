@@ -6,7 +6,7 @@ Tên task nói "soạn tài liệu", nhưng làm xong tài liệu không có ngh
 
 **Mục tiêu trước mắt**: cuối tháng 10 có đủ material để rollout cho các team dự án ở bốn việc **Design (tài liệu API), Test case, Code, Unit test**.
 
-## Mười tài liệu
+## Mười một tài liệu
 
 | # | Tài liệu | Trả lời |
 |---|---|---|
@@ -20,6 +20,7 @@ Tên task nói "soạn tài liệu", nhưng làm xong tài liệu không có ngh
 | 08 | [Effectiveness Data Collection](08-effectiveness-data-collection.md) | Hai thứ project team cung cấp để đánh giá hiệu quả: survey sau buổi live sharing và report định kỳ của PM; các chỉ số tính ra, cách đọc, và những gì thấy thêm khi ghép với usage log của phía khách |
 | 09 | [Training Material Design](09-training-material-design.md) | Dành cho DevOps: hiện trạng kit và material, nguyên tắc thiết kế, outline chi tiết bài sharing, cấu trúc bản live và bản chi tiết, tiêu chí sẵn sàng |
 | 10 | [Knowledge Platform Design Review](10-knowledge-platform-design-review.md) | Đánh giá một bản thiết kế AI platform kèm kho tri thức: các cụm component không nên làm xét theo độ cần thiết và hiệu quả, phần nên giữ, phương án gọn hơn kèm sơ đồ không phụ thuộc nhà cung cấp cloud, cách kiểm chứng |
+| 11 | [No Vector or Graph Index for Project Code and Documents](11-no-vector-or-graph-index-evidence.md) | Bằng chứng bên ngoài cho luận điểm không dựng vector DB và graph DB cho code và tài liệu dự án: nguồn ủng hộ, bằng chứng ngược chiều, chỗ chưa có bằng chứng, khi nào nên dựng index |
 
 Nền chung ở [nhóm 02](../02-ai-in-sdlc/): [AI Toolkit](../02-ai-in-sdlc/01-ai-toolkit-offshore-team.md), [MK Kit Introduction](../02-ai-in-sdlc/02-mk-kit-introduction.md), [Kiro + MK Kit](../02-ai-in-sdlc/04-kiro-mk-kit-guide.md), [MK Observe](../02-ai-in-sdlc/05-mk-observe-agent-metrics.md).
 
