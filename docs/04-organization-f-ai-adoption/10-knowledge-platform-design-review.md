@@ -145,6 +145,28 @@ Các điều kiện khiến kết luận đổi chiều:
 - Lượng truy vấn đủ lớn để chi phí token của việc agent tự tìm vượt chi phí vận hành kho.
 - Có nhóm người dùng không vào được IDE, không sản phẩm có sẵn nào qua được ràng buộc hợp đồng, và họ cần nhiều hơn hỏi đáp.
 
+## 6. Hướng dài hạn: bộ tài liệu tối thiểu
+
+Mục này là nhận định, chưa có số đo, và phụ thuộc vào quy trình đã thoả thuận với khách hàng.
+
+Các mục trên trả lời câu hỏi "tìm trong tài liệu bằng cách nào". Câu hỏi đứng trước nó là "cần duy trì những tài liệu nào". Khi agent đọc được code trực tiếp, hướng hợp lý là: code là single source of truth cho hành vi của hệ thống, và người chỉ viết tay những thứ code không tự nói ra được. Tài liệu viết tay càng ít thì bài toán index càng nhỏ, và lý do dựng C3, C4 càng yếu.
+
+| Loại tài liệu | Hướng xử lý | Lý do |
+|---|---|---|
+| Requirement, use case và user story | Giữ, người viết | Ý định nghiệp vụ không nằm trong code |
+| Test case | Giữ, người viết hoặc duyệt | Là định nghĩa kiểm chứng được của "đúng" |
+| Code | Single source of truth cho hành vi | Luôn khớp với hệ thống đang chạy |
+| Detail design mô tả lại code | Không viết tay trước; sinh từ code khi cần | Agent đọc code ra được; bản mô tả viết tay luôn lệch so với code |
+| Decision record | Giữ, viết ngắn | Code cho biết hệ thống làm gì, không cho biết vì sao chọn cách này và đã loại cách nào |
+| Non-functional requirement và ràng buộc bên ngoài (hiệu năng, bảo mật, interface contract với hệ thống khác) | Giữ, người viết | Test case chỉ phủ được một phần |
+| Tài liệu là sản phẩm bàn giao theo hợp đồng (basic design, detail design khách ký nhận) | Giữ, nhưng đổi cách tạo: sinh từ code và requirement, người duyệt | Tồn tại vì hợp đồng, không phải vì agent cần |
+
+Ba lưu ý:
+
+- **Quy trình của khách là giới hạn đầu tiên.** Trong dự án waterfall, design thường phải được duyệt trước khi code. Khi đó "sinh từ code" chỉ áp dụng cho việc giữ tài liệu khớp với code sau mỗi thay đổi, không thay được bước duyệt design ban đầu. Bỏ loại tài liệu nào là quyết định cần khách đồng ý.
+- **Tài liệu sinh ra không phải là nguồn.** Bản sinh từ code là sản phẩm phụ. Agent tra code và requirement, không tra lại bản sinh ra; nếu không, sai sót của một lần sinh sẽ thành context của lần sau.
+- **Ảnh hưởng tới phương án ở mục 4.** Job chuyển đổi tài liệu chỉ cần xử lý phần người viết tay. Phần còn lại không cần chuyển đổi vì nó được sinh ra sẵn ở dạng văn bản.
+
 ## Câu hỏi mở
 
 1. Ca cụ thể nào hiện nay agent làm sai vì thiếu context, và bao nhiêu ca như vậy mỗi tuần?
@@ -155,3 +177,4 @@ Các điều kiện khiến kết luận đổi chiều:
 6. Repo dự án nằm ở dịch vụ git nào, và kho mã trong bản đề xuất là nguồn gốc hay bản sao?
 7. Ai vận hành platform và chi phí hàng tháng dự kiến là bao nhiêu?
 8. Bao nhiêu phần tài liệu thiết kế hiện có đã có layer, parent-child, link và ID, và bao nhiêu phần còn nằm trong bảng tính không có liên kết?
+9. Loại tài liệu nào là sản phẩm bàn giao bắt buộc theo hợp đồng, và khách có chấp nhận bản sinh từ code kèm người duyệt không?

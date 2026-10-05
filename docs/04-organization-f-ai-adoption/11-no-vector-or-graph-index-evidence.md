@@ -13,6 +13,7 @@ Luận điểm này **không** nói:
 - Semantic search vô dụng. Có bằng chứng nó giúp thêm trên codebase lớn (mục 4).
 - Graph vô dụng. Nó vẫn có lợi cho multi-hop reasoning (mục 4).
 - Retrieval không quan trọng. Nó chỉ đổi chỗ: từ pipeline dựng sẵn sang tool do agent tự gọi.
+- Index sẽ biến mất. Thứ hết lý do là việc tự dựng và tự vận hành (mục 7).
 
 ## 2. Bằng chứng ủng hộ
 
@@ -87,6 +88,25 @@ Năm điểm này là lý do mục 5 của bản review đề nghị thử 20 đ
 | Agent hụt ở câu hỏi mô tả bằng khái niệm, không có định danh để grep | Semantic search bổ sung cho grep, trên một relational database có vector extension |
 | Codebase quá lớn để clone, hoặc agent tốn nhiều vòng mới định vị được file | Code search index tập trung |
 | Một nhóm câu hỏi multi-hop cụ thể lặp lại và agent trả lời sai ổn định | Graph cho riêng nhóm đó, dựng bằng công cụ tất định (compiler, language server), không rút bằng LLM |
+
+## 7. Xu hướng: không còn nên tự dựng
+
+Mục này là nhận định từ các bằng chứng ở trên, không phải kết quả đo. Không có mốc thời gian đáng tin nào cho việc vector và graph "vô dụng", vì hai chuyển động đang đi ngược chiều nhau:
+
+- **Phần tự dựng mất giá nhanh.** Với một dự án clone được về máy, lý do tự dựng vector DB hay graph DB đã yếu từ bây giờ: các coding agent lớn đã bỏ index (mục 2), và mỗi đời model lại tìm nhiều vòng tốt hơn.
+- **Index không biến mất, nó chìm vào trong sản phẩm.** Semantic search vẫn cho lợi ích đo được trên codebase lớn (mục 4), và agent tích hợp sẵn của wiki platform chạy trên index riêng. Index trở thành chi tiết bên trong harness và platform, do vendor vận hành.
+
+Vì vậy phát biểu chính xác là: **với code và tài liệu của một dự án, không còn nên tự dựng và tự vận hành vector DB và graph DB.** Dùng index có sẵn trong harness và platform thì vẫn hợp lý.
+
+Vector và graph tự dựng còn chỗ đứng ở ngoài phạm vi đó:
+
+| Trường hợp | Vì sao index còn đáng dựng |
+|---|---|
+| Quy mô vượt một dự án: hàng nghìn repo, tìm xuyên toàn tổ chức | Không ai clone hết được; agentic search không có điểm bắt đầu |
+| Lượng truy vấn lớn, cần độ trễ thấp | Agent tìm nhiều vòng tốn token và thời gian mỗi phiên; index rẻ hơn khi khấu hao |
+| Dữ liệu không có định danh để grep: log, hội thoại, ticket hỗ trợ, văn bản viết tự do | Khớp theo ngữ nghĩa là cách duy nhất |
+
+Một yếu tố làm phạm vi cần index nhỏ thêm: số tài liệu viết tay phải duy trì có xu hướng giảm khi code trở thành single source of truth. Xem [mục 6 của bản review](10-knowledge-platform-design-review.md#6-hướng-dài-hạn-bộ-tài-liệu-tối-thiểu).
 
 ## Nguồn
 
