@@ -1,0 +1,57 @@
+# Files that may hold credentials or private data.
+# Decision: ASK. The user is prompted before an agent reads, writes, or
+# names one of these in a shell command.
+#
+# One pattern per line. `*` stays inside one path segment, `**` crosses
+# segments, `?` is one character. A pattern matches at any depth.
+# A leading `!` marks an exception that is never treated as sensitive.
+
+# Environment files
+.env
+.env.*
+*.env
+!.env.example
+!.env.sample
+!.env.template
+!.env.dist
+
+# Keys and certificates
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.ovpn
+id_rsa*
+id_dsa*
+id_ecdsa*
+id_ed25519*
+.ssh/**
+!*.pub
+
+# Tool and cloud credentials
+.aws/credentials
+.npmrc
+.pypirc
+.netrc
+.git-credentials
+.docker/config.json
+.kube/config
+kubeconfig
+*.kubeconfig
+credentials.json
+service-account*.json
+*-service-account.json
+.htpasswd
+
+# Infrastructure state and variables
+*.tfvars
+*.tfstate
+*.tfstate.backup
+
+# Conventional secret stores
+secrets.json
+secrets.yml
+secrets.yaml
+secrets/**

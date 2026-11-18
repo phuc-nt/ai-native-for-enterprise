@@ -1,9 +1,10 @@
-# Whitelist: only publish docs/ — everything else (agent kit .claude/,
+# Whitelist: only publish docs/, videos/ and agent-kit/ — everything else (.claude/,
 # plans/ intermediate outputs, workspace instruction files) stays local.
 /*
 !/docs/
 !/.gitignore
 !/videos/
+!/agent-kit/
 # videos/: publish sources and finished renders only; keep render working
 # files, frame snapshots, extracted capture data and background music local.
 /videos/**/.hyperframes/

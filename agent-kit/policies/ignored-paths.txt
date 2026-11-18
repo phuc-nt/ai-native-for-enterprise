@@ -1,0 +1,44 @@
+# Directories whose contents are generated or downloaded, never authored.
+# Decision: DENY for searching and listing; ASK for reading one named file.
+# Running a build or a package manager is not affected; only looking inside
+# is.
+#
+# Reading these spends context on text nobody here wrote, and search hits in
+# them bury the hits that matter. The authored source, the manifest, and the
+# lockfile answer the same questions.
+#
+# One directory name per line. A path is matched when any of its segments
+# equals a name below. Remove a line if this project authors files there.
+
+# Version control internals
+.git
+
+# Dependencies
+node_modules
+bower_components
+vendor
+.venv
+venv
+site-packages
+Pods
+
+# Build output
+dist
+build
+out
+target
+.next
+.nuxt
+.svelte-kit
+.output
+.turbo
+
+# Caches and reports
+__pycache__
+.pytest_cache
+.mypy_cache
+.ruff_cache
+.gradle
+.cache
+coverage
+.nyc_output

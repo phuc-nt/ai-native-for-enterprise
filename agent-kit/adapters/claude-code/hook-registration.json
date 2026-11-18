@@ -1,0 +1,9 @@
+{
+  "matcher": "Read|Grep|Glob|Write|Edit|MultiEdit|NotebookEdit|Bash",
+  "hooks": [
+    {
+      "type": "command",
+      "command": "node \"$CLAUDE_PROJECT_DIR/.claude/agent-kit/adapters/claude-code/pre-tool-use-hook.mjs\""
+    }
+  ]
+}

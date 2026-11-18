@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "hooks": {
+    "preToolUse": [
+      {
+        "type": "command",
+        "command": "node .github/agent-kit/adapters/github-copilot/pre-tool-use-hook.mjs",
+        "cwd": ".",
+        "timeoutSec": 15
+      }
+    ]
+  }
+}

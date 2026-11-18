@@ -1,0 +1,76 @@
+# Shell commands that publish, deploy, or destroy.
+# ASK: the user confirms each time. DENY: the agent may not run it at all.
+#
+# Format:  <ask|deny> <command words and flags> :: <reason shown to the agent>
+#
+# Matching, per simple command in the line (after sudo, env, npx and similar):
+#   - the words must be the command name followed directly by its
+#     subcommands, in order;
+#   - every flag listed must be present somewhere in the command;
+#   - short flags match by letter, so `-rf` also matches `-fr` and `-r -f`;
+#   - a long flag matches exactly, so `--force` does not match
+#     `--force-with-lease`.
+# When several lines match, the strictest decision wins.
+
+# Publishing outside this machine
+ask git push :: publishes commits to a remote
+ask gh pr create :: opens a pull request other people will see
+ask gh pr merge :: merges into a shared branch
+ask gh pr close :: closes a pull request other people can see
+ask gh pr comment :: posts a comment under the user's name
+ask gh pr review :: posts a review under the user's name
+ask gh issue create :: opens an issue under the user's name
+ask gh issue comment :: posts a comment under the user's name
+ask gh release create :: publishes a release
+ask npm publish :: publishes a package version that cannot be reused
+ask pnpm publish :: publishes a package version that cannot be reused
+ask yarn publish :: publishes a package version that cannot be reused
+ask yarn npm publish :: publishes a package version that cannot be reused
+ask bun publish :: publishes a package version that cannot be reused
+ask cargo publish :: publishes a crate version that cannot be removed
+ask twine upload :: publishes a package version that cannot be reused
+ask gem push :: publishes a gem version
+ask docker push :: publishes an image to a registry
+
+# Changing running systems
+ask terraform apply :: changes real infrastructure
+ask terraform destroy :: deletes real infrastructure
+ask pulumi up :: changes real infrastructure
+ask pulumi destroy :: deletes real infrastructure
+ask cdk deploy :: changes real infrastructure
+ask cdk destroy :: deletes real infrastructure
+ask kubectl apply :: changes a cluster
+ask kubectl delete :: deletes cluster resources
+ask helm install :: changes a cluster
+ask helm upgrade :: changes a cluster
+ask helm uninstall :: removes a release from a cluster
+ask vercel deploy :: creates a deployment
+ask vercel --prod :: deploys to production
+ask netlify deploy :: creates a deployment
+ask firebase deploy :: deploys to a live project
+ask fly deploy :: deploys to a live app
+ask wrangler deploy :: deploys to a live worker
+ask serverless deploy :: deploys to a live stage
+ask prisma migrate deploy :: applies migrations to the configured database
+ask prisma migrate reset :: drops and recreates the configured database
+
+# Discarding local work
+ask git reset --hard :: discards uncommitted changes
+ask git clean -f :: deletes untracked files
+ask git branch -D :: deletes a branch that may hold unmerged commits
+ask git stash drop :: deletes stashed work
+ask git stash clear :: deletes all stashed work
+
+# Never
+deny git push --force :: overwrites remote history; use --force-with-lease, which asks the user
+deny git push -f :: overwrites remote history; use --force-with-lease, which asks the user
+deny git push --mirror :: overwrites every ref on the remote
+deny git push --no-verify :: skips the repository's push checks; fix what they report
+deny git commit --no-verify :: skips the repository's commit checks; fix what they report
+deny git commit -n :: skips the repository's commit checks; fix what they report
+deny gh pr merge --admin :: bypasses branch protection
+deny rm / :: targets the filesystem root
+deny rm /* :: targets the filesystem root
+deny rm ~ :: targets the home directory
+deny rm ~/* :: targets the home directory
+deny rm $HOME :: targets the home directory
