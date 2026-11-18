@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.0 (2026-11-18)
+
+- Docs skill: repo card operation. One fixed-shape file per repository that
+  says what it is for, who owns it, and what it connects to, so the cards of
+  many repositories can be collected into a catalogue or a knowledge base.
+- MIT licence, included in the release archive.
+
 ## 0.2.0 (2026-11-18)
 
 - Installer: one entry point, `install.mjs <harness> <project-directory>`,

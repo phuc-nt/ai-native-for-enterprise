@@ -174,3 +174,7 @@ project also edits.
 
 - Evaluation tasks that measure whether each rule and skill changes results.
 - Organization-specific conventions and connectors to internal systems.
+
+## Licence
+
+MIT. See [LICENSE](LICENSE).

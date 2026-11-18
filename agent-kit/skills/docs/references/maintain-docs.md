@@ -28,6 +28,10 @@ earns its place. It is never to make the docs look recently touched.
 6. **Verify.** Links resolve, commands were run, and nothing else in the
    edited document contradicts the code you just read.
 
+If the repository has a repo card, check it in step 3 every time: a change
+to what the repository connects to, who owns it, or what it is for changes
+the card. See `repo-card.md`.
+
 Do not rewrite sections that are still true. Do not update a "last updated"
 line as the only change. Do not reformat.
 
@@ -40,7 +44,7 @@ whether they can be trusted.
 2. For each, pull out the statements that can be checked: paths, commands,
    names, described behavior, described structure.
 3. Check them against the code. In a large set, check every statement in the
-   documents people start from and sample the rest.
+   documents people start from and in the repo card, and sample the rest.
 4. Report the drift as a list: document, statement, what the code says.
    Separate what is plainly wrong from what is merely redundant.
 5. Fix what falls under routine write authority. Bring the rest to the user.

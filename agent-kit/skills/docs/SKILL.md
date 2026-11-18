@@ -1,6 +1,6 @@
 ---
 name: docs
-description: Create, prune, and query a repository's documentation and its agent instruction file. Use to document an existing codebase, bring docs back in line after a change, audit docs for drift, answer where something is documented, tighten CLAUDE.md or AGENTS.md, derive agent rules from repeated failures in git and CI history, or generate an llms.txt index.
+description: Create, prune, and query a repository's documentation and its agent instruction file. Use to document an existing codebase, bring docs back in line after a change, audit docs for drift, answer where something is documented, tighten CLAUDE.md or AGENTS.md, derive agent rules from repeated failures in git and CI history, generate an llms.txt index, or write the repo card that lets a catalogue or knowledge base route people to this repository.
 ---
 
 # Project docs
@@ -24,6 +24,7 @@ whichever operation you are in.
 | A leaner, more useful CLAUDE.md or AGENTS.md | Agent context | `references/agent-context-file.md` |
 | Agent rules backed by what actually went wrong | Rules from history | `references/rules-from-history.md` |
 | An index of the docs for external language-model clients | llms.txt | `references/llms-index.md` |
+| A one-screen card that routes people across many repositories to this one | Repo card | `references/repo-card.md` |
 
 ## Input
 
@@ -47,12 +48,14 @@ whichever operation you are in.
 - **Discover the layout, do not impose one.** Use the repository's existing
   docs location, file names, format, and language. The fixed layout in
   `references/classic-layout.md` is for a repository that has none and a
-  user who wants one.
+  user who wants one. The repo card is the exception: its path and shape
+  are the same in every repository, because it is read across repositories.
 - **Every claim traces to something.** Code, configuration, history, or the
   user. What cannot be established is left out and listed in the report.
   Never fill a gap with what is usually true of projects like this.
 - **No placeholders.** A file or section with nothing true to say is not
-  created.
+  created. The repo card's front matter is the exception: a field that
+  cannot be established is written as `unknown`.
 - **Prefer removing to adding.** A stale sentence is worse than a missing
   one.
 - **No credential values, ever,** in any document. Record where a secret is

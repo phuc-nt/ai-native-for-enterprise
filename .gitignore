@@ -3,6 +3,7 @@
 /*
 !/docs/
 !/.gitignore
+!/LICENSE
 !/videos/
 !/agent-kit/
 # videos/: publish sources and finished renders only; keep render working
